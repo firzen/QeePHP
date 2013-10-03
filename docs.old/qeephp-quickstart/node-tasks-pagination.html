@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 快速入门</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qeephp.com/docs/">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 快速入门</a>
+      &raquo;
+      <a href="node-tasks.html">实现任务管理</a>
+      &raquo;
+      分页与最后的完善    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+
+    
+<h1>分页与最后的完善</h1>
+
+<p>随着我们往应用程序中添加了越来越多的任务，分页显示就势在必行了。QeePHP
+对分页有各种内置的方法，而且可以使用现成的分页导航插件来减少工作量。</p>
+
+<h2>学会偷懒</h2>
+
+<blockquote>
+	<p>当你需要往应用程序中添加一个新功能时，请首先查看 <a
+	href="http://qeephp.com/projects">http://qeephp.com/projects</a>，也许惊喜就在等着你。</p>
+</blockquote>
+
+<p>这里我们使用 <a
+href="http://qeephp.com/projects/pagination">http://qeephp.com/projects/pagination</a>
+这个分页导航插件。按照这个控件的说明把控件文件和样式表加入到应用程序中后，修改
+tasks 控制器的 actionIndex() 方法为：</p>
+
+<pre class="php code"><span class="kw2">function</span> actionIndex<span
+class="br0">&#40;</span><span class="br0">&#41;</span>
+<span
+class="br0">&#123;</span>
+    <span class="co1">// 分页查询</span>
+    <span
+class="re0">$page</span> <span class="sy0">=</span> <span
+class="kw3">intval</span><span class="br0">&#40;</span><span
+class="re0">$this</span><span class="sy0">-&gt;</span>_context<span
+class="sy0">-&gt;</span><span class="me1">page</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+    <span
+class="kw1">if</span> <span class="br0">&#40;</span><span
+class="re0">$page</span> <span class="sy0">&lt;</span> <span
+class="nu0">1</span><span class="br0">&#41;</span> <span
+class="re0">$page</span> <span class="sy0">=</span> <span
+class="nu0">1</span><span class="sy0">;</span>
+&nbsp;
+    <span
+class="co1">// 构造查询对象</span>
+    <span
+class="re0">$select</span> <span class="sy0">=</span> Task<span
+class="sy0">::</span><span class="me2">find</span><span
+class="br0">&#40;</span><span class="st_h">'owner_id = ?'</span><span
+class="sy0">,</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_app<span class="sy0">-&gt;</span><span
+class="me1">currentUserObject</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">-&gt;</span><span
+class="me1">id</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+    <span class="re0">$select</span><span
+class="sy0">-&gt;</span><span class="me1">limitPage</span><span
+class="br0">&#40;</span><span class="re0">$page</span><span
+class="sy0">,</span> <span class="nu0">5</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span
+class="co1">// 将分页信息和查询到的数据传递到视图</span>
+    <span
+class="re0">$this</span><span class="sy0">-&gt;</span>_view<span
+class="br0">&#91;</span><span class="st_h">'pagination'</span><span
+class="br0">&#93;</span> <span class="sy0">=</span> <span
+class="re0">$select</span><span class="sy0">-&gt;</span><span
+class="me1">getPagination</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+    <span
+class="re0">$this</span><span class="sy0">-&gt;</span>_view<span
+class="br0">&#91;</span><span class="st_h">'tasks'</span><span
+class="br0">&#93;</span>      <span class="sy0">=</span> <span
+class="re0">$select</span><span class="sy0">-&gt;</span><span
+class="me1">getAll</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="br0">&#125;</span></pre>
+最后修改 app/view/tasks/index.php 视图，在最后一行“”前加入：
+<pre class=" code">&lt;?php $this-&gt;_control<span
+class="br0">&#40;</span>'pagination', 'my-pagination', array<span
+class="br0">&#40;</span>'pagination' =&gt; $pagination<span
+class="br0">&#41;</span><span class="br0">&#41;</span>; ?&gt;</pre>
+
+<p>刷新浏览器：</p>
+
+<div class="figure"><img src="images/tasks-pagination-01.png" alt="" />
+	<p>分页控件</p>
+</div>
+
+<div class="figure"><img src="images/tasks-pagination-02.png" alt="" />
+	<p>多页效果</p>
+</div>
+
+<h2>完善列表页面</h2>
+
+<p>经过一番努力，todo
+应用已经比较完善了，我们再补充一个小功能：在列表页面直接创建任务。</p>
+修改 app/view/tasks/index.php 视图，在最后一行“”前加入：
+<pre class="php code"><span class="kw2">&lt;?php</span> <span
+class="re0">$this</span><span class="sy0">-&gt;</span>_element<span
+class="br0">&#40;</span><span class="st_h">'formview_simple'</span><span
+class="sy0">,</span> <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'form'</span> <span
+class="sy0">=&gt;</span> <span class="kw2">new</span> Form_Task<span
+class="br0">&#40;</span>url<span class="br0">&#40;</span><span
+class="st_h">'tasks/create'</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span></pre>
+
+<p>现在在列表页面就可以直接添加任务了。</p>
+
+<h2>修改默认控制器</h2>
+
+<p>当前，查看任务列表需要我们在 URL 中明确指定访问 tasks
+控制器，这显然很不友好。所以我们对默认的 default
+控制器做一点小手术，</p>
+
+<p>修改 app/controller/default_controller.php 文件的内容为：</p>
+
+<pre class="php code"><span class="kw2">class</span> Controller_Default <span
+class="kw2">extends</span> Controller_Abstract
+<span
+class="br0">&#123;</span>
+    <span class="kw2">function</span> actionIndex<span
+class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span
+class="br0">&#123;</span>
+        <span class="kw1">if</span> <span
+class="br0">&#40;</span><span class="re0">$this</span><span
+class="sy0">-&gt;</span>_app<span class="sy0">-&gt;</span><span
+class="me1">currentUserRoles</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span>
+        <span
+class="br0">&#123;</span>
+            <span
+class="co1">// 如果已经登录，就转到任务列表页面</span>
+            <span
+class="kw1">return</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_redirect<span class="br0">&#40;</span>url<span
+class="br0">&#40;</span><span class="st_h">'tasks/index'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+        <span class="br0">&#125;</span>
+        <span
+class="kw1">else</span>
+        <span
+class="br0">&#123;</span>
+            <span
+class="co1">// 未登录则转到登录页面</span>
+            <span
+class="kw1">return</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_redirect<span class="br0">&#40;</span>url<span
+class="br0">&#40;</span><span class="st_h">'users/login'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span
+class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>修改后，todo 应用的功能就算齐备了。</p>
+
+<p>$Id: tasks-pagination.texy 2295 2009-03-10 07:48:18Z dualface $</p>
+
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-tasks-edit.html">修改和删除任务</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-tasks.html">实现任务管理</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-routes.html">美化 URL</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

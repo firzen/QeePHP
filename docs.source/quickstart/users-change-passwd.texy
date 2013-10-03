@@ -1,0 +1,90 @@
+=== 修改密码 ===
+
+通常，用户登录后修改自己的密码时都要求输入正在使用的密码。因此这次我们不能重用刚刚的 Form_UserLogin 表单了，需要单独建立一个。
+
+## 添加控制器动作 ##
+
+修改 users 控制器，加入下列代码：
+
+/---code php
+function actionChangePassword(){
+	if (request_is_post()){
+		$oldpass=request('oldpass');
+		$newpass=request('newpass');
+		$newpass_repeat=request('newpass_repeat');
+		
+		//验证
+		do {
+			$errors=array();
+			//新密码
+			if (strlen($newpass)<6){
+				$errors['newpass'][]='新密码长度不能小于6位';
+			}
+			if ($newpass!=$newpass_repeat){
+				$errors['newpass'][]='新密码两次输入不一致';
+			}
+			//旧密码
+			//1.获得登录用户
+			$user=User::validateLogin($this->_login_user['username'], $oldpass);
+			if ($user===false){
+				$errors['oldpass'][]='旧密码输入不正确';
+			}
+			if (count($errors)){
+				$this->_view['errors']=$errors;
+				break;
+			}
+			//保存新密码
+			$user->changePassword($newpass);
+			
+			//跳转到首页
+			return $this->_redirectMessage('恭喜您', '修改密码成功', url('default/index'));
+		}while (0);
+	}
+}
+\---
+## 建立表单 ##
+
+创建View文件 _code/view/changepasswd.php，内容为：
+
+/---code php
+<div>
+<form name="form_user" id="form_user" action="<?php echo url('users/changePassword'); ?>" method="post">
+
+  <fieldset>
+    <p>
+      <label for="oldpass">旧密码</label>
+      <input type="password" name="oldpass" id="oldpass" />
+      <?php if (@count($errors['oldpass'])){echo implode(',', $errors['oldpass']);}?>
+    </p>
+
+    <p>
+      <label for="newpass">新密码</label>
+      <input type="password" name="newpass" id="newpass" />
+      <?php if (@count($errors['newpass'])){echo implode(',', $errors['newpass']);}?>
+    </p>
+    <p>
+      <label for="newpass_repeat">再次输入新密码</label>
+      <input type="password" name="newpass_repeat" id="newpass_repeat" />
+      <?php if (@count($errors['newpass_repeat'])){echo implode(',', $errors['newpass_repeat']);}?>
+    </p>
+    <p>
+      <input type="submit" name="Submit" value="提交" />
+    </p>
+    </fieldset>
+    </form>
+</div>
+\---
+
+这次的表单对象复杂了许多。除了要为三个密码输入字段指定验
+
+actionChangePasswd() 中，我们使用 changePassword() 方法来修改密码。
+
+[* users-changepasswd-01.png *] *** 输入了错误的密码
+
+注意这次在重定向浏览器时调用的是 _redirectMessage() 方法。这个方法会通过 redirect_message 视图来显示提示信息，能够让用户注意到操作的结果。如果有必要，可以将注册、登录等方法的重定向操作也改为使用带提示信息的重定向。
+
+[* users-changepasswd-02.png *] *** 成功修改密码后的提示信息
+
+现在用户方面的功能就基本上实现完了。下一节开始，我们将实现任务的管理功能。
+
+

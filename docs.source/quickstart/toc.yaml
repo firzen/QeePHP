@@ -1,0 +1,75 @@
+
+name: "qeephp-quickstart"
+subject: "QeePHP 快速入门"
+columns: 4
+
+chapters:
+  start:
+    subject: "起步"
+    sections:
+      "environment":    "准备开发环境"
+      "arch":           "QeePHP 架构"
+      "creating-app":   "创建应用程序"
+      "dirstructure":   "应用目录结构"
+      "mvc":            "MVC 模式"
+      "mvc-startup":    "MVC 模式的启动"
+      "mvc-controller": "控制器"
+  #
+  development:
+    subject: "开始开发"
+    sections:
+      "database":       "创建数据库"
+      #"yaml":           "YAML 入门"
+      "configs":        "修改配置文件"
+      "controller":     "创建控制器"
+      "model":          "创建模型"
+  #
+  #automation:
+  #  subject: "创建控制器"
+  #  sections:
+  #    "controller":     "创建控制器"
+  #    "model":          "创建模型"
+  #
+  thinking:
+    subject: "编写代码之前的思考"
+    sections:
+  #    "oo":             "用对象来思考"
+      "analysis":       "需求分析"
+      "creating-models": "创建需要的模型"
+  #
+  users:
+    subject: "实现用户功能"
+    sections:
+      "register-ui":    "用户注册（用户界面）"
+      "register-code":  "用户注册（功能实现）"
+      "login":          "用户登录和注销"
+      "change-passwd":  "修改密码"
+  #
+  tasks:
+    subject: "实现任务管理"
+    sections:
+      "add":            "添加任务"
+      "edit":           "修改和删除任务"
+      "pagination":     "分页与最后的完善"
+  #
+  acl:
+    subject: "访问控制"
+    sections:
+      "why":            "为什么要使用访问控制"
+      "do":             "实现访问控制"
+  #
+  
+  routes:
+    subject: "美化 URL（可忽略）"
+    sections:
+      "router":         "URL 路由是什么"
+      "configs":        "启用 URL 路由"
+      "rules":          "添加路由规则"
+  #
+  review:
+    subject: "回顾"
+    sections:
+      "readmore":       "教程没有涉及的内容"
+      "improve":        "进一步的改进"
+
+

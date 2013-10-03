@@ -1,0 +1,1733 @@
+<html>
+<head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("a.toggle").toggle(function(){
+        $(this).text($(this).text().replace(/隐藏/,'显示'));
+        var a=$(this).parents(".summary");
+        a.find(".inherited").hide();
+    },function(){
+        $(this).text($(this).text().replace(/显示/,'隐藏'));
+        $(this).parents(".summary").find(".inherited").show();
+    });
+});
+</script>
+
+
+   <!-- 左侧栏 -->
+	<div class="container">
+	<div class="row">
+    <div id="subpage_sidebar" class="left apidoc-classes-index span3">
+
+      
+
+<h3>包 core</h3>
+
+<ul>
+    <li>
+    <a href="./class-q.html" title="Q">Q</a>
+  </li>
+    <li>
+    <a href="./class-qexception.html" title="QException">QException</a>
+  </li>
+    <li>
+    <a href="./class-qcoll.html" title="QColl">QColl</a>
+  </li>
+    <li>
+    <a href="./class-qcontext.html" title="QContext">QContext</a>
+  </li>
+    <li>
+    <a href="./class-qlog.html" title="QLog">QLog</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 mvc</h3>
+
+<ul>
+    <li>
+    <a href="./class-qacl.html" title="QACL">QACL</a>
+  </li>
+    <li>
+    <a href="./class-qcontroller-abstract.html" title="QController_Abstract">QController_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qcontroller-forward.html" title="QController_Forward">QController_Forward</a>
+  </li>
+    <li>
+    <a href="./class-qrouter.html" title="QRouter">QRouter</a>
+  </li>
+    <li>
+    <a href="./class-qview-output.html" title="QView_Output">QView_Output</a>
+  </li>
+    <li>
+    <a href="./class-qview-redirect.html" title="QView_Redirect">QView_Redirect</a>
+  </li>
+    <li>
+    <a href="./class-qview-render-php.html" title="QView_Render_PHP">QView_Render_PHP</a>
+  </li>
+    <li>
+    <a href="./class-qview-render-php-parser.html" title="QView_Render_PHP_Parser">QView_Render_PHP_Parser</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 orm</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdb-activerecord-behavior-abstract.html" title="QDB_ActiveRecord_Behavior_Abstract">QDB_ActiveRecord_Behavior_Abst...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-abstract.html" title="QDB_ActiveRecord_Abstract">QDB_ActiveRecord_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-abstract.html" title="QDB_ActiveRecord_Association_Abstract">QDB_ActiveRecord_Association_A...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-belongsto.html" title="QDB_ActiveRecord_Association_BelongsTo">QDB_ActiveRecord_Association_B...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-coll.html" title="QDB_ActiveRecord_Association_Coll">QDB_ActiveRecord_Association_C...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-hasmany.html" title="QDB_ActiveRecord_Association_HasMany">QDB_ActiveRecord_Association_H...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-hasone.html" title="QDB_ActiveRecord_Association_HasOne">QDB_ActiveRecord_Association_H...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-manytomany.html" title="QDB_ActiveRecord_Association_ManyToMany">QDB_ActiveRecord_Association_M...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-meta.html" title="QDB_ActiveRecord_Meta">QDB_ActiveRecord_Meta</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-view.html" title="QDB_ActiveRecord_View">QDB_ActiveRecord_View</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-viewmeta.html" title="QDB_ActiveRecord_ViewMeta">QDB_ActiveRecord_ViewMeta</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-callbacks.html" title="QDB_ActiveRecord_Callbacks">QDB_ActiveRecord_Callbacks</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-interface.html" title="QDB_ActiveRecord_Interface">QDB_ActiveRecord_Interface</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 form</h3>
+
+<ul>
+    <li>
+    <a href="./class-qform-element.html" title="QForm_Element">QForm_Element</a>
+  </li>
+    <li>
+    <a href="./class-qform-group.html" title="QForm_Group">QForm_Group</a>
+  </li>
+    <li>
+    <a href="./class-qform.html" title="QForm">QForm</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 database</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdb-adapter-abstract.html" title="QDB_Adapter_Abstract">QDB_Adapter_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-mysql.html" title="QDB_Adapter_Mysql">QDB_Adapter_Mysql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-abstract.html" title="QDB_Adapter_Pdo_Abstract">QDB_Adapter_Pdo_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-exception.html" title="QDB_Adapter_Pdo_Exception">QDB_Adapter_Pdo_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-pgsql.html" title="QDB_Adapter_Pdo_Pgsql">QDB_Adapter_Pdo_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pgsql.html" title="QDB_Adapter_Pgsql">QDB_Adapter_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-cond.html" title="QDB_Cond">QDB_Cond</a>
+  </li>
+    <li>
+    <a href="./class-qdb.html" title="QDB">QDB</a>
+  </li>
+    <li>
+    <a href="./class-qdb-expr.html" title="QDB_Expr">QDB_Expr</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-abstract.html" title="QDB_Result_Abstract">QDB_Result_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-mysql.html" title="QDB_Result_Mysql">QDB_Result_Mysql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-pdo.html" title="QDB_Result_Pdo">QDB_Result_Pdo</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-pgsql.html" title="QDB_Result_Pgsql">QDB_Result_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-select.html" title="QDB_Select">QDB_Select</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table.html" title="QDB_Table">QDB_Table</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table-lite.html" title="QDB_Table_Lite">QDB_Table_Lite</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 helper</h3>
+
+<ul>
+    <li>
+    <a href="./class-helper-filesys.html" title="Helper_Filesys">Helper_Filesys</a>
+  </li>
+    <li>
+    <a href="./class-helper-array.html" title="Helper_Array">Helper_Array</a>
+  </li>
+    <li>
+    <a href="./class-qdom-document.html" title="QDom_Document">QDom_Document</a>
+  </li>
+    <li>
+    <a href="./class-qdom-element.html" title="QDom_Element">QDom_Element</a>
+  </li>
+    <li>
+    <a href="./class-qfilter.html" title="QFilter">QFilter</a>
+  </li>
+    <li>
+    <a href="./class-helper-image.html" title="Helper_Image">Helper_Image</a>
+  </li>
+    <li>
+    <a href="./class-helper-imagegd.html" title="Helper_ImageGD">Helper_ImageGD</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcode.html" title="Helper_ImgCode">Helper_ImgCode</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcodesimple.html" title="Helper_ImgCodeSimple">Helper_ImgCodeSimple</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcodettf.html" title="Helper_ImgCodeTTF">Helper_ImgCodeTTF</a>
+  </li>
+    <li>
+    <a href="./class-helper-uploader.html" title="Helper_Uploader">Helper_Uploader</a>
+  </li>
+    <li>
+    <a href="./class-helper-uploader-file.html" title="Helper_Uploader_File">Helper_Uploader_File</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator.html" title="QValidator">QValidator</a>
+  </li>
+    <li>
+    <a href="./class-helper-yaml.html" title="Helper_YAML">Helper_YAML</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 cache</h3>
+
+<ul>
+    <li>
+    <a href="./class-qcache-apc.html" title="QCache_APC">QCache_APC</a>
+  </li>
+    <li>
+    <a href="./class-qcache-file.html" title="QCache_File">QCache_File</a>
+  </li>
+    <li>
+    <a href="./class-qcache-memcached.html" title="QCache_Memcached">QCache_Memcached</a>
+  </li>
+    <li>
+    <a href="./class-qcache-memory.html" title="QCache_Memory">QCache_Memory</a>
+  </li>
+    <li>
+    <a href="./class-qcache-phpdatafile.html" title="QCache_PHPDataFile">QCache_PHPDataFile</a>
+  </li>
+    <li>
+    <a href="./class-qcache-xcache.html" title="QCache_XCache">QCache_XCache</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 webcontrols</h3>
+
+<ul>
+    <li>
+    <a href="./class-qui-control-abstract.html" title="QUI_Control_Abstract">QUI_Control_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-input-abstract.html" title="Control_Input_Abstract">Control_Input_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-button.html" title="Control_Button">Control_Button</a>
+  </li>
+    <li>
+    <a href="./class-control-checkbox-abstract.html" title="Control_Checkbox_Abstract">Control_Checkbox_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-checkbox.html" title="Control_Checkbox">Control_Checkbox</a>
+  </li>
+    <li>
+    <a href="./class-control-checkboxgroup-abstract.html" title="Control_CheckboxGroup_Abstract">Control_CheckboxGroup_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-checkboxgroup.html" title="Control_CheckboxGroup">Control_CheckboxGroup</a>
+  </li>
+    <li>
+    <a href="./class-control-dropdownlist.html" title="Control_DropdownList">Control_DropdownList</a>
+  </li>
+    <li>
+    <a href="./class-control-hidden.html" title="Control_Hidden">Control_Hidden</a>
+  </li>
+    <li>
+    <a href="./class-control-label.html" title="Control_Label">Control_Label</a>
+  </li>
+    <li>
+    <a href="./class-control-listbox.html" title="Control_Listbox">Control_Listbox</a>
+  </li>
+    <li>
+    <a href="./class-control-memo.html" title="Control_Memo">Control_Memo</a>
+  </li>
+    <li>
+    <a href="./class-control-password.html" title="Control_Password">Control_Password</a>
+  </li>
+    <li>
+    <a href="./class-control-radio.html" title="Control_Radio">Control_Radio</a>
+  </li>
+    <li>
+    <a href="./class-control-radiogroup.html" title="Control_RadioGroup">Control_RadioGroup</a>
+  </li>
+    <li>
+    <a href="./class-control-reset.html" title="Control_Reset">Control_Reset</a>
+  </li>
+    <li>
+    <a href="./class-control-static.html" title="Control_Static">Control_Static</a>
+  </li>
+    <li>
+    <a href="./class-control-submit.html" title="Control_Submit">Control_Submit</a>
+  </li>
+    <li>
+    <a href="./class-control-textbox.html" title="Control_Textbox">Control_Textbox</a>
+  </li>
+    <li>
+    <a href="./class-control-upload.html" title="Control_Upload">Control_Upload</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 behavior</h3>
+
+<ul>
+    <li>
+    <a href="./class-model-behavior-acluser.html" title="Model_Behavior_AclUser">Model_Behavior_AclUser</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-fastuuid.html" title="Model_Behavior_Fastuuid">Model_Behavior_Fastuuid</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-relation.html" title="Model_Behavior_Relation">Model_Behavior_Relation</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-uniqueness.html" title="Model_Behavior_Uniqueness">Model_Behavior_Uniqueness</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 exception</h3>
+
+<ul>
+    <li>
+    <a href="./class-qcache-exception.html" title="QCache_Exception">QCache_Exception</a>
+  </li>
+    <li>
+    <a href="./class-q-classfileexistsexception.html" title="Q_ClassFileExistsException">Q_ClassFileExistsException</a>
+  </li>
+    <li>
+    <a href="./class-q-classnotdefinedexception.html" title="Q_ClassNotDefinedException">Q_ClassNotDefinedException</a>
+  </li>
+    <li>
+    <a href="./class-q-createdirfailedexception.html" title="Q_CreateDirFailedException">Q_CreateDirFailedException</a>
+  </li>
+    <li>
+    <a href="./class-q-createfilefailedexception.html" title="Q_CreateFileFailedException">Q_CreateFileFailedException</a>
+  </li>
+    <li>
+    <a href="./class-q-filenotfoundexception.html" title="Q_FileNotFoundException">Q_FileNotFoundException</a>
+  </li>
+    <li>
+    <a href="./class-q-filenotreadableexception.html" title="Q_FileNotReadableException">Q_FileNotReadableException</a>
+  </li>
+    <li>
+    <a href="./class-q-illegalclassnameexception.html" title="Q_IllegalClassNameException">Q_IllegalClassNameException</a>
+  </li>
+    <li>
+    <a href="./class-q-illegalfilenameexception.html" title="Q_IllegalFilenameException">Q_IllegalFilenameException</a>
+  </li>
+    <li>
+    <a href="./class-qlog-exception.html" title="QLog_Exception">QLog_Exception</a>
+  </li>
+    <li>
+    <a href="./class-q-notimplementedexception.html" title="Q_NotImplementedException">Q_NotImplementedException</a>
+  </li>
+    <li>
+    <a href="./class-q-removedirfailedexception.html" title="Q_RemoveDirFailedException">Q_RemoveDirFailedException</a>
+  </li>
+    <li>
+    <a href="./class-qdb-exception.html" title="QDB_Exception">QDB_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-exception-duplicatekey.html" title="QDB_Exception_DuplicateKey">QDB_Exception_DuplicateKey</a>
+  </li>
+    <li>
+    <a href="./class-qdb-select-exception.html" title="QDB_Select_Exception">QDB_Select_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table-exception.html" title="QDB_Table_Exception">QDB_Table_Exception</a>
+  </li>
+    <li>
+    <a href="./class-acluser-exception.html" title="AclUser_Exception">AclUser_Exception</a>
+  </li>
+    <li>
+    <a href="./class-acluser-duplicateusernameexception.html" title="AclUser_DuplicateUsernameException">AclUser_DuplicateUsernameExcep...</a>
+  </li>
+    <li>
+    <a href="./class-acluser-usernamenotfoundexception.html" title="AclUser_UsernameNotFoundException">AclUser_UsernameNotFoundExcept...</a>
+  </li>
+    <li>
+    <a href="./class-acluser-wrongpasswordexception.html" title="AclUser_WrongPasswordException">AclUser_WrongPasswordException</a>
+  </li>
+    <li>
+    <a href="./class-qform-exception.html" title="QForm_Exception">QForm_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdom-exception.html" title="QDom_Exception">QDom_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator-exception.html" title="QValidator_Exception">QValidator_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator-validatefailedexception.html" title="QValidator_ValidateFailedException">QValidator_ValidateFailedExcep...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-exception.html" title="QDB_ActiveRecord_Association_Exception">QDB_ActiveRecord_Association_E...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-notdefinedexception.html" title="QDB_ActiveRecord_Association_NotDefinedException">QDB_ActiveRecord_Association_N...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-rejectexception.html" title="QDB_ActiveRecord_Association_RejectException">QDB_ActiveRecord_Association_R...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-behavior-exception.html" title="QDB_ActiveRecord_Behavior_Exception">QDB_ActiveRecord_Behavior_Exce...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-exception.html" title="QDB_ActiveRecord_Exception">QDB_ActiveRecord_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-calltoundefinedmethodexception.html" title="QDB_ActiveRecord_CallToUndefinedMethodException">QDB_ActiveRecord_CallToUndefin...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-changingreadonlypropexception.html" title="QDB_ActiveRecord_ChangingReadonlyPropException">QDB_ActiveRecord_ChangingReado...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-compositepkincompatibleexception.html" title="QDB_ActiveRecord_CompositePKIncompatibleException">QDB_ActiveRecord_CompositePKIn...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-destroywithoutidexception.html" title="QDB_ActiveRecord_DestroyWithoutIdException">QDB_ActiveRecord_DestroyWithou...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-expectsassocpropexception.html" title="QDB_ActiveRecord_ExpectsAssocPropException">QDB_ActiveRecord_ExpectsAssocP...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-meta-exception.html" title="QDB_ActiveRecord_Meta_Exception">QDB_ActiveRecord_Meta_Exceptio...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-settingproptypemismatchexception.html" title="QDB_ActiveRecord_SettingPropTypeMismatchException">QDB_ActiveRecord_SettingPropTy...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-undefinedpropexception.html" title="QDB_ActiveRecord_UndefinedPropException">QDB_ActiveRecord_UndefinedProp...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-validatefailedexception.html" title="QDB_ActiveRecord_ValidateFailedException">QDB_ActiveRecord_ValidateFaile...</a>
+  </li>
+    <li>
+    <a href="./class-qacl-exception.html" title="QACL_Exception">QACL_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-exception.html" title="QRouter_Exception">QRouter_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-invalidrouteexception.html" title="QRouter_InvalidRouteException">QRouter_InvalidRouteException</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-routenotfoundexception.html" title="QRouter_RouteNotFoundException">QRouter_RouteNotFoundException</a>
+  </li>
+    <li>
+    <a href="./class-qview-exception.html" title="QView_Exception">QView_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qui-exception.html" title="QUI_Exception">QUI_Exception</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 debug</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdebug.html" title="QDebug">QDebug</a>
+  </li>
+    <li>
+    <a href="./class-qdebug-firephp.html" title="QDebug_FirePHP">QDebug_FirePHP</a>
+  </li>
+  
+</ul>
+
+
+
+    </div>
+
+    <!-- /左侧栏 -->
+
+    <!-- 右侧栏 -->
+
+    <div id="col3" class="right contents span9">
+
+      
+<div class="apidoc-class">
+
+  <h1>类 - QForm_Group</h1>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="./index.html">所有包</a></li>
+
+        <li><a href="#properties">类属性</a></li>
+    
+        <li><a href="#methods">类方法</a></li>
+    
+
+  </ul>
+
+  
+<table class="summary-table table table-bordered" cellpadding="0" cellspacing="0" >
+  <tr>
+    <th nowrap="nowrap">包</th>
+    <td>form</td>
+  </tr>
+  <tr>
+    <th nowrap="nowrap">类层次</th>
+    <td>
+    QForm_Group
+&raquo;
+<a href="./class-qform-element.html">QForm_Element</a>
+    </td>
+  </tr>
+
+    <tr>
+    <th nowrap="nowrap">实现的接口</th>
+    <td></td>
+  </tr>
+  
+  
+    <tr>
+    <th nowrap="nowrap">版本</th>
+    <td>$Id: group.php 2447 2009-04-28 05:40:53Z jerry $</td>
+  </tr>
+  
+</table>
+
+<div class="formatted">
+  
+<p>类 QForm_Group 是容纳多个元素或群组的集合</p>
+</div>
+
+
+  <a name="properties"></a>
+
+  
+<div class="summary">
+
+  <h2>保护的属性</h2>
+  <p>
+    <a href="#" class="toggle">隐藏继承的属性</a>
+  </p>
+
+  <table class="list-table table table-bordered">
+    <tr>
+      <th>属性</th><th>类型</th><th>描述</th><th>定义于</th>
+    </tr>
+
+    
+    <tr>
+      <td>$_elements</td>
+      <td>QColl</td>
+      <td>聚合的元素</td>
+      <td>
+      	<small>
+                QForm_Group        		</small>
+      </td>
+    </tr>
+    
+    <tr class="inherited">
+      <td>$_attrs</td>
+      <td>array</td>
+      <td>属性值</td>
+      <td>
+      	<small>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        		</small>
+      </td>
+    </tr>
+    
+    <tr class="inherited">
+      <td>$_owner</td>
+      <td>QForm_Group</td>
+      <td>该元素的所有者</td>
+      <td>
+      	<small>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        		</small>
+      </td>
+    </tr>
+    
+    <tr class="inherited">
+      <td>$_unfiltered_value</td>
+      <td>mixed</td>
+      <td>未过滤的值</td>
+      <td>
+      	<small>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        		</small>
+      </td>
+    </tr>
+    
+    <tr class="inherited">
+      <td>$_filters</td>
+      <td>array</td>
+      <td>过滤器链</td>
+      <td>
+      	<small>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        		</small>
+      </td>
+    </tr>
+    
+    <tr class="inherited">
+      <td>$_validations</td>
+      <td>array</td>
+      <td>验证规则</td>
+      <td>
+      	<small>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        		</small>
+      </td>
+    </tr>
+    
+    <tr class="inherited">
+      <td>$_is_valid</td>
+      <td>boolean</td>
+      <td>数据的验证结果</td>
+      <td>
+      	<small>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        		</small>
+      </td>
+    </tr>
+    
+    <tr class="inherited">
+      <td>$_error_msg</td>
+      <td>string</td>
+      <td>验证失败的信息</td>
+      <td>
+      	<small>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        		</small>
+      </td>
+    </tr>
+    
+    <tr class="inherited">
+      <td>$_locked</td>
+      <td>boolean</td>
+      <td>元素是否锁定，锁定元素不接受 import 和validate 赋值</td>
+      <td>
+      	<small>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        		</small>
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+
+
+  <a name="methods"></a>
+  
+<div class="summary">
+  <h2>公共方法</h2>
+  <p>
+    <a href="#" class="toggle">隐藏继承的方法</a>
+  </p>
+
+  <table class="list-table table table-bordered">
+    <tr>
+      <th>方法</th><th>描述</th><th>定义于</th>
+    </tr>
+
+        <tr>
+      <td>
+        <a href="#QForm_Group___construct">__construct()</a>
+      </td>
+
+      <td>构造函数</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QForm_Group_changeNestedName">changeNestedName()</a>
+      </td>
+
+      <td>设置嵌套名</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QForm_Group_add">add()</a>
+      </td>
+
+      <td>添加一个元素，并返回该元素对象</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QForm_Group_remove">remove()</a>
+      </td>
+
+      <td>从群组中删除指定的元素</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QForm_Group_loadFromConfig">loadFromConfig()</a>
+      </td>
+
+      <td>从配置批量添加元素</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QForm_Group_addValidations">addValidations()</a>
+      </td>
+
+      <td>为群组的元素添加验证规则</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QForm_Group_cleanValidations">cleanValidations()</a>
+      </td>
+
+      <td>清除该组所有元素的验证规则</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QForm_Group_element">element()</a>
+      </td>
+
+      <td>返回指定 ID 的子元素</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QForm_Group_existsElement">existsElement()</a>
+      </td>
+
+      <td>检查指定的元素是否存在</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QForm_Group_elements">elements()</a>
+      </td>
+
+      <td>返回包含所有元素的集合</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QForm_Group_isGroup">isGroup()</a>
+      </td>
+
+      <td>指示当前元素是一个组</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QForm_Group_import">import()</a>
+      </td>
+
+      <td>导入数据，但不进行过滤和验证</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QForm_Group_isValid">isValid()</a>
+      </td>
+
+      <td>确认群组所有元素的有效性</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QForm_Group_invalidate">invalidate()</a>
+      </td>
+
+      <td>指示群组的数据为无效状态</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QForm_Group_values">values()</a>
+      </td>
+
+      <td>返回包含群组所有元素值的数组</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QForm_Group_value">value()</a>
+      </td>
+
+      <td>获得表单群组中所有元素的值</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QForm_Group_unfilteredValues">unfilteredValues()</a>
+      </td>
+
+      <td>返回包含群组所有元素未过滤值得数组</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QForm_Group_unfilteredValue">unfilteredValue()</a>
+      </td>
+
+      <td>返回包含群组所有元素未过滤值得数组</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-qform-element.html#QForm_Element_lock">lock()</a>
+      </td>
+
+      <td>锁定元素</td>
+      <td>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-qform-element.html#QForm_Element_unlock">unlock()</a>
+      </td>
+
+      <td>元素解锁</td>
+      <td>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-qform-element.html#QForm_Element___get">__get()</a>
+      </td>
+
+      <td>魔法方法，以便通过对象属性直接访问元素的属性值</td>
+      <td>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-qform-element.html#QForm_Element___set">__set()</a>
+      </td>
+
+      <td>魔法方法，以便通过指定对象属性的方式来修改元素的属性值</td>
+      <td>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-qform-element.html#QForm_Element_get">get()</a>
+      </td>
+
+      <td>获得属性值，如果属性不存在返回 $default 参数指定的默认值</td>
+      <td>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-qform-element.html#QForm_Element_set">set()</a>
+      </td>
+
+      <td>修改属性值</td>
+      <td>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-qform-element.html#QForm_Element_dataBinding">dataBinding()</a>
+      </td>
+
+      <td>确定数据绑定状态</td>
+      <td>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-qform-element.html#QForm_Element_enableDataBinding">enableDataBinding()</a>
+      </td>
+
+      <td>修改数据绑定状态</td>
+      <td>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-qform-element.html#QForm_Element_nestedName">nestedName()</a>
+      </td>
+
+      <td>返回群组的嵌套名</td>
+      <td>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-qform-element.html#QForm_Element_owner">owner()</a>
+      </td>
+
+      <td>返回元素的所有者</td>
+      <td>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-qform-element.html#QForm_Element_attrs">attrs()</a>
+      </td>
+
+      <td>返回所有不是以“_”开头的属性的值</td>
+      <td>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-qform-element.html#QForm_Element_allAttrs">allAttrs()</a>
+      </td>
+
+      <td>返回所有属性的值</td>
+      <td>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-qform-element.html#QForm_Element_addFilters">addFilters()</a>
+      </td>
+
+      <td>添加过滤器</td>
+      <td>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-qform-element.html#QForm_Element_errorMsg">errorMsg()</a>
+      </td>
+
+      <td>返回验证错误信息</td>
+      <td>
+                <a href="./class-qform-element.html">QForm_Element</a>
+        
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+
+
+<div class="summary">
+  <h2>保护的方法</h2>
+  <p>
+    <a href="#" class="toggle">隐藏继承的方法</a>
+  </p>
+
+  <table class="list-table table table-bordered">
+    <tr>
+      <th>方法</th><th>描述</th><th>定义于</th>
+    </tr>
+
+        <tr>
+      <td>
+        <a href="#QForm_Group__values">_values()</a>
+      </td>
+
+      <td>提取群组所有元素值的数组</td>
+      <td>
+                QForm_Group        
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+
+
+<div class="details">
+
+  <h2>属性详细说明</h2>
+
+    
+  <a name="_elements"></a>
+
+  <div class="name property">
+    <strong>$_elements</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>聚合的元素</p>
+  </div>
+
+                  
+</div>
+
+
+<div class="details">
+
+  <h2>方法详细说明</h2>
+
+    
+  <a name="QForm_Group___construct"></a>
+
+  <h4 class="name method">
+    __construct()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public void <strong>__construct</strong>($id, $attrs, $owner)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$id</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">表单 ID</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$attrs</td>
+      <td class="param_type">array</td>
+      <td class="param_desc">属性</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$owner</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>构造函数</p>
+  </div>
+	<hr>
+    
+  <a name="QForm_Group_changeNestedName"></a>
+
+  <h4 class="name method">
+    changeNestedName()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QForm_Element_Abstract <strong>changeNestedName</strong>($name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QForm_Element_Abstract</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>设置嵌套名</p>
+  </div>
+	<hr>
+    
+  <a name="QForm_Group_add"></a>
+
+  <h4 class="name method">
+    add()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QForm_Element <strong>add</strong>($type, $id, $attrs)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$type</td>
+      <td class="param_type">enum</td>
+      <td class="param_desc">要添加的元素类型</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$id</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">元素 ID</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$attrs</td>
+      <td class="param_type">array</td>
+      <td class="param_desc">元素属性</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QForm_Element</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个元素，并返回该元素对象</p>
+
+<pre class="php code"><span class="re0">$form</span><span
+class="sy0">-&gt;</span><span class="me1">add</span><span
+class="br0">&#40;</span>QForm<span class="sy0">::</span><span
+class="me2">ELEMENT</span><span class="sy0">,</span> <span
+class="st_h">'title'</span><span class="sy0">,</span> <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'_ui'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'textbox'</span><span class="sy0">,</span> <span
+class="st_h">'size'</span> <span class="sy0">=&gt;</span> <span
+class="nu0">40</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>$type 参数只能是 QForm::ELEMENT 或 QForm::GROUP 两者之一。</p>
+  </div>
+	<hr>
+    
+  <a name="QForm_Group_remove"></a>
+
+  <h4 class="name method">
+    remove()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QForm_Group <strong>remove</strong>($id)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$id</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QForm_Group</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>从群组中删除指定的元素</p>
+  </div>
+	<hr>
+    
+  <a name="QForm_Group_loadFromConfig"></a>
+
+  <h4 class="name method">
+    loadFromConfig()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QForm_Group <strong>loadFromConfig</strong>($config)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$config</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QForm_Group</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>从配置批量添加元素</p>
+
+<p>具体用法参考开发者手册关于表单的章节。</p>
+  </div>
+	<hr>
+    
+  <a name="QForm_Group_addValidations"></a>
+
+  <h4 class="name method">
+    addValidations()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QForm_Group <strong>addValidations</strong>($source)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$source</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc">要添加的验证规则</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QForm_Group</td>
+      <td class="param_desc">返回群组对象本身，实现连贯接口</td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>为群组的元素添加验证规则</p>
+
+<p>验证规则可以是一个多维数组：</p>
+
+<pre class="php code"><span class="re0">$group</span><span
+class="sy0">-&gt;</span><span class="me1">addValidations</span><span
+class="br0">&#40;</span><span class="kw3">array</span><span
+class="br0">&#40;</span>
+     <span
+class="co1">// 为该群组的 title 元素添加验证规则</span>
+     <span
+class="st_h">'title'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'max_length'</span><span class="sy0">,</span> <span
+class="nu0">5</span><span class="sy0">,</span> <span
+class="st_h">'不能超过5个字符'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+&nbsp;
+     <span
+class="co1">// 为 body 元素添加验证规则</span>
+     <span
+class="st_h">'body'</span>  <span class="sy0">=&gt;</span> <span
+class="kw3">array</span><span class="br0">&#40;</span>
+         <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'not_empty'</span><span class="sy0">,</span> <span
+class="st_h">'不能为空'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+         <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'min_length'</span><span
+class="sy0">,</span> <span class="nu0">10</span><span class="sy0">,</span> <span
+class="st_h">'不能少于10个字符'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+     <span class="br0">&#41;</span><span
+class="sy0">,</span>
+<span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>如果要将 ActiveRecord
+模型的验证规则添加给元素，可以使用：</p>
+
+<pre class="php code"><span
+class="co1">// 将 Post 模型中与该表单元素同名属性的验证规则添加到表单元素中</span>
+<span
+class="re0">$group</span><span class="sy0">-&gt;</span><span
+class="me1">addValidations</span><span class="br0">&#40;</span>Post<span
+class="sy0">::</span><span class="me2">meta</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="co1">// 或者只从指定属性取得验证规则</span>
+<span
+class="re0">$group</span><span class="sy0">-&gt;</span><span
+class="me1">addValidations</span><span class="br0">&#40;</span>Post<span
+class="sy0">::</span><span class="me2">meta</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">,</span> <span class="st_h">'title, body'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="co1">// 或者将指定属性的规则添加到指定元素</span>
+<span
+class="co1">// 将 Post 模型 name 属性的验证规则添加到群组中的 title 元素</span>
+<span
+class="re0">$group</span><span class="sy0">-&gt;</span><span
+class="me1">addValidations</span><span class="br0">&#40;</span>Post<span
+class="sy0">::</span><span class="me2">meta</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">,</span> <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'name'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'title'</span><span
+class="sy0">,</span> <span class="st_h">'body'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+  </div>
+	<hr>
+    
+  <a name="QForm_Group_cleanValidations"></a>
+
+  <h4 class="name method">
+    cleanValidations()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QForm_Group <strong>cleanValidations</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>清除该组所有元素的验证规则</p>
+  </div>
+	<hr>
+    
+  <a name="QForm_Group_element"></a>
+
+  <h4 class="name method">
+    element()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QForm_Element <strong>element</strong>($id)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$id</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QForm_Element</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>返回指定 ID 的子元素</p>
+  </div>
+	<hr>
+    
+  <a name="QForm_Group_existsElement"></a>
+
+  <h4 class="name method">
+    existsElement()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public boolean <strong>existsElement</strong>($id)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$id</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>检查指定的元素是否存在</p>
+  </div>
+	<hr>
+    
+  <a name="QForm_Group_elements"></a>
+
+  <h4 class="name method">
+    elements()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QColl <strong>elements</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>返回包含所有元素的集合</p>
+  </div>
+	<hr>
+    
+  <a name="QForm_Group_isGroup"></a>
+
+  <h4 class="name method">
+    isGroup()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public boolean <strong>isGroup</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>指示当前元素是一个组</p>
+  </div>
+	<hr>
+    
+  <a name="QForm_Group_import"></a>
+
+  <h4 class="name method">
+    import()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QForm_Group <strong>import</strong>($data, $parent_data)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$data</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$parent_data</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QForm_Group</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>导入数据，但不进行过滤和验证</p>
+  </div>
+	<hr>
+    
+  <a name="QForm_Group_isValid"></a>
+
+  <h4 class="name method">
+    isValid()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public boolean <strong>isValid</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>确认群组所有元素的有效性</p>
+  </div>
+	<hr>
+      
+  <a name="QForm_Group_invalidate"></a>
+
+  <h4 class="name method">
+    invalidate()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QForm_Group <strong>invalidate</strong>($error)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$error</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QForm_Group</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>指示群组的数据为无效状态</p>
+  </div>
+	<hr>
+    
+  <a name="QForm_Group_values"></a>
+
+  <h4 class="name method">
+    values()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public array <strong>values</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>返回包含群组所有元素值的数组</p>
+  </div>
+	<hr>
+    
+  <a name="QForm_Group_value"></a>
+
+  <h4 class="name method">
+    value()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public array <strong>value</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>获得表单群组中所有元素的值</p>
+  </div>
+	<hr>
+    
+  <a name="QForm_Group_unfilteredValues"></a>
+
+  <h4 class="name method">
+    unfilteredValues()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public array <strong>unfilteredValues</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>返回包含群组所有元素未过滤值得数组</p>
+  </div>
+	<hr>
+    
+  <a name="QForm_Group_unfilteredValue"></a>
+
+  <h4 class="name method">
+    unfilteredValue()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public array <strong>unfilteredValue</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>返回包含群组所有元素未过滤值得数组</p>
+  </div>
+	<hr>
+                
+  <a name="QForm_Group__values"></a>
+
+  <h4 class="name method">
+    _values()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected void <strong>_values</strong>($ret, $parent_data, $return_unfiltered_value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$ret</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$parent_data</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$return_unfiltered_value</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>提取群组所有元素值的数组</p>
+  </div>
+	<hr>
+                              
+</div>
+
+
+</div>
+
+
+    </div>
+
+    <!-- /右侧栏 -->
+    </div>
+	</div>
+</body>
+</html>

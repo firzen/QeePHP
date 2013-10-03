@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<meta name="GENERATOR" content="qeephp-build-tools http://qeephp.com">
+</head>
+<body>
+<object type="text/site properties">
+<param name="Window Styles" value="0x800025">
+<param name="FrameName" value="right">
+<param name="ImageType" value="Folder">
+<param name="comment" value="title:Online Help">
+<param name="comment" value="base:index.html">
+</object>
+
+<ul>
+	<li><object type="text/sitemap">
+		<param name="Name" value="QeePHP 食谱">
+		<param name="Local" value="index.html">
+		</object>
+      	<li><object type="text/sitemap">
+		<param name="Name" value="模型">
+		<param name="Local" value="node-model.html">
+		</object>
+	<ul>
+    		<li><object type="text/sitemap">
+            <param name="Name" value="格式化属性">
+            <param name="Local" value="node-model-prop-formatting.html">
+			</object>
+		</ul>
+</ul>
+
+</body>
+</html>
+

@@ -1,0 +1,38 @@
+=== 自定义控件 ===
+
+在 Web 应用中，表单的使用非常多，QeePHP 自带了常用的控件，但是我们实际生产中会有不同的需求，如果这个需求是多次重复使用，那么我们很有必要将它封装为固定的控件，便于更新和使用。
+
+##所见即所得编辑器##
+现在大部分的网站都会用到所见即所得编辑器，例如论坛主题的发布，新闻的提交等等。我们下面就来自定义一款自己的所见即所得的编辑器控件，方便在以后的view中直接使用。
+
+这次我们选择的所见即所得编辑器为KindEditor （http://xheditor.com/），将下载下载的压缩包解压到 public 目录下面，以便我们以后调用。
+
+在 _code/control 目录下面建立 xheditor.php 文件，并添加一下内容：
+/---code php
+<?php
+class Control_Xheditor extends QUI_Control_Abstract {
+	static $inited=false;
+	function render(){
+		$mode=$this->_extract('mode',1);
+		$this->class=" xheditor";
+		if ($mode ==1){
+			$this->class.="{tools:'full',internalScript:true,inlineScript:true,linkTag:true,showBlocktag:true,cleanPaste:0}";
+		}
+		$out='';
+		if (!self::$inited){
+			$out.='<script src="public/xheditor-1.1.14/xheditor-1.1.14-zh-cn.min.js"></script>';
+			self::$inited=true;
+		}
+		$out.=Q::control('memo',$this->id(),$this->attrs())->render();
+		return $out;
+	}
+}
+\---
+
+上面我们用到了 _extract 函数，它的主要作用是获得用户输入的配置值，例如在View：
+/---code php
+<?php echo Q::control('xheditor','description',array(
+	'mode'=>'big',
+	'value'=>$someHTML
+))?>
+\---

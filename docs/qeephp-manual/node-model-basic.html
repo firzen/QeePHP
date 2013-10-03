@@ -1,0 +1,277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 应用开发权威指南</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 应用开发权威指南</a>
+      &raquo;
+      <a href="node-model.html">模型与 ORM</a>
+      &raquo;
+      基础    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+    
+<h1>基础</h1>
+
+<p>QeePHP 的 ORM 以 ActiveRecord
+为基础，提供了完善的对象和对象关系的持久化能力。QeePHP
+的 ORM
+是为大规模应用进行过充分优化的，并且可以透明的工作在分布式数据库架构上。</p>
+
+<h2>使用模型</h2>
+
+<p>创建模型最简单的办法就是使用 WebSetup
+或者命令行脚本从数据表自动创建模型的代码文件，然后再根据需求进行定制。</p>
+
+<p>只要准备好模型的代码文件，就可以利用 QeePHP 强大的 ORM
+完成各种操作。下面的代码创建一个新用户，并且设置用户的个人信息，并且与好友建立关系，最后将新建的对象和对象关系保存到数据库：</p>
+
+<pre class="php code"><span class="co1">// 新建一个 User 对象</span>
+<span
+class="re0">$theone</span> <span class="sy0">=</span> <span
+class="kw2">new</span> User<span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="re0">$theone</span><span class="sy0">-&gt;</span><span
+class="me1">name</span> <span class="sy0">=</span> <span
+class="st_h">'theone'</span><span class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 为用户添加个人信息</span>
+<span
+class="re0">$theone</span><span class="sy0">-&gt;</span><span
+class="me1">profile</span> <span class="sy0">=</span> <span
+class="kw2">new</span> Profile<span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="re0">$theone</span><span class="sy0">-&gt;</span><span
+class="me1">profile</span><span class="sy0">-&gt;</span><span
+class="me1">address</span> <span class="sy0">=</span> <span
+class="st_h">'Beijing'</span><span class="sy0">;</span>
+<span
+class="re0">$theone</span><span class="sy0">-&gt;</span><span
+class="me1">profile</span><span class="sy0">-&gt;</span><span
+class="me1">phone</span>   <span class="sy0">=</span> <span
+class="st_h">'010-23234553'</span><span class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 为用户添加好友</span>
+<span
+class="re0">$theone</span><span class="sy0">-&gt;</span><span
+class="me1">friends</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">-&gt;</span><span
+class="me1">add</span><span class="br0">&#40;</span>User<span
+class="sy0">::</span><span class="me2">find</span><span
+class="br0">&#40;</span><span class="st_h">'name = ?'</span><span
+class="sy0">,</span> <span class="st_h">'alex'</span><span
+class="br0">&#41;</span><span class="sy0">-&gt;</span><span
+class="me1">getOne</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+<span class="re0">$theone</span><span
+class="sy0">-&gt;</span><span class="me1">friends</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">-&gt;</span><span class="me1">add</span><span
+class="br0">&#40;</span>User<span class="sy0">::</span><span
+class="me2">find</span><span class="br0">&#40;</span><span
+class="st_h">'name = ?'</span><span class="sy0">,</span> <span
+class="st_h">'dick'</span><span class="br0">&#41;</span><span
+class="sy0">-&gt;</span><span class="me1">getOne</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 保存</span>
+<span class="re0">$theone</span><span
+class="sy0">-&gt;</span><span class="me1">save</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>保存后，我们可以任意的访问已有的对象：</p>
+
+<pre class="php code"><span
+class="co1">// 查询 name 为 theone 的用户</span>
+<span
+class="re0">$theone</span> <span class="sy0">=</span> User<span
+class="sy0">::</span><span class="me2">find</span><span
+class="br0">&#40;</span><span class="st_h">'name = ?'</span><span
+class="sy0">,</span> <span class="st_h">'theone'</span><span
+class="br0">&#41;</span><span class="sy0">-&gt;</span><span
+class="me1">get</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 显示他的个人信息</span>
+<span
+class="kw3">echo</span> <span class="st_h">'address: '</span> <span
+class="sy0">.</span> <span class="re0">$theone</span><span
+class="sy0">-&gt;</span><span class="me1">profile</span><span
+class="sy0">-&gt;</span><span class="me1">address</span><span
+class="sy0">;</span>
+<span class="kw3">echo</span> <span
+class="st_h">'phone  : '</span> <span class="sy0">.</span> <span
+class="re0">$theone</span><span class="sy0">-&gt;</span><span
+class="me1">profile</span><span class="sy0">-&gt;</span><span
+class="me1">phone</span><span class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 显示他所有好友的名字</span>
+<span
+class="kw3">echo</span> <span class="st_h">'friends: '</span><span
+class="sy0">;</span>
+<span class="kw1">foreach</span> <span
+class="br0">&#40;</span><span class="re0">$theone</span><span
+class="sy0">-&gt;</span><span class="me1">friends</span> <span
+class="kw1">as</span> <span class="re0">$friend</span><span
+class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span
+class="kw3">echo</span> <span class="re0">$friend</span><span
+class="sy0">-&gt;</span><span class="me1">name</span><span
+class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span
+class="co1">// 更进一步，还可以访问好友的好友</span>
+<span
+class="kw3">echo</span> <span class="st_h">'friends networks:'</span>
+<span
+class="kw1">foreach</span> <span class="br0">&#40;</span><span
+class="re0">$theone</span><span class="sy0">-&gt;</span><span
+class="me1">friends</span> <span class="kw1">as</span> <span
+class="re0">$friend</span><span class="br0">&#41;</span>
+<span
+class="br0">&#123;</span>
+    <span class="kw3">echo</span> <span
+class="re0">$friend</span><span class="sy0">-&gt;</span><span
+class="me1">name</span> <span class="sy0">.</span> <span
+class="st_h">' friends: '</span><span class="sy0">;</span>
+    <span
+class="kw1">foreach</span> <span class="br0">&#40;</span><span
+class="re0">$friend</span><span class="sy0">-&gt;</span><span
+class="me1">friends</span> <span class="kw1">as</span> <span
+class="re0">$other_friend</span><span class="br0">&#41;</span>
+    <span
+class="br0">&#123;</span>
+        <span class="kw3">echo</span> <span
+class="re0">$other_friend</span><span class="sy0">-&gt;</span><span
+class="me1">name</span><span class="sy0">;</span>
+    <span
+class="br0">&#125;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span
+class="co1">// 好吧，现在把 theone 的好友的好友变成 theone 的好友</span>
+<span
+class="kw1">foreach</span> <span class="br0">&#40;</span><span
+class="re0">$theone</span><span class="sy0">-&gt;</span><span
+class="me1">friends</span> <span class="kw1">as</span> <span
+class="re0">$friend</span><span class="br0">&#41;</span>
+<span
+class="br0">&#123;</span>
+    <span class="kw1">foreach</span> <span
+class="br0">&#40;</span><span class="re0">$friend</span><span
+class="sy0">-&gt;</span><span class="me1">friends</span> <span
+class="kw1">as</span> <span class="re0">$other_friend</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="re0">$theone</span><span class="sy0">-&gt;</span><span
+class="me1">friends</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">-&gt;</span><span
+class="me1">add</span><span class="br0">&#40;</span><span
+class="re0">$other_friend</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span
+class="br0">&#125;</span>
+<span class="re0">$theone</span><span
+class="sy0">-&gt;</span><span class="me1">save</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>事实上，对于开发者来说，只要两个对象之间存在关联，不管是直接的还是间接的，都可以通过
+ORM 从一个对象导航到另一个对象。</p>
+
+<p>例如：作者 -&gt; 撰写的书籍 -&gt; 读者 -&gt; 阅读的书籍
+-&gt; 这些书籍的作者。</p>
+
+<h2>性能问题</h2>
+
+<p>许多开发者担心这样的 ORM
+会存在性能问题，所以这里先解释一下。</p>
+
+<p>诸如“作者 -&gt; 撰写的书籍 -&gt; 读者 -&gt; 阅读的书籍
+-&gt;
+这些书籍的作者”这样的对象导航当然会导致多次数据库查询，但是以此来认为
+QeePHP 的 ORM 性能不佳，其实是不正确的。</p>
+
+<p>因为即便不使用任何 ORM，依赖于手工编写和优化的 SQL
+查询，也不可能在一次查询中就从一个“作者”得到跨越了几层关系的“其他作者”的信息。所以，QeePHP
+的 ORM 提供的这种对象导航能力并不等同于性能损失。</p>
+
+<p>另一个更常见的误解就是：查询 10 篇文章及每篇文章的前
+5 个评论。这种需求即便是手工编写的 SQL，也需要 10
+次查询。所以开发者发现使用“一对多”关联导致多次查询就不应该意外了
+:-)</p>
+
+<p>除了一些无法避免的 SQL，QeePHP 的 ORM
+已经做了大量的优化工作。并且利用延迟查询、in-memory
+缓存、集合对象等技术来进一步减少和消除不必要的查询操作。</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+$Id: model-basic.texy 2009-03-10 07:48:18Z Tim13 $
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-model.html">模型与 ORM</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-model.html">模型与 ORM</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-model-define.html">定义模型</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

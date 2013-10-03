@@ -1,0 +1,1859 @@
+<html>
+<head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("a.toggle").toggle(function(){
+        $(this).text($(this).text().replace(/隐藏/,'显示'));
+        var a=$(this).parents(".summary");
+        a.find(".inherited").hide();
+    },function(){
+        $(this).text($(this).text().replace(/显示/,'隐藏'));
+        $(this).parents(".summary").find(".inherited").show();
+    });
+});
+</script>
+
+
+   <!-- 左侧栏 -->
+	<div class="container">
+	<div class="row">
+    <div id="subpage_sidebar" class="left apidoc-classes-index span3">
+
+      
+
+<h3>包 core</h3>
+
+<ul>
+    <li>
+    <a href="./class-q.html" title="Q">Q</a>
+  </li>
+    <li>
+    <a href="./class-qexception.html" title="QException">QException</a>
+  </li>
+    <li>
+    <a href="./class-qcoll.html" title="QColl">QColl</a>
+  </li>
+    <li>
+    <a href="./class-qcontext.html" title="QContext">QContext</a>
+  </li>
+    <li>
+    <a href="./class-qlog.html" title="QLog">QLog</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 mvc</h3>
+
+<ul>
+    <li>
+    <a href="./class-qacl.html" title="QACL">QACL</a>
+  </li>
+    <li>
+    <a href="./class-qcontroller-abstract.html" title="QController_Abstract">QController_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qcontroller-forward.html" title="QController_Forward">QController_Forward</a>
+  </li>
+    <li>
+    <a href="./class-qrouter.html" title="QRouter">QRouter</a>
+  </li>
+    <li>
+    <a href="./class-qview-output.html" title="QView_Output">QView_Output</a>
+  </li>
+    <li>
+    <a href="./class-qview-redirect.html" title="QView_Redirect">QView_Redirect</a>
+  </li>
+    <li>
+    <a href="./class-qview-render-php.html" title="QView_Render_PHP">QView_Render_PHP</a>
+  </li>
+    <li>
+    <a href="./class-qview-render-php-parser.html" title="QView_Render_PHP_Parser">QView_Render_PHP_Parser</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 orm</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdb-activerecord-behavior-abstract.html" title="QDB_ActiveRecord_Behavior_Abstract">QDB_ActiveRecord_Behavior_Abst...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-abstract.html" title="QDB_ActiveRecord_Abstract">QDB_ActiveRecord_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-abstract.html" title="QDB_ActiveRecord_Association_Abstract">QDB_ActiveRecord_Association_A...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-belongsto.html" title="QDB_ActiveRecord_Association_BelongsTo">QDB_ActiveRecord_Association_B...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-coll.html" title="QDB_ActiveRecord_Association_Coll">QDB_ActiveRecord_Association_C...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-hasmany.html" title="QDB_ActiveRecord_Association_HasMany">QDB_ActiveRecord_Association_H...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-hasone.html" title="QDB_ActiveRecord_Association_HasOne">QDB_ActiveRecord_Association_H...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-manytomany.html" title="QDB_ActiveRecord_Association_ManyToMany">QDB_ActiveRecord_Association_M...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-meta.html" title="QDB_ActiveRecord_Meta">QDB_ActiveRecord_Meta</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-view.html" title="QDB_ActiveRecord_View">QDB_ActiveRecord_View</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-viewmeta.html" title="QDB_ActiveRecord_ViewMeta">QDB_ActiveRecord_ViewMeta</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-callbacks.html" title="QDB_ActiveRecord_Callbacks">QDB_ActiveRecord_Callbacks</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-interface.html" title="QDB_ActiveRecord_Interface">QDB_ActiveRecord_Interface</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 form</h3>
+
+<ul>
+    <li>
+    <a href="./class-qform-element.html" title="QForm_Element">QForm_Element</a>
+  </li>
+    <li>
+    <a href="./class-qform-group.html" title="QForm_Group">QForm_Group</a>
+  </li>
+    <li>
+    <a href="./class-qform.html" title="QForm">QForm</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 database</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdb-adapter-abstract.html" title="QDB_Adapter_Abstract">QDB_Adapter_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-mysql.html" title="QDB_Adapter_Mysql">QDB_Adapter_Mysql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-abstract.html" title="QDB_Adapter_Pdo_Abstract">QDB_Adapter_Pdo_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-exception.html" title="QDB_Adapter_Pdo_Exception">QDB_Adapter_Pdo_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-pgsql.html" title="QDB_Adapter_Pdo_Pgsql">QDB_Adapter_Pdo_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pgsql.html" title="QDB_Adapter_Pgsql">QDB_Adapter_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-cond.html" title="QDB_Cond">QDB_Cond</a>
+  </li>
+    <li>
+    <a href="./class-qdb.html" title="QDB">QDB</a>
+  </li>
+    <li>
+    <a href="./class-qdb-expr.html" title="QDB_Expr">QDB_Expr</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-abstract.html" title="QDB_Result_Abstract">QDB_Result_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-mysql.html" title="QDB_Result_Mysql">QDB_Result_Mysql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-pdo.html" title="QDB_Result_Pdo">QDB_Result_Pdo</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-pgsql.html" title="QDB_Result_Pgsql">QDB_Result_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-select.html" title="QDB_Select">QDB_Select</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table.html" title="QDB_Table">QDB_Table</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table-lite.html" title="QDB_Table_Lite">QDB_Table_Lite</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 helper</h3>
+
+<ul>
+    <li>
+    <a href="./class-helper-filesys.html" title="Helper_Filesys">Helper_Filesys</a>
+  </li>
+    <li>
+    <a href="./class-helper-array.html" title="Helper_Array">Helper_Array</a>
+  </li>
+    <li>
+    <a href="./class-qdom-document.html" title="QDom_Document">QDom_Document</a>
+  </li>
+    <li>
+    <a href="./class-qdom-element.html" title="QDom_Element">QDom_Element</a>
+  </li>
+    <li>
+    <a href="./class-qfilter.html" title="QFilter">QFilter</a>
+  </li>
+    <li>
+    <a href="./class-helper-image.html" title="Helper_Image">Helper_Image</a>
+  </li>
+    <li>
+    <a href="./class-helper-imagegd.html" title="Helper_ImageGD">Helper_ImageGD</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcode.html" title="Helper_ImgCode">Helper_ImgCode</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcodesimple.html" title="Helper_ImgCodeSimple">Helper_ImgCodeSimple</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcodettf.html" title="Helper_ImgCodeTTF">Helper_ImgCodeTTF</a>
+  </li>
+    <li>
+    <a href="./class-helper-uploader.html" title="Helper_Uploader">Helper_Uploader</a>
+  </li>
+    <li>
+    <a href="./class-helper-uploader-file.html" title="Helper_Uploader_File">Helper_Uploader_File</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator.html" title="QValidator">QValidator</a>
+  </li>
+    <li>
+    <a href="./class-helper-yaml.html" title="Helper_YAML">Helper_YAML</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 cache</h3>
+
+<ul>
+    <li>
+    <a href="./class-qcache-apc.html" title="QCache_APC">QCache_APC</a>
+  </li>
+    <li>
+    <a href="./class-qcache-file.html" title="QCache_File">QCache_File</a>
+  </li>
+    <li>
+    <a href="./class-qcache-memcached.html" title="QCache_Memcached">QCache_Memcached</a>
+  </li>
+    <li>
+    <a href="./class-qcache-memory.html" title="QCache_Memory">QCache_Memory</a>
+  </li>
+    <li>
+    <a href="./class-qcache-phpdatafile.html" title="QCache_PHPDataFile">QCache_PHPDataFile</a>
+  </li>
+    <li>
+    <a href="./class-qcache-xcache.html" title="QCache_XCache">QCache_XCache</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 webcontrols</h3>
+
+<ul>
+    <li>
+    <a href="./class-qui-control-abstract.html" title="QUI_Control_Abstract">QUI_Control_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-input-abstract.html" title="Control_Input_Abstract">Control_Input_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-button.html" title="Control_Button">Control_Button</a>
+  </li>
+    <li>
+    <a href="./class-control-checkbox-abstract.html" title="Control_Checkbox_Abstract">Control_Checkbox_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-checkbox.html" title="Control_Checkbox">Control_Checkbox</a>
+  </li>
+    <li>
+    <a href="./class-control-checkboxgroup-abstract.html" title="Control_CheckboxGroup_Abstract">Control_CheckboxGroup_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-checkboxgroup.html" title="Control_CheckboxGroup">Control_CheckboxGroup</a>
+  </li>
+    <li>
+    <a href="./class-control-dropdownlist.html" title="Control_DropdownList">Control_DropdownList</a>
+  </li>
+    <li>
+    <a href="./class-control-hidden.html" title="Control_Hidden">Control_Hidden</a>
+  </li>
+    <li>
+    <a href="./class-control-label.html" title="Control_Label">Control_Label</a>
+  </li>
+    <li>
+    <a href="./class-control-listbox.html" title="Control_Listbox">Control_Listbox</a>
+  </li>
+    <li>
+    <a href="./class-control-memo.html" title="Control_Memo">Control_Memo</a>
+  </li>
+    <li>
+    <a href="./class-control-password.html" title="Control_Password">Control_Password</a>
+  </li>
+    <li>
+    <a href="./class-control-radio.html" title="Control_Radio">Control_Radio</a>
+  </li>
+    <li>
+    <a href="./class-control-radiogroup.html" title="Control_RadioGroup">Control_RadioGroup</a>
+  </li>
+    <li>
+    <a href="./class-control-reset.html" title="Control_Reset">Control_Reset</a>
+  </li>
+    <li>
+    <a href="./class-control-static.html" title="Control_Static">Control_Static</a>
+  </li>
+    <li>
+    <a href="./class-control-submit.html" title="Control_Submit">Control_Submit</a>
+  </li>
+    <li>
+    <a href="./class-control-textbox.html" title="Control_Textbox">Control_Textbox</a>
+  </li>
+    <li>
+    <a href="./class-control-upload.html" title="Control_Upload">Control_Upload</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 behavior</h3>
+
+<ul>
+    <li>
+    <a href="./class-model-behavior-acluser.html" title="Model_Behavior_AclUser">Model_Behavior_AclUser</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-fastuuid.html" title="Model_Behavior_Fastuuid">Model_Behavior_Fastuuid</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-relation.html" title="Model_Behavior_Relation">Model_Behavior_Relation</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-uniqueness.html" title="Model_Behavior_Uniqueness">Model_Behavior_Uniqueness</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 exception</h3>
+
+<ul>
+    <li>
+    <a href="./class-qcache-exception.html" title="QCache_Exception">QCache_Exception</a>
+  </li>
+    <li>
+    <a href="./class-q-classfileexistsexception.html" title="Q_ClassFileExistsException">Q_ClassFileExistsException</a>
+  </li>
+    <li>
+    <a href="./class-q-classnotdefinedexception.html" title="Q_ClassNotDefinedException">Q_ClassNotDefinedException</a>
+  </li>
+    <li>
+    <a href="./class-q-createdirfailedexception.html" title="Q_CreateDirFailedException">Q_CreateDirFailedException</a>
+  </li>
+    <li>
+    <a href="./class-q-createfilefailedexception.html" title="Q_CreateFileFailedException">Q_CreateFileFailedException</a>
+  </li>
+    <li>
+    <a href="./class-q-filenotfoundexception.html" title="Q_FileNotFoundException">Q_FileNotFoundException</a>
+  </li>
+    <li>
+    <a href="./class-q-filenotreadableexception.html" title="Q_FileNotReadableException">Q_FileNotReadableException</a>
+  </li>
+    <li>
+    <a href="./class-q-illegalclassnameexception.html" title="Q_IllegalClassNameException">Q_IllegalClassNameException</a>
+  </li>
+    <li>
+    <a href="./class-q-illegalfilenameexception.html" title="Q_IllegalFilenameException">Q_IllegalFilenameException</a>
+  </li>
+    <li>
+    <a href="./class-qlog-exception.html" title="QLog_Exception">QLog_Exception</a>
+  </li>
+    <li>
+    <a href="./class-q-notimplementedexception.html" title="Q_NotImplementedException">Q_NotImplementedException</a>
+  </li>
+    <li>
+    <a href="./class-q-removedirfailedexception.html" title="Q_RemoveDirFailedException">Q_RemoveDirFailedException</a>
+  </li>
+    <li>
+    <a href="./class-qdb-exception.html" title="QDB_Exception">QDB_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-exception-duplicatekey.html" title="QDB_Exception_DuplicateKey">QDB_Exception_DuplicateKey</a>
+  </li>
+    <li>
+    <a href="./class-qdb-select-exception.html" title="QDB_Select_Exception">QDB_Select_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table-exception.html" title="QDB_Table_Exception">QDB_Table_Exception</a>
+  </li>
+    <li>
+    <a href="./class-acluser-exception.html" title="AclUser_Exception">AclUser_Exception</a>
+  </li>
+    <li>
+    <a href="./class-acluser-duplicateusernameexception.html" title="AclUser_DuplicateUsernameException">AclUser_DuplicateUsernameExcep...</a>
+  </li>
+    <li>
+    <a href="./class-acluser-usernamenotfoundexception.html" title="AclUser_UsernameNotFoundException">AclUser_UsernameNotFoundExcept...</a>
+  </li>
+    <li>
+    <a href="./class-acluser-wrongpasswordexception.html" title="AclUser_WrongPasswordException">AclUser_WrongPasswordException</a>
+  </li>
+    <li>
+    <a href="./class-qform-exception.html" title="QForm_Exception">QForm_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdom-exception.html" title="QDom_Exception">QDom_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator-exception.html" title="QValidator_Exception">QValidator_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator-validatefailedexception.html" title="QValidator_ValidateFailedException">QValidator_ValidateFailedExcep...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-exception.html" title="QDB_ActiveRecord_Association_Exception">QDB_ActiveRecord_Association_E...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-notdefinedexception.html" title="QDB_ActiveRecord_Association_NotDefinedException">QDB_ActiveRecord_Association_N...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-rejectexception.html" title="QDB_ActiveRecord_Association_RejectException">QDB_ActiveRecord_Association_R...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-behavior-exception.html" title="QDB_ActiveRecord_Behavior_Exception">QDB_ActiveRecord_Behavior_Exce...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-exception.html" title="QDB_ActiveRecord_Exception">QDB_ActiveRecord_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-calltoundefinedmethodexception.html" title="QDB_ActiveRecord_CallToUndefinedMethodException">QDB_ActiveRecord_CallToUndefin...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-changingreadonlypropexception.html" title="QDB_ActiveRecord_ChangingReadonlyPropException">QDB_ActiveRecord_ChangingReado...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-compositepkincompatibleexception.html" title="QDB_ActiveRecord_CompositePKIncompatibleException">QDB_ActiveRecord_CompositePKIn...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-destroywithoutidexception.html" title="QDB_ActiveRecord_DestroyWithoutIdException">QDB_ActiveRecord_DestroyWithou...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-expectsassocpropexception.html" title="QDB_ActiveRecord_ExpectsAssocPropException">QDB_ActiveRecord_ExpectsAssocP...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-meta-exception.html" title="QDB_ActiveRecord_Meta_Exception">QDB_ActiveRecord_Meta_Exceptio...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-settingproptypemismatchexception.html" title="QDB_ActiveRecord_SettingPropTypeMismatchException">QDB_ActiveRecord_SettingPropTy...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-undefinedpropexception.html" title="QDB_ActiveRecord_UndefinedPropException">QDB_ActiveRecord_UndefinedProp...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-validatefailedexception.html" title="QDB_ActiveRecord_ValidateFailedException">QDB_ActiveRecord_ValidateFaile...</a>
+  </li>
+    <li>
+    <a href="./class-qacl-exception.html" title="QACL_Exception">QACL_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-exception.html" title="QRouter_Exception">QRouter_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-invalidrouteexception.html" title="QRouter_InvalidRouteException">QRouter_InvalidRouteException</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-routenotfoundexception.html" title="QRouter_RouteNotFoundException">QRouter_RouteNotFoundException</a>
+  </li>
+    <li>
+    <a href="./class-qview-exception.html" title="QView_Exception">QView_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qui-exception.html" title="QUI_Exception">QUI_Exception</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 debug</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdebug.html" title="QDebug">QDebug</a>
+  </li>
+    <li>
+    <a href="./class-qdebug-firephp.html" title="QDebug_FirePHP">QDebug_FirePHP</a>
+  </li>
+  
+</ul>
+
+
+
+    </div>
+
+    <!-- /左侧栏 -->
+
+    <!-- 右侧栏 -->
+
+    <div id="col3" class="right contents span9">
+
+      
+<div class="apidoc-class">
+
+  <h1>类 - QColl</h1>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="./index.html">所有包</a></li>
+
+        <li><a href="#properties">类属性</a></li>
+    
+        <li><a href="#methods">类方法</a></li>
+    
+
+  </ul>
+
+  
+<table class="summary-table table table-bordered" cellpadding="0" cellspacing="0" >
+  <tr>
+    <th nowrap="nowrap">包</th>
+    <td>core</td>
+  </tr>
+  <tr>
+    <th nowrap="nowrap">类层次</th>
+    <td>
+    class QColl
+    </td>
+  </tr>
+
+    <tr>
+    <th nowrap="nowrap">实现的接口</th>
+    <td></td>
+  </tr>
+  
+  
+    <tr>
+    <th nowrap="nowrap">版本</th>
+    <td>$Id: coll.php 2590 2009-06-18 08:09:45Z jerry $</td>
+  </tr>
+  
+</table>
+
+<div class="formatted">
+  
+<p>QColl 实现了一个类型安全的对象集合</p>
+
+<p>QColl
+会检查每一个对象的类型是否符合预期，以便将同一类型的对象组织在一起。
+QColl 具有和 PHP
+内置数组相似的性质，因此可以按照使用数组的方式来使用
+QColl 集合。</p>
+
+<p>在构造一个集合时，必须指定该集合能够容纳的对象类型：</p>
+
+<pre class="php code"><span class="re0">$coll</span> <span
+class="sy0">=</span> <span class="kw2">new</span> QColl<span
+class="br0">&#40;</span><span class="st_h">'MyObject'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="re0">$coll</span><span class="br0">&#91;</span><span
+class="br0">&#93;</span> <span class="sy0">=</span> <span
+class="kw2">new</span> MyObject<span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 在尝试存入 MyObject2 类型的对象到 $coll 中时将抛出异常</span>
+<span
+class="re0">$coll</span><span class="br0">&#91;</span><span
+class="br0">&#93;</span> <span class="sy0">=</span> <span
+class="kw2">new</span> MyObject2<span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 指定一个对象</span>
+<span class="re0">$coll</span><span
+class="br0">&#91;</span><span class="re0">$offset</span><span
+class="br0">&#93;</span> <span class="sy0">=</span> <span
+class="re0">$item</span><span class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 遍历一个集合</span>
+<span class="kw1">foreach</span> <span
+class="br0">&#40;</span><span class="re0">$coll</span> <span
+class="kw1">as</span> <span class="re0">$offset</span> <span
+class="sy0">=&gt;</span> <span class="re0">$item</span><span
+class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    dump<span
+class="br0">&#40;</span><span class="re0">$item</span><span
+class="sy0">,</span> <span class="re0">$offset</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="br0">&#125;</span></pre>
+</div>
+
+
+  <a name="properties"></a>
+
+  
+  <a name="methods"></a>
+  
+<div class="summary">
+  <h2>公共方法</h2>
+  <p>
+    <a href="#" class="toggle">隐藏继承的方法</a>
+  </p>
+
+  <table class="list-table table table-bordered">
+    <tr>
+      <th>方法</th><th>描述</th><th>定义于</th>
+    </tr>
+
+        <tr>
+      <td>
+        <a href="#QColl___construct">__construct()</a>
+      </td>
+
+      <td>构造函数</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_createFromArray">createFromArray()</a>
+      </td>
+
+      <td>从数组创建一个集合</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_values">values()</a>
+      </td>
+
+      <td>遍历集合中的所有对象，返回包含特定属性值的数组</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_offsetExists">offsetExists()</a>
+      </td>
+
+      <td>检查指定索引的对象是否存在，实现 ArrayAccess 接口</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_offsetGet">offsetGet()</a>
+      </td>
+
+      <td>返回指定索引的对象，实现 ArrayAccess 接口</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_offsetSet">offsetSet()</a>
+      </td>
+
+      <td>设置指定索引的对象，实现 ArrayAccess 接口</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_offsetUnset">offsetUnset()</a>
+      </td>
+
+      <td>注销指定索引的对象，实现 ArrayAccess 接口</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_shift">shift()</a>
+      </td>
+
+      <td>Shift an element off the beginning of QColl</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_current">current()</a>
+      </td>
+
+      <td>返回当前位置的对象，实现 Iterator 接口</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_key">key()</a>
+      </td>
+
+      <td>返回遍历时的当前索引，实现 Iterator 接口</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_next">next()</a>
+      </td>
+
+      <td>遍历下一个对象，实现 Iterator 接口</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_rewind">rewind()</a>
+      </td>
+
+      <td>重置遍历索引，实现 Iterator 接口</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_valid">valid()</a>
+      </td>
+
+      <td>判断是否是调用了 rewind() 或 next() 之后获得的有效对象，实现 Iterator 接口</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_count">count()</a>
+      </td>
+
+      <td>返回对象总数，实现 Countable 接口</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_isEmpty">isEmpty()</a>
+      </td>
+
+      <td>确定集合是否是空的</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_first">first()</a>
+      </td>
+
+      <td>返回集合中的第一个对象，如果没有任何对象，则抛出异常</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_last">last()</a>
+      </td>
+
+      <td>返回集合中的最后一个对象，如果没有任何对象，则抛出异常</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_append">append()</a>
+      </td>
+
+      <td>追加数组或 QColl 对象的内容到集合中</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_search">search()</a>
+      </td>
+
+      <td>查找符合指定属性值的对象，没找到返回 NULL</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_toHashMap">toHashMap()</a>
+      </td>
+
+      <td>将集合所有元素的值转换为一个名值对数组</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl_getCols">getCols()</a>
+      </td>
+
+      <td>返回指定键的所有值</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QColl___call">__call()</a>
+      </td>
+
+      <td>对集合中每一个对象调用指定的方法</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+
+
+<div class="summary">
+  <h2>保护的方法</h2>
+  <p>
+    <a href="#" class="toggle">隐藏继承的方法</a>
+  </p>
+
+  <table class="list-table table table-bordered">
+    <tr>
+      <th>方法</th><th>描述</th><th>定义于</th>
+    </tr>
+
+        <tr>
+      <td>
+        <a href="#QColl__checkType">_checkType()</a>
+      </td>
+
+      <td>检查值是否符合类型要求</td>
+      <td>
+                QColl        
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+
+
+<div class="details">
+
+  <h2>属性详细说明</h2>
+
+    
+  <a name="_type"></a>
+
+  <div class="name property">
+    <strong>$_type</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>集合对象的类型</p>
+  </div>
+
+    
+  <a name="_coll"></a>
+
+  <div class="name property">
+    <strong>$_coll</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>保存对象的数组</p>
+  </div>
+
+    
+  <a name="_is_valid"></a>
+
+  <div class="name property">
+    <strong>$_is_valid</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>指示迭代对象是否有效</p>
+  </div>
+
+  
+</div>
+
+
+<div class="details">
+
+  <h2>方法详细说明</h2>
+
+    
+  <a name="QColl___construct"></a>
+
+  <h4 class="name method">
+    __construct()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public void <strong>__construct</strong>($type)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$type</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">集合对象类型</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>构造函数</p>
+  </div>
+	<hr>
+    
+  <a name="QColl_createFromArray"></a>
+
+  <h4 class="name method">
+    createFromArray()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static QColl <strong>createFromArray</strong>($objects, $type, $keep_keys)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$objects</td>
+      <td class="param_type">array</td>
+      <td class="param_desc">包含多个对象的数组</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$type</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">集合对象类型</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$keep_keys</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc">是否在创建集合时保持数组的键名</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QColl</td>
+      <td class="param_desc">新创建的集合对象</td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>从数组创建一个集合</p>
+
+<p>QColl::createFromArray()
+方法从一个包含多个对象的数组创建集合。
+新建的集合包含数组中的所有对象，并且确保对象的类型符合要求。</p>
+  </div>
+	<hr>
+    
+  <a name="QColl_values"></a>
+
+  <h4 class="name method">
+    values()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public array <strong>values</strong>($prop_name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$prop_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">要获取集合对象的哪一个属性</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">array</td>
+      <td class="param_desc">包含所有集合对象指定属性值的数组</td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>遍历集合中的所有对象，返回包含特定属性值的数组</p>
+
+<pre class="php code"><span class="re0">$coll</span> <span
+class="sy0">=</span> <span class="kw2">new</span> QColl<span
+class="br0">&#40;</span><span class="st_h">'Post'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="re0">$coll</span><span class="br0">&#91;</span><span
+class="br0">&#93;</span> <span class="sy0">=</span> <span
+class="kw2">new</span> Post<span class="br0">&#40;</span><span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'title'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'t1'</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="re0">$coll</span><span class="br0">&#91;</span><span
+class="br0">&#93;</span> <span class="sy0">=</span> <span
+class="kw2">new</span> Post<span class="br0">&#40;</span><span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'title'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'t2'</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 此时 $titles 中包含 t1 和 t2 两个值</span>
+<span
+class="re0">$titles</span> <span class="sy0">=</span> <span
+class="re0">$coll</span><span class="sy0">-&gt;</span><span
+class="me1">values</span><span class="br0">&#40;</span><span
+class="st_h">'title'</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+  </div>
+	<hr>
+    
+  <a name="QColl_offsetExists"></a>
+
+  <h4 class="name method">
+    offsetExists()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public boolean <strong>offsetExists</strong>($offset)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$offset</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>检查指定索引的对象是否存在，实现 ArrayAccess 接口</p>
+
+<pre class="php code"><span class="kw3">echo</span> <span
+class="kw3">isset</span><span class="br0">&#40;</span><span
+class="re0">$coll</span><span class="br0">&#91;</span><span
+class="nu0">1</span><span class="br0">&#93;</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+  </div>
+	<hr>
+    
+  <a name="QColl_offsetGet"></a>
+
+  <h4 class="name method">
+    offsetGet()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public mixed <strong>offsetGet</strong>($offset)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$offset</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>返回指定索引的对象，实现 ArrayAccess 接口</p>
+
+<pre class="php code"><span class="re0">$item</span> <span
+class="sy0">=</span> <span class="re0">$coll</span><span
+class="br0">&#91;</span><span class="nu0">1</span><span
+class="br0">&#93;</span><span class="sy0">;</span></pre>
+  </div>
+	<hr>
+    
+  <a name="QColl_offsetSet"></a>
+
+  <h4 class="name method">
+    offsetSet()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public void <strong>offsetSet</strong>($offset, $value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$offset</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>设置指定索引的对象，实现 ArrayAccess 接口</p>
+
+<pre class="php code"><span class="re0">$coll</span><span
+class="br0">&#91;</span><span class="nu0">1</span><span
+class="br0">&#93;</span> <span class="sy0">=</span> <span
+class="re0">$item</span><span class="sy0">;</span></pre>
+  </div>
+	<hr>
+    
+  <a name="QColl_offsetUnset"></a>
+
+  <h4 class="name method">
+    offsetUnset()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public void <strong>offsetUnset</strong>($offset)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$offset</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>注销指定索引的对象，实现 ArrayAccess 接口</p>
+
+<pre class="php code"><span class="kw3">unset</span><span
+class="br0">&#40;</span><span class="re0">$coll</span><span
+class="br0">&#91;</span><span class="nu0">1</span><span
+class="br0">&#93;</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+  </div>
+	<hr>
+    
+  <a name="QColl_shift"></a>
+
+  <h4 class="name method">
+    shift()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public mixed <strong>shift</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>Shift an element off the beginning of QColl</p>
+  </div>
+	<hr>
+    
+  <a name="QColl_current"></a>
+
+  <h4 class="name method">
+    current()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public mixed <strong>current</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>返回当前位置的对象，实现 Iterator 接口</p>
+  </div>
+	<hr>
+    
+  <a name="QColl_key"></a>
+
+  <h4 class="name method">
+    key()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public mixed <strong>key</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>返回遍历时的当前索引，实现 Iterator 接口</p>
+  </div>
+	<hr>
+    
+  <a name="QColl_next"></a>
+
+  <h4 class="name method">
+    next()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public void <strong>next</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>遍历下一个对象，实现 Iterator 接口</p>
+  </div>
+	<hr>
+    
+  <a name="QColl_rewind"></a>
+
+  <h4 class="name method">
+    rewind()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public void <strong>rewind</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>重置遍历索引，实现 Iterator 接口</p>
+  </div>
+	<hr>
+    
+  <a name="QColl_valid"></a>
+
+  <h4 class="name method">
+    valid()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public boolean <strong>valid</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>判断是否是调用了 rewind() 或 next()
+之后获得的有效对象，实现 Iterator 接口</p>
+  </div>
+	<hr>
+    
+  <a name="QColl_count"></a>
+
+  <h4 class="name method">
+    count()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public int <strong>count</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>返回对象总数，实现 Countable 接口</p>
+  </div>
+	<hr>
+    
+  <a name="QColl_isEmpty"></a>
+
+  <h4 class="name method">
+    isEmpty()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public boolean <strong>isEmpty</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>确定集合是否是空的</p>
+  </div>
+	<hr>
+    
+  <a name="QColl_first"></a>
+
+  <h4 class="name method">
+    first()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public object <strong>first</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>返回集合中的第一个对象，如果没有任何对象，则抛出异常</p>
+  </div>
+	<hr>
+    
+  <a name="QColl_last"></a>
+
+  <h4 class="name method">
+    last()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public object <strong>last</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>返回集合中的最后一个对象，如果没有任何对象，则抛出异常</p>
+  </div>
+	<hr>
+    
+  <a name="QColl_append"></a>
+
+  <h4 class="name method">
+    append()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QColl <strong>append</strong>($data)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$data</td>
+      <td class="param_type">array|QColl</td>
+      <td class="param_desc">要追加的数据</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QColl</td>
+      <td class="param_desc">返回集合对象本身，实现连贯接口</td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>追加数组或 QColl 对象的内容到集合中</p>
+
+<pre class="php code"><span class="re0">$data</span> <span
+class="sy0">=</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="re0">$item1</span><span
+class="sy0">,</span>
+    <span class="re0">$item2</span><span
+class="sy0">,</span>
+    <span class="re0">$item3</span>
+<span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span
+class="re0">$coll</span><span class="sy0">-&gt;</span><span
+class="me1">append</span><span class="br0">&#40;</span><span
+class="re0">$data</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>QColl::append() 在追加数据时不会保持键名。</p>
+  </div>
+	<hr>
+    
+  <a name="QColl_search"></a>
+
+  <h4 class="name method">
+    search()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public mixed <strong>search</strong>($prop_name, $needle, $strict)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$prop_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">要搜索的属性名</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$needle</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc">需要的属性值</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$strict</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc">是否严格比对属性值</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>查找符合指定属性值的对象，没找到返回 NULL</p>
+
+<pre class="php code"><span
+class="co1">// 在 $coll 集合中搜索 title 属性等于 T1 的第一个对象</span>
+<span
+class="re0">$item</span> <span class="sy0">=</span> <span
+class="re0">$coll</span><span class="sy0">-&gt;</span><span
+class="me1">search</span><span class="br0">&#40;</span><span
+class="st_h">'title'</span><span class="sy0">,</span> <span
+class="st_h">'T1'</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+  </div>
+	<hr>
+    
+  <a name="QColl_toHashMap"></a>
+
+  <h4 class="name method">
+    toHashMap()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public array <strong>toHashMap</strong>($key_name, $value_name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$key_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$value_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>将集合所有元素的值转换为一个名值对数组</p>
+  </div>
+	<hr>
+    
+  <a name="QColl_getCols"></a>
+
+  <h4 class="name method">
+    getCols()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public array <strong>getCols</strong>($col)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$col</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">要查询的键</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">array</td>
+      <td class="param_desc">包含指定键所有值的数组</td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>返回指定键的所有值</p>
+  </div>
+	<hr>
+    
+  <a name="QColl___call"></a>
+
+  <h4 class="name method">
+    __call()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public mixed <strong>__call</strong>($method, $args)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$method</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$args</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>对集合中每一个对象调用指定的方法</p>
+
+<pre class="php code"><span class="kw2">class</span> OrderItem
+<span
+class="br0">&#123;</span>
+    <span class="kw2">public</span> <span
+class="re0">$price</span><span class="sy0">;</span>
+    <span
+class="kw2">public</span> <span class="re0">$quantity</span><span
+class="sy0">;</span>
+&nbsp;
+    <span
+class="kw2">function</span> __construct<span class="br0">&#40;</span><span
+class="re0">$price</span><span class="sy0">,</span> <span
+class="re0">$quantity</span><span class="br0">&#41;</span>
+    <span
+class="br0">&#123;</span>
+        <span class="re0">$this</span><span
+class="sy0">-&gt;</span><span class="me1">price</span> <span
+class="sy0">=</span> <span class="re0">$price</span><span
+class="sy0">;</span>
+        <span class="re0">$this</span><span
+class="sy0">-&gt;</span><span class="me1">quantity</span> <span
+class="sy0">=</span> <span class="re0">$quantity</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span
+class="co1">// 计算订单项目的小计</span>
+    <span
+class="kw2">function</span> sum<span class="br0">&#40;</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="kw1">return</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span><span class="me1">price</span> <span
+class="sy0">*</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span><span class="me1">quantity</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span
+class="co1">// 返回单价</span>
+    <span
+class="kw2">function</span> price<span class="br0">&#40;</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="kw1">return</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span><span class="me1">price</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span
+class="co1">// 返回数量</span>
+    <span
+class="kw2">function</span> quantity<span class="br0">&#40;</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="kw1">return</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span><span class="me1">quantity</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span
+class="co1">// 累加多个合计</span>
+    <span
+class="kw3">static</span> <span class="kw2">function</span> totalSum<span
+class="br0">&#40;</span><span class="re0">$objects</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="re0">$total</span> <span class="sy0">=</span> <span
+class="nu0">0</span><span class="sy0">;</span>
+        <span
+class="kw1">while</span> <span class="br0">&#40;</span><span
+class="kw3">list</span><span class="br0">&#40;</span><span
+class="sy0">,</span> <span class="re0">$item</span><span
+class="br0">&#41;</span> <span class="sy0">=</span> <span
+class="kw3">each</span><span class="br0">&#40;</span><span
+class="re0">$objects</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span>
+        <span
+class="br0">&#123;</span>
+            <span class="re0">$total</span> <span
+class="sy0">+=</span> <span class="re0">$item</span><span
+class="sy0">-&gt;</span><span class="me1">sum</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+        <span class="br0">&#125;</span>
+        <span
+class="kw1">return</span> <span class="re0">$total</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span
+class="co1">// 用于 QColl 的回调方法</span>
+    <span
+class="kw3">static</span> <span class="kw2">function</span> _qcoll_callback<span
+class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span
+class="br0">&#123;</span>
+        <span class="kw1">return</span> <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'sum'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'totalSum'</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span
+class="br0">&#125;</span>
+&nbsp;
+<span
+class="co1">// 构造一个集合，包含多个 OrderItem 对象</span>
+<span
+class="re0">$coll</span> <span class="sy0">=</span> QColl<span
+class="sy0">::</span><span class="me2">create</span><span
+class="br0">&#40;</span><span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="kw2">new</span> OrderItem<span
+class="br0">&#40;</span><span class="nu0">100</span><span
+class="sy0">,</span> <span class="nu0">3</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+    <span
+class="kw2">new</span> OrderItem<span class="br0">&#40;</span><span
+class="nu0">200</span><span class="sy0">,</span> <span class="nu0">5</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+    <span
+class="kw2">new</span> OrderItem<span class="br0">&#40;</span><span
+class="nu0">300</span><span class="sy0">,</span> <span class="nu0">2</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">,</span> <span class="st_h">'OrderItem'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 取得集合中所有订单项目的金额合计</span>
+<span
+class="re0">$sum</span> <span class="sy0">=</span> <span
+class="re0">$coll</span><span class="sy0">-&gt;</span><span
+class="me1">sum</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 将会输出 1900 （根据 100 * 3 + 200 * 5 + 300 * 2 计算）</span>
+<span
+class="kw3">echo</span> <span class="re0">$sum</span><span
+class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 取得每个项目的单价</span>
+<span
+class="re0">$price</span> <span class="sy0">=</span> <span
+class="re0">$coll</span><span class="sy0">-&gt;</span><span
+class="me1">price</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="co1">// 将会输出 array(100, 200, 300)</span>
+dump<span
+class="br0">&#40;</span><span class="re0">$price</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>当调用 QColl 自身没有定义的方法时，QColl
+将认为开发者是要对集合中的每一个对象调用指定方法。</p>
+
+<ul>
+	<li>此时，QColl 首先检查集合中的对象是否提供了
+	_qcoll_callback() 静态方法；</li>
+
+	<li>如果有，则通过 _qcoll_callback() 取得一个方法映射表；</li>
+
+	<li>QColl 根据 _qcoll_callback()
+	返回的方法映射表调用对象的其他静态方法。</li>
+
+	<li>如果没有提供 _qcoll_callback()
+	方法，或方法映射表中没有指定的方法。
+		<p>QColl
+		则遍历集合中的所有对象，尝试调用对象的指定方法。</p>
+	</li>
+</ul>
+  </div>
+	<hr>
+    
+  <a name="QColl__checkType"></a>
+
+  <h4 class="name method">
+    _checkType()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected void <strong>_checkType</strong>($object)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$object</td>
+      <td class="param_type">object</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>检查值是否符合类型要求</p>
+  </div>
+	<hr>
+  
+</div>
+
+
+</div>
+
+
+    </div>
+
+    <!-- /右侧栏 -->
+    </div>
+	</div>
+</body>
+</html>

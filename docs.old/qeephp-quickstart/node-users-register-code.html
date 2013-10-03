@@ -1,0 +1,817 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 快速入门</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qeephp.com/docs/">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 快速入门</a>
+      &raquo;
+      <a href="node-users.html">实现用户功能</a>
+      &raquo;
+      用户注册（功能实现）    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+
+    
+<h1>实现用户注册（功能实现）</h1>
+
+<p>在前面的小结中，我们主要学习了怎么使用视图。现在我们来解决表单提交，以及模型的创建问题。</p>
+
+<h2>丑陋的表单提交处理代码</h2>
+
+<p>修改 controller/users.php 文件，加入以下代码：</p>
+
+<pre class="php code"><span class="kw2">function</span> actionRegister<span
+class="br0">&#40;</span><span class="br0">&#41;</span>
+<span
+class="br0">&#123;</span>
+    <span
+class="co1">// 从 POST 中提取用户名和密码</span>
+    <span
+class="re0">$username</span> <span class="sy0">=</span> <span
+class="kw3">trim</span><span class="br0">&#40;</span><span
+class="kw3">strtolower</span><span class="br0">&#40;</span><span
+class="kw3">isset</span><span class="br0">&#40;</span><span
+class="re0">$_POST</span><span class="br0">&#91;</span><span
+class="st_h">'username'</span><span class="br0">&#93;</span><span
+class="br0">&#41;</span> ? <span class="re0">$_POST</span><span
+class="br0">&#91;</span><span class="st_h">'username'</span><span
+class="br0">&#93;</span> <span class="sy0">:</span> <span
+class="st_h">''</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+    <span
+class="re0">$password</span> <span class="sy0">=</span> <span
+class="kw3">isset</span><span class="br0">&#40;</span><span
+class="re0">$_POST</span><span class="br0">&#91;</span><span
+class="st_h">'password'</span><span class="br0">&#93;</span><span
+class="br0">&#41;</span> ? <span class="re0">$_POST</span><span
+class="br0">&#91;</span><span class="st_h">'password'</span><span
+class="br0">&#93;</span> <span class="sy0">:</span> <span
+class="st_h">''</span><span class="sy0">;</span>
+&nbsp;
+    <span
+class="co1">// 对输入数据进行验证</span>
+    <span
+class="re0">$errors</span> <span class="sy0">=</span> <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+    <span
+class="kw1">if</span> <span class="br0">&#40;</span><span
+class="kw3">strlen</span><span class="br0">&#40;</span><span
+class="re0">$username</span><span class="br0">&#41;</span> <span
+class="sy0">&lt;</span> <span class="nu0">5</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="re0">$errors</span><span class="br0">&#91;</span><span
+class="st_h">'username'</span><span class="br0">&#93;</span><span
+class="br0">&#91;</span><span class="br0">&#93;</span> <span
+class="sy0">=</span> <span
+class="st_h">'用户名不能少于 5 个字符'</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span
+class="kw1">if</span> <span class="br0">&#40;</span><span
+class="kw3">strlen</span><span class="br0">&#40;</span><span
+class="re0">$username</span><span class="br0">&#41;</span> <span
+class="sy0">&gt;</span> <span class="nu0">15</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="re0">$errors</span><span class="br0">&#91;</span><span
+class="st_h">'username'</span><span class="br0">&#93;</span><span
+class="br0">&#91;</span><span class="br0">&#93;</span> <span
+class="sy0">=</span> <span
+class="st_h">'用户名不能超过 15 个字符'</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span
+class="kw1">if</span> <span class="br0">&#40;</span><span
+class="kw3">strlen</span><span class="br0">&#40;</span><span
+class="re0">$password</span><span class="br0">&#41;</span> <span
+class="sy0">&lt;</span> <span class="nu0">6</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="re0">$errors</span><span class="br0">&#91;</span><span
+class="st_h">'password'</span><span class="br0">&#93;</span><span
+class="br0">&#91;</span><span class="br0">&#93;</span> <span
+class="sy0">=</span> <span
+class="st_h">'密码不能少于 6 个字符'</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span
+class="sy0">.....</span> 更多的验证代码
+&nbsp;
+    <span
+class="sy0">.....</span> 检查用户名是否重复
+    <span
+class="sy0">.....</span> 检查保存是否成功
+    <span
+class="sy0">.....</span> 如果失败，将错误信息存入视图
+    <span
+class="sy0">.....</span> 如果失败，将 POST 信息存入视图，以便在表单中重新显示提交的内容
+<span
+class="br0">&#125;</span></pre>
+
+<p>上述代码可能和过去的做法类似，但是这些代码看着不恶心吗？</p>
+
+<p>QeePHP
+为表单提供了全面支持，并且允许开发者将表单和模型结合起来使用。这样一来，表单数据的过滤、验证，以及错误处理都可以自动完成，不需要开发者手工编码实现。关于如何使用表单，有专门的章节详细阐述。这里我们只简单的展示一下使用
+QeePHP 表单模型带来的优势。</p>
+
+<h2>完善模型定义</h2>
+
+<p>时刻记住一点，QeePHP
+是一个遵循“领域驱动开发”思想的框架。而领域驱动中，最重要的就是模型。而我们的大多数表单都是和模型有关的，所以在处理表单之前，首先要完善模型的定义。因为这些定义可以直接套入表单对象中，避免我们在不同的地方编写同样的逻辑，这就是
+DRY 原则的最佳实践。</p>
+
+<p>先前创建的 User
+模型只是半成品，现在我们需要对其进行完善。一个模型由几个方面组成：</p>
+
+<ul>
+	<li>属性：定义模型有哪些属性、属性的类型以及属性的行为和验证规则等</li>
+
+	<li>行为：添加实现业务逻辑需要的方法，让模型逐步逼近实际的需求</li>
+
+	<li>数据：由属性和存储模型属性的数据表组成，但属性不一定要和数据表一一对应</li>
+
+	<li>关系：模型需要互相配合来实现业务需求，因此关系也是模型的一部分</li>
+</ul>
+
+<h4>完善模型的属性</h4>
+
+<p>打开模型的定义文件，在 __define()
+方法中可以找到模型的详细定义。这些定义分为几个部分：</p>
+
+<ul>
+	<li>指定存储模型使用的数据表</li>
+
+	<li>属性和关联的定义，例如只读属性、虚拟属性、关联等</li>
+
+	<li>对属性的验证规则</li>
+
+	<li>安全性方面的定义</li>
+
+	<li>行为插件的定义</li>
+</ul>
+
+<p>在 QeePHP 的模型中，属性本身具有多种特性：</p>
+
+<ul>
+	<li>是否是只读属性</li>
+
+	<li>是否是虚拟属性</li>
+
+	<li>是否有 getter 或 setter 方法</li>
+
+	<li>类型</li>
+
+	<li>验证规则</li>
+</ul>
+
+<blockquote>
+	<p>对于 todo
+	这样的简单应用，我们用不到这么多高级特性，所以上述内容了解一下就行了。</p>
+</blockquote>
+
+<p>todo 应用中，user
+模型只有两个主要属性：用户名和密码。根据需求，这两个属性有下列要求：</p>
+
+<ul>
+	<li>用户名应该是唯一的</li>
+
+	<li>用户一旦成功创建，就不能更改用户名，因此用户名必须是只读属性</li>
+
+	<li>用户名不能少于 5 个字符，不能多于 15
+	个字符，并且只能使用字母和数字组成</li>
+
+	<li>密码不能少于 6 个字符，不能多于 20 个字符</li>
+
+	<li>密码应该加密存储</li>
+</ul>
+
+<p>现在我们一步步来实现这些要求。</p>
+
+<p>修改 __define() 方法，禁止更新用户名：</p>
+
+<pre class="php code"><span class="st_h">'props'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="sy0">.....</span>
+    <span
+class="co1">// 指定 username 属性为只读</span>
+    <span
+class="st_h">'username'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'readonly'</span> <span class="sy0">=&gt;</span> <span
+class="kw2">true</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+    <span class="sy0">.....</span>
+<span
+class="br0">&#41;</span><span class="sy0">,</span>
+&nbsp;
+<span
+class="co4">/**
+ * 指定更新数据库中的对象时，哪些属性的值不允许由外部提供
+ */</span>
+<span
+class="st_h">'update_reject'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'username'</span><span class="sy0">,</span></pre>
+
+<p>继续：</p>
+
+<pre class="php code"><span class="st_h">'validations'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span>
+<span
+class="br0">&#40;</span>
+    <span
+class="co1">// 指定 username 属性的验证规则</span>
+    <span
+class="st_h">'username'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span>
+    <span class="br0">&#40;</span>
+        <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'not_empty'</span><span class="sy0">,</span> <span
+class="st_h">'用户名不能为空'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+        <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'min_length'</span><span
+class="sy0">,</span> <span class="nu0">5</span><span class="sy0">,</span> <span
+class="st_h">'用户名不能少于 5 个字符'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+        <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'max_length'</span><span class="sy0">,</span> <span
+class="nu0">15</span><span class="sy0">,</span> <span
+class="st_h">'用户名不能超过 15 个字符'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+        <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'is_alnum'</span><span class="sy0">,</span> <span
+class="st_h">'用户名只能由字母和数字组成'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+    <span
+class="br0">&#41;</span><span class="sy0">,</span>
+&nbsp;
+    <span
+class="co1">// 指定 password 属性的验证规则</span>
+    <span
+class="st_h">'password'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span>
+    <span class="br0">&#40;</span>
+        <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'not_empty'</span><span class="sy0">,</span> <span
+class="st_h">'密码不能为空'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+        <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'min_length'</span><span
+class="sy0">,</span> <span class="nu0">6</span><span class="sy0">,</span> <span
+class="st_h">'密码不能少于 6 个字符'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+        <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'max_length'</span><span class="sy0">,</span> <span
+class="nu0">20</span><span class="sy0">,</span> <span
+class="st_h">'密码不能超过 20 个字符'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+    <span
+class="br0">&#41;</span><span class="sy0">,</span>
+<span
+class="br0">&#41;</span><span class="sy0">,</span></pre>
+
+<p>经过简单的设置，大部分要求都可以由 QeePHP
+来处理了，剩下的密码加密存储则可以借助现成的 acluser
+行为插件来实现。</p>
+
+<h4>行为插件</h4>
+
+<p>虽然我们可以通过给 password 属性添加 getter 和 setter
+方法来实现密码的加密，但 QeePHP
+已经提供了现成的插件来帮助我们完成类似工作，并且提供了更丰富的特性。</p>
+
+<p>acluser
+行为插件应用到一个模型后，可以实现下列特征：</p>
+
+<ul>
+	<li>密码属性的自动加密</li>
+
+	<li>验证用户名和密码的正确性</li>
+
+	<li>验证用户名的唯一性</li>
+
+	<li>查询用户的基本属性和角色信息</li>
+</ul>
+
+<p>要使用 acluser 插件，只需要修改 __define() 方法：</p>
+
+<pre class="php code"><span
+class="co1">// 指定该 ActiveRecord 要使用的行为插件</span>
+<span
+class="st_h">'behaviors'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'acluser'</span><span class="sy0">,</span>
+&nbsp;
+<span
+class="co1">// 指定行为插件的配置</span>
+<span
+class="st_h">'behaviors_settings'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span>
+<span class="br0">&#40;</span>
+    <span
+class="co2"># '插件名' =&gt; array('选项' =&gt; 设置),</span>
+    <span
+class="st_h">'acluser'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span><span class="br0">&#40;</span>
+        <span
+class="st_h">'acl_data_props'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'username'</span><span class="sy0">,</span>
+    <span
+class="br0">&#41;</span><span class="sy0">,</span>
+<span
+class="br0">&#41;</span><span class="sy0">,</span></pre>
+
+<p>acluser 插件的详细文档请参考： <a
+href="http://qeephp.com/docs/qeephp-api/class-model-behavior-acluser">http://qeephp.com/docs/qeephp-api/class-model-behavior-acluser</a></p>
+
+<p>指定好 acluser 插件后，我们的 user
+模型在属性方面就完善了。</p>
+
+<h4>完善模型的行为和关系</h4>
+
+<p>根据前面的需求分析，user 模型具有下列行为：</p>
+
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">user 模型的行为</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<th>validateLogin</th>
+
+			<td>验证用户名和密码</td>
+		</tr>
+
+		<tr>
+			<th>createTask</th>
+
+			<td>创建属于该用户的任务</td>
+		</tr>
+
+		<tr>
+			<th>loadTasks</th>
+
+			<td>载入属于该用户的任务</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>由于 acluser
+插件已经提供了验证用户名和密码的方法，validateLogin()
+方法不需要我们自己实现了。下面来实现 createTask() 和
+loadTasks() 方法。</p>
+
+<p>修改 user 模型的类，加入下列代码：</p>
+
+<pre class="php code"><span class="kw2">class</span> User <span
+class="kw2">extends</span> QDB_ActiveRecord_Abstract
+<span
+class="br0">&#123;</span>
+&nbsp;
+    <span
+class="co4">/**
+     * 创建属于当前用户的任务
+     *
+     * @return Task
+     */</span>
+    <span
+class="kw2">function</span> createTask<span class="br0">&#40;</span><span
+class="re0">$subject</span><span class="sy0">,</span> <span
+class="re0">$description</span> <span class="sy0">=</span> <span
+class="kw2">null</span><span class="br0">&#41;</span>
+    <span
+class="br0">&#123;</span>
+        <span class="re0">$task</span> <span
+class="sy0">=</span> <span class="kw2">new</span> Task<span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+        <span class="re0">$task</span><span
+class="sy0">-&gt;</span><span class="me1">owner</span>       <span
+class="sy0">=</span> <span class="re0">$this</span><span
+class="sy0">;</span>
+        <span class="re0">$task</span><span
+class="sy0">-&gt;</span><span class="me1">subject</span>     <span
+class="sy0">=</span> <span class="re0">$subject</span><span
+class="sy0">;</span>
+        <span class="re0">$task</span><span
+class="sy0">-&gt;</span><span class="me1">description</span> <span
+class="sy0">=</span> <span class="re0">$description</span><span
+class="sy0">;</span>
+        <span class="kw1">return</span> <span
+class="re0">$task</span><span class="sy0">;</span>
+    <span
+class="br0">&#125;</span>
+&nbsp;
+    <span class="sy0">.....</span>
+<span
+class="br0">&#125;</span></pre>
+
+<p>而 loadTasks() 方法也不需要我们去实现，因为 QeePHP 的 ORM
+可以让我们直接通过属性访问一个模型关联的其他模型。所以我们只需要修改
+__define() 方法，加入 user 模型和 task
+模型的关联就可以了：</p>
+
+<pre class="php code"><span class="st_h">'props'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="sy0">.....</span>
+    <span
+class="st_h">'tasks'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span><span class="br0">&#40;</span>QDB<span
+class="sy0">::</span><span class="me2">HAS_MANY</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'Task'</span><span
+class="sy0">,</span> <span class="st_h">'target_key'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'owner_id'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+    <span
+class="sy0">.....</span>
+<span class="br0">&#41;</span><span
+class="sy0">,</span></pre>
+
+<p>OK，现在用户模型已经准备好了。</p>
+
+<h2>实现用户注册表单</h2>
+
+<p>在 Web 应用中，表单需要完成下面的主要任务：</p>
+
+<ul>
+	<li>容纳从客户端提交的数据</li>
+
+	<li>对客户端提交的数据进行过滤</li>
+
+	<li>对客户端提交的数据进行验证</li>
+
+	<li>导出过滤和验证后的数据</li>
+
+	<li>构造出在浏览器中需要的 HTML 代码</li>
+</ul>
+
+<p>为了提供更好的灵活性，并且简化表单的使用，QeePHP
+将上述几项任务分为多个不同的部分：</p>
+
+<ul>
+	<li>QForm 负责构造表单元素容器</li>
+
+	<li>表单元素负责容纳数据，并数据进行过滤和验证</li>
+
+	<li>通过 QeePHP 的用户界面控件构造表单 HTML 代码</li>
+</ul>
+
+<p>在 QeePHP 应用中使用表单，典型的过程如下：</p>
+
+<ol>
+	<li>创建表单，定义表单需要容纳的数据，以及过滤和验证规则</li>
+
+	<li>在控制器动作中构造表单对象，并导入数据进行过滤和验证</li>
+
+	<li>在视图中构造表单的 HTML
+	代码，或者通过视图片段构造表单 HTML 代码</li>
+</ol>
+
+<p>搞清楚了基本概念，我们就来一步步实现用户注册表单。</p>
+
+<h4>创建表单对象</h4>
+
+<p>新建文件 app/form/userlogin.php，内容如下：</p>
+
+<pre class="php code"><span class="kw2">class</span> Form_UserLogin <span
+class="kw2">extends</span> QForm
+<span class="br0">&#123;</span>
+    <span
+class="kw2">function</span> __construct<span class="br0">&#40;</span><span
+class="re0">$action</span><span class="br0">&#41;</span>
+    <span
+class="br0">&#123;</span>
+        <span
+class="co1">// 调用父类的构造函数</span>
+        parent<span
+class="sy0">::</span>__construct<span class="br0">&#40;</span><span
+class="st_h">'form_userlogin'</span><span class="sy0">,</span> <span
+class="re0">$action</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+        <span
+class="co1">// 从配置文件载入表单</span>
+        <span
+class="re0">$filename</span> <span class="sy0">=</span> <span
+class="kw3">rtrim</span><span class="br0">&#40;</span><span
+class="kw3">dirname</span><span class="br0">&#40;</span><span
+class="kw2">__FILE__</span><span class="br0">&#41;</span><span
+class="sy0">,</span> <span class="st_h">'/\\'</span><span
+class="br0">&#41;</span> <span class="sy0">.</span> DS <span
+class="sy0">.</span> <span class="st_h">'userlogin_form.yaml'</span><span
+class="sy0">;</span>
+        <span class="re0">$this</span><span
+class="sy0">-&gt;</span><span class="me1">loadFromConfig</span><span
+class="br0">&#40;</span>Helper_YAML<span class="sy0">::</span><span
+class="me2">loadCached</span><span class="br0">&#40;</span><span
+class="re0">$filename</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+        <span
+class="re0">$this</span><span class="sy0">-&gt;</span><span
+class="me1">addValidations</span><span class="br0">&#40;</span>User<span
+class="sy0">::</span><span class="me2">meta</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+    <span
+class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>再新建文件 app/form/userlogin_form.yaml：</p>
+
+<pre class="python code"><span
+class="co1"># ~form 开头的内容用于指定表单属性</span>
+~form:
+  _subject: <span
+class="st0">&quot;注册新用户&quot;</span>
+&nbsp;
+<span
+class="co1"># 指定字段及过滤器等信息</span>
+&nbsp;
+username:
+  _ui: textbox
+  _filters: <span
+class="br0">&#91;</span><span class="st0">'trim'</span>, <span
+class="st0">'strtolower'</span><span class="br0">&#93;</span>
+  _label: <span
+class="st0">&quot;用户名&quot;</span>
+&nbsp;
+password:
+  _ui: password
+  _label: <span
+class="st0">&quot;密码&quot;</span></pre>
+
+<p>虽然为了演示表单的时候，对于用户登录这种表单我们也用了两个分离的文件。但对于一些复杂表单，分离为两个文件后，可以分别修改表单的行为（表单对象文件）和定义（配置文件），更好的实现职责分离的目标。</p>
+
+<h4>准备表单视图</h4>
+
+<p>表单对象要转换成 HTML
+代码，还要借助表单视图。幸运的是表单视图是一个完全独立的部分，我们可以从
+QeePHP
+社区上下载一些现成的表单视图来使用，或者以其为基础修改。这样大大的减少了工作量。这里使用的是
+<a
+href="http://qeephp.com/projects/show/name/formview_simple">http://qeephp.com/projects/show/name/formview_simple</a>
+这个表单视图。</p>
+
+<blockquote>
+	<p>记得修改 app/view/_layouts/default_layout.php，加入：</p>
+
+	<p>或者将表单视图的样式表合并到 public/css/style.css
+	文件中。</p>
+</blockquote>
+
+<p>按照说明准备好文件后，修改 app/view/users/register.php
+文件的内容为：</p>
+
+<pre class="php code"><span class="kw2">&lt;?php</span> <span
+class="re0">$this</span><span class="sy0">-&gt;</span>_extends<span
+class="br0">&#40;</span><span class="st_h">'_layouts/default_layout'</span><span
+class="br0">&#41;</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span>
+&nbsp;
+<span class="kw2">&lt;?php</span> <span
+class="re0">$this</span><span class="sy0">-&gt;</span>_block<span
+class="br0">&#40;</span><span class="st_h">'contents'</span><span
+class="br0">&#41;</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span>
+&nbsp;
+<span class="kw2">&lt;?php</span> <span
+class="re0">$this</span><span class="sy0">-&gt;</span>_element<span
+class="br0">&#40;</span><span class="st_h">'formview_simple'</span><span
+class="sy0">,</span> <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'form'</span> <span
+class="sy0">=&gt;</span> <span class="re0">$form</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span> <span class="kw2">?&gt;</span>
+&nbsp;
+<span
+class="kw2">&lt;?php</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_endblock<span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span></pre>
+
+<p>相比以前手工编写的表单，代码量大大减少，而且还具有更多的功能。</p>
+
+<h4>实现用户登录</h4>
+
+<p>修改 users 控制器的 actionRegister() 方法为：</p>
+
+<pre class="php code"><span class="kw2">function</span> actionRegister<span
+class="br0">&#40;</span><span class="br0">&#41;</span>
+<span
+class="br0">&#123;</span>
+    <span
+class="co1">// 构造表单对象</span>
+    <span
+class="re0">$form</span> <span class="sy0">=</span> <span
+class="kw2">new</span> Form_UserLogin<span class="br0">&#40;</span>url<span
+class="br0">&#40;</span><span class="st_h">'users/register'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+    <span class="kw1">if</span> <span
+class="br0">&#40;</span><span class="re0">$this</span><span
+class="sy0">-&gt;</span>_context<span class="sy0">-&gt;</span><span
+class="me1">isPOST</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span> <span class="sy0">&amp;&amp;</span> <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">validate</span><span class="br0">&#40;</span><span
+class="re0">$_POST</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="co1">// 是 POST 提交，并且表单验证通过</span>
+        try
+        <span
+class="br0">&#123;</span>
+            <span
+class="co1">// 创建 user 对象并保存</span>
+            <span
+class="re0">$user</span> <span class="sy0">=</span> <span
+class="kw2">new</span> User<span class="br0">&#40;</span><span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">values</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+            <span class="re0">$user</span><span
+class="sy0">-&gt;</span><span class="me1">save</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+            <span
+class="co1">// 成功后输出新建用户对象的信息</span>
+            dump<span
+class="br0">&#40;</span><span class="re0">$user</span><span
+class="sy0">-&gt;</span><span class="me1">username</span><span
+class="sy0">,</span> <span class="st_h">'新建用户的用户名'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+            dump<span
+class="br0">&#40;</span><span class="re0">$user</span><span
+class="sy0">-&gt;</span><span class="me1">password</span><span
+class="sy0">,</span> <span class="st_h">'新建用户的密码'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+            dump<span
+class="br0">&#40;</span><span class="re0">$user</span><span
+class="sy0">-&gt;</span><span class="me1">id</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">,</span> <span class="st_h">'新建用户的ID'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+            <span
+class="kw3">exit</span><span class="sy0">;</span>
+        <span
+class="br0">&#125;</span>
+        catch <span
+class="br0">&#40;</span>AclUser_DuplicateUsernameException <span
+class="re0">$ex</span><span class="br0">&#41;</span>
+        <span
+class="br0">&#123;</span>
+            <span
+class="co1">// 捕获 AclUser_DuplicateUsernameException 异常，在表单中指出用户名存在重复问题</span>
+            <span
+class="re0">$form</span><span class="br0">&#91;</span><span
+class="st_h">'username'</span><span class="br0">&#93;</span><span
+class="sy0">-&gt;</span><span class="me1">invalidate</span><span
+class="br0">&#40;</span><span class="st0">&quot;您要注册用户名 <span
+class="es4">{$user-&gt;username}</span> 已经存在了&quot;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+        <span
+class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span
+class="co1">// 将表单对象传递给视图</span>
+    <span
+class="re0">$this</span><span class="sy0">-&gt;</span>_view<span
+class="br0">&#91;</span><span class="st_h">'form'</span><span
+class="br0">&#93;</span> <span class="sy0">=</span> <span
+class="re0">$form</span><span class="sy0">;</span>
+<span
+class="br0">&#125;</span></pre>
+
+<p>现在用浏览器访问 <a
+href="http://localhost/todo/public/index.php?controller=users&amp;action=register">http://localhost/todo/public/index.php?controller=users&action=register</a>
+，然后不输入任何内容就点击“提交”按钮，将可以看到如下界面：</p>
+
+<div class="figure"><img src="images/users-register-code-01.png" alt="" />
+	<p>对验证信息的反馈</p>
+</div>
+
+<p>现在输入用户名为：imphper，密码为
+123456，提交后会看到如下内容：</p>
+
+<div class="figure"><img src="images/users-register-code-02.png" alt="" />
+	<p>注册成功后的输出信息</p>
+</div>
+
+<p>通过 phpMyAdmin
+可以看到刚刚输入的信息已经存入数据库了：</p>
+
+<div class="figure"><img src="images/users-register-code-03.png" alt="" />
+	<p>保存到数据库中的用户信息</p>
+</div>
+
+<p>为了方便后续开发，我们再修改一下 users 控制器的
+actionRegister() 方法：</p>
+
+<pre class="php code"><span
+class="co1">// 成功后输出新建用户对象的信息</span>
+dump<span
+class="br0">&#40;</span><span class="re0">$user</span><span
+class="sy0">-&gt;</span><span class="me1">username</span><span
+class="sy0">,</span> <span class="st_h">'新建用户的用户名'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+dump<span
+class="br0">&#40;</span><span class="re0">$user</span><span
+class="sy0">-&gt;</span><span class="me1">password</span><span
+class="sy0">,</span> <span class="st_h">'新建用户的密码'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+dump<span
+class="br0">&#40;</span><span class="re0">$user</span><span
+class="sy0">-&gt;</span><span class="me1">id</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">,</span> <span class="st_h">'新建用户的ID'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="kw3">exit</span><span class="sy0">;</span></pre>
+
+<p>改为：</p>
+
+<pre class="php code"><span
+class="co1">// 登录成功后，重定向浏览器</span>
+<span
+class="kw1">return</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_redirect<span class="br0">&#40;</span>url<span
+class="br0">&#40;</span><span class="st_h">'default/index'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>现在读者朋友们可以发挥自己的想象力，尝试输入不同的内容来测试表单的验证规则、过滤器设置，以及对重复用户名的检查
+:)</p>
+
+<p>$Id: users-register-code.texy 2300 2009-03-13 16:52:47Z dualface $</p>
+
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-users-register-ui.html">用户注册（用户界面）</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-users.html">实现用户功能</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-users-login.html">用户登录和注销</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

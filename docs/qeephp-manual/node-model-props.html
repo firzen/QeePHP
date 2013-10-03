@@ -1,0 +1,309 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 应用开发权威指南</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 应用开发权威指南</a>
+      &raquo;
+      <a href="node-model.html">模型与 ORM</a>
+      &raquo;
+      管理模型的属性    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+    
+<h1>管理模型的属性</h1>
+
+<p>在 QeePHP 的模型中，属性本身具有多种特性：</p>
+
+<ul>
+	<li>是否是只读属性</li>
+
+	<li>是否是虚拟属性</li>
+
+	<li>是否有 getter 或 setter 方法</li>
+
+	<li>属性的默认值</li>
+
+	<li>属性的类型</li>
+</ul>
+
+<h2>只读属性</h2>
+
+<p>有些情况下，模型一旦创建，其属性就不再允许修改，例如“用户”模型的用户名。</p>
+
+<p>对于这种业务需求，虽然可以通过在控制器中判断请求数据来检查，但是如果某个地方疏漏了检查，就会造成漏洞。所以最可靠的办法还是在模型中直接将这些属性指定为只读。这样一来，可以避免因为疏忽或无意中的错误造成不应该改动的数据被修改了。</p>
+
+<p>要将某个属性指定为只读，只需要在 props 中指定该属性的
+readonly 设置即可：</p>
+
+<pre class="php code"><span class="st_h">'props'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="st_h">'username'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'readonly'</span> <span
+class="sy0">=&gt;</span> <span class="kw2">true</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+    <span
+class="sy0">....</span>
+<span class="br0">&#41;</span></pre>
+
+<p>指定属性的 readonly
+设置后，一旦在应用程序中尝试修改属性值，QeePHP
+就会抛出一个 QDB_ActiveRecord_ChangingReadonlyPropException 异常。</p>
+
+<pre class="php code"><span
+class="co1">// 下面一行代码将导致 QDB_ActiveRecord_ChangingReadonlyPropException 异常</span>
+<span
+class="re0">$user</span><span class="sy0">-&gt;</span><span
+class="me1">username</span> <span class="sy0">=</span> <span
+class="st_h">'testname'</span><span class="sy0">;</span></pre>
+
+<h2>虚拟属性与 getter、setter</h2>
+
+<p>所谓虚拟属性，就是指该属性并不对应到数据表中的一个字段。例如
+User 模型有一个虚拟属性 full_name，但该属性并没有存储在
+users 数据表中，而是通过 last_name 和 first_name
+属性来构造的。</p>
+
+<p>要实现这样的功能，我们需要添加 full_name 属性到 User
+模型中，并且为该属性指定 getter 方法。</p>
+
+<blockquote>
+	<p>在软件开发中，“getter
+	方法”这个术语是指获取某个值的方法，而对应的“setter
+	方法”就是修改某个值的方法。</p>
+</blockquote>
+
+<pre class="php code"><span class="st_h">'props'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="sy0">....</span>
+    <span
+class="st_h">'full_name'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'getter'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'getFullName'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+    <span class="sy0">....</span>
+<span
+class="br0">&#41;</span></pre>
+
+<p>以及 getFullName() 方法：</p>
+
+<pre class="php code"><span class="kw2">function</span> getFullName<span
+class="br0">&#40;</span><span class="br0">&#41;</span>
+<span
+class="br0">&#123;</span>
+    <span class="kw1">return</span> <span
+class="re0">$this</span><span class="sy0">-&gt;</span><span
+class="me1">last_name</span> <span class="sy0">.</span> <span
+class="st_h">', '</span> <span class="sy0">.</span> <span
+class="re0">$this</span><span class="sy0">-&gt;</span><span
+class="me1">first_name</span><span class="sy0">;</span>
+<span
+class="br0">&#125;</span></pre>
+
+<p>设置完成后，下面的代码即可正确执行：</p>
+
+<pre class="php code"><span
+class="co1">// 假设 $user 对象的 first_name 是 Charles，last_name 是 Dickens</span>
+<span
+class="co1">// 输出结果为 Dickens, Charles</span>
+<span
+class="kw3">echo</span> <span class="re0">$user</span><span
+class="sy0">-&gt;</span><span class="me1">full_name</span><span
+class="sy0">;</span></pre>
+
+<p> </p>
+
+<p>接下来我们再为 full_name 属性添加一个 setter 方法：</p>
+
+<pre class="php code"><span class="st_h">'props'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="sy0">....</span>
+    <span
+class="st_h">'full_name'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'getter'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'getFullName'</span><span class="sy0">,</span> <span
+class="st_h">'setter'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'setFullName'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+    <span class="sy0">....</span>
+<span
+class="br0">&#41;</span>
+&nbsp;
+<span
+class="kw2">function</span> setFullName<span class="br0">&#40;</span><span
+class="re0">$full_name</span><span class="br0">&#41;</span>
+<span
+class="br0">&#123;</span>
+    <span class="re0">$arr</span> <span
+class="sy0">=</span> <span class="kw3">explode</span><span
+class="br0">&#40;</span><span class="st_h">','</span><span
+class="sy0">,</span> <span class="re0">$full_name</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+    <span
+class="re0">$this</span><span class="sy0">-&gt;</span><span
+class="me1">last_name</span>  <span class="sy0">=</span> <span
+class="kw3">trim</span><span class="br0">&#40;</span><span
+class="re0">$arr</span><span class="br0">&#91;</span><span
+class="nu0">0</span><span class="br0">&#93;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+    <span
+class="re0">$this</span><span class="sy0">-&gt;</span><span
+class="me1">first_name</span> <span class="sy0">=</span> <span
+class="kw3">trim</span><span class="br0">&#40;</span><span
+class="re0">$arr</span><span class="br0">&#91;</span><span
+class="nu0">1</span><span class="br0">&#93;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="br0">&#125;</span></pre>
+
+<p>有了 full_name 的 setter 方法，我们就可以很方便的同时修改
+first_name 和 last_name 了：</p>
+
+<pre class="php code"><span class="re0">$user</span><span
+class="sy0">-&gt;</span><span class="me1">full_name</span> <span
+class="sy0">=</span> <span class="st_h">'Copperfield, David'</span><span
+class="sy0">;</span>
+<span class="co1">// 输出 David</span>
+<span
+class="kw3">echo</span> <span class="re0">$user</span><span
+class="sy0">-&gt;</span><span class="me1">first_name</span><span
+class="sy0">;</span>
+<span class="co1">// 输出 Copperfield</span>
+<span
+class="kw3">echo</span> <span class="re0">$user</span><span
+class="sy0">-&gt;</span><span class="me1">last_name</span><span
+class="sy0">;</span></pre>
+
+<p>一个属性的 getter 和 setter
+方法不需要同时提供，许多需求中只有 getter，没有 setter
+方法。</p>
+
+<h2>属性的默认值</h2>
+
+<p>很多时候我们希望模型对象在构造时能够具有特定的默认值。要达到这个效果可以从两方面入手：</p>
+
+<ul>
+	<li>在 __define() 方法中为属性指定 default 选项；</li>
+
+	<li>在数据表中为该属性的存储字段设置默认值。</li>
+</ul>
+
+<p>通过 __define() 来指定属性默认值：</p>
+
+<pre class="php code"><span class="st_h">'props'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="sy0">....</span>
+    <span
+class="st_h">'prop_name'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'default'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'value'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+    <span class="sy0">....</span>
+<span
+class="br0">&#41;</span></pre>
+
+<p>当构造一个新对象时，对象的属性值将按照设置的值填充。</p>
+
+<p>但是为属性指定默认值，不等同于对象写入数据库时该属性值不会变化。如果要确保写入数据库的属性值是特定数据，我们可以通过
+create_autofill 设置来实现。create_autofill
+的有关内容在本章节的“自动填充属性值”小节阐述。</p>
+
+<h2>属性的类型</h2>
+
+<p>与通常的 PHP
+开发不同，领域模型的某些属性值是具有类型要求的。例如“商品”的价格只能是一个浮点数，而不能是一个字符串。</p>
+
+<p>虽然可以通过自动验证规则来检查出类型不匹配问题，但是如果模型能够对属性值进行强制类型转换，毫无疑问可以获得一些便利，并且让后续的自动验证变得更简单。</p>
+
+<p>目前，模型的属性支持下列几种类型：</p>
+
+<ul>
+	<li>整数</li>
+
+	<li>浮点数</li>
+
+	<li>布尔值</li>
+</ul>
+
+<p>当视图为上述类型的属性赋值时，QeePHP
+将会对属性值做强制类型转换。例如：</p>
+
+<pre class="php code"><span class="re0">$goods</span><span
+class="sy0">-&gt;</span><span class="me1">price</span> <span
+class="sy0">=</span> <span class="st_h">'ABC'</span><span
+class="sy0">;</span>
+<span
+class="co1">// 由于 price 属性是 float 类型，</span>
+<span
+class="co1">// 并且 'ABC' 强制转换为 float 后的结果是 0。</span>
+<span
+class="co1">// 因此输出 $goods-&gt;price 的结果也是 0。</span>
+<span
+class="kw3">echo</span> <span class="re0">$goods</span><span
+class="sy0">-&gt;</span><span class="me1">price</span><span
+class="sy0">;</span></pre>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+$Id: model-props.texy 2009-03-10 07:48:18Z Tim13 $
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-model-dbtable.html">存储模型的数据表</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-model.html">模型与 ORM</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-model-validations.html">自动验证</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

@@ -1,0 +1,76 @@
+=== 格式化属性 ===
+
+有时候我们需要将模型的属性以不同的格式显示。例如合计金额为负数时显示为“-(123.30)”的形式，正数则显示为“456.50”。
+
+对于这种需求，使用 getter 方法是非常方便的：
+
+/---code php
+// 给模型增加一个 sum_formatted 虚拟属性
+'props' => array(
+    ....
+    'sum_formatted' => array('getter' => 'getSumFormatted'),
+    ....
+)
+
+// 增加 getSumFormatted 方法
+function getSumFormatted()
+{
+    if ($this->sum < 0)
+    {
+        return '-(' . sprintf('%0.2f', abs($this->sum)) . ')';
+    }
+    else
+    {
+        return sprintf('%0.2f', $this->sum);
+    }
+}
+\---
+
+使用效果：
+
+/---code php
+$obj->sum = 5544.933;
+// 输出 5544.93
+echo $obj->sum_formatted;
+
+$obj->sum = -4236.1;
+// 输出 -(4236.10)
+echo $obj->sum_formatted;
+\---
+
+<p>&nbsp;</p>
+
+更复杂一些的例子：
+
+/---code php
+'props' => array(
+    ....
+    'status_string' => array('getter' => 'getStatusString'),
+    ....
+)
+
+// getStatusString() 方法返回状态码的文字表示形式
+function getStatusString()
+{
+    switch ($this->status)
+    {
+        case self::STATUS_NEW:
+            return '新订单';
+        case self::STATUS_PENDDING_DELETE:
+            return '等待删除的订单';
+        case self::STATUS_PAID:
+            return '已付款的订单';
+        ....
+    }
+}
+\---
+
+上述代码使得我们在需要显示对象状态的文字表述时，直接使用 status_string 属性就行了。
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+$Id: model-prop-formatting.texy 2295 2009-03-10 07:48:18Z dualface $
+

@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 快速入门</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qeephp.com/docs/">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 快速入门</a>
+      &raquo;
+      <a href="node-routes.html">美化 URL</a>
+      &raquo;
+      URL 路由是什么    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+
+    
+<h1>URL 路由是什么</h1>
+
+<p>正如我们看到的，todo 应用现在产生的 URL
+地址都很丑陋，既不便于记忆，也不便于被搜索引擎收录。所以我们需要对
+URL 进行美化。</p>
+
+<p>传统的做法是通过编写 .htaccess
+这样的文件来添加大量规则实现 URL 的美化，例如 Discuz 的
+.htaccess 内容：</p>
+
+<pre class="ini code">RewriteRule ^/bbs/archiver/<span
+class="br0">&#40;</span><span class="br0">&#40;</span>fid|tid<span
+class="br0">&#41;</span>-<span class="re0"><span
+class="br0">&#91;</span>\w\-<span class="br0">&#93;</span>+\.html<span
+class="br0">&#41;</span>$ /bbs/archiver/index.php?$<span
+class="nu0">1</span> <span class="br0">&#91;</span>L<span
+class="br0">&#93;</span></span>
+RewriteRule ^/bbs/forum-<span
+class="br0">&#40;</span><span class="re0"><span class="br0">&#91;</span><span
+class="nu0">0</span>-<span class="nu0">9</span><span
+class="br0">&#93;</span>+<span class="br0">&#41;</span>-<span
+class="br0">&#40;</span><span class="br0">&#91;</span><span
+class="nu0">0</span>-<span class="nu0">9</span><span
+class="br0">&#93;</span>+<span
+class="br0">&#41;</span>\.html$ /bbs/forumdisplay.php?fid<span
+class="sy0">=</span><span class="re2">$<span class="nu0">1</span>&amp;page<span
+class="sy0">=</span>$<span class="nu0">2</span> <span
+class="br0">&#91;</span>L<span
+class="br0">&#93;</span></span></span>
+RewriteRule ^/bbs/thread-<span
+class="br0">&#40;</span><span class="re0"><span class="br0">&#91;</span><span
+class="nu0">0</span>-<span class="nu0">9</span><span
+class="br0">&#93;</span>+<span class="br0">&#41;</span>-<span
+class="br0">&#40;</span><span class="br0">&#91;</span><span
+class="nu0">0</span>-<span class="nu0">9</span><span
+class="br0">&#93;</span>+<span class="br0">&#41;</span>-<span
+class="br0">&#40;</span><span class="br0">&#91;</span><span
+class="nu0">0</span>-<span class="nu0">9</span><span
+class="br0">&#93;</span>+<span
+class="br0">&#41;</span>\.html$ /bbs/viewthread.php?tid<span
+class="sy0">=</span><span class="re2">$<span class="nu0">1</span>&amp;extra<span
+class="sy0">=</span>page\%3D$<span class="nu0">3</span>&amp;page<span
+class="sy0">=</span>$<span class="nu0">2</span> <span
+class="br0">&#91;</span>L<span
+class="br0">&#93;</span></span></span>
+RewriteRule ^/bbs/space-<span
+class="br0">&#40;</span>username|uid<span class="br0">&#41;</span>-<span
+class="br0">&#40;</span>.+<span
+class="br0">&#41;</span>\.html$ /bbs/space.php?$<span class="nu0">1</span><span
+class="sy0">=</span><span class="re2">$<span class="nu0">2</span> <span
+class="re0"><span class="br0">&#91;</span>L<span
+class="br0">&#93;</span></span></span>
+RewriteRule ^/bbs/tag-<span
+class="br0">&#40;</span>.+<span
+class="br0">&#41;</span>\.html$ /bbs/tag.php?name<span class="sy0">=</span><span
+class="re2">$<span class="nu0">1</span> <span class="re0"><span
+class="br0">&#91;</span>L<span
+class="br0">&#93;</span></span></span>
+RewriteRule ^/bbs/<span
+class="br0">&#40;</span>.*<span class="br0">&#41;</span>$ /bbs/$<span
+class="nu0">1</span> <span class="re0"><span class="br0">&#91;</span>L<span
+class="br0">&#93;</span></span></pre>
+
+<p>这样做的主要坏处有几个：</p>
+
+<ul>
+	<li>应用程序内部生成的地址还是不友好，例如 Discuz
+	即便启用了 URL 重写，发表一篇新主题后的 URL
+	仍然会变成传统地址</li>
+
+	<li>如果将 URL
+	地址硬编码到应用程序中，一旦修改了规则，则相应的代码、模板都要修改</li>
+
+	<li>如果应用要兼容不支持 URL
+	重写的服务器环境，那工作量简直是一种噩梦</li>
+</ul>
+
+<h2>革命性的 URL 路由</h2>
+
+<p>QeePHP 是全世界第一个实现 URL
+路由完全双向解析的开发框架。</p>
+
+<p>开发者利用这项独一无二的能力，完全不用在编码时考虑
+URL 的美化问题。只要启用 URL
+路由功能，并写好路由规则，一切就由 QeePHP
+框架来完成了。</p>
+
+<ul>
+	<li>在支持 URL 重写或 PATHINFO 的服务器环境中，基于 QeePHP
+	的应用能够获得美化后的 URL 地址</li>
+
+	<li>在不支持 URL 重写和 PATHINFO 的服务器环境中，QeePHP
+	会自动生成传统的 URL 地址，保证应用程序正常运行</li>
+</ul>
+
+<p>也就是说，服务器环境的变化只需要我们改一下配置文件（只改一行）就可以适应了。而在编码和创建视图时，根本不需要为不同环境下的
+URL 地址问题操心。</p>
+
+<p>实现这种幸福状态的关键就是 QeePHP 的 URL
+路由双向解析。</p>
+
+<h4>正向解析</h4>
+
+<p>通过浏览器访问诸如 <a
+href="http://qeephp.com/projects/qeephp">http://qeephp.com/projects/qeephp</a>
+这样的 URL 时，实际访问的是 projects 控制器的 show
+动作，并且附带了参数 name=qeephp。</p>
+
+<p>将这样一个 URL 解析为 MVC
+模式需要的控制器名和动作名参数的过程称为正向解析。这个功能在大多数框架中都具备，只是强弱问题。</p>
+
+<h4>反向解析</h4>
+
+<p>在前面章节中反复出现的一个函数 url()
+是专门用来自动创建 URL
+地址的函数。这个函数接受两个参数：UDI 和可选参数。UDI
+用一种规范的形式指定了这个 URL
+将要调用的控制器、动作，而可选参数则会附加在 URL
+中进行传递。</p>
+
+<p>在应用程序的 URL 路由没有启动时，url() 的效果如下：</p>
+
+<pre class="php code">url<span class="br0">&#40;</span><span
+class="st_h">'tasks/create'</span><span class="br0">&#41;</span>
+<span
+class="co1">// 结果为 index.php?controller=tasks&amp;action=create</span>
+&nbsp;
+url<span
+class="br0">&#40;</span><span class="st_h">'tasks/edit'</span><span
+class="sy0">,</span> <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'task_id'</span> <span
+class="sy0">=&gt;</span> <span class="nu0">2</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span>
+<span
+class="co1">// 结果为 index.php?controller=tasks&amp;action=edit&amp;task_id=2</span></pre>
+
+<p>而启用 URL 路由后，url() 的效果如下：</p>
+
+<pre class="php code">url<span class="br0">&#40;</span><span
+class="st_h">'tasks/create'</span><span class="br0">&#41;</span>
+<span
+class="co1">// 结果为 /tasks/create</span>
+&nbsp;
+url<span
+class="br0">&#40;</span><span class="st_h">'tasks/edit'</span><span
+class="sy0">,</span> <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'task_id'</span> <span
+class="sy0">=&gt;</span> <span class="nu0">2</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span>
+<span
+class="co1">// 结果为 /tasks/edit/2</span></pre>
+
+<p>如果我们修改了路由规则，则效果可能是：</p>
+
+<pre class="php code">url<span class="br0">&#40;</span><span
+class="st_h">'tasks/create'</span><span class="br0">&#41;</span>
+<span
+class="co1">// 结果为 /create-new-tasks</span>
+&nbsp;
+url<span
+class="br0">&#40;</span><span class="st_h">'tasks/edit'</span><span
+class="sy0">,</span> <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'task_id'</span> <span
+class="sy0">=&gt;</span> <span class="nu0">2</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span>
+<span
+class="co1">// 结果为 /edit-my-task/2</span></pre>
+
+<p>也就是说 url()
+函数的结果取决于应用程序的配置和路由规则。</p>
+
+<p>这带来的好处包括：</p>
+
+<ul>
+	<li>在不同环境下，只需要启用或关闭 URL
+	路由，就能保证应用程序正常工作</li>
+
+	<li>修改路由规则表就可以获得不同的 URL
+	地址，完全不需要修改代码和视图</li>
+</ul>
+
+<p>从 url() 指定参数获得 URL
+的过程就是“反向解析”。目前只有 QeePHP
+能够做到全自动的反向解析，其他框架都需要通过在生成 URL
+时指定要使用的具体路由规则，否则只能创建默认样式的 URL
+地址。</p>
+
+<p>$Id: routes-router.texy 2295 2009-03-10 07:48:18Z dualface $</p>
+
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-routes.html">美化 URL</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-routes.html">美化 URL</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-routes-configs.html">启用 URL 路由</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

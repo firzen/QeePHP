@@ -1,0 +1,1 @@
+php gen_apidoc.php ../docs/api

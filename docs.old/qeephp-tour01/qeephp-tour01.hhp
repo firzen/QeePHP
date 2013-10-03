@@ -1,0 +1,18 @@
+[OPTIONS]
+Auto Index=Yes
+Binary TOC=Yes
+Binary Index=Yes
+Compatibility=1.1 or later
+Compiled File=qeephp-tour01.chm
+Contents File=qeephp-tour01.hhc
+Default Window=main
+Default Topic=index.html
+Display compile progress=Yes
+Error log file=_errorlog.txt
+Full-text search=Yes
+language=0x804 chinese (prc)
+Title=QeePHP 实战教程 01：个人兴趣调查系统 for QeePHP 13.1
+
+[WINDOWS]
+main="QeePHP 实战教程 01：个人兴趣调查系统 for QeePHP 13.1 - 生成时间: 2013-08-08 04:40","qeephp-tour01.hhc",,"index.html","index.html",,,,,0x63520,250,0x104e,[10,10,900,700],0xb0000,,,,,,0
+

@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 应用开发权威指南</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 应用开发权威指南</a>
+      &raquo;
+      <a href="node-intro.html">QeePHP 介绍</a>
+      &raquo;
+      为什么选择 QeePHP    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+
+    
+<h1>为什么选择 QeePHP</h1>
+
+<p>回顾一下曾经开发过的 PHP
+应用，大部分开发者都会发现这些应用中，数据的创建、读取、更新和删除操作是重复最多次的操作。但是不管我们如何简化这些
+CRUD（创建、读取、更新、删除）操作，面对客户不断变化的需求，应用程序的内在结构总是逐渐变得凌乱。</p>
+
+<p>而造成这种情况的根本原因就是我们没有正确使用面向对象的技术来设计和实现这些应用程序。由于业务逻辑固有的复杂性被所谓的
+CRUD
+快速开发能力所掩盖。本应是内聚的业务逻辑却拆散为一个个
+CRUD
+操作，分散到了应用程序的不同部分。如此一来，业务逻辑的变化必然会导致应用程序内部产生连锁反应式的改动，应用程序内在结构的逐渐腐朽变成了不可逆转的趋势。</p>
+
+<h2>更具挑战性的任务</h2>
+
+<p>随着 PHP 越来越多的应用在大型 Web
+应用中，如何构造这些复杂应用已经成了一项挑战。下图是一位开发者通过反向工程获得的
+<a href="http://blogs.x2line.com/al/archive/2007/06/02/3124.aspx">Facebook
+对象关系图</a>
+。虽然这张图并不完全准确，而且也有许多简化，但可以看出对象间仍然存在复杂的关系。对于这种应用，传统的
+CRUD 操作根本不可能胜任。</p>
+
+<div class="figure"><img src="images/intro-why-01.jpg" alt="" />
+	<p>Facebook 对象关系图</p>
+</div>
+
+<p>正是因为多年 PHP
+开发的经验教训，以及面对复杂应用时的捉襟见肘，让我们下定决心改变现状。将“领域驱动设计”引入到
+PHP 世界中。</p>
+
+<h2>领域驱动设计</h2>
+
+<p>“领域驱动设计”由 <a
+href="http://www.domainlanguage.com/about/ericevans.html">Eric Evans</a> 于
+2003 出版的《Domain-Driven Design: Tackling Complexity in the Heart of
+Software》（国内译名： <a
+href="http://www.china-pub.com/22779">领域驱动设计--软件核心复杂性应对之道</a>
+）一书中进行全面阐述。“领域驱动设计”回归了面向对象思想的本质，提出了一系列创建面向对象应用程序的指导原则，以及实践这些原则的设计模式和解决方案。</p>
+
+<p>可惜的是虽然已经经过了 5 年时间，但领域驱动在 PHP
+世界并没有引起大的反响，因为大多数 PHP
+开发者已经习惯了编写那些“一次性”的代码。即便是各种
+PHP
+开发框架的出现，也没有改变这种状况。造成困境的根本原因，并不在于
+PHP 语言本身的限制，而是使用 PHP 开发的 Web
+应用直到今天才逐步发展为具有高度内在复杂性的软件系统。正所谓没有需求就没有市场，在大多数
+PHP
+应用都很简单的情况下，领域驱动这样一种需要从思想上进行改变的开发模式自然难以在
+PHP 世界中流行。</p>
+
+<p>但市场已经发生了变化，今天的用户要求我们能够更快更好的创建高质量的应用程序，改变传统
+PHP 开发模式的时机已经完全成熟。</p>
+
+<h2>新希望 —— QeePHP</h2>
+
+<p>QeePHP 是一个遵循“领域驱动设计”思想设计和实现的 PHP
+开发框架。在保持易学易用、快速稳定的同时，QeePHP
+为创建具有复杂内在逻辑的 Web 应用提供了全面的支持。</p>
+
+<p>“领域驱动设计”是一种设计和架构思想，以“模型”为核心，将业务逻辑封装到一个个内聚的模型之中，从而避免业务逻辑被分散到应用程序的各个部分。这样一来，不管是增加了新的业务需求还是已有需求的改变，我们都能够将修改局限在一个相对较小的范围。从根本上避免了需求快速更新导致应用程序内在结构逐渐腐朽的问题。</p>
+
+<p>由于“领域驱动设计”的思想基础就是“模型”，所以框架必须为“模型”的定义、封装、持久化，以及模型关系的维护和扩展提供良好支持。QeePHP
+实现了完善的
+ORM（对象关系映射）系统，能够应付各种复杂的业务需求。利用
+QeePHP
+提供的帮助，开发者可以将精力放到如何完成“业务逻辑”之上，而不是不断的重复
+CRUD 操作。</p>
+
+<p> </p>
+
+<p>更进一步，QeePHP
+提供了灵活的视图机制，让开发者可以轻松完成用户界面组件化工作，为高效开发奠定了基础。除此以外，QeePHP
+的表单模型、用户界面控件、可扩展内核架构，都是构建复杂应用程序不可或缺的强力工具。</p>
+
+<p>除了技术上的创新，QeePHP 还凝聚了 <a
+href="http://www.qeeyuan.com/">起源科技</a> 团队及社区超过 5
+年的框架设计和开发经验。无论是易用性、可靠性、运行性能还是扩展能力，QeePHP
+都达到了当今 PHP 开发框架的极致。</p>
+
+<p>最后，我们想说经过近两年的开发，QeePHP
+已经为实践“领域驱动设计”做好了准备、为开发复杂应用提供了一个坚实的基础。我们坚信，随着
+PHP 开发者面对的需求越来越困难，QeePHP
+开源开发框架及其背后的思想必定会为大家所了解、信任与采用。</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p>$Id: intro-why.texy 2295 2009-03-10 07:48:18Z dualface $</p>
+
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-intro.html">QeePHP 介绍</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-intro.html">QeePHP 介绍</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-intro-features.html">主要特征</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

@@ -1,0 +1,159 @@
+=== 创建 Create ===
+
+在 QeePHP 的 ORM 中，创建一个模型对象非常简单：
+
+/---code php
+$user = new User();
+$user->name = 'jack';
+$user->save();
+\---
+
+如果要一次性设置多个属性的值，可以：
+
+/---code php
+$user = new User(array(
+    'name'      => 'jack',
+    'email'     => 'jack@gmail',
+    'address'   => 'Beijing',
+));
+$user->save();
+\---
+
+
+## 事件 ##
+
+在将一个新建的模型对象保存到数据库（也就是调用 save() 方法）时，会引发一系列的事件：
+
+|------------------------------------------------
+| 事件                          | 说明
+|------------------------------------------------
+|* _before_save                 | 保存之前
+|* _before_create               | 创建记录之前
+|* _before_validate             | 验证之前
+|* _before_validate_on_create   | 为创建进行验证之前
+|* _after_validate_on_create    | 为创建进行验证之后
+|* _after_validate              | 验证之后
+|* _after_create                | 创建之后
+|* _after_save                  | 保存之后
+
+上述任何一个事件都可以在模型中拦截，并且通过抛出异常的方式来阻止后续事件执行。
+
+
+<h3>事件响应方法</h3>
+
+以处理文章格式化为例，我们来看看事件的使用方法。
+
+Article 模型保存文章的数据。文章正文要求使用一个外部格式化工具转换为 HTML 代码。转换后的代码仅用于显示，编辑时还是使用转换前的代码。
+
+传统的做法是在显示文章时调用外部格式化工具来动态生成 HTML 代码，但这样做的缺点就是效率很差。特别是当格式化工具很复杂的时候。因此，我们换一个思路来实现。
+
+首先给 Article 增加一个属性 body_formatted，并且在数据表中添加相应的字段。接下来为 Article 模型增加下列代码：
+
+/---code php
+class Article extends QDB_ActiveRecord_Abstract
+{
+    /**
+     * _before_save 事件的响应方法，保存对象到数据库之前调用。
+     */
+    protected function _before_save()
+    {
+        // 只有当 body 属性已经修改过的时候才重新格式化，提高性能
+        if ($this->changed('body'))
+        {
+            $this->body_formatted = Helper_Formatter::format($this->body);
+        }
+    }
+}
+\---
+
+添加上述代码后，每当我们执行 $article->save() 方法，Article 模型的 _before_save() 事件响应方法就会被调用，从而透明的完成正文的格式化操作。
+
+
+<h3>自定义验证</h3>
+
+事件响应的另一个主要用途就是实现自定义的验证。
+
+虽然 QeePHP 允许开发者为模型指定各种验证规则，但难免有无法满足的情况。此时我们可以通过处理 _before_validate 等事件来达到目的：
+
+/---code php
+/**
+ * _before_validate 事件的响应方法
+ */
+protected function _before_validate()
+{
+    // 检查标题正文是否包含有特定的字符串
+    if (!preg_match('/qeephp\.com/i', $this->body))
+    {
+        $errors = array(
+            'body' => array('正文必须包含 qeephp.com 字符串'),
+        );
+        throw new QDB_ActiveRecord_ValidateFailedException($errors, $this);
+    }
+}
+\---
+
+验证失败时，我们抛出一个 QDB_ActiveRecord_ValidateFailedException 异常是推荐的做法。这样可以保证调用模型的代码可以按照相同的办法处理自定义的验证错误。
+
+如果希望自定义验证仅在创建时执行，那么使用 _before_validate_on_create 事件即可。当然，有必要的话，也可以使用 _after_validate 和 _after_validate_on_create 事件来进行自定义验证。
+
+_after_validate 和 _before_validate 的区别在于 _after_validate 是在 QeePHP 执行完模型的自动验证规则后才引发的事件。
+
+
+## 进一步控制创建操作 ##
+
+虽然我们经常使用自增字段来做主键，但如果模型的主键不是自增的。那么调用 save() 前必须给模型指定主键值，可这又会导致 save() 认为是要更新已有的对象，而不是创建新对象。
+
+解决办法是使用 save() 方法的第二个参数来强制创建新对象：
+
+/---code php
+$user = new User();
+$user->id = 1;
+$user->name = 'theone';
+$user->save(99, 'create');
+\---
+
+save() 有两个参数，第二个参数就是保存模式。保存模式可以是：
+
+|--------------------------------
+| 保存模式 ||
+|--------------------------------
+|* save    | 根据是否有主键值判断是创建还是更新
+|* create  | 强制创建
+|* update  | 强制更新
+|* replace | 先尝试替换已有的对象，如果失败则创建新对象
+
+合理使用第二个参数即可实现预期目标。
+
+<p>&nbsp;</p>
+
+QeePHP 的一个重要特性是可以在保存对象时，自动保存这个对象关联的对象。如果希望禁用该特征，可以把 save() 方法的第一个参数设置为 false 或 0。
+
+实际上，save() 的第一个参数是保存操作执行的层次。假设存在这样的一个对象网“用户 -> 文章 -> 评论”，那么 save(1) 将只保存“用户”和“文章”。如果 save(0)，则只保存“用户”，“用户”关联的任何对象都不会被自动保存。
+
+
+## 主键的处理 ##
+
+如果主键是自增字段，那么新的自增值会被赋值给对象的主键：
+
+/---code php
+$user->save();
+echo $user->id;
+\---
+
+如果主键不是自增，而我们又没有为主键指定值，那么 QeePHP 会尝试自己生成一个主键值。生成机制根据使用的数据库而有所不同。
+
+如果是 MySQL，那么 QeePHP 会创建一个额外的数据表，用于保存自动增长的主键值。如果是其他数据库，则通常是创建一个序列，并且提取序列的新值来做主键值。
+
+但不管哪种方式，成功保存后，主键值都会被赋值给对象。
+
+
+## 复合主键 ##
+
+有时候我们的模型具有多个主键，这时 QeePHP 要求这些主键最多有一个可以不提供值。例如模型有 id、type 两个属性组成复合主键，那么 save() 时，要么为 id 和 type 都指定值，要么只指定其中一个，另一个由 QeePHP 自动提供。但不能 id 和 type 属性的值都不提供。
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+$Id: model-create.texy 2295 2009-03-10 07:48:18Z dualface $

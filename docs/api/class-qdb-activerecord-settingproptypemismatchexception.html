@@ -1,0 +1,928 @@
+<html>
+<head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("a.toggle").toggle(function(){
+        $(this).text($(this).text().replace(/隐藏/,'显示'));
+        var a=$(this).parents(".summary");
+        a.find(".inherited").hide();
+    },function(){
+        $(this).text($(this).text().replace(/显示/,'隐藏'));
+        $(this).parents(".summary").find(".inherited").show();
+    });
+});
+</script>
+
+
+   <!-- 左侧栏 -->
+	<div class="container">
+	<div class="row">
+    <div id="subpage_sidebar" class="left apidoc-classes-index span3">
+
+      
+
+<h3>包 core</h3>
+
+<ul>
+    <li>
+    <a href="./class-q.html" title="Q">Q</a>
+  </li>
+    <li>
+    <a href="./class-qexception.html" title="QException">QException</a>
+  </li>
+    <li>
+    <a href="./class-qcoll.html" title="QColl">QColl</a>
+  </li>
+    <li>
+    <a href="./class-qcontext.html" title="QContext">QContext</a>
+  </li>
+    <li>
+    <a href="./class-qlog.html" title="QLog">QLog</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 mvc</h3>
+
+<ul>
+    <li>
+    <a href="./class-qacl.html" title="QACL">QACL</a>
+  </li>
+    <li>
+    <a href="./class-qcontroller-abstract.html" title="QController_Abstract">QController_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qcontroller-forward.html" title="QController_Forward">QController_Forward</a>
+  </li>
+    <li>
+    <a href="./class-qrouter.html" title="QRouter">QRouter</a>
+  </li>
+    <li>
+    <a href="./class-qview-output.html" title="QView_Output">QView_Output</a>
+  </li>
+    <li>
+    <a href="./class-qview-redirect.html" title="QView_Redirect">QView_Redirect</a>
+  </li>
+    <li>
+    <a href="./class-qview-render-php.html" title="QView_Render_PHP">QView_Render_PHP</a>
+  </li>
+    <li>
+    <a href="./class-qview-render-php-parser.html" title="QView_Render_PHP_Parser">QView_Render_PHP_Parser</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 orm</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdb-activerecord-behavior-abstract.html" title="QDB_ActiveRecord_Behavior_Abstract">QDB_ActiveRecord_Behavior_Abst...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-abstract.html" title="QDB_ActiveRecord_Abstract">QDB_ActiveRecord_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-abstract.html" title="QDB_ActiveRecord_Association_Abstract">QDB_ActiveRecord_Association_A...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-belongsto.html" title="QDB_ActiveRecord_Association_BelongsTo">QDB_ActiveRecord_Association_B...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-coll.html" title="QDB_ActiveRecord_Association_Coll">QDB_ActiveRecord_Association_C...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-hasmany.html" title="QDB_ActiveRecord_Association_HasMany">QDB_ActiveRecord_Association_H...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-hasone.html" title="QDB_ActiveRecord_Association_HasOne">QDB_ActiveRecord_Association_H...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-manytomany.html" title="QDB_ActiveRecord_Association_ManyToMany">QDB_ActiveRecord_Association_M...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-meta.html" title="QDB_ActiveRecord_Meta">QDB_ActiveRecord_Meta</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-view.html" title="QDB_ActiveRecord_View">QDB_ActiveRecord_View</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-viewmeta.html" title="QDB_ActiveRecord_ViewMeta">QDB_ActiveRecord_ViewMeta</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-callbacks.html" title="QDB_ActiveRecord_Callbacks">QDB_ActiveRecord_Callbacks</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-interface.html" title="QDB_ActiveRecord_Interface">QDB_ActiveRecord_Interface</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 form</h3>
+
+<ul>
+    <li>
+    <a href="./class-qform-element.html" title="QForm_Element">QForm_Element</a>
+  </li>
+    <li>
+    <a href="./class-qform-group.html" title="QForm_Group">QForm_Group</a>
+  </li>
+    <li>
+    <a href="./class-qform.html" title="QForm">QForm</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 database</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdb-adapter-abstract.html" title="QDB_Adapter_Abstract">QDB_Adapter_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-mysql.html" title="QDB_Adapter_Mysql">QDB_Adapter_Mysql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-abstract.html" title="QDB_Adapter_Pdo_Abstract">QDB_Adapter_Pdo_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-exception.html" title="QDB_Adapter_Pdo_Exception">QDB_Adapter_Pdo_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-pgsql.html" title="QDB_Adapter_Pdo_Pgsql">QDB_Adapter_Pdo_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pgsql.html" title="QDB_Adapter_Pgsql">QDB_Adapter_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-cond.html" title="QDB_Cond">QDB_Cond</a>
+  </li>
+    <li>
+    <a href="./class-qdb.html" title="QDB">QDB</a>
+  </li>
+    <li>
+    <a href="./class-qdb-expr.html" title="QDB_Expr">QDB_Expr</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-abstract.html" title="QDB_Result_Abstract">QDB_Result_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-mysql.html" title="QDB_Result_Mysql">QDB_Result_Mysql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-pdo.html" title="QDB_Result_Pdo">QDB_Result_Pdo</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-pgsql.html" title="QDB_Result_Pgsql">QDB_Result_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-select.html" title="QDB_Select">QDB_Select</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table.html" title="QDB_Table">QDB_Table</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table-lite.html" title="QDB_Table_Lite">QDB_Table_Lite</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 helper</h3>
+
+<ul>
+    <li>
+    <a href="./class-helper-filesys.html" title="Helper_Filesys">Helper_Filesys</a>
+  </li>
+    <li>
+    <a href="./class-helper-array.html" title="Helper_Array">Helper_Array</a>
+  </li>
+    <li>
+    <a href="./class-qdom-document.html" title="QDom_Document">QDom_Document</a>
+  </li>
+    <li>
+    <a href="./class-qdom-element.html" title="QDom_Element">QDom_Element</a>
+  </li>
+    <li>
+    <a href="./class-qfilter.html" title="QFilter">QFilter</a>
+  </li>
+    <li>
+    <a href="./class-helper-image.html" title="Helper_Image">Helper_Image</a>
+  </li>
+    <li>
+    <a href="./class-helper-imagegd.html" title="Helper_ImageGD">Helper_ImageGD</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcode.html" title="Helper_ImgCode">Helper_ImgCode</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcodesimple.html" title="Helper_ImgCodeSimple">Helper_ImgCodeSimple</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcodettf.html" title="Helper_ImgCodeTTF">Helper_ImgCodeTTF</a>
+  </li>
+    <li>
+    <a href="./class-helper-uploader.html" title="Helper_Uploader">Helper_Uploader</a>
+  </li>
+    <li>
+    <a href="./class-helper-uploader-file.html" title="Helper_Uploader_File">Helper_Uploader_File</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator.html" title="QValidator">QValidator</a>
+  </li>
+    <li>
+    <a href="./class-helper-yaml.html" title="Helper_YAML">Helper_YAML</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 cache</h3>
+
+<ul>
+    <li>
+    <a href="./class-qcache-apc.html" title="QCache_APC">QCache_APC</a>
+  </li>
+    <li>
+    <a href="./class-qcache-file.html" title="QCache_File">QCache_File</a>
+  </li>
+    <li>
+    <a href="./class-qcache-memcached.html" title="QCache_Memcached">QCache_Memcached</a>
+  </li>
+    <li>
+    <a href="./class-qcache-memory.html" title="QCache_Memory">QCache_Memory</a>
+  </li>
+    <li>
+    <a href="./class-qcache-phpdatafile.html" title="QCache_PHPDataFile">QCache_PHPDataFile</a>
+  </li>
+    <li>
+    <a href="./class-qcache-xcache.html" title="QCache_XCache">QCache_XCache</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 webcontrols</h3>
+
+<ul>
+    <li>
+    <a href="./class-qui-control-abstract.html" title="QUI_Control_Abstract">QUI_Control_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-input-abstract.html" title="Control_Input_Abstract">Control_Input_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-button.html" title="Control_Button">Control_Button</a>
+  </li>
+    <li>
+    <a href="./class-control-checkbox-abstract.html" title="Control_Checkbox_Abstract">Control_Checkbox_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-checkbox.html" title="Control_Checkbox">Control_Checkbox</a>
+  </li>
+    <li>
+    <a href="./class-control-checkboxgroup-abstract.html" title="Control_CheckboxGroup_Abstract">Control_CheckboxGroup_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-checkboxgroup.html" title="Control_CheckboxGroup">Control_CheckboxGroup</a>
+  </li>
+    <li>
+    <a href="./class-control-dropdownlist.html" title="Control_DropdownList">Control_DropdownList</a>
+  </li>
+    <li>
+    <a href="./class-control-hidden.html" title="Control_Hidden">Control_Hidden</a>
+  </li>
+    <li>
+    <a href="./class-control-label.html" title="Control_Label">Control_Label</a>
+  </li>
+    <li>
+    <a href="./class-control-listbox.html" title="Control_Listbox">Control_Listbox</a>
+  </li>
+    <li>
+    <a href="./class-control-memo.html" title="Control_Memo">Control_Memo</a>
+  </li>
+    <li>
+    <a href="./class-control-password.html" title="Control_Password">Control_Password</a>
+  </li>
+    <li>
+    <a href="./class-control-radio.html" title="Control_Radio">Control_Radio</a>
+  </li>
+    <li>
+    <a href="./class-control-radiogroup.html" title="Control_RadioGroup">Control_RadioGroup</a>
+  </li>
+    <li>
+    <a href="./class-control-reset.html" title="Control_Reset">Control_Reset</a>
+  </li>
+    <li>
+    <a href="./class-control-static.html" title="Control_Static">Control_Static</a>
+  </li>
+    <li>
+    <a href="./class-control-submit.html" title="Control_Submit">Control_Submit</a>
+  </li>
+    <li>
+    <a href="./class-control-textbox.html" title="Control_Textbox">Control_Textbox</a>
+  </li>
+    <li>
+    <a href="./class-control-upload.html" title="Control_Upload">Control_Upload</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 behavior</h3>
+
+<ul>
+    <li>
+    <a href="./class-model-behavior-acluser.html" title="Model_Behavior_AclUser">Model_Behavior_AclUser</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-fastuuid.html" title="Model_Behavior_Fastuuid">Model_Behavior_Fastuuid</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-relation.html" title="Model_Behavior_Relation">Model_Behavior_Relation</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-uniqueness.html" title="Model_Behavior_Uniqueness">Model_Behavior_Uniqueness</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 exception</h3>
+
+<ul>
+    <li>
+    <a href="./class-qcache-exception.html" title="QCache_Exception">QCache_Exception</a>
+  </li>
+    <li>
+    <a href="./class-q-classfileexistsexception.html" title="Q_ClassFileExistsException">Q_ClassFileExistsException</a>
+  </li>
+    <li>
+    <a href="./class-q-classnotdefinedexception.html" title="Q_ClassNotDefinedException">Q_ClassNotDefinedException</a>
+  </li>
+    <li>
+    <a href="./class-q-createdirfailedexception.html" title="Q_CreateDirFailedException">Q_CreateDirFailedException</a>
+  </li>
+    <li>
+    <a href="./class-q-createfilefailedexception.html" title="Q_CreateFileFailedException">Q_CreateFileFailedException</a>
+  </li>
+    <li>
+    <a href="./class-q-filenotfoundexception.html" title="Q_FileNotFoundException">Q_FileNotFoundException</a>
+  </li>
+    <li>
+    <a href="./class-q-filenotreadableexception.html" title="Q_FileNotReadableException">Q_FileNotReadableException</a>
+  </li>
+    <li>
+    <a href="./class-q-illegalclassnameexception.html" title="Q_IllegalClassNameException">Q_IllegalClassNameException</a>
+  </li>
+    <li>
+    <a href="./class-q-illegalfilenameexception.html" title="Q_IllegalFilenameException">Q_IllegalFilenameException</a>
+  </li>
+    <li>
+    <a href="./class-qlog-exception.html" title="QLog_Exception">QLog_Exception</a>
+  </li>
+    <li>
+    <a href="./class-q-notimplementedexception.html" title="Q_NotImplementedException">Q_NotImplementedException</a>
+  </li>
+    <li>
+    <a href="./class-q-removedirfailedexception.html" title="Q_RemoveDirFailedException">Q_RemoveDirFailedException</a>
+  </li>
+    <li>
+    <a href="./class-qdb-exception.html" title="QDB_Exception">QDB_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-exception-duplicatekey.html" title="QDB_Exception_DuplicateKey">QDB_Exception_DuplicateKey</a>
+  </li>
+    <li>
+    <a href="./class-qdb-select-exception.html" title="QDB_Select_Exception">QDB_Select_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table-exception.html" title="QDB_Table_Exception">QDB_Table_Exception</a>
+  </li>
+    <li>
+    <a href="./class-acluser-exception.html" title="AclUser_Exception">AclUser_Exception</a>
+  </li>
+    <li>
+    <a href="./class-acluser-duplicateusernameexception.html" title="AclUser_DuplicateUsernameException">AclUser_DuplicateUsernameExcep...</a>
+  </li>
+    <li>
+    <a href="./class-acluser-usernamenotfoundexception.html" title="AclUser_UsernameNotFoundException">AclUser_UsernameNotFoundExcept...</a>
+  </li>
+    <li>
+    <a href="./class-acluser-wrongpasswordexception.html" title="AclUser_WrongPasswordException">AclUser_WrongPasswordException</a>
+  </li>
+    <li>
+    <a href="./class-qform-exception.html" title="QForm_Exception">QForm_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdom-exception.html" title="QDom_Exception">QDom_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator-exception.html" title="QValidator_Exception">QValidator_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator-validatefailedexception.html" title="QValidator_ValidateFailedException">QValidator_ValidateFailedExcep...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-exception.html" title="QDB_ActiveRecord_Association_Exception">QDB_ActiveRecord_Association_E...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-notdefinedexception.html" title="QDB_ActiveRecord_Association_NotDefinedException">QDB_ActiveRecord_Association_N...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-rejectexception.html" title="QDB_ActiveRecord_Association_RejectException">QDB_ActiveRecord_Association_R...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-behavior-exception.html" title="QDB_ActiveRecord_Behavior_Exception">QDB_ActiveRecord_Behavior_Exce...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-exception.html" title="QDB_ActiveRecord_Exception">QDB_ActiveRecord_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-calltoundefinedmethodexception.html" title="QDB_ActiveRecord_CallToUndefinedMethodException">QDB_ActiveRecord_CallToUndefin...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-changingreadonlypropexception.html" title="QDB_ActiveRecord_ChangingReadonlyPropException">QDB_ActiveRecord_ChangingReado...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-compositepkincompatibleexception.html" title="QDB_ActiveRecord_CompositePKIncompatibleException">QDB_ActiveRecord_CompositePKIn...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-destroywithoutidexception.html" title="QDB_ActiveRecord_DestroyWithoutIdException">QDB_ActiveRecord_DestroyWithou...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-expectsassocpropexception.html" title="QDB_ActiveRecord_ExpectsAssocPropException">QDB_ActiveRecord_ExpectsAssocP...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-meta-exception.html" title="QDB_ActiveRecord_Meta_Exception">QDB_ActiveRecord_Meta_Exceptio...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-settingproptypemismatchexception.html" title="QDB_ActiveRecord_SettingPropTypeMismatchException">QDB_ActiveRecord_SettingPropTy...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-undefinedpropexception.html" title="QDB_ActiveRecord_UndefinedPropException">QDB_ActiveRecord_UndefinedProp...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-validatefailedexception.html" title="QDB_ActiveRecord_ValidateFailedException">QDB_ActiveRecord_ValidateFaile...</a>
+  </li>
+    <li>
+    <a href="./class-qacl-exception.html" title="QACL_Exception">QACL_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-exception.html" title="QRouter_Exception">QRouter_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-invalidrouteexception.html" title="QRouter_InvalidRouteException">QRouter_InvalidRouteException</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-routenotfoundexception.html" title="QRouter_RouteNotFoundException">QRouter_RouteNotFoundException</a>
+  </li>
+    <li>
+    <a href="./class-qview-exception.html" title="QView_Exception">QView_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qui-exception.html" title="QUI_Exception">QUI_Exception</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 debug</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdebug.html" title="QDebug">QDebug</a>
+  </li>
+    <li>
+    <a href="./class-qdebug-firephp.html" title="QDebug_FirePHP">QDebug_FirePHP</a>
+  </li>
+  
+</ul>
+
+
+
+    </div>
+
+    <!-- /左侧栏 -->
+
+    <!-- 右侧栏 -->
+
+    <div id="col3" class="right contents span9">
+
+      
+<div class="apidoc-class">
+
+  <h1>类 - QDB_ActiveRecord_SettingPropTypeMismatchException</h1>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="./index.html">所有包</a></li>
+
+        <li><a href="#properties">类属性</a></li>
+    
+        <li><a href="#methods">类方法</a></li>
+    
+
+  </ul>
+
+  
+<table class="summary-table table table-bordered" cellpadding="0" cellspacing="0" >
+  <tr>
+    <th nowrap="nowrap">包</th>
+    <td>exception</td>
+  </tr>
+  <tr>
+    <th nowrap="nowrap">类层次</th>
+    <td>
+    QDB_ActiveRecord_SettingPropTypeMismatchException
+&raquo;
+<a href="./class-qdb-activerecord-exception.html">QDB_ActiveRecord_Exception</a>
+&raquo;
+<a href="./class-qexception.html">QException</a>
+&raquo;
+<a href="./class-exception.html">Exception</a>
+    </td>
+  </tr>
+
+  
+  
+    <tr>
+    <th nowrap="nowrap">版本</th>
+    <td>$Id: settingproptype_mismatch.php 2402 2009-04-07 03:50:49Z dualface $</td>
+  </tr>
+  
+</table>
+
+<div class="formatted">
+  
+<p>QDB_ActiveRecord_SettingPropTypeMismatchException
+异常指示指定给属性的值类型不匹配</p>
+</div>
+
+
+  <a name="properties"></a>
+
+  
+<div class="summary">
+
+  <h2>公开的属性</h2>
+  <p>
+    <a href="#" class="toggle">隐藏继承的属性</a>
+  </p>
+
+  <table class="list-table table table-bordered">
+    <tr>
+      <th>属性</th><th>类型</th><th>描述</th><th>定义于</th>
+    </tr>
+
+    
+    <tr>
+      <td>$prop_name</td>
+      <td></td>
+      <td></td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_SettingPropTypeMismatchException        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$expected_type</td>
+      <td></td>
+      <td></td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_SettingPropTypeMismatchException        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$actual_type</td>
+      <td></td>
+      <td></td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_SettingPropTypeMismatchException        		</small>
+      </td>
+    </tr>
+    
+    <tr class="inherited">
+      <td>$ar_class_name</td>
+      <td>string</td>
+      <td>相关的 ActiveRecord 类</td>
+      <td>
+      	<small>
+                <a href="./class-qdb-activerecord-exception.html">QDB_ActiveRecord_Exception</a>
+        		</small>
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+
+
+<div class="summary">
+
+  <h2>保护的属性</h2>
+  <p>
+    <a href="#" class="toggle">隐藏继承的属性</a>
+  </p>
+
+  <table class="list-table table table-bordered">
+    <tr>
+      <th>属性</th><th>类型</th><th>描述</th><th>定义于</th>
+    </tr>
+
+    
+    <tr class="inherited">
+      <td>$message</td>
+      <td></td>
+      <td></td>
+      <td>
+      	<small>
+                <a href="./class-exception.html">Exception</a>
+        		</small>
+      </td>
+    </tr>
+    
+    <tr class="inherited">
+      <td>$code</td>
+      <td></td>
+      <td></td>
+      <td>
+      	<small>
+                <a href="./class-exception.html">Exception</a>
+        		</small>
+      </td>
+    </tr>
+    
+    <tr class="inherited">
+      <td>$file</td>
+      <td></td>
+      <td></td>
+      <td>
+      	<small>
+                <a href="./class-exception.html">Exception</a>
+        		</small>
+      </td>
+    </tr>
+    
+    <tr class="inherited">
+      <td>$line</td>
+      <td></td>
+      <td></td>
+      <td>
+      	<small>
+                <a href="./class-exception.html">Exception</a>
+        		</small>
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+
+
+  <a name="methods"></a>
+  
+<div class="summary">
+  <h2>公共方法</h2>
+  <p>
+    <a href="#" class="toggle">隐藏继承的方法</a>
+  </p>
+
+  <table class="list-table table table-bordered">
+    <tr>
+      <th>方法</th><th>描述</th><th>定义于</th>
+    </tr>
+
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_SettingPropTypeMismatchException___construct">__construct()</a>
+      </td>
+
+      <td></td>
+      <td>
+                QDB_ActiveRecord_SettingPropTypeMismatchException        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-qexception.html#QException_dump">dump()</a>
+      </td>
+
+      <td>输出异常的详细信息和调用堆栈</td>
+      <td>
+                <a href="./class-qexception.html">QException</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-exception.html#Exception_getMessage">getMessage()</a>
+      </td>
+
+      <td></td>
+      <td>
+                <a href="./class-exception.html">Exception</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-exception.html#Exception_getCode">getCode()</a>
+      </td>
+
+      <td></td>
+      <td>
+                <a href="./class-exception.html">Exception</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-exception.html#Exception_getFile">getFile()</a>
+      </td>
+
+      <td></td>
+      <td>
+                <a href="./class-exception.html">Exception</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-exception.html#Exception_getLine">getLine()</a>
+      </td>
+
+      <td></td>
+      <td>
+                <a href="./class-exception.html">Exception</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-exception.html#Exception_getTrace">getTrace()</a>
+      </td>
+
+      <td></td>
+      <td>
+                <a href="./class-exception.html">Exception</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-exception.html#Exception_getTraceAsString">getTraceAsString()</a>
+      </td>
+
+      <td></td>
+      <td>
+                <a href="./class-exception.html">Exception</a>
+        
+      </td>
+    </tr>
+        <tr class="inherited">
+      <td>
+        <a href="./class-exception.html#Exception___toString">__toString()</a>
+      </td>
+
+      <td></td>
+      <td>
+                <a href="./class-exception.html">Exception</a>
+        
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+
+
+<div class="details">
+
+  <h2>属性详细说明</h2>
+
+    
+  <a name="prop_name"></a>
+
+  <div class="name property">
+    <strong>$prop_name</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+      </div>
+
+    
+  <a name="expected_type"></a>
+
+  <div class="name property">
+    <strong>$expected_type</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+      </div>
+
+    
+  <a name="actual_type"></a>
+
+  <div class="name property">
+    <strong>$actual_type</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+      </div>
+
+            
+</div>
+
+
+<div class="details">
+
+  <h2>方法详细说明</h2>
+
+    
+  <a name="QDB_ActiveRecord_SettingPropTypeMismatchException___construct"></a>
+
+  <h4 class="name method">
+    __construct()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public void <strong>__construct</strong>($class_name, $prop_name, $expected_type, $actual_type)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$class_name</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$prop_name</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$expected_type</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$actual_type</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+      </div>
+	<hr>
+                    
+</div>
+
+
+</div>
+
+
+    </div>
+
+    <!-- /右侧栏 -->
+    </div>
+	</div>
+</body>
+</html>

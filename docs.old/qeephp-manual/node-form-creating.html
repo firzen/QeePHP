@@ -1,0 +1,286 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 应用开发权威指南</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 应用开发权威指南</a>
+      &raquo;
+      <a href="node-form.html">表单</a>
+      &raquo;
+      创建表单    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+
+    
+<h1>创建表单</h1>
+
+<p>创建表单有多种方式，为开发者提供了充分的灵活性。</p>
+
+<h2>创建简单的表单</h2>
+
+<p>下面的代码创建了一个表单对象，并设置了表单的
+ID、action 和 method 属性。</p>
+
+<pre class="php code"><span
+class="co1">// 构造一个表单，并设置表单的 ID、action 和 method 属性</span>
+<span
+class="re0">$form</span> <span class="sy0">=</span> <span
+class="kw2">new</span> QForm<span class="br0">&#40;</span><span
+class="st_h">'form1'</span><span class="sy0">,</span> url<span
+class="br0">&#40;</span><span class="st_h">'posts/create'</span><span
+class="br0">&#41;</span><span class="sy0">,</span> QForm<span
+class="sy0">::</span><span class="me2">POST</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>功能等同的代码：</p>
+
+<pre class="php code"><span
+class="co1">// 构造一个表单，并设置表单的 ID、action 和 method 属性</span>
+<span
+class="re0">$form</span> <span class="sy0">=</span> <span
+class="kw2">new</span> QForm<span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">id</span> <span class="sy0">=</span> <span
+class="st_h">'form1'</span><span class="sy0">;</span>
+<span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">action</span> <span class="sy0">=</span> url<span
+class="br0">&#40;</span><span class="st_h">'posts/create'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">method</span> <span class="sy0">=</span> QForm<span
+class="sy0">::</span><span class="me2">POST</span><span
+class="sy0">;</span></pre>
+
+<p>还可以使用连贯接口完成：</p>
+
+<pre class="php code"><span class="re0">$form</span> <span
+class="sy0">=</span> <span class="kw2">new</span> QForm<span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+<span class="re0">$form</span><span
+class="sy0">-&gt;</span><span class="me1">set</span><span
+class="br0">&#40;</span><span class="st_h">'id'</span><span
+class="sy0">,</span> <span class="st_h">'form1'</span><span
+class="br0">&#41;</span>
+     <span class="sy0">-&gt;</span><span
+class="me1">set</span><span class="br0">&#40;</span><span
+class="st_h">'action'</span><span class="sy0">,</span> url<span
+class="br0">&#40;</span><span class="st_h">'posts/create'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span>
+     <span
+class="sy0">-&gt;</span><span class="me1">set</span><span
+class="br0">&#40;</span><span class="st_h">'method'</span><span
+class="sy0">,</span> QForm<span class="sy0">::</span><span
+class="me2">POST</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<h2>添加元素到表单</h2>
+
+<p>前面创建的表单对象还是空的，不能容纳任何数据。因此还需要添加表单元素。</p>
+
+<p>在 QeePHP
+中，表单元素有两种类别：<strong>值元素</strong>和<strong>群组</strong>。值元素用于容纳一个值，例如客户端提交的用户名、密码等。而群组则是包含多个值元素的集合，有关群组请参考后续的章节。</p>
+
+<pre class="php code"><span
+class="co1">// 添加两个值元素，其 ID 分别是 username 和 password</span>
+<span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">add</span><span class="br0">&#40;</span>QForm<span
+class="sy0">::</span><span class="me2">ELEMENT</span><span
+class="sy0">,</span> <span class="st_h">'username'</span><span
+class="br0">&#41;</span>
+     <span class="sy0">-&gt;</span><span
+class="me1">add</span><span class="br0">&#40;</span>QForm<span
+class="sy0">::</span><span class="me2">ELEMENT</span><span
+class="sy0">,</span> <span class="st_h">'password'</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>在添加值元素时，还可以指定值元素的属性：</p>
+
+<pre class="php code"><span class="re0">$form</span><span
+class="sy0">-&gt;</span><span class="me1">add</span><span
+class="br0">&#40;</span>QForm<span class="sy0">::</span><span
+class="me2">ELEMENT</span><span class="sy0">,</span> <span
+class="st_h">'username'</span><span class="sy0">,</span> <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'_ui'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'textbox'</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span>
+     <span class="sy0">-&gt;</span><span
+class="me1">add</span><span class="br0">&#40;</span>QForm<span
+class="sy0">::</span><span class="me2">ELEMENT</span><span
+class="sy0">,</span> <span class="st_h">'password'</span><span
+class="sy0">,</span> <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'_ui'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'password'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>或者使用连贯接口在添加元素后指定元素的属性：</p>
+
+<pre class="php code"><span class="re0">$form</span><span
+class="sy0">-&gt;</span><span class="me1">add</span><span
+class="br0">&#40;</span>QForm<span class="sy0">::</span><span
+class="me2">ELEMENT</span><span class="sy0">,</span> <span
+class="st_h">'username'</span><span class="br0">&#41;</span>
+         <span
+class="sy0">-&gt;</span><span class="me1">set</span><span
+class="br0">&#40;</span><span class="st_h">'_ui'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'textbox'</span><span
+class="br0">&#41;</span>
+         <span class="sy0">-&gt;</span><span
+class="me1">set</span><span class="br0">&#40;</span><span
+class="st_h">'maxlength'</span> <span class="sy0">=&gt;</span> <span
+class="nu0">15</span><span class="br0">&#41;</span>
+     <span
+class="sy0">-&gt;</span><span class="me1">add</span><span
+class="br0">&#40;</span>QForm<span class="sy0">::</span><span
+class="me2">ELEMENT</span><span class="sy0">,</span> <span
+class="st_h">'password'</span><span class="br0">&#41;</span>
+         <span
+class="sy0">-&gt;</span><span class="me1">set</span><span
+class="br0">&#40;</span><span class="st_h">'_ui'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'password'</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<blockquote>
+	<p>提示： 习惯上，_ui
+	属性用于指定使用哪种类型的用户界面控件来构造表单元素。</p>
+</blockquote>
+
+<h2>通过 QForm 继承类构造表单</h2>
+
+<p>对于复杂一些的表单，可以创建一个 QForm 的继承类。</p>
+
+<pre class="php code"><span class="kw2">class</span> UserLoginForm <span
+class="kw2">extends</span> QForm
+<span
+class="br0">&#123;</span>
+    funciton __construct<span
+class="br0">&#40;</span><span class="re0">$action</span> <span
+class="sy0">=</span> <span class="kw2">null</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        parent<span
+class="sy0">::</span>__construct<span class="br0">&#40;</span><span
+class="st_h">'form_userlogin'</span><span class="sy0">,</span> <span
+class="re0">$action</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+        <span class="re0">$this</span><span
+class="sy0">-&gt;</span><span class="me1">add</span><span
+class="br0">&#40;</span>QForm<span class="sy0">::</span><span
+class="me2">ELEMENT</span><span class="sy0">,</span> <span
+class="st_h">'username'</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span
+class="br0">&#125;</span></pre>
+
+<p>通过继承类创建表单的好处是可以将表单的构造封装在表单类中，并且可以通过自定义的方法来过滤和验证表单数据。</p>
+
+<h2>从配置文件加载表单</h2>
+
+<p>如果是一个有许多元素的表单，通过编码的方式来构造完全不符合懒人的原则。所以
+QForm
+允许开发者直接从配置文件加载表单，并批量完成表单元素的添加。</p>
+
+<pre class="php code"><span
+class="co1">// 从配置文件载入表单定义后批量添加表单元素</span>
+<span
+class="re0">$config</span> <span class="sy0">=</span> Helper_YAML<span
+class="sy0">::</span><span class="me2">loadCached</span><span
+class="br0">&#40;</span><span class="kw3">dirname</span><span
+class="br0">&#40;</span><span class="kw2">__FILE__</span><span
+class="br0">&#41;</span> <span class="sy0">.</span> <span
+class="st_h">'/userlogin_form.yaml'</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+<span class="re0">$form</span><span
+class="sy0">-&gt;</span><span class="me1">loadFromConfig</span><span
+class="br0">&#40;</span><span class="re0">$config</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>配置文件的写法如下：</p>
+
+<pre class="python code">~form:
+  <span
+class="kw2">id</span>: userlogin_form
+  method: post
+&nbsp;
+username:
+  _ui: <span
+class="st0">&quot;textbox&quot;</span>
+  maxlength: <span
+class="nu0">15</span>
+&nbsp;
+password:
+  _ui: <span
+class="st0">&quot;password&quot;</span>
+  maxlength: <span
+class="nu0">30</span></pre>
+
+<p>配置文件中，每一个小节指定一个元素及属性。“~form”小节专门用于指定表单对象的属性。</p>
+
+<p>通过配置文件，可以轻松定义复杂的表单。</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p>$Id: form-creating.texy 2295 2009-03-10 07:48:18Z dualface $</p>
+
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-form-overview.html">概述</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-form.html">表单</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-form-elements.html">操作表单元素</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

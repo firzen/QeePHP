@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 应用开发权威指南</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 应用开发权威指南</a>
+      &raquo;
+      <a href="node-form.html">表单控件</a>
+      &raquo;
+      操作表单元素    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+    
+<h1>操作表单的元素</h1>
+
+<p>构造好的表单对象，可以通过 QForm::element()
+方法来访问表单的元素：</p>
+
+<pre class="php code"><span
+class="co1">// 访问表单中的 username 元素，并设置该元素的属性</span>
+<span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">element</span><span class="br0">&#40;</span><span
+class="st_h">'username'</span><span class="br0">&#41;</span>
+     <span
+class="sy0">-&gt;</span><span class="me1">set</span><span
+class="br0">&#40;</span><span class="st_h">'_ui'</span><span
+class="sy0">,</span> <span class="st_h">'textbox'</span><span
+class="br0">&#41;</span>
+     <span class="sy0">-&gt;</span><span
+class="me1">set</span><span class="br0">&#40;</span><span
+class="st_h">'maxlength'</span><span class="sy0">,</span> <span
+class="nu0">15</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>QForm::element() 方法返回一个 QForm_Element 对象，因此使用
+QForm_Element 对象的方法即可操作表单元素。</p>
+
+<p>此外，还可以通过数组方式访问表单的元素：</p>
+
+<pre class="php code"><span class="re0">$form</span><span
+class="br0">&#91;</span><span class="st_h">'username'</span><span
+class="br0">&#93;</span><span class="sy0">-&gt;</span><span
+class="me1">set</span><span class="br0">&#40;</span><span
+class="st_h">'_ui'</span><span class="sy0">,</span> <span
+class="st_h">'textbox'</span><span
+class="br0">&#41;</span>
+                 <span class="sy0">-&gt;</span><span
+class="me1">set</span><span class="br0">&#40;</span><span
+class="st_h">'maxlength'</span><span class="sy0">,</span> <span
+class="nu0">15</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<h2>删除表单元素</h2>
+
+<p>要删除一个表单元素，调用 QForm::remove() 方法即可：</p>
+
+<pre class="php code"><span
+class="co1">// 删除 ID 为 username 的元素</span>
+<span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">remove</span><span class="br0">&#40;</span><span
+class="st_h">'username'</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>另一种删除表单元素的方法是使用 unset() 函数：</p>
+
+<pre class="php code"><span
+class="co1">// 删除 ID 为 username 的元素</span>
+<span
+class="kw3">unset</span><span class="br0">&#40;</span><span
+class="re0">$form</span><span class="br0">&#91;</span><span
+class="st_h">'username'</span><span class="br0">&#93;</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<h2>元素的属性</h2>
+
+<p>元素可以设置任意多个属性。这些属性分为两种类型：附加属性和元素属性。所有以下划线“_”开头的属性称为附加属性，而其他属性称为元素属性。</p>
+
+<p>调用元素的 attrs()
+方法时，会返回包含所有元素属性的数组。而 allAttrs()
+方法则会返回包括附加属性在内的所有属性。</p>
+
+<p>虽然 QeePHP
+没有做任何硬性要求，但作为一种惯例，下列附加属性有着特定的意思：</p>
+
+<ul>
+	<li>_ui：用于指定使用什么类型的用户界面控件来构造表单元素的
+	HTML 代码</li>
+
+	<li>_filters: 指定元素的过滤器</li>
+
+	<li>_validations: 指定元素的验证规则</li>
+</ul>
+
+<p>其他的元素属性则通常对应于 HTML
+表单字段的属性，例如：</p>
+
+<pre class="php code"><span class="re0">$element</span><span
+class="sy0">-&gt;</span><span class="me1">maxlength</span> <span
+class="sy0">=</span> <span class="nu0">10</span><span class="sy0">;</span>
+<span
+class="re0">$element</span><span class="sy0">-&gt;</span><span
+class="me1">size</span> <span class="sy0">=</span> <span
+class="nu0">10</span><span class="sy0">;</span>
+<span
+class="re0">$element</span><span class="sy0">-&gt;</span><span
+class="me1">class</span> <span class="sy0">=</span> <span
+class="st_h">'txt'</span><span class="sy0">;</span></pre>
+
+<p>构造出的 HTML 代码类似于：</p>
+
+<pre class="html4strict code"><span class="sc2">&lt;<span
+class="kw2">input</span> <span class="kw3">type</span><span
+class="sy0">=</span><span class="st0">&quot;text&quot;</span> <span
+class="kw3">size</span><span class="sy0">=</span><span
+class="st0">&quot;10&quot;</span> <span class="kw3">maxlength</span><span
+class="sy0">=</span><span class="st0">&quot;10&quot;</span> <span
+class="kw3">class</span><span class="sy0">=</span><span
+class="st0">&quot;txt&quot;</span> <span class="sy0">/</span>&gt;</span></pre>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+$Id: form-elements.texy 2009-03-10 07:48:18Z Tim13 $
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-form-creating.html">创建表单</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-form.html">表单控件</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-form-render.html">显示表单</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

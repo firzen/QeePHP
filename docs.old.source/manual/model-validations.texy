@@ -1,0 +1,177 @@
+=== 自动验证 ===
+
+当模型的属性存储到数据库时，自动验证规则将会用于检验每一个属性的值是否符合要求。这种机制保证无效的数据不会被存入数据库。
+
+下面是两组规则：
+
+/---code php
+'validations' => array
+(
+    // 指定 username 属性的验证规则
+    'username' => array
+    (
+        array('not_empty', '用户名不能为空'),
+        array('min_length', 5, '用户名不能少于 5 个字符'),
+        array('max_length', 15, '用户名不能超过 15 个字符'),
+        array('is_alnum', '用户名只能由字母和数字组成'),
+    ),
+
+    // 指定 password 属性的验证规则
+    'password' => array
+    (
+        array('not_empty', '密码不能为空'),
+        array('min_length', 6, '密码不能少于 6 个字符'),
+        array('max_length', 20, '密码不能超过 20 个字符'),
+    ),
+),
+\---
+
+上面的两组规则分别用于检查 username 属性和 password 属性的值。当调用模型的 save() 方法时，这些验证规则就会起作用。
+
+每个属性的验证规则按照书写顺序从上到下的执行，所有没有通过验证的规则都会被记录下来。所有属性验证完成后，如果存在失败的验证，QeePHP 会抛出 QDB_ActiveRecord_ValidateFailedException 异常。QDB_ActiveRecord_ValidateFailedException 异常的 $validate_errors 成员变量中就是所有未通过验证的规则名称。
+
+
+## 验证规则的书写格式 ##
+
+验证规则按照下面的格式书写：
+
+/---code php
+'validations' => array
+(
+    '属性名' => array
+    (
+        规则,
+        规则....,
+    ),
+
+    ....
+),
+\---
+
+每一条规则以一个数组来指定：
+
+/---code php
+array(要执行的规则, 验证方法需要的参数, 验证失败时的错误信息)
+\---
+
+例如 min_length 这个验证规则，需要一个参数来指定属性值的最小长度，因此其写法就是：
+
+/---code php
+array('min_length', 5, '用户名不能少于 5 个字符'),
+-------------------------------------------------
+       验证方法    参数        错误信息
+\---
+
+对于有多个参数的验证方法，在错误信息前添加就可以了：
+
+/---code php
+array('between', 1, 5, '值必须大于等于 1，且小于等于 5'),
+\---
+
+目前 QeePHP 提供了几十个内置的验证规则，全部放置于 QValidator 类中。这些验证规则的方法都以“validate_“开头，但在写入 ActiveRecord 的验证规则时，就要去掉开头的“validate_”。例如 validate_less_or_equal() 这个方法写入验证规则后就是“less_or_equal”。
+
+有关内置验证规则的i详细信息，请参考 API 文档中 helper 包 QValidator 类的说明。
+
+
+## 使用自定义的验证方法作为规则 ##
+
+除了使用 QeePHP 内置的验证规则，还可以使用自定义的验证方法。
+
+/---code php
+'validations' => array
+(
+    'prop_name' => array
+    (
+        array(array(__CLASS__, 'checkProp'), ....),
+        array('Helper_Order::checkProp', ....),
+        ....
+        ....
+    ),
+    ....
+)
+\---
+
+第一种写法表示以当前模型类的 checkProp() **静态**方法来做验证规则。第二种写法则是使用指定类的静态方法做验证规则。
+
+
+## 控制验证过程 ##
+
+有时候我们对于属性的验证可能是“如果某个属性没有指定值，则不进行验证”，这类需求可以通过在验证规则组中最前面添加一条 skip_empty 规则来实现。
+
+/---code php
+'validations' => array
+(
+    // 指定 email 属性的验证规则
+    'email' => array
+    (
+        array('skip_empty'),
+        array('is_email', '只能使用有效的 email 地址'),
+    ),
+
+    ....
+)
+\---
+
+当没有为 email 属性指定值时，skip_empty 验证规则就会起作用，让 QeePHP 忽略 email 属性剩下的验证规则。注意 skip_empty 和 PHP 内置的 empty 有些区别。skip_empty 仅在属性值确实为空（null 或者空字符串）时才有效。对于数值 0，skip_empty 会视为不为空。
+
+与 skip_empty 类似的验证规则还有：
+
+-  skip_null：当属性值为 null 时忽略余下的验证规则。
+-  skip_on_failed: 属性的多个验证规则中只要有一个没有通过，就忽略余下的验证规则。例如上面代码中对 username 属性有 4 条规则，如果加入 skip_on_failed 则只要 4 条规则中任何一条没有通过都不会再检查 username 属性余下的验证规则。
+
+
+## 限定验证规则的执行时机 ##
+
+默认情况下，为属性指定的验证规则会在新建和更新时都起作用。如果需要单独指定创建和更新时的验证规则，应该使用如下的写法：
+
+/---code php
+'validations' => array
+(
+    'address' => array
+    (
+        'on_create' => array(
+            array('skip_empty'), // 新建对象时，如果 address 没有输入内容就不验证
+        ),
+        array('max_length', 90, '地址不能超过 90 个字符或 30 个汉字'),
+    ),
+
+    ....
+)
+\---
+
+上面代码中通过 on_create 来指定新建（create）对象时要使用的验证规则。
+
+当新建对象时，on_create 指定的规则加上没有限定执行时机的规则，将是实际执行的验证规则。而更新对象时，则只有没有限定执行时机的验证规则起作用。
+
+利用这样的方式，我们可以分别指定适合创建和更新时的验证规则：
+
+/---code php
+'validations' => array
+(
+    'prop_name' => array
+    (
+        'on_create' => array(
+            ....
+            ....
+        ),
+        'on_update' => array(
+            ....
+            ....
+        ),
+        ....
+        ....
+    ),
+
+    ....
+)
+\---
+
+如果自动验证规则无法满足需求，则可以利用模型的事件回调来实现更复杂的验证或其他操作。有关事件回调的详细信息请参考本章的后续内容。
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+$Id: model-validations.texy 2295 2009-03-10 07:48:18Z dualface $
+

@@ -1,0 +1,417 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 快速入门</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qeephp.com/docs/">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 快速入门</a>
+      &raquo;
+      <a href="node-development.html">开始开发</a>
+      &raquo;
+      YAML 入门    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+
+    
+<h1>YAML 入门</h1>
+
+<p>QeePHP 为了方便开发者，大量使用了 YAML
+格式的文件来存储配置信息。因此掌握阅读和书写 YAML
+格式文档的基本知识是很有必要的。</p>
+
+<p>YAML
+格式本身具有非常强大的表达能力，常用的有下面几种：</p>
+
+<ul>
+	<li>名值对，例如 key =&gt; value，这和 PHP
+	中以字符串做键名的数组一样；</li>
+
+	<li>列表，例如 value1, value2，这和 PHP
+	中以数字做键名的数组一样；</li>
+
+	<li>多行文本。</li>
+</ul>
+
+<h2>名值对</h2>
+
+<p>最简单的名值对：</p>
+
+<pre class="python code"><span
+class="co1"># 这是一行注释</span>
+my_name: rockwell <span
+class="co1"># 这也是注释</span></pre>
+
+<ul>
+	<li>以 # 开头的内容则是注释。</li>
+
+	<li>以“:”为结束符的字符串，代表了一个键名，“:”后面则是键值。<strong>“:”和键值之间必须有至少一个空格</strong>。</li>
+</ul>
+
+<p>因此，上述内容 my_name 是键名，rockwell 是键值，解析为 PHP
+数组为：</p>
+
+<pre class="php code"><span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="st_h">'my_name'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'rockwell'</span><span
+class="sy0">,</span>
+<span class="br0">&#41;</span></pre>
+
+<p> </p>
+
+<p>嵌套的名值对：</p>
+
+<pre class="python code"><span
+class="co1">#### 首页显示设置</span>
+homepage:
+  <span
+class="co1"># 首页内容缓存时间（秒）</span>
+  cached_lifetime: <span
+class="nu0">300</span>
+  <span
+class="co1"># 首页上显示多少条最新主题文章</span>
+  topics_num: <span
+class="nu0">2</span>
+  <span
+class="co1"># 首页上显示多少条最新社区活动</span>
+  activities_num: <span
+class="nu0">3</span></pre>
+
+<p>cached_lifetime 等键是 homepage 键的次级，所以 cached_lifetime
+前面有两个空格作为缩进。<strong>使用两个空格作为一级缩进是
+YAML
+的约定，不能使用制表符（Tab）来代替，务必注意这一点。</strong></p>
+
+<p>解析结果为：</p>
+
+<pre class="php code"><span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="st_h">'homepage'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+        <span
+class="st_h">'cached_lifetime'</span> <span class="sy0">=&gt;</span> <span
+class="nu0">300</span><span class="sy0">,</span>
+        <span
+class="st_h">'topics_num'</span>      <span class="sy0">=&gt;</span> <span
+class="nu0">2</span><span class="sy0">,</span>
+        <span
+class="st_h">'activities_num'</span>  <span class="sy0">=&gt;</span> <span
+class="nu0">3</span><span class="sy0">,</span>
+    <span
+class="br0">&#41;</span><span class="sy0">,</span>
+<span
+class="br0">&#41;</span></pre>
+
+<p>在书写名值对时，如果键名或键值包含非英文字母和数字，应该用引号括起来：</p>
+
+<pre class="python code"><span class="st0">'标题'</span>: <span
+class="st0">'这是我的第一本杂志'</span></pre>
+
+<p>这里我们使用了单引号。而双引号和单引号的区别：</p>
+
+<pre class="python code"><span class="st0">'键名1'</span>: <span
+class="st0">'文字<span class="es0">\n</span>文字'</span>
+<span
+class="st0">'键名2'</span>: <span class="st0">&quot;文字<span
+class="es0">\n</span>文字&quot;</span></pre>
+
+<p>使用双引号括起来的字符串中的 \n
+符号会被解析为换行符，而单引号中的 \n
+符号则仍然视为两个普通字符。</p>
+
+<h2>列表</h2>
+
+<p>简单的列表：</p>
+
+<pre class="python code">-  value1
+-  value2
+-  value3</pre>
+
+<p>解析结果为：</p>
+
+<pre class="php code"><span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'value1'</span><span
+class="sy0">,</span> <span class="st_h">'value2'</span><span
+class="sy0">,</span> <span class="st_h">'value3'</span><span
+class="br0">&#41;</span></pre>
+
+<p>另一种写法：</p>
+
+<pre class="python code">- <span
+class="br0">&#91;</span>value1, value2, value3<span
+class="br0">&#93;</span></pre>
+
+<p>注意第二种写法前面的“-”必不可少，并且要跟随至少一个空格。</p>
+
+<h3>名值对和列表的混用</h3>
+
+<p>名值对和列表混用是很常见的写法，参考：</p>
+
+<pre class="python code"><span
+class="co1"># 后台管理菜单标签</span>
+admin_tabs:
+  <span
+class="st0">'首页'</span>:
+    -
+      title: <span
+class="st0">'主题文章'</span>
+      udi: <span
+class="st0">'admin::topics/index'</span>
+    -
+      title: <span
+class="st0">'社区活动'</span>
+      udi: <span
+class="st0">'admin::activities/index'</span>
+&nbsp;
+  <span
+class="st0">'项目'</span>:
+    -
+      title: <span
+class="st0">'项目管理'</span>
+      udi: <span
+class="st0">'admin::projects/index'</span>
+&nbsp;
+  <span
+class="st0">'应用'</span>:
+    -
+      title: <span
+class="st0">'应用展示管理'</span>
+      udi: <span
+class="st0">'admin::cases/index'</span></pre>
+
+<p>这个实例不但有名值对，而且有列表。所有第一个非空字符是“-”的行都代表一个列表的开始，并且后续缩进行的内容作为列表内容。该实例对应的
+PHP 数组是：</p>
+
+<pre class="php code"><span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="st_h">'admin_tabs'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+        <span class="st_h">'首页'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+            <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'title'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'主题文章'</span><span
+class="sy0">,</span> <span class="st_h">'udi'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'admin::topics/index'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+            <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'title'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'社区活动'</span><span class="sy0">,</span> <span
+class="st_h">'udi'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'admin::activities/index'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+        <span class="br0">&#41;</span><span
+class="sy0">,</span>
+        <span class="st_h">'项目'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+            <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'title'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'项目管理'</span><span
+class="sy0">,</span> <span class="st_h">'udi'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'admin::projects/index'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+        <span
+class="br0">&#41;</span><span class="sy0">,</span>
+        <span
+class="st_h">'应用'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span><span class="br0">&#40;</span>
+            <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'title'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'应用展示管理'</span><span class="sy0">,</span> <span
+class="st_h">'udi'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'admin::/cases/index'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+        <span class="br0">&#41;</span><span
+class="sy0">,</span>
+    <span class="br0">&#41;</span><span
+class="sy0">,</span>
+<span class="br0">&#41;</span></pre>
+
+<p>另一个例子：</p>
+
+<pre class="python code">username:
+  _ui: textbox
+  _validations:
+    - <span
+class="br0">&#91;</span>is_alpha, <span
+class="st0">'用户名只能是字母组成'</span><span
+class="br0">&#93;</span>
+    - <span class="br0">&#91;</span>min_length, <span
+class="nu0">5</span>, <span
+class="st0">'用户名最少需要 5 个字符'</span><span
+class="br0">&#93;</span></pre>
+
+<p>解析结果为：</p>
+
+<pre class="php code"><span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="st_h">'_ui'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'textbox'</span><span
+class="sy0">,</span>
+    <span class="st_h">'_validations'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+        <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'is_alpha'</span><span
+class="sy0">,</span> <span
+class="st_h">'用户名只能是字母组成'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+        <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'min_length'</span><span class="sy0">,</span> <span
+class="nu0">5</span><span class="sy0">,</span> <span
+class="st_h">'用户名最少需要 5 个字符'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+    <span
+class="br0">&#41;</span><span class="sy0">,</span>
+<span
+class="br0">&#41;</span></pre>
+
+<h2>多行文本</h2>
+
+<p>多行文本适合在 yaml 文件中存储一些说明文字：</p>
+
+<pre class="python code"><span class="st0">'简介'</span>: <span
+class="sy0">&gt;</span>
+  快速入门教程帮助开发者了解 QeePHP 的开发模式和基本步骤，而权威指南则是开发 QeePHP 应用程序时的全面参考。
+  QeePHP 所有功能的使用方法、使用时机，以及该功能的使用技巧等内容，都会在权威指南中详细阐述。
+&nbsp;
+  权威指南按照不同的主题分为了数十篇文章。每篇文章围绕各自的中心编写内容，读者可以直接选择有针对性的文章查看。</pre>
+
+<p>键名后面跟上“&gt;”符号表示多行文本的开始。接下来每一个缩进的行都会被视为多行文本的一部分。</p>
+
+<p>例如：</p>
+
+<pre class="python code">text: <span
+class="sy0">&gt;</span>
+ Sammy Sosa completed another
+ fine season with great stats.
+&nbsp;
+   <span
+class="nu0">63</span> Home Runs
+   <span
+class="nu0">0.288</span> Batting Average
+&nbsp;
+ What a year<span
+class="sy0">!</span></pre>
+
+<p>如果要结束一个多行文本，后续的内容只需要减少缩进即可，例如：</p>
+
+<pre class="python code">settings:
+  text: <span
+class="sy0">&gt;</span>
+   Sammy Sosa completed another
+   fine season with great stats.
+&nbsp;
+     <span
+class="nu0">63</span> Home Runs
+     <span
+class="nu0">0.288</span> Batting Average
+&nbsp;
+   What a year<span
+class="sy0">!</span>
+&nbsp;
+  title: first post</pre>
+
+<p>解析结果为：</p>
+
+<pre class="php code"><span class="kw3">Array</span>
+<span
+class="br0">&#40;</span>
+    <span class="st_h">'text'</span> <span
+class="sy0">=&gt;</span> <span
+class="st_h">'Sammy Sosa completed another fine season with great stats.
+  63 Home Runs
+  0.288 Batting Average
+&nbsp;
+What a year!'</span><span
+class="sy0">,</span>
+&nbsp;
+    <span class="st_h">'title'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'first post'</span><span
+class="sy0">,</span>
+<span class="br0">&#41;</span></pre>
+
+<h2>书写 YAML 文档</h2>
+
+<p>在书写 YAML
+文档时，最重要的就是注意<strong>缩进</strong>。YAML
+格式要求每一级缩进必须是<strong>两个空格</strong>，不能是制表字符，也不能是更多的空格。此外对于包含空格、特殊符号或汉字的键名和键值，应该使用英文引号括起来。</p>
+
+<p>总结而言，书写 YAML 文档的要点如下：</p>
+
+<ul>
+	<li><strong>注意缩进</strong>
+		<p>缩进只能是两个空格为一级，不能是其他字符。</p>
+	</li>
+
+	<li><strong>字符串应该用引号</strong>
+		<p>包含空格、特殊字符以及中文的字符串应该使用英文引号括起来，不能使用中文引号。</p>
+	</li>
+
+	<li><strong>多层嵌套要注意缩进</strong>
+		<p>多层嵌套时，要注意正确的缩进。</p>
+	</li>
+</ul>
+
+<p>YAML 是一种使用很方便的格式。用于存储一般的配置，YAML
+有着 XML 和 PHP 数组无法比拟的优点。加上 QeePHP 对 YAML
+的缓存能力，性能也不会是问题。</p>
+
+<p>$Id: development-yaml.texy 2315 2009-03-19 20:52:54Z dualface $</p>
+
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-development-database.html">创建数据库</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-development.html">开始开发</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-development-configs.html">修改配置文件</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

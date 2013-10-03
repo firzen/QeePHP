@@ -1,0 +1,2901 @@
+<html>
+<head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("a.toggle").toggle(function(){
+        $(this).text($(this).text().replace(/隐藏/,'显示'));
+        var a=$(this).parents(".summary");
+        a.find(".inherited").hide();
+    },function(){
+        $(this).text($(this).text().replace(/显示/,'隐藏'));
+        $(this).parents(".summary").find(".inherited").show();
+    });
+});
+</script>
+
+
+   <!-- 左侧栏 -->
+	<div class="container">
+	<div class="row">
+    <div id="subpage_sidebar" class="left apidoc-classes-index span3">
+
+      
+
+<h3>包 core</h3>
+
+<ul>
+    <li>
+    <a href="./class-q.html" title="Q">Q</a>
+  </li>
+    <li>
+    <a href="./class-qexception.html" title="QException">QException</a>
+  </li>
+    <li>
+    <a href="./class-qcoll.html" title="QColl">QColl</a>
+  </li>
+    <li>
+    <a href="./class-qcontext.html" title="QContext">QContext</a>
+  </li>
+    <li>
+    <a href="./class-qlog.html" title="QLog">QLog</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 mvc</h3>
+
+<ul>
+    <li>
+    <a href="./class-qacl.html" title="QACL">QACL</a>
+  </li>
+    <li>
+    <a href="./class-qcontroller-abstract.html" title="QController_Abstract">QController_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qcontroller-forward.html" title="QController_Forward">QController_Forward</a>
+  </li>
+    <li>
+    <a href="./class-qrouter.html" title="QRouter">QRouter</a>
+  </li>
+    <li>
+    <a href="./class-qview-output.html" title="QView_Output">QView_Output</a>
+  </li>
+    <li>
+    <a href="./class-qview-redirect.html" title="QView_Redirect">QView_Redirect</a>
+  </li>
+    <li>
+    <a href="./class-qview-render-php.html" title="QView_Render_PHP">QView_Render_PHP</a>
+  </li>
+    <li>
+    <a href="./class-qview-render-php-parser.html" title="QView_Render_PHP_Parser">QView_Render_PHP_Parser</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 orm</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdb-activerecord-behavior-abstract.html" title="QDB_ActiveRecord_Behavior_Abstract">QDB_ActiveRecord_Behavior_Abst...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-abstract.html" title="QDB_ActiveRecord_Abstract">QDB_ActiveRecord_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-abstract.html" title="QDB_ActiveRecord_Association_Abstract">QDB_ActiveRecord_Association_A...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-belongsto.html" title="QDB_ActiveRecord_Association_BelongsTo">QDB_ActiveRecord_Association_B...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-coll.html" title="QDB_ActiveRecord_Association_Coll">QDB_ActiveRecord_Association_C...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-hasmany.html" title="QDB_ActiveRecord_Association_HasMany">QDB_ActiveRecord_Association_H...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-hasone.html" title="QDB_ActiveRecord_Association_HasOne">QDB_ActiveRecord_Association_H...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-manytomany.html" title="QDB_ActiveRecord_Association_ManyToMany">QDB_ActiveRecord_Association_M...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-meta.html" title="QDB_ActiveRecord_Meta">QDB_ActiveRecord_Meta</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-view.html" title="QDB_ActiveRecord_View">QDB_ActiveRecord_View</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-viewmeta.html" title="QDB_ActiveRecord_ViewMeta">QDB_ActiveRecord_ViewMeta</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-callbacks.html" title="QDB_ActiveRecord_Callbacks">QDB_ActiveRecord_Callbacks</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-interface.html" title="QDB_ActiveRecord_Interface">QDB_ActiveRecord_Interface</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 form</h3>
+
+<ul>
+    <li>
+    <a href="./class-qform-element.html" title="QForm_Element">QForm_Element</a>
+  </li>
+    <li>
+    <a href="./class-qform-group.html" title="QForm_Group">QForm_Group</a>
+  </li>
+    <li>
+    <a href="./class-qform.html" title="QForm">QForm</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 database</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdb-adapter-abstract.html" title="QDB_Adapter_Abstract">QDB_Adapter_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-mysql.html" title="QDB_Adapter_Mysql">QDB_Adapter_Mysql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-abstract.html" title="QDB_Adapter_Pdo_Abstract">QDB_Adapter_Pdo_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-exception.html" title="QDB_Adapter_Pdo_Exception">QDB_Adapter_Pdo_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-pgsql.html" title="QDB_Adapter_Pdo_Pgsql">QDB_Adapter_Pdo_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pgsql.html" title="QDB_Adapter_Pgsql">QDB_Adapter_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-cond.html" title="QDB_Cond">QDB_Cond</a>
+  </li>
+    <li>
+    <a href="./class-qdb.html" title="QDB">QDB</a>
+  </li>
+    <li>
+    <a href="./class-qdb-expr.html" title="QDB_Expr">QDB_Expr</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-abstract.html" title="QDB_Result_Abstract">QDB_Result_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-mysql.html" title="QDB_Result_Mysql">QDB_Result_Mysql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-pdo.html" title="QDB_Result_Pdo">QDB_Result_Pdo</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-pgsql.html" title="QDB_Result_Pgsql">QDB_Result_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-select.html" title="QDB_Select">QDB_Select</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table.html" title="QDB_Table">QDB_Table</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table-lite.html" title="QDB_Table_Lite">QDB_Table_Lite</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 helper</h3>
+
+<ul>
+    <li>
+    <a href="./class-helper-filesys.html" title="Helper_Filesys">Helper_Filesys</a>
+  </li>
+    <li>
+    <a href="./class-helper-array.html" title="Helper_Array">Helper_Array</a>
+  </li>
+    <li>
+    <a href="./class-qdom-document.html" title="QDom_Document">QDom_Document</a>
+  </li>
+    <li>
+    <a href="./class-qdom-element.html" title="QDom_Element">QDom_Element</a>
+  </li>
+    <li>
+    <a href="./class-qfilter.html" title="QFilter">QFilter</a>
+  </li>
+    <li>
+    <a href="./class-helper-image.html" title="Helper_Image">Helper_Image</a>
+  </li>
+    <li>
+    <a href="./class-helper-imagegd.html" title="Helper_ImageGD">Helper_ImageGD</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcode.html" title="Helper_ImgCode">Helper_ImgCode</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcodesimple.html" title="Helper_ImgCodeSimple">Helper_ImgCodeSimple</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcodettf.html" title="Helper_ImgCodeTTF">Helper_ImgCodeTTF</a>
+  </li>
+    <li>
+    <a href="./class-helper-uploader.html" title="Helper_Uploader">Helper_Uploader</a>
+  </li>
+    <li>
+    <a href="./class-helper-uploader-file.html" title="Helper_Uploader_File">Helper_Uploader_File</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator.html" title="QValidator">QValidator</a>
+  </li>
+    <li>
+    <a href="./class-helper-yaml.html" title="Helper_YAML">Helper_YAML</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 cache</h3>
+
+<ul>
+    <li>
+    <a href="./class-qcache-apc.html" title="QCache_APC">QCache_APC</a>
+  </li>
+    <li>
+    <a href="./class-qcache-file.html" title="QCache_File">QCache_File</a>
+  </li>
+    <li>
+    <a href="./class-qcache-memcached.html" title="QCache_Memcached">QCache_Memcached</a>
+  </li>
+    <li>
+    <a href="./class-qcache-memory.html" title="QCache_Memory">QCache_Memory</a>
+  </li>
+    <li>
+    <a href="./class-qcache-phpdatafile.html" title="QCache_PHPDataFile">QCache_PHPDataFile</a>
+  </li>
+    <li>
+    <a href="./class-qcache-xcache.html" title="QCache_XCache">QCache_XCache</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 webcontrols</h3>
+
+<ul>
+    <li>
+    <a href="./class-qui-control-abstract.html" title="QUI_Control_Abstract">QUI_Control_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-input-abstract.html" title="Control_Input_Abstract">Control_Input_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-button.html" title="Control_Button">Control_Button</a>
+  </li>
+    <li>
+    <a href="./class-control-checkbox-abstract.html" title="Control_Checkbox_Abstract">Control_Checkbox_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-checkbox.html" title="Control_Checkbox">Control_Checkbox</a>
+  </li>
+    <li>
+    <a href="./class-control-checkboxgroup-abstract.html" title="Control_CheckboxGroup_Abstract">Control_CheckboxGroup_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-checkboxgroup.html" title="Control_CheckboxGroup">Control_CheckboxGroup</a>
+  </li>
+    <li>
+    <a href="./class-control-dropdownlist.html" title="Control_DropdownList">Control_DropdownList</a>
+  </li>
+    <li>
+    <a href="./class-control-hidden.html" title="Control_Hidden">Control_Hidden</a>
+  </li>
+    <li>
+    <a href="./class-control-label.html" title="Control_Label">Control_Label</a>
+  </li>
+    <li>
+    <a href="./class-control-listbox.html" title="Control_Listbox">Control_Listbox</a>
+  </li>
+    <li>
+    <a href="./class-control-memo.html" title="Control_Memo">Control_Memo</a>
+  </li>
+    <li>
+    <a href="./class-control-password.html" title="Control_Password">Control_Password</a>
+  </li>
+    <li>
+    <a href="./class-control-radio.html" title="Control_Radio">Control_Radio</a>
+  </li>
+    <li>
+    <a href="./class-control-radiogroup.html" title="Control_RadioGroup">Control_RadioGroup</a>
+  </li>
+    <li>
+    <a href="./class-control-reset.html" title="Control_Reset">Control_Reset</a>
+  </li>
+    <li>
+    <a href="./class-control-static.html" title="Control_Static">Control_Static</a>
+  </li>
+    <li>
+    <a href="./class-control-submit.html" title="Control_Submit">Control_Submit</a>
+  </li>
+    <li>
+    <a href="./class-control-textbox.html" title="Control_Textbox">Control_Textbox</a>
+  </li>
+    <li>
+    <a href="./class-control-upload.html" title="Control_Upload">Control_Upload</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 behavior</h3>
+
+<ul>
+    <li>
+    <a href="./class-model-behavior-acluser.html" title="Model_Behavior_AclUser">Model_Behavior_AclUser</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-fastuuid.html" title="Model_Behavior_Fastuuid">Model_Behavior_Fastuuid</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-relation.html" title="Model_Behavior_Relation">Model_Behavior_Relation</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-uniqueness.html" title="Model_Behavior_Uniqueness">Model_Behavior_Uniqueness</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 exception</h3>
+
+<ul>
+    <li>
+    <a href="./class-qcache-exception.html" title="QCache_Exception">QCache_Exception</a>
+  </li>
+    <li>
+    <a href="./class-q-classfileexistsexception.html" title="Q_ClassFileExistsException">Q_ClassFileExistsException</a>
+  </li>
+    <li>
+    <a href="./class-q-classnotdefinedexception.html" title="Q_ClassNotDefinedException">Q_ClassNotDefinedException</a>
+  </li>
+    <li>
+    <a href="./class-q-createdirfailedexception.html" title="Q_CreateDirFailedException">Q_CreateDirFailedException</a>
+  </li>
+    <li>
+    <a href="./class-q-createfilefailedexception.html" title="Q_CreateFileFailedException">Q_CreateFileFailedException</a>
+  </li>
+    <li>
+    <a href="./class-q-filenotfoundexception.html" title="Q_FileNotFoundException">Q_FileNotFoundException</a>
+  </li>
+    <li>
+    <a href="./class-q-filenotreadableexception.html" title="Q_FileNotReadableException">Q_FileNotReadableException</a>
+  </li>
+    <li>
+    <a href="./class-q-illegalclassnameexception.html" title="Q_IllegalClassNameException">Q_IllegalClassNameException</a>
+  </li>
+    <li>
+    <a href="./class-q-illegalfilenameexception.html" title="Q_IllegalFilenameException">Q_IllegalFilenameException</a>
+  </li>
+    <li>
+    <a href="./class-qlog-exception.html" title="QLog_Exception">QLog_Exception</a>
+  </li>
+    <li>
+    <a href="./class-q-notimplementedexception.html" title="Q_NotImplementedException">Q_NotImplementedException</a>
+  </li>
+    <li>
+    <a href="./class-q-removedirfailedexception.html" title="Q_RemoveDirFailedException">Q_RemoveDirFailedException</a>
+  </li>
+    <li>
+    <a href="./class-qdb-exception.html" title="QDB_Exception">QDB_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-exception-duplicatekey.html" title="QDB_Exception_DuplicateKey">QDB_Exception_DuplicateKey</a>
+  </li>
+    <li>
+    <a href="./class-qdb-select-exception.html" title="QDB_Select_Exception">QDB_Select_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table-exception.html" title="QDB_Table_Exception">QDB_Table_Exception</a>
+  </li>
+    <li>
+    <a href="./class-acluser-exception.html" title="AclUser_Exception">AclUser_Exception</a>
+  </li>
+    <li>
+    <a href="./class-acluser-duplicateusernameexception.html" title="AclUser_DuplicateUsernameException">AclUser_DuplicateUsernameExcep...</a>
+  </li>
+    <li>
+    <a href="./class-acluser-usernamenotfoundexception.html" title="AclUser_UsernameNotFoundException">AclUser_UsernameNotFoundExcept...</a>
+  </li>
+    <li>
+    <a href="./class-acluser-wrongpasswordexception.html" title="AclUser_WrongPasswordException">AclUser_WrongPasswordException</a>
+  </li>
+    <li>
+    <a href="./class-qform-exception.html" title="QForm_Exception">QForm_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdom-exception.html" title="QDom_Exception">QDom_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator-exception.html" title="QValidator_Exception">QValidator_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator-validatefailedexception.html" title="QValidator_ValidateFailedException">QValidator_ValidateFailedExcep...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-exception.html" title="QDB_ActiveRecord_Association_Exception">QDB_ActiveRecord_Association_E...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-notdefinedexception.html" title="QDB_ActiveRecord_Association_NotDefinedException">QDB_ActiveRecord_Association_N...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-rejectexception.html" title="QDB_ActiveRecord_Association_RejectException">QDB_ActiveRecord_Association_R...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-behavior-exception.html" title="QDB_ActiveRecord_Behavior_Exception">QDB_ActiveRecord_Behavior_Exce...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-exception.html" title="QDB_ActiveRecord_Exception">QDB_ActiveRecord_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-calltoundefinedmethodexception.html" title="QDB_ActiveRecord_CallToUndefinedMethodException">QDB_ActiveRecord_CallToUndefin...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-changingreadonlypropexception.html" title="QDB_ActiveRecord_ChangingReadonlyPropException">QDB_ActiveRecord_ChangingReado...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-compositepkincompatibleexception.html" title="QDB_ActiveRecord_CompositePKIncompatibleException">QDB_ActiveRecord_CompositePKIn...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-destroywithoutidexception.html" title="QDB_ActiveRecord_DestroyWithoutIdException">QDB_ActiveRecord_DestroyWithou...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-expectsassocpropexception.html" title="QDB_ActiveRecord_ExpectsAssocPropException">QDB_ActiveRecord_ExpectsAssocP...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-meta-exception.html" title="QDB_ActiveRecord_Meta_Exception">QDB_ActiveRecord_Meta_Exceptio...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-settingproptypemismatchexception.html" title="QDB_ActiveRecord_SettingPropTypeMismatchException">QDB_ActiveRecord_SettingPropTy...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-undefinedpropexception.html" title="QDB_ActiveRecord_UndefinedPropException">QDB_ActiveRecord_UndefinedProp...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-validatefailedexception.html" title="QDB_ActiveRecord_ValidateFailedException">QDB_ActiveRecord_ValidateFaile...</a>
+  </li>
+    <li>
+    <a href="./class-qacl-exception.html" title="QACL_Exception">QACL_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-exception.html" title="QRouter_Exception">QRouter_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-invalidrouteexception.html" title="QRouter_InvalidRouteException">QRouter_InvalidRouteException</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-routenotfoundexception.html" title="QRouter_RouteNotFoundException">QRouter_RouteNotFoundException</a>
+  </li>
+    <li>
+    <a href="./class-qview-exception.html" title="QView_Exception">QView_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qui-exception.html" title="QUI_Exception">QUI_Exception</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 debug</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdebug.html" title="QDebug">QDebug</a>
+  </li>
+    <li>
+    <a href="./class-qdebug-firephp.html" title="QDebug_FirePHP">QDebug_FirePHP</a>
+  </li>
+  
+</ul>
+
+
+
+    </div>
+
+    <!-- /左侧栏 -->
+
+    <!-- 右侧栏 -->
+
+    <div id="col3" class="right contents span9">
+
+      
+<div class="apidoc-class">
+
+  <h1>类 - QValidator</h1>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="./index.html">所有包</a></li>
+
+        <li><a href="#properties">类属性</a></li>
+    
+        <li><a href="#methods">类方法</a></li>
+    
+
+  </ul>
+
+  
+<table class="summary-table table table-bordered" cellpadding="0" cellspacing="0" >
+  <tr>
+    <th nowrap="nowrap">包</th>
+    <td>helper</td>
+  </tr>
+  <tr>
+    <th nowrap="nowrap">类层次</th>
+    <td>
+    class QValidator
+    </td>
+  </tr>
+
+  
+  
+    <tr>
+    <th nowrap="nowrap">版本</th>
+    <td>$Id: validator.php 2663 2009-09-23 03:32:55Z jerry $</td>
+  </tr>
+  
+</table>
+
+<div class="formatted">
+  
+<p>QValidator
+提供了一组验证方法，以及调用验证方法的接口</p>
+</div>
+
+
+  <a name="properties"></a>
+
+  
+<div class="summary">
+
+  <h2>保护的属性</h2>
+  <p>
+    <a href="#" class="toggle">隐藏继承的属性</a>
+  </p>
+
+  <table class="list-table table table-bordered">
+    <tr>
+      <th>属性</th><th>类型</th><th>描述</th><th>定义于</th>
+    </tr>
+
+    
+    <tr>
+      <td>$_locale</td>
+      <td>array</td>
+      <td>本地化变量</td>
+      <td>
+      	<small>
+                QValidator        		</small>
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+
+
+  <a name="methods"></a>
+  
+<div class="summary">
+  <h2>公共方法</h2>
+  <p>
+    <a href="#" class="toggle">隐藏继承的方法</a>
+  </p>
+
+  <table class="list-table table table-bordered">
+    <tr>
+      <th>方法</th><th>描述</th><th>定义于</th>
+    </tr>
+
+        <tr>
+      <td>
+        <a href="#QValidator_validate">validate()</a>
+      </td>
+
+      <td>用单个规则验证值</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validateBatch">validateBatch()</a>
+      </td>
+
+      <td>用一组规则验证值</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validateByArgs">validateByArgs()</a>
+      </td>
+
+      <td>用单个规则及附加参数验证值</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_skip_empty">validate_skip_empty()</a>
+      </td>
+
+      <td>如果为空（空字符串或者 null），则跳过余下的验证</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_skip_by">validate_skip_by()</a>
+      </td>
+
+      <td>自定义条件，跳过余下的验证</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_skip_null">validate_skip_null()</a>
+      </td>
+
+      <td>如果值为 NULL，则跳过余下的验证</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_skip_on_failed">validate_skip_on_failed()</a>
+      </td>
+
+      <td>如果接下来的验证规则出错，则跳过后续的验证</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_regex">validate_regex()</a>
+      </td>
+
+      <td>使用正则表达式进行验证</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_equal">validate_equal()</a>
+      </td>
+
+      <td>是否等于指定值</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_not_equal">validate_not_equal()</a>
+      </td>
+
+      <td>不等于指定值</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_same">validate_same()</a>
+      </td>
+
+      <td>是否与指定值完全一致</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_not_same">validate_not_same()</a>
+      </td>
+
+      <td>是否与指定值不完全一致</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_strlen">validate_strlen()</a>
+      </td>
+
+      <td>验证字符串长度</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_min_length">validate_min_length()</a>
+      </td>
+
+      <td>最小长度</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_max_length">validate_max_length()</a>
+      </td>
+
+      <td>最大长度</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_min">validate_min()</a>
+      </td>
+
+      <td>最小值</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_max">validate_max()</a>
+      </td>
+
+      <td>最大值</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_between">validate_between()</a>
+      </td>
+
+      <td>在两个值之间</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_greater_than">validate_greater_than()</a>
+      </td>
+
+      <td>大于指定值</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_greater_or_equal">validate_greater_or_equal()</a>
+      </td>
+
+      <td>大于等于指定值</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_less_than">validate_less_than()</a>
+      </td>
+
+      <td>小于指定值</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_less_or_equal">validate_less_or_equal()</a>
+      </td>
+
+      <td>小于登录指定值</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_not_null">validate_not_null()</a>
+      </td>
+
+      <td>不为 null</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_not_empty">validate_not_empty()</a>
+      </td>
+
+      <td>不为空</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_type">validate_is_type()</a>
+      </td>
+
+      <td>是否是特定类型</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_alnum">validate_is_alnum()</a>
+      </td>
+
+      <td>是否是字母加数字</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_alpha">validate_is_alpha()</a>
+      </td>
+
+      <td>是否是字母</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_alnumu">validate_is_alnumu()</a>
+      </td>
+
+      <td>是否是字母、数字加下划线</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_cntrl">validate_is_cntrl()</a>
+      </td>
+
+      <td>是否是控制字符</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_digits">validate_is_digits()</a>
+      </td>
+
+      <td>是否是数字</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_graph">validate_is_graph()</a>
+      </td>
+
+      <td>是否是可见的字符</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_lower">validate_is_lower()</a>
+      </td>
+
+      <td>是否是全小写</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_print">validate_is_print()</a>
+      </td>
+
+      <td>是否是可打印的字符</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_punct">validate_is_punct()</a>
+      </td>
+
+      <td>是否是标点符号</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_whitespace">validate_is_whitespace()</a>
+      </td>
+
+      <td>是否是空白字符</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_upper">validate_is_upper()</a>
+      </td>
+
+      <td>是否是全大写</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_xdigits">validate_is_xdigits()</a>
+      </td>
+
+      <td>是否是十六进制数</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_ascii">validate_is_ascii()</a>
+      </td>
+
+      <td>是否是 ASCII 字符</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_email">validate_is_email()</a>
+      </td>
+
+      <td>是否是电子邮件地址</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_date">validate_is_date()</a>
+      </td>
+
+      <td>是否是日期（yyyy/mm/dd、yyyy-mm-dd）</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_time">validate_is_time()</a>
+      </td>
+
+      <td>是否是时间（hh:mm:ss）</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_datetime">validate_is_datetime()</a>
+      </td>
+
+      <td>是否是日期 + 时间</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_int">validate_is_int()</a>
+      </td>
+
+      <td>是否是整数</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_float">validate_is_float()</a>
+      </td>
+
+      <td>是否是浮点数</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_ipv4">validate_is_ipv4()</a>
+      </td>
+
+      <td>是否是 IPv4 地址（格式为 a.b.c.h）</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_octal">validate_is_octal()</a>
+      </td>
+
+      <td>是否是八进制数值</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_binary">validate_is_binary()</a>
+      </td>
+
+      <td>是否是二进制数值</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QValidator_validate_is_domain">validate_is_domain()</a>
+      </td>
+
+      <td>是否是 Internet 域名</td>
+      <td>
+                QValidator        
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+
+
+<div class="details">
+
+  <h2>属性详细说明</h2>
+
+    
+  <a name="_locale"></a>
+
+  <div class="name property">
+    <strong>$_locale</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>本地化变量</p>
+  </div>
+
+  
+</div>
+
+
+<div class="details">
+
+  <h2>方法详细说明</h2>
+
+    
+  <a name="QValidator_validate"></a>
+
+  <h4 class="name method">
+    validate()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate</strong>($value, $validation)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc">要验证的值</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$validation</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc">验证规则及参数</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc">验证结果</td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>用单个规则验证值</p>
+
+<p>验证通过返回 true，失败返回 false。</p>
+
+<p>用法：</p>
+
+<pre class="php code"><span class="kw1">if</span> <span
+class="br0">&#40;</span><span class="sy0">!</span>QValidator<span
+class="sy0">::</span><span class="me2">validate</span><span
+class="br0">&#40;</span><span class="re0">$value</span><span
+class="sy0">,</span> <span class="st_h">'max'</span><span
+class="sy0">,</span> <span class="nu0">5</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span>
+<span
+class="br0">&#123;</span>
+    <span class="kw3">echo</span> <span
+class="st_h">'value 不能大于 5'</span><span class="sy0">;</span>
+<span
+class="br0">&#125;</span></pre>
+
+<p>$validation 参数是验证规则。 如果使用 QValidator
+自带的验证规则，可以使用如下的写法：</p>
+
+<pre class="php code">QValidator<span class="sy0">::</span><span
+class="me2">validate</span><span class="br0">&#40;</span><span
+class="re0">$value</span><span class="sy0">,</span> <span
+class="st_h">'between'</span><span class="sy0">,</span> <span
+class="nu0">1</span><span class="sy0">,</span> <span class="nu0">5</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>'between' 是验证规则的名字，对应于 QValidator::validate_between()
+方法。 因此要使用 QValidator
+的其他验证方法，将方法名中的“validate_”去掉即为验证规则名。</p>
+
+<p>如果要使用自定义的验证规则，有三种写法：</p>
+
+<pre class="php code"><span
+class="co1">// 使用某个类的静态方法做验证方法</span>
+QValidator<span
+class="sy0">::</span><span class="me2">validate</span><span
+class="br0">&#40;</span><span class="re0">$value</span><span
+class="sy0">,</span> <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'MyClass'</span><span
+class="sy0">,</span> <span class="st_h">'myMethod'</span><span
+class="br0">&#41;</span><span class="sy0">,</span> <span
+class="re0">$args</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 功能同上</span>
+QValidator<span class="sy0">::</span><span
+class="me2">validate</span><span class="br0">&#40;</span><span
+class="re0">$value</span><span class="sy0">,</span> <span
+class="st_h">'MyClass::myMethod'</span><span class="sy0">,</span> <span
+class="re0">$args</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 使用某个对象的方法做验证方法</span>
+QValidator<span
+class="sy0">::</span><span class="me2">validate</span><span
+class="br0">&#40;</span><span class="re0">$value</span><span
+class="sy0">,</span> <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="re0">$my_obj</span><span
+class="sy0">,</span> <span class="st_h">'myMethod), $args);</span></pre>
+
+<p>validate()
+的第一个参数是要验证的值，而第二个方法是验证规则。
+如果验证规则需要更多的参数，则跟在第二个参数后面提供。</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validateBatch"></a>
+
+  <h4 class="name method">
+    validateBatch()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validateBatch</strong>($value, $validations, $check_all, $failed)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc">要验证的值</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$validations</td>
+      <td class="param_type">array</td>
+      <td class="param_desc">由多个验证规则及参数组成的数组</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$check_all</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc">是否检查所有规则</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$failed</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc">保存验证失败的规则名</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc">验证结果</td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>用一组规则验证值</p>
+
+<p>validateBatch()
+方法对一个值应用一组验证规则，并返回最终的结果。
+这一组验证规则中只要有一个验证失败，都会返回 false。
+只有当所有规则都通过时，validateBatch() 方法才会返回
+true。</p>
+
+<p>用法：</p>
+
+<pre class="php code"><span class="re0">$ret</span> <span
+class="sy0">=</span> QValidator<span class="sy0">::</span><span
+class="me2">validateBatch</span><span class="br0">&#40;</span><span
+class="re0">$value</span><span class="sy0">,</span> <span
+class="kw3">array</span><span class="br0">&#40;</span>
+        <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'is_int'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+        <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'between'</span><span
+class="sy0">,</span> <span class="nu0">2</span><span class="sy0">,</span> <span
+class="nu0">6</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+<span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>$validations
+参数必须是一个数组，包含多个规则，及验证规则需要的参数。
+每个规则及参数都是一个单独的数组。</p>
+
+<p>如果提供了 $failed 参数，则验证失败的规则会存储在 $failed
+参数中：</p>
+
+<pre class="php code"><span class="re0">$failed</span> <span
+class="sy0">=</span> <span class="kw2">null</span><span
+class="sy0">;</span>
+<span class="re0">$ret</span> <span
+class="sy0">=</span> QValidator<span class="sy0">::</span><span
+class="me2">validateBatch</span><span class="br0">&#40;</span><span
+class="re0">$value</span><span class="sy0">,</span> <span
+class="re0">$validations</span><span class="sy0">,</span> <span
+class="kw2">true</span><span class="sy0">,</span> <span
+class="re0">$failed</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+dump<span class="br0">&#40;</span><span
+class="re0">$failed</span><span class="sy0">,</span> <span
+class="st_h">'所有没有验证通过的规则'</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validateByArgs"></a>
+
+  <h4 class="name method">
+    validateByArgs()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validateByArgs</strong>($validation, $args)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$validation</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc">验证规则</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$args</td>
+      <td class="param_type">array</td>
+      <td class="param_desc">要传递给验证规则的参数</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc">验证结果</td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>用单个规则及附加参数验证值</p>
+
+<p>validateByArgs() 方法与 validate()
+方法功能相同，只是参数格式不同。</p>
+
+<p>validateByArgs() 方法的第一个参数是验证规则。
+第二个参数则是包括被验证值在内，要传递给验证规则的参数。</p>
+
+<p>例如：</p>
+
+<pre class="php code"><span
+class="co1">// validate() 的写法</span>
+QValidator<span
+class="sy0">::</span><span class="me2">validate</span><span
+class="br0">&#40;</span><span class="re0">$value</span><span
+class="sy0">,</span> <span class="st_h">'max'</span><span
+class="sy0">,</span> <span class="nu0">6</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// validateByArgs() 的写法</span>
+QValidator<span
+class="sy0">::</span><span class="me2">validateByArgs</span><span
+class="br0">&#40;</span><span class="st_h">'max'</span><span
+class="sy0">,</span> <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="re0">$value</span><span
+class="sy0">,</span> <span class="nu0">6</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_skip_empty"></a>
+
+  <h4 class="name method">
+    validate_skip_empty()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_skip_empty</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>如果为空（空字符串或者 null），则跳过余下的验证</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_skip_by"></a>
+
+  <h4 class="name method">
+    validate_skip_by()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_skip_by</strong>($value, $cond)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cond</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>自定义条件，跳过余下的验证</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_skip_null"></a>
+
+  <h4 class="name method">
+    validate_skip_null()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_skip_null</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>如果值为 NULL，则跳过余下的验证</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_skip_on_failed"></a>
+
+  <h4 class="name method">
+    validate_skip_on_failed()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_skip_on_failed</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>如果接下来的验证规则出错，则跳过后续的验证</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_regex"></a>
+
+  <h4 class="name method">
+    validate_regex()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_regex</strong>($value, $regxp)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$regxp</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>使用正则表达式进行验证</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_equal"></a>
+
+  <h4 class="name method">
+    validate_equal()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_equal</strong>($value, $test)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$test</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否等于指定值</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_not_equal"></a>
+
+  <h4 class="name method">
+    validate_not_equal()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_not_equal</strong>($value, $test)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$test</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>不等于指定值</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_same"></a>
+
+  <h4 class="name method">
+    validate_same()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_same</strong>($value, $test)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$test</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否与指定值完全一致</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_not_same"></a>
+
+  <h4 class="name method">
+    validate_not_same()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_not_same</strong>($value, $test)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$test</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否与指定值不完全一致</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_strlen"></a>
+
+  <h4 class="name method">
+    validate_strlen()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_strlen</strong>($value, $len)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$len</td>
+      <td class="param_type">int</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>验证字符串长度</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_min_length"></a>
+
+  <h4 class="name method">
+    validate_min_length()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_min_length</strong>($value, $len)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$len</td>
+      <td class="param_type">int</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>最小长度</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_max_length"></a>
+
+  <h4 class="name method">
+    validate_max_length()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_max_length</strong>($value, $len)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$len</td>
+      <td class="param_type">int</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>最大长度</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_min"></a>
+
+  <h4 class="name method">
+    validate_min()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_min</strong>($value, $min)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$min</td>
+      <td class="param_type">int|float</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>最小值</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_max"></a>
+
+  <h4 class="name method">
+    validate_max()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_max</strong>($value, $max)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$max</td>
+      <td class="param_type">int|float</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>最大值</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_between"></a>
+
+  <h4 class="name method">
+    validate_between()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_between</strong>($value, $min, $max, $inclusive)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$min</td>
+      <td class="param_type">int|float</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$max</td>
+      <td class="param_type">int|float</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$inclusive</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc">是否包含 min/max 在内</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>在两个值之间</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_greater_than"></a>
+
+  <h4 class="name method">
+    validate_greater_than()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_greater_than</strong>($value, $test)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$test</td>
+      <td class="param_type">int|float</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>大于指定值</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_greater_or_equal"></a>
+
+  <h4 class="name method">
+    validate_greater_or_equal()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_greater_or_equal</strong>($value, $test)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$test</td>
+      <td class="param_type">int|float</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>大于等于指定值</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_less_than"></a>
+
+  <h4 class="name method">
+    validate_less_than()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_less_than</strong>($value, $test)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$test</td>
+      <td class="param_type">int|float</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>小于指定值</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_less_or_equal"></a>
+
+  <h4 class="name method">
+    validate_less_or_equal()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_less_or_equal</strong>($value, $test)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$test</td>
+      <td class="param_type">int|float</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>小于登录指定值</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_not_null"></a>
+
+  <h4 class="name method">
+    validate_not_null()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_not_null</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>不为 null</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_not_empty"></a>
+
+  <h4 class="name method">
+    validate_not_empty()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_not_empty</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>不为空</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_type"></a>
+
+  <h4 class="name method">
+    validate_is_type()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_type</strong>($value, $type)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$type</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是特定类型</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_alnum"></a>
+
+  <h4 class="name method">
+    validate_is_alnum()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_alnum</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是字母加数字</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_alpha"></a>
+
+  <h4 class="name method">
+    validate_is_alpha()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_alpha</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是字母</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_alnumu"></a>
+
+  <h4 class="name method">
+    validate_is_alnumu()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_alnumu</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是字母、数字加下划线</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_cntrl"></a>
+
+  <h4 class="name method">
+    validate_is_cntrl()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_cntrl</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是控制字符</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_digits"></a>
+
+  <h4 class="name method">
+    validate_is_digits()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_digits</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是数字</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_graph"></a>
+
+  <h4 class="name method">
+    validate_is_graph()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_graph</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是可见的字符</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_lower"></a>
+
+  <h4 class="name method">
+    validate_is_lower()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_lower</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是全小写</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_print"></a>
+
+  <h4 class="name method">
+    validate_is_print()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_print</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是可打印的字符</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_punct"></a>
+
+  <h4 class="name method">
+    validate_is_punct()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_punct</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是标点符号</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_whitespace"></a>
+
+  <h4 class="name method">
+    validate_is_whitespace()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_whitespace</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是空白字符</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_upper"></a>
+
+  <h4 class="name method">
+    validate_is_upper()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_upper</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是全大写</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_xdigits"></a>
+
+  <h4 class="name method">
+    validate_is_xdigits()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_xdigits</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是十六进制数</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_ascii"></a>
+
+  <h4 class="name method">
+    validate_is_ascii()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_ascii</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是 ASCII 字符</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_email"></a>
+
+  <h4 class="name method">
+    validate_is_email()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_email</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是电子邮件地址</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_date"></a>
+
+  <h4 class="name method">
+    validate_is_date()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_date</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是日期（yyyy/mm/dd、yyyy-mm-dd）</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_time"></a>
+
+  <h4 class="name method">
+    validate_is_time()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_time</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是时间（hh:mm:ss）</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_datetime"></a>
+
+  <h4 class="name method">
+    validate_is_datetime()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_datetime</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是日期 + 时间</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_int"></a>
+
+  <h4 class="name method">
+    validate_is_int()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_int</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是整数</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_float"></a>
+
+  <h4 class="name method">
+    validate_is_float()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static void <strong>validate_is_float</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是浮点数</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_ipv4"></a>
+
+  <h4 class="name method">
+    validate_is_ipv4()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_ipv4</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是 IPv4 地址（格式为 a.b.c.h）</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_octal"></a>
+
+  <h4 class="name method">
+    validate_is_octal()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_octal</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是八进制数值</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_binary"></a>
+
+  <h4 class="name method">
+    validate_is_binary()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_binary</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是二进制数值</p>
+  </div>
+	<hr>
+    
+  <a name="QValidator_validate_is_domain"></a>
+
+  <h4 class="name method">
+    validate_is_domain()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static boolean <strong>validate_is_domain</strong>($value)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$value</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否是 Internet 域名</p>
+  </div>
+	<hr>
+  
+</div>
+
+
+</div>
+
+
+    </div>
+
+    <!-- /右侧栏 -->
+    </div>
+	</div>
+</body>
+</html>

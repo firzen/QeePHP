@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 应用开发权威指南</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 应用开发权威指南</a>
+      &raquo;
+      <a href="node-model.html">模型与 ORM</a>
+      &raquo;
+      保护模型    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+    
+<h1>保护模型</h1>
+
+<p>先看一个代码片段：</p>
+
+<pre class="php code"><span class="re0">$post</span> <span
+class="sy0">=</span> <span class="kw2">new</span> Post<span
+class="br0">&#40;</span><span class="re0">$_POST</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="re0">$post</span><span class="sy0">-&gt;</span><span
+class="me1">save</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>上述代码非常简单，就是构造一个新的 Post
+对象，然后存入数据库。</p>
+
+<p>但是，上述代码调用 save()
+时，是可能存在安全漏洞的。因为 save()
+操作到底是新建一个记录还是更新一个已有记录，是根据对象是否具有主键值来确定的。假设
+$post 对象的主键是 post_id，那么 $post-&gt;post_id 为 null
+时，save()
+方法就会新建一个记录，否则将会尝试更新已有的记录。</p>
+
+<p>很显然，如果恶意用户通过窜该表单的方式在 $_POST
+中提供一个主键值，那么我们原本期望的“新建”操作就变成“更新”了。</p>
+
+<p>幸运的是 QeePHP
+对这个安全漏洞提供了充分的解决方案，并且<strong>默认情况下就是启用的</strong>。</p>
+
+<h2>禁止通过构造函数赋值的属性</h2>
+
+<p>前面我们已经看到了，$post
+对象保存之前是通过构造函数来生成的。所以我们可以告诉
+QeePHP
+这个模型的哪些属性不允许从构造函数赋值，从而消除上面提到的安全问题。</p>
+
+<p>默认情况下，模型的所有主键都是不允许通过构造函数赋值的。这由模型
+__define() 方法中的 attr_protected 设置来指定。</p>
+
+<pre class="php code"><span
+class="co1">// 不允许通过构造函数给 post_id 属性赋值</span>
+<span
+class="st_h">'attr_protected'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'post_id'</span><span class="sy0">,</span></pre>
+
+<p>由于 attr_protected 设置的存在，即便 $_POST
+中包含主键值，也不会被指定给模型对象了。因此接下来的
+save() 方法就会安全的创建新记录。</p>
+
+<p> </p>
+
+<p>与 attr_protected 设置相对，存在一个 attr_accessible
+设置。如果说 attr_protected 是黑名单的话，那 attr_accessible
+就是白名单。</p>
+
+<p>一旦指定了 attr_accessible
+设置，则只有指定的属性可以通过构造函数赋值，除以以外的属性都不行。相对而言，attr_accessible
+设置具有更高的安全性，可以避免因为忘记保护重要属性而导致的安全性问题。不过一旦增加了属性，一定要记得修改
+attr_accessible
+设置，否则新增属性就没法通过构造函数赋值了。</p>
+
+<p>要注意的是一定但设置了 attr_accessible 设置，attr_protected
+设置就会被忽略。</p>
+
+<h2>自动填充属性值</h2>
+
+<p>业务规则经常会要求对象创建或更新时，某些属性必须是特定值。例如“新建订单的审核状态必须是
+false”。</p>
+
+<p>虽然我们可以给属性指定默认值，并且将这些属性设置为不允许通过构造函数赋值来确保新构造的对象具有预期的属性值。但开发者仍然可能在无意中通过访问对象属性的方式修改了这些重要属性。因此，最保险的做法就是告诉
+QeePHP 在创建记录时，这些属性的值必须设置为什么。</p>
+
+<p>对于这种需求，可以利用自动填充属性值这个功能来实现：</p>
+
+<pre class="php code"><span class="st_h">'create_autofill'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span
+class="co1">// 当新建对象时，is_audited 属性将被置为 false。</span>
+    <span
+class="st_h">'is_audited'</span> <span class="sy0">=&gt;</span> <span
+class="kw2">false</span><span class="sy0">,</span>
+<span
+class="br0">&#41;</span></pre>
+
+<p>与 create_autofill 相对应的就是
+update_autofill，用于更新对象时自动填充属性值。</p>
+
+<p> </p>
+
+<p>QeePHP
+内置了几个常量，可以为属性填充特定的时间或日期：</p>
+
+<ul>
+	<li>AUTOFILL_DATETIME: 当前日期和时间，格式为“Y-m-d
+	H:i:s”；</li>
+
+	<li>AUTOFILL_TIMESTAMP: 表示当前日期和时间的 UNIX
+	时间戳，等同于 time() 函数的返回值（整数）；</li>
+
+	<li>AUTOFILL_DATE: 当前日期，格式为“Y-m-d”；</li>
+
+	<li>AUTOFILL_TIME: 当前时间，格式为“H:i:s”。</li>
+</ul>
+
+<p>如果需要动态填充值，使用事件回调机制即可。</p>
+
+<h2>保存时自动忽略的属性</h2>
+
+<p>如果我们要在保存对想到数据库时，自动忽略一些属性，可以使用
+create_reject 和 update_reject 设置。</p>
+
+<p>自动忽略在对象保存到数据库，既调用 save()
+方法时产生作用，create_reject 在创建记录的时候生效，而
+update_reject 则在更新记录时产生作用。</p>
+
+<pre class="php code"><span class="sy0">....</span>
+<span
+class="st_h">'create_reject'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'id, level_ix'</span><span class="sy0">,</span>
+<span
+class="sy0">....</span></pre>
+
+<p>经过上面的设置，当在数据库中新建记录时，对象的 id 和
+level_ix 属性值将不会被保存到数据库。</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+$Id: model-protection.texy 2009-03-10 07:48:18Z Tim13 $
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-model-validations.html">自动验证</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-model.html">模型与 ORM</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-model-query.html">查询 Read</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

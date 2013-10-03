@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 实战教程 01：个人兴趣调查系统</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qeephp.com/docs/">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 实战教程 01：个人兴趣调查系统</a>
+      &raquo;
+      <a href="node-start.html">起步</a>
+      &raquo;
+      需求    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+
+    
+<h1>需求</h1>
+
+<p>在开发应用程序前，最重要的事情就是搞清楚需求。需求是指应用程序的用户对应用程序应该具有什么样的功能和使用方式提出的想法。</p>
+
+<h2>描述需求</h2>
+
+<p>用况图是一种有效的分析工具，可以直观的展示出用户（软件系统的使用者）在系统中的主要行为：</p>
+
+<div class="figure"><img src="images/start-requirement-01.png" alt="" />
+	<p>用况图</p>
+</div>
+
+<p>不过用况图的缺点就是无法描述更细节的内容，所以配套的文字说明还是很必要的。</p>
+
+<p>个人兴趣调查系统主要需求如下：</p>
+
+<ul>
+	<li>用户可以在系统中注册
+		<ul>
+			<li>注册需要填写个人基本信息；</li>
+
+			<li>系统发送激活连接到用户填写的 email 信箱；</li>
+
+			<li>用户点击激活连接激活自己的帐户；</li>
+		</ul>
+	</li>
+
+	<li>如果遗忘了密码，可以让系统将重置密码的连接发送到用户信箱中。
+		<p>用户点击重置密码连接为自己的帐户设置新密码。</p>
+	</li>
+
+	<li>用户登录后，可以录入自己的兴趣爱好；</li>
+
+	<li>用户登录后，可以修改自己的个人信息和密码；</li>
+</ul>
+
+<p>其中用户的个人信息包含下列内容：</p>
+
+<ul>
+	<li>用户名、密码、电子邮件地址</li>
+
+	<li>地址、邮政编码、联系电话</li>
+
+	<li>求职意向（多选和选填）</li>
+
+	<li>专业技能（多选和选填）</li>
+</ul>
+
+<p>个人信息的填写应该采用向导方式，并且能够计算出个人信息的完整度。</p>
+
+<h2>设计模型</h2>
+
+<p>有了详细的需求，第二步工作就是设计模型。从需求到模型是个难点，这一步如果做得不好，会直接导致后续工作的返工。这里没有什么捷径，最重要的还是知识基础和经验。不过有一些小技巧可以让设计变得稍稍容易一点。</p>
+
+<p>仔细观察用况图和我们的需求说明，可以找到一些最重要的短语。例如：</p>
+
+<ul>
+	<li>用户注册</li>
+
+	<li>填写个人基本信息</li>
+
+	<li>发送激活连接</li>
+
+	<li>激活用户帐户</li>
+
+	<li>发送重置密码连接</li>
+
+	<li>重置密码</li>
+
+	<li>修改兴趣爱好</li>
+
+	<li>修改个人信息和密码</li>
+</ul>
+
+<p>这些短语总是由“名词”+“动词”组成。“名词”可以视为模型，而“动词”则是模型的行为。</p>
+
+<p>初步整理后，我们即可获得下面的模型设计图：</p>
+
+<div class="figure"><img src="images/start-requirement-02.png" alt="" />
+	<p>模型设计图</p>
+</div>
+
+<p>但是上面的设计是存在一些问题的，我们逐个分析。</p>
+
+<h3></h3>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p>$Id: start-requirement.texy 3321 2009-03-14 09:10:41Z dualface $</p>
+
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-start-intro.html">介绍</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-start.html">起步</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-start-thinking.html">需求分析</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

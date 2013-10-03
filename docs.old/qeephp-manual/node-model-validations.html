@@ -1,0 +1,374 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 应用开发权威指南</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 应用开发权威指南</a>
+      &raquo;
+      <a href="node-model.html">模型与 ORM</a>
+      &raquo;
+      自动验证    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+
+    
+<h1>自动验证</h1>
+
+<p>当模型的属性存储到数据库时，自动验证规则将会用于检验每一个属性的值是否符合要求。这种机制保证无效的数据不会被存入数据库。</p>
+
+<p>下面是两组规则：</p>
+
+<pre class="php code"><span class="st_h">'validations'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span>
+<span
+class="br0">&#40;</span>
+    <span
+class="co1">// 指定 username 属性的验证规则</span>
+    <span
+class="st_h">'username'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span>
+    <span class="br0">&#40;</span>
+        <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'not_empty'</span><span class="sy0">,</span> <span
+class="st_h">'用户名不能为空'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+        <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'min_length'</span><span
+class="sy0">,</span> <span class="nu0">5</span><span class="sy0">,</span> <span
+class="st_h">'用户名不能少于 5 个字符'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+        <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'max_length'</span><span class="sy0">,</span> <span
+class="nu0">15</span><span class="sy0">,</span> <span
+class="st_h">'用户名不能超过 15 个字符'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+        <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'is_alnum'</span><span class="sy0">,</span> <span
+class="st_h">'用户名只能由字母和数字组成'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+    <span
+class="br0">&#41;</span><span class="sy0">,</span>
+&nbsp;
+    <span
+class="co1">// 指定 password 属性的验证规则</span>
+    <span
+class="st_h">'password'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span>
+    <span class="br0">&#40;</span>
+        <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'not_empty'</span><span class="sy0">,</span> <span
+class="st_h">'密码不能为空'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+        <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'min_length'</span><span
+class="sy0">,</span> <span class="nu0">6</span><span class="sy0">,</span> <span
+class="st_h">'密码不能少于 6 个字符'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+        <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'max_length'</span><span class="sy0">,</span> <span
+class="nu0">20</span><span class="sy0">,</span> <span
+class="st_h">'密码不能超过 20 个字符'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+    <span
+class="br0">&#41;</span><span class="sy0">,</span>
+<span
+class="br0">&#41;</span><span class="sy0">,</span></pre>
+
+<p>上面的两组规则分别用于检查 username 属性和 password
+属性的值。当调用模型的 save()
+方法时，这些验证规则就会起作用。</p>
+
+<p>每个属性的验证规则按照书写顺序从上到下的执行，所有没有通过验证的规则都会被记录下来。所有属性验证完成后，如果存在失败的验证，QeePHP
+会抛出 QDB_ActiveRecord_ValidateFailedException
+异常。QDB_ActiveRecord_ValidateFailedException 异常的 $validate_errors
+成员变量中就是所有未通过验证的规则名称。</p>
+
+<h2>验证规则的书写格式</h2>
+
+<p>验证规则按照下面的格式书写：</p>
+
+<pre class="php code"><span class="st_h">'validations'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span>
+<span
+class="br0">&#40;</span>
+    <span class="st_h">'属性名'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span>
+    <span
+class="br0">&#40;</span>
+        规则<span
+class="sy0">,</span>
+        规则<span class="sy0">....,</span>
+    <span
+class="br0">&#41;</span><span class="sy0">,</span>
+&nbsp;
+    <span
+class="sy0">....</span>
+<span class="br0">&#41;</span><span
+class="sy0">,</span></pre>
+
+<p>每一条规则以一个数组来指定：</p>
+
+<pre class="php code"><span class="kw3">array</span><span
+class="br0">&#40;</span>要执行的规则<span
+class="sy0">,</span> 验证方法需要的参数<span
+class="sy0">,</span> 验证失败时的错误信息<span
+class="br0">&#41;</span></pre>
+
+<p>例如 min_length
+这个验证规则，需要一个参数来指定属性值的最小长度，因此其写法就是：</p>
+
+<pre class="php code"><span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'min_length'</span><span
+class="sy0">,</span> <span class="nu0">5</span><span class="sy0">,</span> <span
+class="st_h">'用户名不能少于 5 个字符'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+<span
+class="sy0">-------------------------------------------------</span>
+       验证方法    参数        错误信息</pre>
+
+<p>对于有多个参数的验证方法，在错误信息前添加就可以了：</p>
+
+<pre class="php code"><span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'between'</span><span
+class="sy0">,</span> <span class="nu0">1</span><span class="sy0">,</span> <span
+class="nu0">5</span><span class="sy0">,</span> <span
+class="st_h">'值必须大于等于 1，且小于等于 5'</span><span
+class="br0">&#41;</span><span class="sy0">,</span></pre>
+
+<p>目前 QeePHP 提供了几十个内置的验证规则，全部放置于
+QValidator
+类中。这些验证规则的方法都以“validate_“开头，但在写入
+ActiveRecord 的验证规则时，就要去掉开头的“validate_”。例如
+validate_less_or_equal()
+这个方法写入验证规则后就是“less_or_equal”。</p>
+
+<p>有关内置验证规则的i详细信息，请参考 API 文档中 helper 包
+QValidator 类的说明。</p>
+
+<h2>使用自定义的验证方法作为规则</h2>
+
+<p>除了使用 QeePHP
+内置的验证规则，还可以使用自定义的验证方法。</p>
+
+<pre class="php code"><span class="st_h">'validations'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span>
+<span
+class="br0">&#40;</span>
+    <span class="st_h">'prop_name'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span>
+    <span
+class="br0">&#40;</span>
+        <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="kw3">array</span><span
+class="br0">&#40;</span><span class="kw2">__CLASS__</span><span
+class="sy0">,</span> <span class="st_h">'checkProp'</span><span
+class="br0">&#41;</span><span class="sy0">,</span> <span
+class="sy0">....</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+        <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'Helper_Order::checkProp'</span><span
+class="sy0">,</span> <span class="sy0">....</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+        <span
+class="sy0">....</span>
+        <span class="sy0">....</span>
+    <span
+class="br0">&#41;</span><span class="sy0">,</span>
+    <span
+class="sy0">....</span>
+<span class="br0">&#41;</span></pre>
+
+<p>第一种写法表示以当前模型类的 checkProp()
+<strong>静态</strong>方法来做验证规则。第二种写法则是使用指定类的静态方法做验证规则。</p>
+
+<h2>控制验证过程</h2>
+
+<p>有时候我们对于属性的验证可能是“如果某个属性没有指定值，则不进行验证”，这类需求可以通过在验证规则组中最前面添加一条
+skip_empty 规则来实现。</p>
+
+<pre class="php code"><span class="st_h">'validations'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span>
+<span
+class="br0">&#40;</span>
+    <span
+class="co1">// 指定 email 属性的验证规则</span>
+    <span
+class="st_h">'email'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span>
+    <span class="br0">&#40;</span>
+        <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'skip_empty'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+        <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'is_email'</span><span
+class="sy0">,</span> <span
+class="st_h">'只能使用有效的 email 地址'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+    <span
+class="br0">&#41;</span><span class="sy0">,</span>
+&nbsp;
+    <span
+class="sy0">....</span>
+<span class="br0">&#41;</span></pre>
+
+<p>当没有为 email 属性指定值时，skip_empty
+验证规则就会起作用，让 QeePHP 忽略 email
+属性剩下的验证规则。注意 skip_empty 和 PHP 内置的 empty
+有些区别。skip_empty 仅在属性值确实为空（null
+或者空字符串）时才有效。对于数值 0，skip_empty
+会视为不为空。</p>
+
+<p>与 skip_empty 类似的验证规则还有：</p>
+
+<ul>
+	<li>skip_null：当属性值为 null 时忽略余下的验证规则。</li>
+
+	<li>skip_on_failed:
+	属性的多个验证规则中只要有一个没有通过，就忽略余下的验证规则。例如上面代码中对
+	username 属性有 4 条规则，如果加入 skip_on_failed 则只要 4
+	条规则中任何一条没有通过都不会再检查 username
+	属性余下的验证规则。</li>
+</ul>
+
+<h2>限定验证规则的执行时机</h2>
+
+<p>默认情况下，为属性指定的验证规则会在新建和更新时都起作用。如果需要单独指定创建和更新时的验证规则，应该使用如下的写法：</p>
+
+<pre class="php code"><span class="st_h">'validations'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span>
+<span
+class="br0">&#40;</span>
+    <span class="st_h">'address'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span>
+    <span
+class="br0">&#40;</span>
+        <span class="st_h">'on_create'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+            <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'skip_empty'</span><span
+class="br0">&#41;</span><span class="sy0">,</span> <span
+class="co1">// 新建对象时，如果 address 没有输入内容就不验证</span>
+        <span
+class="br0">&#41;</span><span class="sy0">,</span>
+        <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'max_length'</span><span class="sy0">,</span> <span
+class="nu0">90</span><span class="sy0">,</span> <span
+class="st_h">'地址不能超过 90 个字符或 30 个汉字'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+    <span
+class="br0">&#41;</span><span class="sy0">,</span>
+&nbsp;
+    <span
+class="sy0">....</span>
+<span class="br0">&#41;</span></pre>
+
+<p>上面代码中通过 on_create
+来指定新建（create）对象时要使用的验证规则。</p>
+
+<p>当新建对象时，on_create
+指定的规则加上没有限定执行时机的规则，将是实际执行的验证规则。而更新对象时，则只有没有限定执行时机的验证规则起作用。</p>
+
+<p>利用这样的方式，我们可以分别指定适合创建和更新时的验证规则：</p>
+
+<pre class="php code"><span class="st_h">'validations'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span>
+<span
+class="br0">&#40;</span>
+    <span class="st_h">'prop_name'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span>
+    <span
+class="br0">&#40;</span>
+        <span class="st_h">'on_create'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+            <span
+class="sy0">....</span>
+            <span class="sy0">....</span>
+        <span
+class="br0">&#41;</span><span class="sy0">,</span>
+        <span
+class="st_h">'on_update'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span><span class="br0">&#40;</span>
+            <span
+class="sy0">....</span>
+            <span class="sy0">....</span>
+        <span
+class="br0">&#41;</span><span class="sy0">,</span>
+        <span
+class="sy0">....</span>
+        <span class="sy0">....</span>
+    <span
+class="br0">&#41;</span><span class="sy0">,</span>
+&nbsp;
+    <span
+class="sy0">....</span>
+<span class="br0">&#41;</span></pre>
+
+<p>如果自动验证规则无法满足需求，则可以利用模型的事件回调来实现更复杂的验证或其他操作。有关事件回调的详细信息请参考本章的后续内容。</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p>$Id: model-validations.texy 2295 2009-03-10 07:48:18Z dualface $</p>
+
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-model-props.html">管理模型的属性</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-model.html">模型与 ORM</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-model-protection.html">保护模型</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

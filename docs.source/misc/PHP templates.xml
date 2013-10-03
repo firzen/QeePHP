@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="php" deleted="false" description="" enabled="true" name="_CD">/**
+ * ${description}
+ *
+ * @package ${package}
+ */
+${cursor}</template><template autoinsert="true" context="php" deleted="false" description="" enabled="true" name="_CPQEEPHP">/////////////////////////////////////////////////////////////////////////////
+// QeePHP Framework
+//
+// Copyright (c) 2005 - 2008 QeeYuan China Inc. (http://www.qeeyuan.com)
+//
+// 许可协议，请查看源代码中附带的 LICENSE.TXT 文件，
+// 或者访问 http://www.qeephp.org/ 获得详细信息。
+/////////////////////////////////////////////////////////////////////////////
+${cursor}</template><template autoinsert="true" context="php" deleted="false" description="" enabled="true" name="_FD">/**
+ * ${description}
+ *
+ * @package ${package}
+ * @version $$Id$$
+ */
+${cursor}</template></templates>

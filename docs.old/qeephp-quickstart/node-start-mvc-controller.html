@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 快速入门</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qeephp.com/docs/">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 快速入门</a>
+      &raquo;
+      <a href="node-start.html">起步</a>
+      &raquo;
+      控制器    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+
+    
+<h1>控制器</h1>
+
+<p>控制器在 MVC
+模式中充当了模型和视图的桥梁。控制器负责处理请求，并调用模型完成业务操作，最后返回适当的视图对象。而应用程序对象则执行视图对象来构造输出内容，并将输出内容返回给浏览器。</p>
+
+<div class="figure"><img src="images/start-mvc-controller-01.png" alt="" />
+	<p>控制器的职责</p>
+</div>
+
+<h2>控制器和动作方法</h2>
+
+<p>通常，我们的应用程序会提供一系列的 URL
+地址给用户。通过访问这些 URL
+地址就可以使用应用程序的不同功能。例如“create.php”表示创建，而“edit.php”表示修改。由于
+QeePHP 采用了 MVC
+模式，所以我们不需要为每一个功能都编写一个单独的 PHP
+文件。我们可以把一组相关的功能放到一个控制器中，而控制器的每一个<strong>动作方法</strong>就是一项独立的功能。</p>
+
+<p>由于整个应用程序的所有功能都是通过入口文件来访问的。这要求我们通过不同的
+URL
+参数来指定要访问的控制器及动作方法。这样应用程序对象通过检查
+URL
+中的参数，就可以确定用户想调用的控制器和动作方法。</p>
+
+<h2>通过 URL 参数指定控制器和动作</h2>
+
+<p>我们来做个测试，修改 app/controller/default_controller.php
+文件，加入：</p>
+
+<pre class="php code"><span class="kw2">function</span> actionTest<span
+class="br0">&#40;</span><span class="br0">&#41;</span>
+<span
+class="br0">&#123;</span>
+    <span class="kw3">echo</span> <span
+class="st0">&quot;OK, default 控制器的 test 动作被调用。&quot;</span><span
+class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>然后通过浏览器访问 <a
+href="http://localhost/todo/public/index.php?controller=default&amp;action=test">http://localhost/todo/public/index.php?controller=default&action=test</a>
+，即可看到我们在 actionTest() 动作方法中写入的文字。</p>
+
+<div class="figure"><img src="images/start-mvc-controller-02.png" alt="" />
+	<p>执行指定的控制器和动作</p>
+</div>
+
+<p>在上面的例子中，如果注意到 URL
+地址中包含的“controller=default&amp;action=test”就会明白通过名为“controller”和“action”的参数，可以指定我们要调用的控制器和动作方法。</p>
+
+<p>依此类推，http://localhost/todo/public/index.php?<strong>controller=users</strong>&amp;<strong>action=create</strong>
+这个 URL 指定了要访问 users 控制器的 create 动作方法。</p>
+
+<h2>动作方法</h2>
+
+<p>前面反复提到的动作方法是我们在控制器类中添加的特定方法。这些方法的名称都是以“action”开头，例如
+actionTest()、actionIndex()
+等。之所以要求必须以“action”开头，是为了避免用户从浏览器访问到控制器中不希望被外部访问的一些方法。</p>
+
+<p>有一个特别的动作方法 actionIndex()
+是控制器的默认动作。假如我们没有在 URL
+参数中指定要调用的动作方法，那么就会调用控制器的
+actionIndex() 动作方法。同理，如果没有在 URL
+参数中指定要调用的控制器，就会调用 default
+这个默认控制器。</p>
+
+<h2>美化 URL</h2>
+
+<p>可能读者朋友觉得上面的 URL
+又臭又长，看上去难看，而且影响 SEO。不过没关系，QeePHP 的
+URL 路由器可以让我们构造任意形式的 URL，这里举例使用的
+URL 样式是默认样式。有关美化 URL
+的内容会在本教程的后续部分说明。</p>
+
+<blockquote>
+	<p>默认 URL
+	样式虽然不美观，但是兼容任何服务器环境。当服务器运行环境不支持
+	URL
+	路由器时，我们可以使用默认样式来保证应用程序可以正常工作。</p>
+</blockquote>
+
+<h2>总结</h2>
+
+<p>总结一下：</p>
+
+<ul>
+	<li><strong>控制器</strong>
+		<p>控制器是一个类，定义在 controller/
+		目录中。文件名是“控制器名称_controller.php”，例如
+		default_controller.php。</p>
+	</li>
+
+	<li><strong>控制器名称</strong>
+		<p>控制器名称只能是 26 个字母和 10
+		个数字组成，并且不区分大小写。</p>
+	</li>
+
+	<li><strong>动作方法</strong>
+		<p>动作方法是控制器类中以“action”开头的方法，例如
+		actionTest()。</p>
+	</li>
+
+	<li><strong>动作名称</strong>
+		<p>只能是 26 个字母和 10
+		个数字组成，并且不区分大小写。</p>
+	</li>
+
+	<li><strong>指定要调用的控制器和动作方法</strong>
+		<p>URL 参数 controller 和 action
+		分别用于指定要调用的控制器和动作方法。</p>
+	</li>
+
+	<li><strong>默认动作方法</strong>
+		<p>未在 URL
+		参数中指定要调用的动作方法时，将会调用控制器的
+		actionIndex() 动作方法。</p>
+	</li>
+
+	<li><strong>默认控制器</strong>
+		<p>未在 URL 参数中指定要调用的控制器时，将会调用 default
+		这个默认控制器。</p>
+	</li>
+</ul>
+
+<p>$Id: start-mvc-controller.texy 2295 2009-03-10 07:48:18Z dualface $</p>
+
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-start-mvc-startup.html">MVC 模式的启动</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-start.html">起步</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-development.html">开始开发</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

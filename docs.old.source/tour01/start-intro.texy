@@ -1,0 +1,15 @@
+=== 介绍 ===
+
+这个教程，将带领各位读者一起使用 QeePHP 开发框架完成一个个人兴趣调查系统。
+
+要执行此教程的代码，需要 QeePHP 2.1 版本，以及一个配置好的 PHP 运行环境。关于配置文件和下载安装 QeePHP 框架，请参考 "QeePHP 快速入门 - 准备开发环境":http://qeephp.com/docs/qeephp-quickstart/node-start-environment 。
+
+参考：
+
+-  QeePHP 下载： http://qeephp.com/projects/qeephp
+-  PHP 整合运行环境 APMXE 下载： http://qeephp.com/projects/apmxe
+-  QeePHP 在线文档列表： http://qeephp.com/docs
+
+
+$Id: start-intro.texy 3321 2009-03-14 09:10:41Z dualface $
+

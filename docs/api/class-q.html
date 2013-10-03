@@ -1,0 +1,1833 @@
+<html>
+<head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("a.toggle").toggle(function(){
+        $(this).text($(this).text().replace(/隐藏/,'显示'));
+        var a=$(this).parents(".summary");
+        a.find(".inherited").hide();
+    },function(){
+        $(this).text($(this).text().replace(/显示/,'隐藏'));
+        $(this).parents(".summary").find(".inherited").show();
+    });
+});
+</script>
+
+
+   <!-- 左侧栏 -->
+	<div class="container">
+	<div class="row">
+    <div id="subpage_sidebar" class="left apidoc-classes-index span3">
+
+      
+
+<h3>包 core</h3>
+
+<ul>
+    <li>
+    <a href="./class-q.html" title="Q">Q</a>
+  </li>
+    <li>
+    <a href="./class-qexception.html" title="QException">QException</a>
+  </li>
+    <li>
+    <a href="./class-qcoll.html" title="QColl">QColl</a>
+  </li>
+    <li>
+    <a href="./class-qcontext.html" title="QContext">QContext</a>
+  </li>
+    <li>
+    <a href="./class-qlog.html" title="QLog">QLog</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 mvc</h3>
+
+<ul>
+    <li>
+    <a href="./class-qacl.html" title="QACL">QACL</a>
+  </li>
+    <li>
+    <a href="./class-qcontroller-abstract.html" title="QController_Abstract">QController_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qcontroller-forward.html" title="QController_Forward">QController_Forward</a>
+  </li>
+    <li>
+    <a href="./class-qrouter.html" title="QRouter">QRouter</a>
+  </li>
+    <li>
+    <a href="./class-qview-output.html" title="QView_Output">QView_Output</a>
+  </li>
+    <li>
+    <a href="./class-qview-redirect.html" title="QView_Redirect">QView_Redirect</a>
+  </li>
+    <li>
+    <a href="./class-qview-render-php.html" title="QView_Render_PHP">QView_Render_PHP</a>
+  </li>
+    <li>
+    <a href="./class-qview-render-php-parser.html" title="QView_Render_PHP_Parser">QView_Render_PHP_Parser</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 orm</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdb-activerecord-behavior-abstract.html" title="QDB_ActiveRecord_Behavior_Abstract">QDB_ActiveRecord_Behavior_Abst...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-abstract.html" title="QDB_ActiveRecord_Abstract">QDB_ActiveRecord_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-abstract.html" title="QDB_ActiveRecord_Association_Abstract">QDB_ActiveRecord_Association_A...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-belongsto.html" title="QDB_ActiveRecord_Association_BelongsTo">QDB_ActiveRecord_Association_B...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-coll.html" title="QDB_ActiveRecord_Association_Coll">QDB_ActiveRecord_Association_C...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-hasmany.html" title="QDB_ActiveRecord_Association_HasMany">QDB_ActiveRecord_Association_H...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-hasone.html" title="QDB_ActiveRecord_Association_HasOne">QDB_ActiveRecord_Association_H...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-manytomany.html" title="QDB_ActiveRecord_Association_ManyToMany">QDB_ActiveRecord_Association_M...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-meta.html" title="QDB_ActiveRecord_Meta">QDB_ActiveRecord_Meta</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-view.html" title="QDB_ActiveRecord_View">QDB_ActiveRecord_View</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-viewmeta.html" title="QDB_ActiveRecord_ViewMeta">QDB_ActiveRecord_ViewMeta</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-callbacks.html" title="QDB_ActiveRecord_Callbacks">QDB_ActiveRecord_Callbacks</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-interface.html" title="QDB_ActiveRecord_Interface">QDB_ActiveRecord_Interface</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 form</h3>
+
+<ul>
+    <li>
+    <a href="./class-qform-element.html" title="QForm_Element">QForm_Element</a>
+  </li>
+    <li>
+    <a href="./class-qform-group.html" title="QForm_Group">QForm_Group</a>
+  </li>
+    <li>
+    <a href="./class-qform.html" title="QForm">QForm</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 database</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdb-adapter-abstract.html" title="QDB_Adapter_Abstract">QDB_Adapter_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-mysql.html" title="QDB_Adapter_Mysql">QDB_Adapter_Mysql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-abstract.html" title="QDB_Adapter_Pdo_Abstract">QDB_Adapter_Pdo_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-exception.html" title="QDB_Adapter_Pdo_Exception">QDB_Adapter_Pdo_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-pgsql.html" title="QDB_Adapter_Pdo_Pgsql">QDB_Adapter_Pdo_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pgsql.html" title="QDB_Adapter_Pgsql">QDB_Adapter_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-cond.html" title="QDB_Cond">QDB_Cond</a>
+  </li>
+    <li>
+    <a href="./class-qdb.html" title="QDB">QDB</a>
+  </li>
+    <li>
+    <a href="./class-qdb-expr.html" title="QDB_Expr">QDB_Expr</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-abstract.html" title="QDB_Result_Abstract">QDB_Result_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-mysql.html" title="QDB_Result_Mysql">QDB_Result_Mysql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-pdo.html" title="QDB_Result_Pdo">QDB_Result_Pdo</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-pgsql.html" title="QDB_Result_Pgsql">QDB_Result_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-select.html" title="QDB_Select">QDB_Select</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table.html" title="QDB_Table">QDB_Table</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table-lite.html" title="QDB_Table_Lite">QDB_Table_Lite</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 helper</h3>
+
+<ul>
+    <li>
+    <a href="./class-helper-filesys.html" title="Helper_Filesys">Helper_Filesys</a>
+  </li>
+    <li>
+    <a href="./class-helper-array.html" title="Helper_Array">Helper_Array</a>
+  </li>
+    <li>
+    <a href="./class-qdom-document.html" title="QDom_Document">QDom_Document</a>
+  </li>
+    <li>
+    <a href="./class-qdom-element.html" title="QDom_Element">QDom_Element</a>
+  </li>
+    <li>
+    <a href="./class-qfilter.html" title="QFilter">QFilter</a>
+  </li>
+    <li>
+    <a href="./class-helper-image.html" title="Helper_Image">Helper_Image</a>
+  </li>
+    <li>
+    <a href="./class-helper-imagegd.html" title="Helper_ImageGD">Helper_ImageGD</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcode.html" title="Helper_ImgCode">Helper_ImgCode</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcodesimple.html" title="Helper_ImgCodeSimple">Helper_ImgCodeSimple</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcodettf.html" title="Helper_ImgCodeTTF">Helper_ImgCodeTTF</a>
+  </li>
+    <li>
+    <a href="./class-helper-uploader.html" title="Helper_Uploader">Helper_Uploader</a>
+  </li>
+    <li>
+    <a href="./class-helper-uploader-file.html" title="Helper_Uploader_File">Helper_Uploader_File</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator.html" title="QValidator">QValidator</a>
+  </li>
+    <li>
+    <a href="./class-helper-yaml.html" title="Helper_YAML">Helper_YAML</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 cache</h3>
+
+<ul>
+    <li>
+    <a href="./class-qcache-apc.html" title="QCache_APC">QCache_APC</a>
+  </li>
+    <li>
+    <a href="./class-qcache-file.html" title="QCache_File">QCache_File</a>
+  </li>
+    <li>
+    <a href="./class-qcache-memcached.html" title="QCache_Memcached">QCache_Memcached</a>
+  </li>
+    <li>
+    <a href="./class-qcache-memory.html" title="QCache_Memory">QCache_Memory</a>
+  </li>
+    <li>
+    <a href="./class-qcache-phpdatafile.html" title="QCache_PHPDataFile">QCache_PHPDataFile</a>
+  </li>
+    <li>
+    <a href="./class-qcache-xcache.html" title="QCache_XCache">QCache_XCache</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 webcontrols</h3>
+
+<ul>
+    <li>
+    <a href="./class-qui-control-abstract.html" title="QUI_Control_Abstract">QUI_Control_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-input-abstract.html" title="Control_Input_Abstract">Control_Input_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-button.html" title="Control_Button">Control_Button</a>
+  </li>
+    <li>
+    <a href="./class-control-checkbox-abstract.html" title="Control_Checkbox_Abstract">Control_Checkbox_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-checkbox.html" title="Control_Checkbox">Control_Checkbox</a>
+  </li>
+    <li>
+    <a href="./class-control-checkboxgroup-abstract.html" title="Control_CheckboxGroup_Abstract">Control_CheckboxGroup_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-checkboxgroup.html" title="Control_CheckboxGroup">Control_CheckboxGroup</a>
+  </li>
+    <li>
+    <a href="./class-control-dropdownlist.html" title="Control_DropdownList">Control_DropdownList</a>
+  </li>
+    <li>
+    <a href="./class-control-hidden.html" title="Control_Hidden">Control_Hidden</a>
+  </li>
+    <li>
+    <a href="./class-control-label.html" title="Control_Label">Control_Label</a>
+  </li>
+    <li>
+    <a href="./class-control-listbox.html" title="Control_Listbox">Control_Listbox</a>
+  </li>
+    <li>
+    <a href="./class-control-memo.html" title="Control_Memo">Control_Memo</a>
+  </li>
+    <li>
+    <a href="./class-control-password.html" title="Control_Password">Control_Password</a>
+  </li>
+    <li>
+    <a href="./class-control-radio.html" title="Control_Radio">Control_Radio</a>
+  </li>
+    <li>
+    <a href="./class-control-radiogroup.html" title="Control_RadioGroup">Control_RadioGroup</a>
+  </li>
+    <li>
+    <a href="./class-control-reset.html" title="Control_Reset">Control_Reset</a>
+  </li>
+    <li>
+    <a href="./class-control-static.html" title="Control_Static">Control_Static</a>
+  </li>
+    <li>
+    <a href="./class-control-submit.html" title="Control_Submit">Control_Submit</a>
+  </li>
+    <li>
+    <a href="./class-control-textbox.html" title="Control_Textbox">Control_Textbox</a>
+  </li>
+    <li>
+    <a href="./class-control-upload.html" title="Control_Upload">Control_Upload</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 behavior</h3>
+
+<ul>
+    <li>
+    <a href="./class-model-behavior-acluser.html" title="Model_Behavior_AclUser">Model_Behavior_AclUser</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-fastuuid.html" title="Model_Behavior_Fastuuid">Model_Behavior_Fastuuid</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-relation.html" title="Model_Behavior_Relation">Model_Behavior_Relation</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-uniqueness.html" title="Model_Behavior_Uniqueness">Model_Behavior_Uniqueness</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 exception</h3>
+
+<ul>
+    <li>
+    <a href="./class-qcache-exception.html" title="QCache_Exception">QCache_Exception</a>
+  </li>
+    <li>
+    <a href="./class-q-classfileexistsexception.html" title="Q_ClassFileExistsException">Q_ClassFileExistsException</a>
+  </li>
+    <li>
+    <a href="./class-q-classnotdefinedexception.html" title="Q_ClassNotDefinedException">Q_ClassNotDefinedException</a>
+  </li>
+    <li>
+    <a href="./class-q-createdirfailedexception.html" title="Q_CreateDirFailedException">Q_CreateDirFailedException</a>
+  </li>
+    <li>
+    <a href="./class-q-createfilefailedexception.html" title="Q_CreateFileFailedException">Q_CreateFileFailedException</a>
+  </li>
+    <li>
+    <a href="./class-q-filenotfoundexception.html" title="Q_FileNotFoundException">Q_FileNotFoundException</a>
+  </li>
+    <li>
+    <a href="./class-q-filenotreadableexception.html" title="Q_FileNotReadableException">Q_FileNotReadableException</a>
+  </li>
+    <li>
+    <a href="./class-q-illegalclassnameexception.html" title="Q_IllegalClassNameException">Q_IllegalClassNameException</a>
+  </li>
+    <li>
+    <a href="./class-q-illegalfilenameexception.html" title="Q_IllegalFilenameException">Q_IllegalFilenameException</a>
+  </li>
+    <li>
+    <a href="./class-qlog-exception.html" title="QLog_Exception">QLog_Exception</a>
+  </li>
+    <li>
+    <a href="./class-q-notimplementedexception.html" title="Q_NotImplementedException">Q_NotImplementedException</a>
+  </li>
+    <li>
+    <a href="./class-q-removedirfailedexception.html" title="Q_RemoveDirFailedException">Q_RemoveDirFailedException</a>
+  </li>
+    <li>
+    <a href="./class-qdb-exception.html" title="QDB_Exception">QDB_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-exception-duplicatekey.html" title="QDB_Exception_DuplicateKey">QDB_Exception_DuplicateKey</a>
+  </li>
+    <li>
+    <a href="./class-qdb-select-exception.html" title="QDB_Select_Exception">QDB_Select_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table-exception.html" title="QDB_Table_Exception">QDB_Table_Exception</a>
+  </li>
+    <li>
+    <a href="./class-acluser-exception.html" title="AclUser_Exception">AclUser_Exception</a>
+  </li>
+    <li>
+    <a href="./class-acluser-duplicateusernameexception.html" title="AclUser_DuplicateUsernameException">AclUser_DuplicateUsernameExcep...</a>
+  </li>
+    <li>
+    <a href="./class-acluser-usernamenotfoundexception.html" title="AclUser_UsernameNotFoundException">AclUser_UsernameNotFoundExcept...</a>
+  </li>
+    <li>
+    <a href="./class-acluser-wrongpasswordexception.html" title="AclUser_WrongPasswordException">AclUser_WrongPasswordException</a>
+  </li>
+    <li>
+    <a href="./class-qform-exception.html" title="QForm_Exception">QForm_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdom-exception.html" title="QDom_Exception">QDom_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator-exception.html" title="QValidator_Exception">QValidator_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator-validatefailedexception.html" title="QValidator_ValidateFailedException">QValidator_ValidateFailedExcep...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-exception.html" title="QDB_ActiveRecord_Association_Exception">QDB_ActiveRecord_Association_E...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-notdefinedexception.html" title="QDB_ActiveRecord_Association_NotDefinedException">QDB_ActiveRecord_Association_N...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-rejectexception.html" title="QDB_ActiveRecord_Association_RejectException">QDB_ActiveRecord_Association_R...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-behavior-exception.html" title="QDB_ActiveRecord_Behavior_Exception">QDB_ActiveRecord_Behavior_Exce...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-exception.html" title="QDB_ActiveRecord_Exception">QDB_ActiveRecord_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-calltoundefinedmethodexception.html" title="QDB_ActiveRecord_CallToUndefinedMethodException">QDB_ActiveRecord_CallToUndefin...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-changingreadonlypropexception.html" title="QDB_ActiveRecord_ChangingReadonlyPropException">QDB_ActiveRecord_ChangingReado...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-compositepkincompatibleexception.html" title="QDB_ActiveRecord_CompositePKIncompatibleException">QDB_ActiveRecord_CompositePKIn...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-destroywithoutidexception.html" title="QDB_ActiveRecord_DestroyWithoutIdException">QDB_ActiveRecord_DestroyWithou...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-expectsassocpropexception.html" title="QDB_ActiveRecord_ExpectsAssocPropException">QDB_ActiveRecord_ExpectsAssocP...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-meta-exception.html" title="QDB_ActiveRecord_Meta_Exception">QDB_ActiveRecord_Meta_Exceptio...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-settingproptypemismatchexception.html" title="QDB_ActiveRecord_SettingPropTypeMismatchException">QDB_ActiveRecord_SettingPropTy...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-undefinedpropexception.html" title="QDB_ActiveRecord_UndefinedPropException">QDB_ActiveRecord_UndefinedProp...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-validatefailedexception.html" title="QDB_ActiveRecord_ValidateFailedException">QDB_ActiveRecord_ValidateFaile...</a>
+  </li>
+    <li>
+    <a href="./class-qacl-exception.html" title="QACL_Exception">QACL_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-exception.html" title="QRouter_Exception">QRouter_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-invalidrouteexception.html" title="QRouter_InvalidRouteException">QRouter_InvalidRouteException</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-routenotfoundexception.html" title="QRouter_RouteNotFoundException">QRouter_RouteNotFoundException</a>
+  </li>
+    <li>
+    <a href="./class-qview-exception.html" title="QView_Exception">QView_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qui-exception.html" title="QUI_Exception">QUI_Exception</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 debug</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdebug.html" title="QDebug">QDebug</a>
+  </li>
+    <li>
+    <a href="./class-qdebug-firephp.html" title="QDebug_FirePHP">QDebug_FirePHP</a>
+  </li>
+  
+</ul>
+
+
+
+    </div>
+
+    <!-- /左侧栏 -->
+
+    <!-- 右侧栏 -->
+
+    <div id="col3" class="right contents span9">
+
+      
+<div class="apidoc-class">
+
+  <h1>类 - Q</h1>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="./index.html">所有包</a></li>
+
+        <li><a href="#properties">类属性</a></li>
+    
+        <li><a href="#methods">类方法</a></li>
+    
+
+  </ul>
+
+  
+<table class="summary-table table table-bordered" cellpadding="0" cellspacing="0" >
+  <tr>
+    <th nowrap="nowrap">包</th>
+    <td>core</td>
+  </tr>
+  <tr>
+    <th nowrap="nowrap">类层次</th>
+    <td>
+    class Q
+    </td>
+  </tr>
+
+  
+  
+    <tr>
+    <th nowrap="nowrap">版本</th>
+    <td>$Id: q.php 2628 2009-07-17 08:40:15Z jerry $</td>
+  </tr>
+  
+</table>
+
+<div class="formatted">
+  
+<p>类 Q 是 QeePHP
+框架的核心类，提供了框架运行所需的基本服务</p>
+
+<p>类 Q 提供 QeePHP 框架的基本服务，包括：</p>
+</div>
+
+
+  <a name="properties"></a>
+
+  
+  <a name="methods"></a>
+  
+<div class="summary">
+  <h2>公共方法</h2>
+  <p>
+    <a href="#" class="toggle">隐藏继承的方法</a>
+  </p>
+
+  <table class="list-table table table-bordered">
+    <tr>
+      <th>方法</th><th>描述</th><th>定义于</th>
+    </tr>
+
+        <tr>
+      <td>
+        <a href="#Q_version">version()</a>
+      </td>
+
+      <td>返回 QeePHP 版本号</td>
+      <td>
+                Q        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#Q_ini">ini()</a>
+      </td>
+
+      <td>获取指定的设置内容</td>
+      <td>
+                Q        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#Q_loadDefaultIni">loadDefaultIni()</a>
+      </td>
+
+      <td></td>
+      <td>
+                Q        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#Q_changeIni">changeIni()</a>
+      </td>
+
+      <td>修改指定设置的内容</td>
+      <td>
+                Q        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#Q_replaceIni">replaceIni()</a>
+      </td>
+
+      <td>替换已有的设置值</td>
+      <td>
+                Q        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#Q_loadClass">loadClass()</a>
+      </td>
+
+      <td>载入指定类的定义文件，如果载入失败抛出异常</td>
+      <td>
+                Q        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#Q_import">import()</a>
+      </td>
+
+      <td>添加一个类搜索路径</td>
+      <td>
+                Q        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#Q_singleton">singleton()</a>
+      </td>
+
+      <td>返回指定 class 的唯一实例</td>
+      <td>
+                Q        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#Q_set_obj">set_obj()</a>
+      </td>
+
+      <td>用指定名字设置对象</td>
+      <td>
+                Q        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#Q_get_obj">get_obj()</a>
+      </td>
+
+      <td>取得指定名字的对象</td>
+      <td>
+                Q        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#Q_has_obj">has_obj()</a>
+      </td>
+
+      <td>确定指定的对象是否存在</td>
+      <td>
+                Q        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#Q_cache">cache()</a>
+      </td>
+
+      <td>读取指定的缓存内容，如果内容不存在或已经失效，则返回 false</td>
+      <td>
+                Q        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#Q_writeCache">writeCache()</a>
+      </td>
+
+      <td>将变量内容写入缓存，失败抛出异常</td>
+      <td>
+                Q        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#Q_cleanCache">cleanCache()</a>
+      </td>
+
+      <td>删除指定的缓存内容</td>
+      <td>
+                Q        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#Q_normalize">normalize()</a>
+      </td>
+
+      <td>对字符串或数组进行格式化，返回格式化后的数组</td>
+      <td>
+                Q        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#Q_control">control()</a>
+      </td>
+
+      <td>创建一个用户界面控件对象</td>
+      <td>
+                Q        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#Q_autoload">autoload()</a>
+      </td>
+
+      <td>用于 QeePHP 的类自动载入，不需要由开发者调用</td>
+      <td>
+                Q        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#Q_registerAutoload">registerAutoload()</a>
+      </td>
+
+      <td>注册或取消注册一个自动类载入方法</td>
+      <td>
+                Q        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#Q___">__()</a>
+      </td>
+
+      <td>QeePHP 内部使用的多语言翻译函数</td>
+      <td>
+                Q        
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+
+
+<div class="details">
+
+  <h2>属性详细说明</h2>
+
+    
+  <a name="_objects"></a>
+
+  <div class="name property">
+    <strong>$_objects</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>对象注册表</p>
+  </div>
+
+    
+  <a name="_class_path"></a>
+
+  <div class="name property">
+    <strong>$_class_path</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>类搜索路径</p>
+  </div>
+
+    
+  <a name="_class_path_options"></a>
+
+  <div class="name property">
+    <strong>$_class_path_options</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>类搜索路径的选项</p>
+  </div>
+
+    
+  <a name="_ini"></a>
+
+  <div class="name property">
+    <strong>$_ini</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>应用程序设置</p>
+  </div>
+
+  
+</div>
+
+
+<div class="details">
+
+  <h2>方法详细说明</h2>
+
+    
+  <a name="Q_version"></a>
+
+  <h4 class="name method">
+    version()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static string <strong>version</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>返回 QeePHP 版本号</p>
+  </div>
+	<hr>
+    
+  <a name="Q_ini"></a>
+
+  <h4 class="name method">
+    ini()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static mixed <strong>ini</strong>($option, $default)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$option</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">要获取设置项的名称</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$default</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc">当设置不存在时要返回的设置默认值</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc">返回设置项的值</td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>获取指定的设置内容</p>
+
+<p>$option 参数指定要获取的设置名。
+如果设置中找不到指定的选项，则返回由 $default
+参数指定的值。</p>
+
+<pre class="php code"><span class="re0">$option_value</span> <span
+class="sy0">=</span> Q<span class="sy0">::</span><span
+class="me2">ini</span><span class="br0">&#40;</span><span
+class="st_h">'my_option'</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>对于层次化的设置信息，可以通过在 $option
+中使用“/”符号来指定。</p>
+
+<p>例如有一个名为 option_group
+的设置项，其中包含三个子项目。 现在要查询其中的 my_option
+设置项的内容。</p>
+
+<pre class="php code"><span class="co1">// +--- option_group</span>
+<span
+class="co1">//   +-- my_option  = this is my_option</span>
+<span
+class="co1">//   +-- my_option2 = this is my_option2</span>
+<span
+class="co1">//   \-- my_option3 = this is my_option3</span>
+&nbsp;
+<span
+class="co1">// 查询 option_group 设置组里面的 my_option 项</span>
+<span
+class="co1">// 将会显示 this is my_option</span>
+<span
+class="kw3">echo</span> Q<span class="sy0">::</span><span
+class="me2">ini</span><span class="br0">&#40;</span><span
+class="st_h">'option_group/my_option'</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>要读取更深层次的设置项，可以使用更多的“/”符号，但太多层次会导致读取速度变慢。</p>
+
+<p>如果要获得所有设置项的内容，将 $option 参数指定为 '/'
+即可：</p>
+
+<pre class="php code"><span
+class="co1">// 获取所有设置项的内容</span>
+<span
+class="re0">$all</span> <span class="sy0">=</span> Q<span
+class="sy0">::</span><span class="me2">ini</span><span
+class="br0">&#40;</span><span class="st_h">'/'</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+  </div>
+	<hr>
+    
+  <a name="Q_loadDefaultIni"></a>
+
+  <h4 class="name method">
+    loadDefaultIni()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static void <strong>loadDefaultIni</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+      </div>
+	<hr>
+    
+  <a name="Q_changeIni"></a>
+
+  <h4 class="name method">
+    changeIni()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static void <strong>changeIni</strong>($option, $data)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$option</td>
+      <td class="param_type">string|array</td>
+      <td class="param_desc">要修改的设置项名称，或包含多个设置项目的数组</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$data</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc">指定设置项的新值</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>修改指定设置的内容</p>
+
+<p>当 $option 参数是字符串时，$option 指定了要修改的设置项。
+$data 则是要为该设置项指定的新数据。</p>
+
+<pre class="php code"><span class="co1">// 修改一个设置项</span>
+Q<span
+class="sy0">::</span><span class="me2">changeIni</span><span
+class="br0">&#40;</span><span class="st_h">'option_group/my_option2'</span><span
+class="sy0">,</span> <span class="st_h">'new value'</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>如果 $option 是一个数组，则假定要修改多个设置项。 那么
+$option
+则是一个由设置项名称和设置值组成的名值对，或者是一个嵌套数组。</p>
+
+<pre class="php code"><span class="co1">// 假设已有的设置为</span>
+<span
+class="co1">// +--- option_1 = old value</span>
+<span
+class="co1">// +--- option_group</span>
+<span
+class="co1">//   +-- option1 = old value</span>
+<span
+class="co1">//   +-- option2 = old value</span>
+<span
+class="co1">//   \-- option3 = old value</span>
+&nbsp;
+<span
+class="co1">// 修改多个设置项</span>
+<span class="re0">$arr</span> <span
+class="sy0">=</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+     <span class="st_h">'option_1'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'value 1'</span><span
+class="sy0">,</span>
+     <span class="st_h">'option_2'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'value 2'</span><span
+class="sy0">,</span>
+     <span class="st_h">'option_group/option2'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'new value'</span><span
+class="sy0">,</span>
+<span class="br0">&#41;</span><span
+class="sy0">;</span>
+Q<span class="sy0">::</span><span
+class="me2">changeIni</span><span class="br0">&#40;</span><span
+class="re0">$arr</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+<span class="co1">// 修改后</span>
+<span
+class="co1">// +--- option_1 = value 1</span>
+<span
+class="co1">// +--- option_2 = value 2</span>
+<span
+class="co1">// +--- option_group</span>
+<span
+class="co1">//   +-- option1 = old value</span>
+<span
+class="co1">//   +-- option2 = new value</span>
+<span
+class="co1">//   \-- option3 = old value</span></pre>
+
+<p>上述代码展示了 Q::changeIni()
+的一个重要特性：保持已有设置的层次结构。</p>
+
+<p>因此如果要完全替换某个设置项和其子项目，应该使用
+Q::replaceIni() 方法。</p>
+  </div>
+	<hr>
+    
+  <a name="Q_replaceIni"></a>
+
+  <h4 class="name method">
+    replaceIni()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static void <strong>replaceIni</strong>($option, $data)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$option</td>
+      <td class="param_type">string|array</td>
+      <td class="param_desc">要修改的设置项名称，或包含多个设置项目的数组</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$data</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc">指定设置项的新值</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>替换已有的设置值</p>
+
+<p>Q::replaceIni() 表面上看和 Q::changeIni() 类似。 但是
+Q::replaceIni() 不会保持已有设置的层次结构，
+而是直接替换到指定的设置项及其子项目。</p>
+
+<pre class="php code"><span class="co1">// 假设已有的设置为</span>
+<span
+class="co1">// +--- option_1 = old value</span>
+<span
+class="co1">// +--- option_group</span>
+<span
+class="co1">//   +-- option1 = old value</span>
+<span
+class="co1">//   +-- option2 = old value</span>
+<span
+class="co1">//   \-- option3 = old value</span>
+&nbsp;
+<span
+class="co1">// 替换多个设置项</span>
+<span class="re0">$arr</span> <span
+class="sy0">=</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+     <span class="st_h">'option_1'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'value 1'</span><span
+class="sy0">,</span>
+     <span class="st_h">'option_2'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'value 2'</span><span
+class="sy0">,</span>
+     <span class="st_h">'option_group/option2'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'new value'</span><span
+class="sy0">,</span>
+<span class="br0">&#41;</span><span
+class="sy0">;</span>
+Q<span class="sy0">::</span><span
+class="me2">replaceIni</span><span class="br0">&#40;</span><span
+class="re0">$arr</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+<span class="co1">// 修改后</span>
+<span
+class="co1">// +--- option_1 = value 1</span>
+<span
+class="co1">// +--- option_2 = value 2</span>
+<span
+class="co1">// +--- option_group</span>
+<span
+class="co1">//   +-- option2 = new value</span></pre>
+
+<p>从上述代码的执行结果可以看出 Q::replaceIni() 和 Q::changeIni()
+的重要区别。</p>
+
+<p>不过由于 Q::replaceIni() 速度比 Q::changeIni() 快很多，
+因此应该尽量使用 Q::replaceIni() 来代替 Q::changeIni()。</p>
+  </div>
+	<hr>
+    
+  <a name="Q_loadClass"></a>
+
+  <h4 class="name method">
+    loadClass()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static string|boolean <strong>loadClass</strong>($class_name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$class_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">要载入的类</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">string|boolean</td>
+      <td class="param_desc">成功返回类名，失败返回 false</td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>载入指定类的定义文件，如果载入失败抛出异常</p>
+
+<pre class="php code">Q<span class="sy0">::</span><span
+class="me2">loadClass</span><span class="br0">&#40;</span><span
+class="st_h">'Table_Posts'</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+  </div>
+	<hr>
+    
+  <a name="Q_import"></a>
+
+  <h4 class="name method">
+    import()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static void <strong>import</strong>($dir, $case_sensitive)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$dir</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">要添加的搜索路径</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$case_sensitive</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc">在该路径中查找类文件时是否区分文件名大小写</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个类搜索路径</p>
+
+<p>如果要使用 Q::loadClass() 载入非 QeePHP 的类，需要通过
+Q::import() 添加类类搜索路径。</p>
+
+<p>要注意，Q::import() 添加的路径和类名称有关系。</p>
+
+<p>例如类的名称为
+Vendor_Smarty_Adapter，那么该类的定义文件存储结构就是
+vendor/smarty/adapter.php。 因此在用 Q::import() 添加
+Vendor_Smarty_Adapter 类的搜索路径时， 只能添加
+vendor/smarty/adapter.php 的父目录。</p>
+
+<pre class="php code">Q<span class="sy0">::</span><span
+class="me2">import</span><span class="br0">&#40;</span><span
+class="st_h">'/www/app'</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+Q<span class="sy0">::</span><span
+class="me2">loadClass</span><span class="br0">&#40;</span><span
+class="st_h">'Vendor_Smarty_Adapter'</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+<span
+class="co1">// 实际载入的文件是 /www/app/vendor/smarty/adapter.php</span></pre>
+
+<p>由于 QeePHP
+的规范是文件名全小写，因此要载入文件名存在大小写区分的第三方库时，
+应该指定 import() 方法的第二个参数。</p>
+
+<pre class="php code">Q<span class="sy0">::</span><span
+class="me2">import</span><span class="br0">&#40;</span><span
+class="st_h">'/www/app/vendor'</span><span class="sy0">,</span> <span
+class="kw2">true</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+Q<span class="sy0">::</span><span
+class="me2">loadClass</span><span class="br0">&#40;</span><span
+class="st_h">'Zend_Mail'</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+<span
+class="co1">// 实际载入的文件是 /www/app/vendor/Zend/Mail.php</span></pre>
+  </div>
+	<hr>
+    
+  <a name="Q_singleton"></a>
+
+  <h4 class="name method">
+    singleton()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static object <strong>singleton</strong>($class_name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$class_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">object</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>返回指定 class 的唯一实例</p>
+  </div>
+	<hr>
+    
+  <a name="Q_set_obj"></a>
+
+  <h4 class="name method">
+    set_obj()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static object <strong>set_obj</strong>($obj, $name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$obj</td>
+      <td class="param_type">object</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">object</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>用指定名字设置对象</p>
+  </div>
+	<hr>
+    
+  <a name="Q_get_obj"></a>
+
+  <h4 class="name method">
+    get_obj()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static object <strong>get_obj</strong>($name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">object</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>取得指定名字的对象</p>
+  </div>
+	<hr>
+    
+  <a name="Q_has_obj"></a>
+
+  <h4 class="name method">
+    has_obj()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static bool <strong>has_obj</strong>($name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">bool</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>确定指定的对象是否存在</p>
+  </div>
+	<hr>
+    
+  <a name="Q_cache"></a>
+
+  <h4 class="name method">
+    cache()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static mixed <strong>cache</strong>($id, $policy, $backend_class)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$id</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">缓存的 ID</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$policy</td>
+      <td class="param_type">array</td>
+      <td class="param_desc">缓存策略</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$backend_class</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">要使用的缓存服务</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc">成功返回缓存内容，失败返回 false</td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>读取指定的缓存内容，如果内容不存在或已经失效，则返回
+false</p>
+
+<p>在操作缓存数据时，必须指定缓存的
+ID。每一个缓存内容都有一个唯一的 ID。 例如数据 A 的缓存
+ID 是 data-a，而数据 B 的缓存 ID 是 data-b。</p>
+
+<p>在大量使用缓存时，应该采用一定的规则来确定缓存
+ID。下面是一个推荐的方案：</p>
+
+<ul>
+	<li>首先按照缓存数据的性质确定前缀，例如 page、db 等；</li>
+
+	<li>然后按照数据的唯一索引来确定后缀，并和前缀一起组合成完整的缓存
+	ID。</li>
+</ul>
+
+<p>按照这个规则，缓存 ID 看上去类似
+page.news.1、db.members.userid。</p>
+
+<p>Q::cache() 可以指定 $policy
+参数来覆盖缓存数据本身带有的策略。
+具体哪些策略可以使用，请参考不同缓存服务的文档。</p>
+
+<p>$backend_class 用于指定要使用的缓存服务对象类名称。例如
+QCache_File、QCache_APC 等。</p>
+
+<pre class="php code"><span class="re0">$data</span> <span
+class="sy0">=</span> Q<span class="sy0">::</span><span
+class="me2">cache</span><span class="br0">&#40;</span><span
+class="re0">$cache_id</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+<span class="kw1">if</span> <span
+class="br0">&#40;</span><span class="re0">$data</span> <span
+class="sy0">===</span> <span class="kw2">false</span><span
+class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span
+class="re0">$data</span> <span class="sy0">=</span> <span
+class="sy0">....</span>
+    Q<span class="sy0">::</span><span
+class="me2">writeCache</span><span class="br0">&#40;</span><span
+class="re0">$cache_id</span><span class="sy0">,</span> <span
+class="re0">$data</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+  </div>
+	<hr>
+    
+  <a name="Q_writeCache"></a>
+
+  <h4 class="name method">
+    writeCache()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static void <strong>writeCache</strong>($id, $data, $policy, $backend_class)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$id</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">缓存的 ID</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$data</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc">要缓存的数据</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$policy</td>
+      <td class="param_type">array</td>
+      <td class="param_desc">缓存策略</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$backend_class</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">要使用的缓存服务</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>将变量内容写入缓存，失败抛出异常</p>
+
+<p>$data 参数指定要缓存的内容。如果 $data
+参数不是一个字符串，则必须将缓存策略 serialize 设置为
+true。 $policy
+参数指定了内容的缓存策略，如果没有提供该参数，则使用缓存服务的默认策略。</p>
+
+<p>其他参数同 Q::cache()。</p>
+  </div>
+	<hr>
+    
+  <a name="Q_cleanCache"></a>
+
+  <h4 class="name method">
+    cleanCache()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static void <strong>cleanCache</strong>($id, $policy, $backend_class)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$id</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">缓存的 ID</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$policy</td>
+      <td class="param_type">array</td>
+      <td class="param_desc">缓存策略</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$backend_class</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">要使用的缓存服务</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>删除指定的缓存内容</p>
+
+<p>通常，失效的缓存数据无需清理。但有时候，希望在某些操作完成后立即清除缓存。
+例如更新数据库记录后，希望删除该记录的缓存文件，以便在下一次读取缓存时重新生成缓存文件。</p>
+
+<pre class="php code">Q<span class="sy0">::</span><span
+class="me2">cleanCache</span><span class="br0">&#40;</span><span
+class="re0">$cache_id</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+  </div>
+	<hr>
+    
+  <a name="Q_normalize"></a>
+
+  <h4 class="name method">
+    normalize()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static array <strong>normalize</strong>($input, $delimiter)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$input</td>
+      <td class="param_type">array|string</td>
+      <td class="param_desc">要格式化的字符串或数组</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$delimiter</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">按照什么字符进行分割</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">array</td>
+      <td class="param_desc">格式化结果</td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>对字符串或数组进行格式化，返回格式化后的数组</p>
+
+<p>$input
+参数如果是字符串，则首先以“,”为分隔符，将字符串转换为一个数组。
+接下来对数组中每一个项目使用 trim()
+方法去掉首尾的空白字符。最后过滤掉空字符串项目。</p>
+
+<p>该方法的主要用途是将诸如：“item1, item2, item3”
+这样的字符串转换为数组。</p>
+
+<pre class="php code"><span class="re0">$input</span> <span
+class="sy0">=</span> <span class="st_h">'item1, item2, item3'</span><span
+class="sy0">;</span>
+<span class="re0">$output</span> <span
+class="sy0">=</span> Q<span class="sy0">::</span><span
+class="me2">normalize</span><span class="br0">&#40;</span><span
+class="re0">$input</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+<span
+class="co1">// $output 现在是一个数组，结果如下：</span>
+<span
+class="co1">// $output = array(</span>
+<span
+class="co1">//   'item1',</span>
+<span class="co1">//   'item2',</span>
+<span
+class="co1">//   'item3',</span>
+<span class="co1">// );</span>
+&nbsp;
+<span
+class="re0">$input</span> <span class="sy0">=</span> <span
+class="st_h">'item1|item2|item3'</span><span class="sy0">;</span>
+<span
+class="co1">// 指定使用什么字符作为分割符</span>
+<span
+class="re0">$output</span> <span class="sy0">=</span> Q<span
+class="sy0">::</span><span class="me2">normalize</span><span
+class="br0">&#40;</span><span class="re0">$input</span><span
+class="sy0">,</span> <span class="st_h">'|'</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+  </div>
+	<hr>
+    
+  <a name="Q_control"></a>
+
+  <h4 class="name method">
+    control()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static QUI_Control_Abstract <strong>control</strong>($type, $id, $attrs)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$type</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">用户界面控件对象的类型</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$id</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">控件ID</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$attrs</td>
+      <td class="param_type">array</td>
+      <td class="param_desc">要传递给控件的附加属性</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QUI_Control_Abstract</td>
+      <td class="param_desc">创建的用户界面控件对象</td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>创建一个用户界面控件对象</p>
+
+<p>使用 Q::control()
+方法，可以很容易的创建指定类型的用户界面控件对象。</p>
+  </div>
+	<hr>
+    
+  <a name="Q_autoload"></a>
+
+  <h4 class="name method">
+    autoload()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static void <strong>autoload</strong>($class_name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$class_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>用于 QeePHP 的类自动载入，不需要由开发者调用</p>
+  </div>
+	<hr>
+    
+  <a name="Q_registerAutoload"></a>
+
+  <h4 class="name method">
+    registerAutoload()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static void <strong>registerAutoload</strong>($class, $enabled)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$class</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">提供自动载入服务的类</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$enabled</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc">启用或禁用该服务</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>注册或取消注册一个自动类载入方法</p>
+
+<p>该方法参考 Zend Framework。</p>
+  </div>
+	<hr>
+    
+  <a name="Q___"></a>
+
+  <h4 class="name method">
+    __()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static $msg <strong>__</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>QeePHP 内部使用的多语言翻译函数</p>
+  </div>
+	<hr>
+  
+</div>
+
+
+</div>
+
+
+    </div>
+
+    <!-- /右侧栏 -->
+    </div>
+	</div>
+</body>
+</html>

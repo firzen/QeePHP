@@ -1,0 +1,17 @@
+=== 创建控制器 ===
+
+新建文件 _code/controller/tasks.php，内容如下：
+
+/---code php
+class Controller_Tasks extends Controller_Abstract
+{
+    function actionIndex()
+    {
+    }
+}
+\---
+
+在浏览器键入 http://localhost/app/index.php?controller=tasks，系统将会自动建立视图文件，保存在 _code/view/tasks/index.php
+
+
+

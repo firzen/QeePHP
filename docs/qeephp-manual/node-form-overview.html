@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 应用开发权威指南</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 应用开发权威指南</a>
+      &raquo;
+      <a href="node-form.html">表单控件</a>
+      &raquo;
+      概述    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+    
+<h1>自定义空间</h1>
+
+<p>在 Web 应用中，表单的使用非常多，QeePHP
+自带了常用的控件，但是我们实际生产中会有不同的需求，如果这个需求是多次复用，那么我们很有必要</p>
+
+<p>为了提供更好的灵活性，并且简化表单的使用，使用QeePHP
+的表单控件能大量的简化View层的设计。</p>
+
+<p>下面是我们常见的一个表单下拉代码编写方法：</p>
+
+<pre class="php code"><span class="kw2">&lt;?php</span>
+<span
+class="re0">$user</span><span class="sy0">=</span><span
+class="kw3">array</span><span class="br0">&#40;</span>
+        <span
+class="nu0">1</span><span class="sy0">=&gt;</span><span
+class="st_h">'Admin'</span><span class="sy0">,</span>
+        <span
+class="nu0">13</span><span class="sy0">=&gt;</span><span
+class="st_h">'Tim13'</span><span class="sy0">,</span>
+        <span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="kw2">?&gt;</span>
+&lt;select name='uid'&gt;
+        <span
+class="kw2">&lt;?php</span> <span class="kw1">foreach</span> <span
+class="br0">&#40;</span><span class="re0">$users</span> <span
+class="kw1">as</span> <span class="re0">$u</span><span
+class="br0">&#41;</span><span class="sy0">:</span><span
+class="kw2">?&gt;</span>
+                <span class="kw2">&lt;?php</span> <span
+class="kw1">if</span> <span class="br0">&#40;</span><span
+class="re0">$user</span><span class="sy0">-&gt;</span><span
+class="me1">uid</span> <span class="sy0">==</span> <span
+class="nu0">13</span><span class="br0">&#41;</span><span
+class="sy0">:</span><span
+class="kw2">?&gt;</span>
+                        &lt;option value=&quot;<span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> <span
+class="re0">$user</span><span class="br0">&#91;</span><span
+class="st_h">'uid'</span><span class="br0">&#93;</span><span
+class="kw2">?&gt;</span>&quot; selected=&quot;selected&quot;&gt;<span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> <span
+class="re0">$user</span><span class="br0">&#91;</span><span
+class="st_h">'username'</span><span class="br0">&#93;</span><span
+class="kw2">?&gt;</span>&lt;/option&gt;
+                <span
+class="kw2">&lt;?php</span> <span class="kw1">else</span><span
+class="sy0">:</span><span
+class="kw2">?&gt;</span>
+                        &lt;option value=&quot;<span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> <span
+class="re0">$user</span><span class="br0">&#91;</span><span
+class="st_h">'uid'</span><span class="br0">&#93;</span><span
+class="kw2">?&gt;</span>&quot;&gt;<span class="kw2">&lt;?php</span> <span
+class="kw3">echo</span> <span class="re0">$user</span><span
+class="br0">&#91;</span><span class="st_h">'username'</span><span
+class="br0">&#93;</span><span
+class="kw2">?&gt;</span>&lt;/option&gt;
+                <span
+class="kw2">&lt;?php</span> <span class="kw1">endif</span><span
+class="sy0">;</span>?<span class="sy0">&gt;</span>
+        <span
+class="kw2">&lt;?php</span> <span class="kw1">endforeach</span><span
+class="sy0">;</span>?<span class="sy0">&gt;</span>
+&lt;/select&gt;</pre>
+
+<p>一个简单的下拉选项要写很多代码，而且看起来也很复杂。</p>
+
+<p>我们下面看看使用QeePHP 的 dropdownlist
+控件实现上述的展示。</p>
+
+<pre class="php code"><span class="kw2">&lt;?php</span> <span
+class="kw3">echo</span> Q<span class="sy0">::</span><span
+class="me2">control</span><span class="br0">&#40;</span><span
+class="st_h">'dropdownlist'</span><span class="sy0">,</span><span
+class="st_h">'uid'</span><span class="sy0">,</span><span
+class="kw3">array</span><span class="br0">&#40;</span>
+        <span
+class="st_h">'items'</span><span class="sy0">=&gt;</span>array<span
+class="br0">&#40;</span>
+                <span class="nu0">1</span><span
+class="sy0">=&gt;</span><span class="st_h">'Admin'</span><span
+class="sy0">,</span>
+                <span class="nu0">13</span><span
+class="sy0">=&gt;</span><span class="st_h">'Tim13'</span><span
+class="sy0">,</span>
+        <span class="br0">&#41;</span><span
+class="sy0">,</span>
+        <span class="st_h">'value'</span><span
+class="sy0">=&gt;</span><span class="nu0">13</span>
+<span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="kw2">?&gt;</span></pre>
+
+<p>同样，如果将上面的 dropdownlist 改为 checkboxgroup
+将会实现checkbox多选的效果，简洁又方便。</p>
+
+<blockquote>
+	<p>更多QeePHP 自带的控件可以查看 library/webcontrols
+	目录下的相关文件</p>
+</blockquote>
+$Id: form-overview.texy 2009-03-10 07:48:18Z Tim13 $
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-form.html">表单控件</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-form.html">表单控件</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-form-cusmize.html">自定义控件</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

@@ -1,0 +1,551 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 应用开发权威指南</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 应用开发权威指南</a>
+      &raquo;
+      <a href="node-model.html">模型与 ORM</a>
+      &raquo;
+      定义关联    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+
+    
+<h1>对象关联</h1>
+
+<p>任何一个稍微复杂点的应用程序，都存在对象间的关联。ORM
+的主要职责除了完成对象和数据库的交互，另一个重要职责就是维护对象间的关系。</p>
+
+<p>QeePHP
+支持四种关联关系，分别是“一对一”、“一对多”、“多对多”和“从属”关联关系。“关系”将两类模型连接在一起，例如“作者”和“文章”模型之间存在的关系。</p>
+
+<p>虽然大多数关系都是双向的，譬如“作者”撰写了多篇“文章”，而每篇“文章”也属于一个“作者”。但是如果以一个模型为出发点，那么这个模型就称为<strong>来源对象</strong>，而关系的另一端则称为<strong>目标对象</strong>。</p>
+
+<h2>定义关联</h2>
+
+<p>定义一个关联非常简单，只需要在模型的 __define()
+方法中添加一个属性，并且指明该属性关联到哪个模型即可。</p>
+
+<pre class="php code"><span class="co1">// 作者模型</span>
+<span
+class="kw2">class</span> Author <span
+class="kw2">extends</span> QDB_ActiveRecord_Abstract
+<span
+class="br0">&#123;</span>
+    <span class="kw3">static</span> <span
+class="kw2">function</span> __define<span class="br0">&#40;</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="kw1">return</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+            <span
+class="sy0">....</span>
+            <span class="st_h">'props'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+                <span
+class="sy0">....</span>
+                <span
+class="st_h">'articles'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span><span class="br0">&#40;</span>QDB<span
+class="sy0">::</span><span class="me2">HAS_MANY</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'Article'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+                <span
+class="sy0">....</span>
+            <span class="br0">&#41;</span><span
+class="sy0">,</span>
+            <span class="sy0">....</span>
+        <span
+class="br0">&#41;</span><span class="sy0">;</span>
+    <span
+class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>上述代码为 Author 模型添加了一个 articles 属性，该属性用
+QDB::HAS_MANY 指定为“一对多”关联，并切关联到 Article
+对象。</p>
+
+<p>当定义好这个关联后，如果我们要知道某个作者的所有文章，代码很简洁：</p>
+
+<pre class="php code"><span
+class="co1">// 查找指定名字的作者</span>
+<span
+class="re0">$author</span> <span class="sy0">=</span> Author<span
+class="sy0">::</span><span class="me2">find</span><span
+class="br0">&#40;</span><span class="st_h">'name = ?'</span><span
+class="sy0">,</span> <span class="re0">$name</span><span
+class="br0">&#41;</span><span class="sy0">-&gt;</span><span
+class="me1">getOne</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 显示该作者所有文章的标题</span>
+<span
+class="kw1">foreach</span> <span class="br0">&#40;</span><span
+class="re0">$author</span><span class="sy0">-&gt;</span><span
+class="me1">articles</span> <span class="kw1">as</span> <span
+class="re0">$article</span><span class="br0">&#41;</span>
+<span
+class="br0">&#123;</span>
+    <span class="kw3">echo</span> <span
+class="re0">$article</span><span class="sy0">-&gt;</span><span
+class="me1">title</span><span class="sy0">;</span>
+<span
+class="br0">&#125;</span></pre>
+
+<p>我们不需要在查询中告诉 QeePHP
+我们除了要知道作者信息，还需要知道该作者的文章信息。只要能够取得作者对象，很自然的通过
+articles 属性就能遍历该作者的所有文章。</p>
+
+<h2>一对一</h2>
+
+<p>一对一关联表示一个对象有另一个对象与其关联，但不会有多个对象与其关联。例如每个“公民”有且只有一个“身份证号码”。</p>
+
+<h3>定义及数据表结构：</h3>
+
+<p>在一对一关联中，存储目标对象的数据表必须添加一个字段，用来保存来源对象的主键值。由于只能保存一个主键值，因此来源对象只能有一个主键。</p>
+
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">存储 User 用户模型的数据表结构</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<th>id</th>
+
+			<td>主键</td>
+		</tr>
+
+		<tr>
+			<th>name</th>
+
+			<td>名字</td>
+		</tr>
+	</tbody>
+</table>
+
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">存储 IDCard 身份证模型的数据表结构</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<th>user_id</th>
+
+			<td><strong>用户对象主键</strong></td>
+		</tr>
+
+		<tr>
+			<th>number</th>
+
+			<td>身份证号码</td>
+		</tr>
+
+		<tr>
+			<th>address</th>
+
+			<td>住址</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>虽然没有特别要求，但目标对象的数据表中存储来源对象主键值的字段一般命名为“来源模型名_id”，所以
+IDCard 存储表的主键字段命名为 user_id。</p>
+
+<p>数据表结构符合要求后，我们就可以在模型中添加关联了：</p>
+
+<pre class="php code"><span
+class="co1">// User 模型的 __define() 方法</span>
+<span
+class="sy0">....</span>
+<span class="st_h">'关联属性名'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>QDB<span class="sy0">::</span><span
+class="me2">HAS_ONE</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'关联模型类名称'</span><span class="br0">&#41;</span>
+<span
+class="sy0">....</span></pre>
+
+<p>对于每一个关联，QeePHP
+都提供了丰富的选项来控制关联的行为：</p>
+
+<ul>
+	<li><strong>source_key</strong>:
+		<p>关联中，识别来源对象的属性名，如果不设置则以来源对象的主键为准。</p>
+
+		<p>假设我们的 User 对象用 idcard_number
+		属性来存储身份证号码，那么 IDCard 对象就可以按照 User
+		对象的 idcard_number 属性来关联，而不是 User
+		对象的主键。这种情况，数据表和关联定义如下：</p>
+
+		<table>
+			<thead>
+				<tr>
+					<th colspan="2">存储 User 用户模型的数据表结构</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<th>id</th>
+
+					<td>主键</td>
+				</tr>
+
+				<tr>
+					<th>name</th>
+
+					<td>名字</td>
+				</tr>
+
+				<tr>
+					<th>idcard_number</th>
+
+					<td>身份证号码</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table>
+			<thead>
+				<tr>
+					<th colspan="2">存储 IDCard 身份证模型的数据表结构</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<th>number</th>
+
+					<td><strong>身份证号码</strong></td>
+				</tr>
+
+				<tr>
+					<th>address</th>
+
+					<td>住址</td>
+				</tr>
+			</tbody>
+		</table>
+	</li>
+</ul>
+
+<pre class="php code"><span
+class="co1">// User 模型的 __define() 方法</span>
+<span
+class="sy0">....</span>
+<span class="st_h">'idcard'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+    QDB<span class="sy0">::</span><span
+class="me2">HAS_ONE</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'IDCard'</span><span class="sy0">,</span>
+    <span
+class="st_h">'source_key'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'idcard_number'</span><span class="sy0">,</span>
+    <span
+class="st_h">'target_key'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'number'</span>
+<span class="br0">&#41;</span><span
+class="sy0">,</span>
+<span class="sy0">....</span></pre>
+
+<p>这里不但出现了 source_key，还出现了
+target_key。因为只要不是关联到来源对象的主键，都必须指定
+source_key 和 target_key 设置。</p>
+
+<ul>
+	<li><strong>target_key</strong>:
+		<p>目标对象数据表中存储来源对象属性值的字段名，如果未指定则设置为“来源模型名_id”。</p>
+	</li>
+</ul>
+
+<ul>
+	<li><strong>on_find</strong>:
+		<p>当通过来源对象的关联属性访问目标对象时，查询多少目标对象，默认为
+		all，既查询所有与来源对象相关的目标对象。</p>
+
+		<p>on_find 可以指定为不同的值：</p>
+
+		<table>
+			<thead>
+				<tr>
+					<th>值</th>
+
+					<th>意义</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<th>all</th>
+
+					<td>查询所有目标对象</td>
+				</tr>
+
+				<tr>
+					<th>true</th>
+
+					<td>功能同 all</td>
+				</tr>
+
+				<tr>
+					<th>skip</th>
+
+					<td>不查询目标对象</td>
+				</tr>
+
+				<tr>
+					<th>false</th>
+
+					<td>功能同 skip</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p>对于“一对一”关联来说，只要 on_find 的值不是 false、skip
+		或 0，那么都可以正确查询目标对象。</p>
+	</li>
+</ul>
+
+<ul>
+	<li><strong>on_find_keys</strong>:
+		<p>查询目标对象时，取得目标对象的哪些属性，默认为“*”，既取得所有属性。如果查询目标对象时只需要指定的属性，将
+		on_find_keys 指定为以逗号分割的多个属性名即可。</p>
+	</li>
+</ul>
+
+<ul>
+	<li><strong>on_delete</strong>:
+		<p>删除来源对象时，相关的目标对象如何处理，默认为“cascade”，既一起删除。例如删除用户对象时，将会自动删除该用户的身份证对象。</p>
+
+		<p>on_delete 可以指定为不同的值：</p>
+
+		<table>
+			<thead>
+				<tr>
+					<th>值</th>
+
+					<th>意义</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<th>cascade</th>
+
+					<td>删除来源对象时删除目标对象</td>
+				</tr>
+
+				<tr>
+					<th>true</th>
+
+					<td>功能同 cascade</td>
+				</tr>
+
+				<tr>
+					<th>set_null</th>
+
+					<td>删除来源对象时，将目标对象以 target_key
+					指定的属性设置为 null</td>
+				</tr>
+
+				<tr>
+					<th>set_value</th>
+
+					<td>删除来源对象时，将目标对象以 target_key
+					指定的属性设置为特定值</td>
+				</tr>
+
+				<tr>
+					<th>skip</th>
+
+					<td>删除来源对象时不删除目标对象</td>
+				</tr>
+
+				<tr>
+					<th>false</th>
+
+					<td>功能同 skip</td>
+				</tr>
+
+				<tr>
+					<th>reject</th>
+
+					<td>删除来源对象时，如果该对象有关联的目标对象，则拒绝删除</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p>当 on_delete 为 set_value 时，可以通过 on_delete_set_value
+		设置来指定填充值。</p>
+
+		<p>当 on_delete 为 reject 时，则 QeePHP
+		在删除来源对象前，会确认是否有目标对象与该来源对象关联。如果有关联，则
+		QeePHP 会抛出 QDB_ActiveRecord_Association_RejectException 异常。</p>
+	</li>
+</ul>
+
+<ul>
+	<li><strong>on_delete_set_value</strong>:
+		<p>如果 on_delete 指定为
+		set_value，则通过该设置来指定填充值。</p>
+	</li>
+</ul>
+
+<ul>
+	<li><strong>on_save</strong>:
+		<p>保存来源对象时，怎么处理目标对象，默认为“replace”，既尝试替换已有的目标对象，如果不存在则新建目标对象。</p>
+
+		<p>on_save 可以指定为不同的值：</p>
+
+		<table>
+			<thead>
+				<tr>
+					<th>值</th>
+
+					<th>意义</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<th>save</th>
+
+					<td>保存来源对象的时候也保存目标对象，至于是创建还是更新，由目标对象的
+					save() 方法确定</td>
+				</tr>
+
+				<tr>
+					<th>true</th>
+
+					<td>功能同 save</td>
+				</tr>
+
+				<tr>
+					<th>create</th>
+
+					<td>保存来源对象时，总是创建新的目标对象（如果目标对象主键出现重复，将会出错）</td>
+				</tr>
+
+				<tr>
+					<th>update</th>
+
+					<td>保存来源对象时，总是更新目标对象（如果目标对象不存在，将会出错）</td>
+				</tr>
+
+				<tr>
+					<th>replace</th>
+
+					<td>保存来源对象时，先检查目标对象是否已经存在，如果存在则更新，否则创建</td>
+				</tr>
+
+				<tr>
+					<th>skip</th>
+
+					<td>保存来源对象时，不保存目标对象</td>
+				</tr>
+
+				<tr>
+					<th>false</th>
+
+					<td>功能同 skip</td>
+				</tr>
+
+				<tr>
+					<th>only_create</th>
+
+					<td>保存来源对象时，目标对象的 save()
+					方法将只保存新建的对象，既不会更新已有的目标对象</td>
+				</tr>
+
+				<tr>
+					<th>only_update</th>
+
+					<td>功能类似 only_create，但只是更新，而没有创建操作</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p>由于“一对一”关联的特殊性，通常应该将 on_save
+		保持为默认值“replace”。但 replace
+		会在保存目标对象时导致额外的一次查询，所以性能敏感的情况下，可以将
+		on_save
+		改为“save”，并且为目标对象添加自己的主键。这样目标对象的
+		save() 方法将能正确决定是创建还是更新。</p>
+	</li>
+</ul>
+
+<h2>一对多</h2>
+
+<h2>从属</h2>
+
+<h2>多对多</h2>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p>$Id: model-define-assoc.texy 2295 2009-03-10 07:48:18Z dualface $</p>
+
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-model-whats-assoc.html">对相关联是什么</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-model.html">模型与 ORM</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-model-hasone-assoc.html">HAS ONE 关联</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

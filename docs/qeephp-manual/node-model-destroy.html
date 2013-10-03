@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 应用开发权威指南</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 应用开发权威指南</a>
+      &raquo;
+      <a href="node-model.html">模型与 ORM</a>
+      &raquo;
+      删除 Delete    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+    
+<h1>删除 Delete</h1>
+
+<p>对于已有的模型对象，删除操作：</p>
+
+<ul>
+	<li>先取得要删除的对象，然后删除关联对象（HAS_ONE对象、HAS_MANY、MANY_TO_MANY多对多关系）；</li>
+
+	<li>直接删除数据库中的对象；</li>
+
+	<li>直接更新数据库，而不涉及对象操作。</li>
+</ul>
+
+<p>在QeePHP删除一个对象非常简单</p>
+
+<pre class="php code"><span class="re0">$user</span><span
+class="sy0">=</span>User<span class="sy0">::</span><span
+class="me2">find</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">-&gt;</span><span
+class="me1">getOne</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="re0">$user</span><span class="sy0">-&gt;</span><span
+class="me1">destroy</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>如果User 的模型定义如下：</p>
+
+<pre class="php code"><span class="st_h">'props'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span>
+            <span
+class="br0">&#40;</span>
+                <span
+class="st_h">'contact'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span><span class="br0">&#40;</span>QDB<span
+class="sy0">::</span><span class="me2">HAS_ONE</span><span
+class="sy0">=&gt;</span><span class="st_h">'Contact'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+                <span
+class="st_h">'company'</span><span class="sy0">=&gt;</span> <span
+class="kw3">array</span><span class="br0">&#40;</span>QDB<span
+class="sy0">::</span><span class="me2">BELONGS_TO</span><span
+class="sy0">=&gt;</span><span class="st_h">'Company'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+                <span
+class="st_h">'articles'</span><span class="sy0">=&gt;</span>array<span
+class="br0">&#40;</span>QDB<span class="sy0">::</span><span
+class="me2">HAS_MANY</span><span class="sy0">=&gt;</span><span
+class="st_h">'Article'</span><span class="sy0">,</span><span
+class="st_h">'on_delete'</span><span class="sy0">=&gt;</span><span
+class="st_h">'skip'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+                <span class="st_h">'tasks'</span><span
+class="sy0">=&gt;</span>array<span class="br0">&#40;</span>QDB<span
+class="sy0">::</span><span class="me2">HAS_MANY</span><span
+class="sy0">=&gt;</span><span class="st_h">'Task'</span><span
+class="br0">&#41;</span>
+            <span class="br0">&#41;</span><span
+class="sy0">,</span></pre>
+
+<p>User对象如果destroy方法被促发后，与被删除对象相关联的对象将会同时被删除，如下：</p>
+
+<ul>
+	<li>contact</li>
+
+	<li>articles</li>
+</ul>
+
+<blockquote>
+	<p>如果不希望关联对象被自动删除，可以在对象关系定义中加入：
+	on_delete=&gt; skip ，如上面的 articles</p>
+</blockquote>
+
+<h2>事件</h2>
+
+<table>
+	<thead>
+		<tr>
+			<th>事件</th>
+
+			<th>说明</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<th>_before_destroy</th>
+
+			<td>删除记录之前</td>
+		</tr>
+
+		<tr>
+			<th>_after_destroy</th>
+
+			<td>删除记录之后</td>
+		</tr>
+	</tbody>
+</table>
+$Id: model-destroy.texy 2013-08-16 16:34:43Z Tim13 $
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-model-update.html">更新 Update</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-model.html">模型与 ORM</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-model-whats-assoc.html">对象关联是什么</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

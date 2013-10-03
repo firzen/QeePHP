@@ -1,0 +1,111 @@
+=== 快速预览 ===
+
+在了解选择 QeePHP 的深层次原因之前，一个几分钟的快速浏览可以让你感受到完成同样任务时，QeePHP 相比传统开发框架的优势。
+
+## 代码生成器 ##
+
+代码生成器是快速创建应用程序的实用工具，QeePHP 可以通过命令行或 Web 界面创建一个新的 QeePHP 应用，以及新的控制器、模型等代码文件。
+
+[* intro-overview-01.png *] *** 基于 Web 界面的应用程序创建工具
+
+[* intro-overview-02.png *] *** 基于 Web 界面的自动化工具 WebSetup
+
+
+## 灵活的数据库查询 ##
+
+虽然在 QeePHP 的设计思想中，模型是封装业务逻辑的首选。但为了与传统开发框架相比较，我们先来看看 QeePHP 灵活的数据库查询功能。
+
+**直接查询：**
+
+/---code php
+// 从 posts 表查询指定 id 字段值的记录
+$dbo->select('id = ?', $id)->from('posts')->query();
+
+// 从 posts 表查询多个 id 字段值的记录
+$dbo->select('id in (?)', array($id1, $id2))->from('posts')->getAll();
+
+// 从 posts 表查询 24 小时之内创建的最后 5 个记录，并且按照创建日期排序
+$dbo->select('created > ?', time() - 60 * 60 * 24)->from('posts')
+    ->order('created DESC')->top(5)->getAll();
+
+// 获得有效订单的总数
+$dbo->select('is_valid = ?', true)->from('orders')->getCount();
+
+// 查询有效订单的最大合计金额
+$dbo->select('is_valid = ?', true)->form('orders')->getMax('price_sum');
+
+// 查询有效订单的最大合计金额、最小合计金额和订单总数
+$dbo->select('is_valid = ?', true)->from('orders')
+    ->max('price_sum', 'max_price_sum')
+    ->min('price_sum', 'min_price_sum')
+    ->count('*', 'orders_count')
+    ->query();
+
+\---
+
+QeePHP 的连贯接口可以提供最大程度的灵活性，允许开发者构造任意复杂的查询语句。
+
+<p>&nbsp;</p>
+
+**从表数据入口查询：**
+
+/---code php
+// 从 users 表查询允许登录的用户，以及保存在 profiles 表中的用户姓名和联系电话
+$table_users->select('login_locked = ?', false)
+            ->joinLeft('profiles', 'realname, phone', 'profiles.user_id = users.id')
+            ->getAll();
+
+// 从 orders 表查询 10 个最新的订单
+$table_orders->select('is_valid = ?', true)
+             ->order('created DESC')
+             ->top(10)
+             ->getAll();
+\---
+
+<p>&nbsp;</p>
+
+
+## 更新数据库 ##
+
+**通过数据库驱动和表数据入口更新：**
+
+/---code php
+// 插入记录
+$row = array(
+    'title' => 'Post title',
+    'body'  => 'Post body',
+);
+$dbo->insert('posts', $row);
+
+// 更新所有 level > 3 的记录，将 level 设置为 1，is_valid 设置为 false
+$row = array(
+    'level' => 1,
+    'is_valid' => false,
+);
+$dbo->update('posts', $row, array('level > ?', $level));
+
+// 删除所有 is_valid 为 false 的记录
+$dbo->delete('posts', array('is_valid = ?', false));
+
+// 更新 users 表所有记录的 is_locked 字段
+$table_users->update(array('is_locked' => false));
+\---
+
+****
+
+<p>&nbsp;</p>
+
+
+**从模型查询：**
+
+/---code php
+
+
+\---
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+$Id: intro-overview.texy 2295 2009-03-10 07:48:18Z dualface $
+

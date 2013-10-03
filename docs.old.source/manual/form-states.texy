@@ -1,0 +1,177 @@
+=== 不同状态的表单 ===
+
+几乎所有应用程序都存在“创建”和“编辑”两种基本操作，例如创建一篇新文章、修改一篇现有的文章。这两种模式的流程存在很大不同，下面我们来探讨与之相关的各种问题。
+
+
+## 准备 ##
+
+首先准备表单配置文件：
+
+/---code yaml
+article_id:
+  _ui: hidden
+
+title:
+  _ui: textbox
+  _label: 文章标题
+
+body:
+  _ui: memo
+  _label: 文章正文
+\---
+
+以及表单代码：
+
+/---code php
+class Form_Article extends QForm
+{
+    function __construct($action)
+    {
+        $config = Helper_YAML::loadCached(dirname(__FILE__) . '/article_form.yaml');
+        $this->loadFromConfig($config);
+    }
+}
+\---
+
+
+## 创建 ##
+
+[* form-states-01.png *] *** 创建的流程
+
+上述流程对应的代码：
+
+/---code php
+function actionCreate()
+{
+    // 构造表单对象
+    $form = new Form_Article(url('articles/create'));
+
+    if ($this->_context->isPOST() && $form->validate($_POST))
+    {
+        // 判断是否是 POST 提交操作，并且 POST 数据导入表单后通过了表单的验证
+        try
+        {
+            // 构造 Article 对象，并导入表单数据
+            $article = new Article($form->values);
+            // 保存 Article 对象
+            $article->save();
+
+            // 重定向浏览器到显示新建对象的页面
+            return $this->_redirect(url('articles/show',
+                  array('article_id' => $article->id())
+            ));
+        }
+        catch (QValidator_ValidateFailedException $ex)
+        {
+            // 如果保存时模型自动验证失败，会抛出 QValidator_ValidateFailedException 异常，
+            // 根据异常将表单置为无效状态
+            $form->invalidate($ex);
+        }
+    }
+    elseif (!$this->_context->isPOST())
+    {
+        // 如果不是 POST 提交，则构造一个新的 Article 对象，并将对象属性值导入表单
+        // 以便表单中能够保存模型各个属性设置的默认值
+        $form->import(new Article());
+    }
+
+    // 将表单传递给视图
+    $this->_view['form'] = $form;
+}
+\---
+
+仔细阅读代码及注释，然后对照流程图即可明确整个流程。这里需要注意的是一个潜在的安全问题。
+
+
+## 安全问题 ##
+
+在执行 $article->save() 时，QeePHP 会根据 $article 对象的主键值是否为空来决定是在数据库“新建”一个对象，还是“更新”已有的对象。
+
+Article 模型的主键是 article_id，因此判断标准就是提交数据中是否包含有效的 article_id 值。
+
+在正常情况下，由于 actionCreate() 中的代码并没有为 article_id 提供值，因此提交的表单中 article_id 值肯定是为空。此时 $artcile->save() 也一定是在数据库中“新建”一个对象。
+
+但是，恶意用户可以通过工具（例如 FireBug）或其他手段，提交一个包含有效 article_id 值的表单给服务端。从而将原本的新建操作变成了更新操作，这样一来甚至可以修改他人创建的 Article 对象。
+
+要解决这个问题，有两种常见的做法：
+
+-  **修改模型的 attr_protected 设置**
+   attr_protected 设置指定通过构造新对象方式传递的值中，哪些会被过滤掉。例如指定 attr_protected 为“article_id”，那么 new Article($form->values()) 执行时，不管表单中是否包含 article_id 值，新建 Article 对象的 article_id 都是空（因为来自 $form->values() 中的 article_id 值被过滤掉了）。
+   与 attr_protected 相对的是 attr_accessible 设置，两者都可以实现同等的效果。两者的区别和使用请参考 ActiveRecord 的相关文档。
+
+-  **移除表单对象中的 article_id 元素**
+   $form->values() 返回的值是进行过滤和验证后的值，如果表单对象中没有 article_id 元素，自然后续的 new Article($form->values()) 就没有安全问题了。
+
+前一种方法是推荐使用的，可以获得最大程度的安全性。因为可能程序中可能会通过其他方式创建模型，从模型的安全设置入手可以彻底解决这个问题。不过就需要开发人员记得这一点，否则可能原本希望的更新操作变成了创建操作。
+
+
+## 编辑 ##
+
+与创建操作比起来，编辑操作要复杂一些：
+
+[* form-states-02.png *] *** 编辑并保存的流程
+
+对应的代码：
+
+/---code php
+function actionEdit()
+{
+    // 取得要编辑的 Article 对象的ID
+    $article_id = intval($this->_context->article_id);
+
+    // 查询 Article 对象
+    $article = Article::find('article_id = ?', $article_id)->query();
+    // 检查对象是否有效
+    if (!$article->id())
+    {
+        // 重定向浏览器
+        return $this->_redirectMessage('错误信息', 
+            '尝试编辑一个不存在的 Article 对象', 
+            url('articles/index'));
+    }
+
+    // 构造表单对象
+    $form = new Form_Article(url('articles/edit'));
+
+    if ($this->_context->isPOST() && $form->validate($_POST))
+    {
+        // 是 POST 提交操作，并且通过验证
+        try
+        {
+            // 根据表单的值，修改 Article 对象的属性值
+            $article->changeProps($form->values());
+            // 保存修改后的对象
+            $article->save();
+
+            // 重定向浏览器
+            return $this->_redirect(url('articles/shwo', 
+                  array('article_id' => $article->id())
+            ));
+        }
+        catch (QValidator_ValidateFailedException $ex)
+        {
+            // 如果保存时模型自动验证失败，会抛出 QValidator_ValidateFailedException 异常，
+            // 根据异常将表单置为无效状态
+            $form->invalidate($ex);
+        }
+    }
+    elseif (!$this->_context->isPOST())
+    {
+        // 如果不是 POST 提交，则将模型导入表单，以便让用户看到要编辑的内容
+        $form->import($article);
+    }
+
+    // 将表单传递给视图
+    $this->_view['form'] = $form;
+}
+\---
+
+与许多开发者平常做的不同，在上面的编辑过程中，不管用户是否提交了表单，我们都将对象从数据库中查询出来。这样做的主要目的是避免恶意用户通过提交非法数据来尝试更新不存在的对象。此外，这里采用 changeProps() 来批量修改模型的属性值。由于 changeProps() 默认不修改模型的只读属性，因此进一步保护了模型。
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+$Id: form-states.texy 2295 2009-03-10 07:48:18Z dualface $
+

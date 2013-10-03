@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 快速入门</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qeephp.com/docs/">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 快速入门</a>
+      &raquo;
+      <a href="node-automation.html">使用自动化工具</a>
+      &raquo;
+      创建模型    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+
+    
+<h1>创建模型</h1>
+
+<p>WebSetup
+除了可以创建控制器，还可以从数据表直接创建匹配的模型。下面我们做个简单的测试。</p>
+
+<h2>创建数据表</h2>
+
+<p>在 phpMyAdmin 中选中先前创建的 todo_db 数据，然后执行下列
+SQL 命令：</p>
+
+<pre class="sql code"><span class="kw1">CREATE</span> <span
+class="kw1">TABLE</span> <span class="st0">`todo_db`</span><span
+class="sy0">.</span><span class="st0">`tests`</span> <span
+class="br0">&#40;</span>
+  <span class="st0">`id`</span> INT <span
+class="kw1">NOT</span> <span class="kw1">NULL</span> <span
+class="kw1">AUTO_INCREMENT</span> <span class="kw1">PRIMARY</span> <span
+class="kw1">KEY</span> <span class="sy0">,</span>
+  <span
+class="st0">`title`</span> VARCHAR<span class="br0">&#40;</span> <span
+class="nu0">80</span> <span class="br0">&#41;</span> <span
+class="kw1">NOT</span> <span class="kw1">NULL</span> <span
+class="sy0">,</span>
+  <span class="st0">`body`</span> TEXT <span
+class="kw1">NOT</span> <span class="kw1">NULL</span> <span
+class="sy0">,</span>
+  <span class="st0">`created`</span> INT <span
+class="kw1">NOT</span> <span class="kw1">NULL</span> <span
+class="sy0">,</span>
+  <span class="st0">`updated`</span> INT <span
+class="kw1">NOT</span> <span class="kw1">NULL</span>
+<span
+class="br0">&#41;</span>;</pre>
+
+<p>执行成功后，数据库将多出一个 tests 表。</p>
+
+<h2>从数据表创建模型</h2>
+
+<p>从 WebSetup 中选择“代码生成器 -&gt; 列出模型 –&gt;
+创建新模型”。如果此时出现错误信息“失败 -
+无法读取数据库或没有数据表”，表示 configs/database.yaml
+没有正确配置，导致 WebSetup 无法连接数据库。</p>
+
+<p>连接数据库成功后，从下拉列表框中选择 tests
+数据表，此时右侧会显示 tests
+数据表的字段信息。确认无误后，输入模型名称“Test”，并点击“创建模型”按钮：</p>
+
+<div class="figure"><img src="images/automation-model-01.png" alt="" />
+	<p>创建模型</p>
+</div>
+
+<div class="figure"><img src="images/automation-model-02.png" alt="" />
+	<p>创建模型成功</p>
+</div>
+
+<p>创建好的模型文件保存为 app/model/test.php，内容如下：</p>
+
+<pre class="php code"><span
+class="co4">/**
+ * Test 封装来自 tests 数据表的记录及领域逻辑
+ */</span>
+<span
+class="kw2">class</span> Test <span
+class="kw2">extends</span> QDB_ActiveRecord_Abstract
+<span
+class="br0">&#123;</span>
+&nbsp;
+    <span
+class="co4">/**
+     * 返回对象的定义
+     *
+     * @static
+     *
+     * @return array
+     */</span>
+    <span
+class="kw3">static</span> <span class="kw2">function</span> __define<span
+class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span
+class="br0">&#123;</span>
+        <span class="kw1">return</span> <span
+class="kw3">array</span>
+        <span
+class="br0">&#40;</span>
+            <span
+class="co1">// 指定该 ActiveRecord 要使用的行为插件</span>
+            <span
+class="st_h">'behaviors'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">''</span><span class="sy0">,</span>
+&nbsp;
+            <span
+class="co1">// 指定行为插件的配置</span>
+            <span
+class="st_h">'behaviors_settings'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span>
+            <span
+class="br0">&#40;</span>
+                <span
+class="co2"># '插件名' =&gt; array('选项' =&gt; 设置),</span>
+            <span
+class="br0">&#41;</span><span class="sy0">,</span>
+&nbsp;
+            <span
+class="co1">// 用什么数据表保存对象</span>
+            <span
+class="st_h">'table_name'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'tests'</span><span class="sy0">,</span>
+&nbsp;
+            <span
+class="sy0">....</span>
+            <span class="sy0">....</span></pre>
+
+<p>源文件内容较多，就不全部列出来了。但仔细观察这个源文件，可以发现
+WebSetup
+已经根据数据表帮我们设置好了基本的验证规则、自动填充等内容：</p>
+
+<pre class="php code"><span
+class="co4">/**
+ * 指定在数据库中创建对象时，哪些属性的值由下面指定的内容进行覆盖
+ */</span>
+<span
+class="st_h">'create_autofill'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span>
+<span class="br0">&#40;</span>
+    <span
+class="st_h">'created'</span> <span class="sy0">=&gt;</span> <span
+class="kw2">self</span><span class="sy0">::</span><span
+class="me2">AUTOFILL_TIMESTAMP</span> <span class="sy0">,</span>
+    <span
+class="st_h">'updated'</span> <span class="sy0">=&gt;</span> <span
+class="kw2">self</span><span class="sy0">::</span><span
+class="me2">AUTOFILL_TIMESTAMP</span> <span class="sy0">,</span>
+<span
+class="br0">&#41;</span><span class="sy0">,</span>
+&nbsp;
+<span
+class="co4">/**
+ * 在保存对象时，会按照下面指定的验证规则进行验证。验证失败会抛出异常。
+ */</span>
+<span
+class="st_h">'validations'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span>
+<span class="br0">&#40;</span>
+    <span
+class="st_h">'title'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span>
+    <span class="br0">&#40;</span>
+        <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'not_empty'</span><span class="sy0">,</span> <span
+class="st_h">'title不能为空'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+        <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'max_length'</span><span
+class="sy0">,</span> <span class="nu0">80</span><span class="sy0">,</span> <span
+class="st_h">'title不能超过 80 个字符'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+    <span
+class="br0">&#41;</span><span class="sy0">,</span>
+    <span
+class="st_h">'body'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span>
+    <span class="br0">&#40;</span>
+        <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'not_empty'</span><span class="sy0">,</span> <span
+class="st_h">'body不能为空'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+    <span class="br0">&#41;</span><span
+class="sy0">,</span>
+<span class="br0">&#41;</span><span
+class="sy0">,</span></pre>
+
+<p>此外，这个文件中已经定义好了三个重要的静态方法（static
+function）。其中，<strong>__define()</strong>
+返回的内容指出了保存模型使用的数据表、属性设置以及模型的其他方面。以后我们对模型的许多修改都集中在
+__define() 方法中。</p>
+
+<p>充分利用 WebSetup
+可以帮助我们节约大量时间，显著减少重复劳动。</p>
+
+<blockquote>
+	<p>这个模型是用于测试的，不需要时删除掉即可。对应的
+	tests 数据表也可以删除。</p>
+</blockquote>
+
+<p>$Id: automation-model.texy 2295 2009-03-10 07:48:18Z dualface $</p>
+
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-automation-controller.html">创建控制器</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-automation.html">使用自动化工具</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-thinking.html">编写代码之前的思考</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

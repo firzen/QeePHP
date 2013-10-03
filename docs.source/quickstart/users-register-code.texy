@@ -1,0 +1,210 @@
+=== 实现用户注册（功能实现） ===
+
+在前面的小结中，我们主要学习了怎么使用视图。现在我们来解决表单提交，以及模型的创建问题。
+
+> 本章节和原来的教程有比较大的区别，为了更容易理解，把模型验证部分工作交给了controller，这个做法实际上并不利于模型的完整性
+
+## 表单提交处理代码 ##
+
+修改 controller/users.php 文件，加入以下代码：
+
+/---code php
+function actionRegister()
+{
+	if (request_is_post()){
+		//从POST获取用户名和密码
+		$username = post('username');
+		$password = post('password','',false);
+	}
+}
+\---
+
+我们用到了QeePHP 自带的request_is_post函数和post函数，大家只需要阅读post函数的源代码就知道具体的原理，QeePHP还提供了 request、get、val等实用函数。
+
+## 验证数据有效性 ##
+QeePHP 提供了模型级的验证方法，我们先用常规方法实现
+/---code php
+if (request_is_post()){
+	do {
+		//从POST获取用户名和密码
+		$username = post('username');
+		$password = post('password','',false);
+		
+		// 对输入数据进行验证
+		$errors = array();
+		if (strlen($username) < 5)
+		{
+			$errors['username'][] = '用户名不能少于 5 个字符';
+		}
+		// 验证用户名有效性，更多验证方法请参考 QValidator
+		if (!QValidator::validate_is_alnum($username)){
+			$errors['username'][] = '用户名只能由字母和数字组成';
+		}
+		if (strlen($password) < 6)
+		{
+			$errors['password'][] = '密码不能少于 6 个字符';
+		}
+		//验证用户是否已经注册
+		$user=User::find('username =?',$username)->getOne();
+		if (!$user->isNewRecord()){
+			$errors['username'][] = '用户名已经被注册';
+		}
+		if (count($errors)){
+			$this->_view['errors']=$errors;
+			break;
+		}
+		//验证完毕，保存用户
+		
+	}while (0);
+}
+\---
+
+补充View部分错误显示
+/---code php
+<form name="form_user" id="form_user" 
+    action="<?php echo url('users/register'); ?>" method="post">
+
+  <fieldset>
+    <p>
+      <label for="username">用户名</label>
+      <input type="text" name="username" id="username" />
+      <?php if (@count($errors['username'])){echo implode(',', $errors['username']);}?>
+    </p>
+
+    <p>
+      <label for="password">密码</label>
+      <input type="password" name="password" id="password" />
+      <?php if (@count($errors['password'])){echo implode(',', $errors['password']);}?>
+    </p>
+
+    <p>
+      <input type="submit" name="Submit" value="提交" />
+    </p>
+
+  </fieldset>
+
+</form>
+\---
+
+## 完善模型定义 ##
+
+时刻记住一点，QeePHP 是一个遵循“领域驱动开发”思想的框架。而领域驱动中，最重要的就是模型。而我们的大多数表单都是和模型有关的，所以在处理表单之前，首先要完善模型的定义。因为这些定义可以直接套入表单对象中，避免我们在不同的地方编写同样的逻辑，这就是 DRY 原则的最佳实践。
+
+先前创建的 User 模型只是半成品，现在我们需要对其进行完善。一个模型由几个方面组成：
+
+-  属性：定义模型有哪些属性、属性的类型以及属性的行为和验证规则等
+-  行为：添加实现业务逻辑需要的方法，让模型逐步逼近实际的需求
+-  数据：由属性和存储模型属性的数据表组成，但属性不一定要和数据表一一对应
+-  关系：模型需要互相配合来实现业务需求，因此关系也是模型的一部分
+
+
+<h4>完善模型的属性</h4>
+
+打开模型的定义文件，在 __define() 方法中可以找到模型的详细定义。这些定义分为几个部分：
+
+-  指定存储模型使用的数据表
+-  属性和关联的定义，例如只读属性、虚拟属性、关联等
+-  对属性的验证规则
+-  安全性方面的定义
+-  行为插件的定义
+
+在 QeePHP 的模型中，属性本身具有多种特性：
+
+-  是否是只读属性
+-  是否是虚拟属性
+-  是否有 getter 或 setter 方法
+-  类型
+-  验证规则
+
+> 对于 todo 这样的简单应用，我们用不到这么多高级特性，所以上述内容了解一下就行了。
+
+todo 应用中，user 模型只有两个主要属性：用户名和密码。根据需求，这两个属性有下列要求：
+
+-  用户名应该是唯一的
+-  用户一旦成功创建，就不能更改用户名，因此用户名必须是只读属性
+-  用户名不能少于 5 个字符，不能多于 15 个字符，并且只能使用字母和数字组成
+-  密码不能少于 6 个字符，不能多于 20 个字符
+-  密码应该加密存储
+
+现在我们一步步来实现这些要求。
+
+用户名和密码的验证，之前在controller中已经实现，密码的加密存储我们让模型自己完成。在User模型（model\user.php）内加入以下代码
+/---code php
+    static function __define()
+    {
+        return array
+        (
+
+            // 用什么数据表保存对象
+            'table_name' => 'user',
+
+            // 指定数据表记录字段与对象属性之间的映射关系
+            // 没有在此处指定的属性，QeePHP 会自动设置将属性映射为对象的可读写属性
+            'props' => array
+            (
+            	'password' => array('setter' => '_password_setter'),
+            ),
+        );
+    }
+    /**
+     * password Setter 修改模型password值自动加密
+     * @param string $val
+     */
+    function _password_setter($val){
+    	$this->_props['password']=self::passwordEncode($val);
+    	$this->willChanged('password');
+    }
+    /**
+     * 密码加密实现函数
+     * @param string $val
+     * @return string
+     */
+    static function passwordEncode($val){
+    	return md5($val);
+    }
+\---
+
+经过简单的设置，大部分要求都可以由 QeePHP 来处理了。
+
+在users controller  增加一下代码：
+/---code php
+// 成功后输出新建用户对象的信息
+dump($user->username, 'UserName');
+dump($user->password, 'Password');
+dump($user->id(), 'UserID');
+exit;
+\---
+
+
+现在用浏览器访问 http://localhost/app/index.php?controller=users&action=register ，然后不输入任何内容就点击“提交”按钮，将可以看到如下界面：
+
+[* users-register-code-01.png *] *** 对验证信息的反馈
+
+现在输入用户名为：steven，密码为 123456，提交后会看到如下内容：
+
+[* users-register-code-02.png *] *** 注册成功后的输出信息
+
+通过 phpMyAdmin 可以看到刚刚输入的信息已经存入数据库了：
+
+[* users-register-code-03.png *] *** 保存到数据库中的用户信息
+
+为了方便后续开发，我们再修改一下 users 控制器的 actionRegister() 方法：
+
+/---code php
+// 成功后输出新建用户对象的信息
+dump($user->username, 'UserName');
+dump($user->password, 'Password');
+dump($user->id(), 'UserID');
+exit;
+\---
+
+改为：
+
+/---code php
+// 登录成功后，重定向浏览器
+return $this->_redirect(url('default/index'));
+\---
+
+现在读者朋友们可以发挥自己的想象力，尝试输入不同的内容来测试表单的验证规则、过滤器设置，以及对重复用户名的检查 :)
+
+

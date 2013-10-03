@@ -1,0 +1,123 @@
+=== 创建表单 ===
+
+创建表单有多种方式，为开发者提供了充分的灵活性。
+
+
+## 创建简单的表单 ##
+
+下面的代码创建了一个表单对象，并设置了表单的 ID、action 和 method 属性。
+
+/---code php
+// 构造一个表单，并设置表单的 ID、action 和 method 属性
+$form = new QForm('form1', url('posts/create'), QForm::POST);
+\---
+
+功能等同的代码：
+
+/---code php
+// 构造一个表单，并设置表单的 ID、action 和 method 属性
+$form = new QForm();
+$form->id = 'form1';
+$form->action = url('posts/create');
+$form->method = QForm::POST;
+\---
+
+还可以使用连贯接口完成：
+
+/---code php
+$form = new QForm();
+$form->set('id', 'form1')
+     ->set('action', url('posts/create'))
+     ->set('method', QForm::POST);
+\---
+
+
+## 添加元素到表单 ##
+
+前面创建的表单对象还是空的，不能容纳任何数据。因此还需要添加表单元素。
+
+在 QeePHP 中，表单元素有两种类别：**值元素**和**群组**。值元素用于容纳一个值，例如客户端提交的用户名、密码等。而群组则是包含多个值元素的集合，有关群组请参考后续的章节。
+
+
+/---code php
+// 添加两个值元素，其 ID 分别是 username 和 password
+$form->add(QForm::ELEMENT, 'username')
+     ->add(QForm::ELEMENT, 'password');
+\---
+
+在添加值元素时，还可以指定值元素的属性：
+
+/---code php
+$form->add(QForm::ELEMENT, 'username', array('_ui' => 'textbox'))
+     ->add(QForm::ELEMENT, 'password', array('_ui' => 'password'));
+\---
+
+或者使用连贯接口在添加元素后指定元素的属性：
+
+/---code php
+$form->add(QForm::ELEMENT, 'username')
+         ->set('_ui' => 'textbox')
+         ->set('maxlength' => 15)
+     ->add(QForm::ELEMENT, 'password')
+         ->set('_ui' => 'password');
+\--
+
+> 提示： 习惯上，_ui 属性用于指定使用哪种类型的用户界面控件来构造表单元素。
+
+
+## 通过 QForm 继承类构造表单 ##
+
+对于复杂一些的表单，可以创建一个 QForm 的继承类。
+
+/---code php
+class UserLoginForm extends QForm
+{
+    funciton __construct($action = null)
+    {
+        parent::__construct('form_userlogin', $action);
+        $this->add(QForm::ELEMENT, 'username');
+    }
+}
+\---
+
+通过继承类创建表单的好处是可以将表单的构造封装在表单类中，并且可以通过自定义的方法来过滤和验证表单数据。
+
+
+## 从配置文件加载表单 ##
+
+如果是一个有许多元素的表单，通过编码的方式来构造完全不符合懒人的原则。所以 QForm 允许开发者直接从配置文件加载表单，并批量完成表单元素的添加。
+
+/---code php
+// 从配置文件载入表单定义后批量添加表单元素
+$config = Helper_YAML::loadCached(dirname(__FILE__) . '/userlogin_form.yaml');
+$form->loadFromConfig($config);
+\---
+
+配置文件的写法如下：
+
+/---code yaml
+
+~form:
+  id: userlogin_form
+  method: post
+
+username:
+  _ui: "textbox"
+  maxlength: 15
+
+password:
+  _ui: "password"
+  maxlength: 30
+\---
+
+配置文件中，每一个小节指定一个元素及属性。“~form”小节专门用于指定表单对象的属性。
+
+通过配置文件，可以轻松定义复杂的表单。
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+$Id: form-creating.texy 2295 2009-03-10 07:48:18Z dualface $
+

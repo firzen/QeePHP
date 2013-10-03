@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 快速入门</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 快速入门</a>
+      &raquo;
+      <a href="node-development.html">开始开发</a>
+      &raquo;
+      修改配置文件    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+    
+<h1>修改配置文件</h1>
+
+<p>使用QeePHP的ORM等数据库操作相关功能的前提是正确修改配置文件。</p>
+
+<h2>修改 database.config.php</h2>
+
+<p>_config/database.config.php
+是保存数据库连接信息的配置文件，默认内容如下：</p>
+
+<pre class="php code"><span class="kw2">&lt;?php</span>
+<span
+class="kw1">return</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+        <span class="st_h">'driver'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'mysql'</span> <span
+class="sy0">,</span>
+        <span class="st_h">'host'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'localhost'</span> <span
+class="sy0">,</span>
+        <span class="st_h">'login'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'test'</span> <span
+class="sy0">,</span>
+        <span class="st_h">'password'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'test'</span> <span
+class="sy0">,</span>
+        <span class="st_h">'database'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'todo_db'</span> <span
+class="sy0">,</span>
+        <span class="st_h">'charset'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'utf8'</span> <span
+class="sy0">,</span>
+        <span class="st_h">'prefix'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">''</span>
+<span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<h2>参数解析</h2>
+
+<table>
+	<tbody>
+		<tr>
+			<td>driver</td>
+
+			<td>数据库类型</td>
+		</tr>
+
+		<tr>
+			<td>host</td>
+
+			<td>数据库地址</td>
+		</tr>
+
+		<tr>
+			<td>login</td>
+
+			<td>连接用户名</td>
+		</tr>
+
+		<tr>
+			<td>password</td>
+
+			<td>登录密码</td>
+		</tr>
+
+		<tr>
+			<td>database</td>
+
+			<td>数据库</td>
+		</tr>
+
+		<tr>
+			<td>charset</td>
+
+			<td>编码</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>如果你的数据库设置和上面的信息不同，请对照进行修改配置文件。</p>
+$Id: development-configs.texy 2013-08-14 08:05:20Z Tim13 $
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-development-database.html">创建数据库</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-development.html">开始开发</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-development-controller.html">创建控制器</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

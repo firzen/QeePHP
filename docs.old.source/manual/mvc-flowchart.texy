@@ -1,0 +1,29 @@
+=== MVC 工作流程 ===
+
+QeePHP 可以工作在命令行、Web 服务器等各种环境中。在 Web 服务器中，QeePHP 可以选择 MVC 组件来实现全功能的应用程序。
+
+MVC 实际上是一系列略有不同的模式。QeePHP 采用的是"Passive（被动）MVC 模式":http://www.phpwact.org/pattern/model_view_controller 。在 Passive MVC 模式中，Model（模型）完全不知道自己身处于 MVC 结构之中。换句话说，模型与 MVC 模式里面的其他组成部分完全没有关联，因此模型可以被用在各种场合，而不仅仅限于 MVC 模式。
+
+在 QeePHP 的 MVC 架构中，出现了一系列的对象。这些对象各自承担不同的职责，从而实现了单一入口、请求调度等功能构成的完整运行流程。在详细阐述 QeePHP 的 MVC 工作流程之前，可以通过下面的流程图了解主要的步骤和进程。
+
+[* mvc-flowchart-01-thumb.png *] *** MVC 模式的调用流程
+
+( "点击查看大图":/upload/docs/qeephp-manual/images/mvc-flowchart-01.png ) .<>
+
+
+## 入口文件 ##
+
+index.php 是默认的入口文件，用于启动整个应用程序。
+
+入口文件负责载入 boot.php 文件、QeePHP 框架的核心文件以及应用程序对象的类定义文件。接下来就是构造应用程序对象，并调用应用程序对象的 dispatching() 方法来进入 MVC 模式。
+
+如果 dispatching() 的返回值是一个字符串，则使用 echo 输出这个字符串。这样在 AJAX 编程时，可以直接将控制器动作的返回结果回馈给客户端的 JavaScript 代码。
+
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+$Id: mvc-flowchart.texy 2295 2009-03-10 07:48:18Z dualface $
+

@@ -1,0 +1,30 @@
+=== 文档任务 ===
+
+1.  提供入门教程
+2.  按照主题提供各有侧重点的文档
+3.  FAQ
+
+
+---------------------
+
+
+## 入门教程 ##
+
+-  《QeePHP 快速入门》
+   以 todo 应用为栏目，提供 step by step 的指导，帮助开发者学会如何安装 qeephp，以及基本的使用方法。
+   quickstart/toc.yaml
+
+-  《QeePHP 快速入门2》
+   完善 todo 应用，在文档中覆盖更多 QeePHP 的功能。
+
+-  《QeePHP 官方网站源码解析》
+   详细解释 qeephp.com 社区平台源代码的做法，为读者提供实践的全面指导。
+
+## 主题文档 ##
+
+   参考 Django 的文档，按照主题来组织文档，每份文档针对一个主题进行深入浅出的阐述和讨论。
+
+   参考网址： http://docs.djangoproject.com/en/dev/
+
+   manual/toc.yaml
+

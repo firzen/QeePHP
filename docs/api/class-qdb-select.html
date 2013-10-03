@@ -1,0 +1,4603 @@
+<html>
+<head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("a.toggle").toggle(function(){
+        $(this).text($(this).text().replace(/隐藏/,'显示'));
+        var a=$(this).parents(".summary");
+        a.find(".inherited").hide();
+    },function(){
+        $(this).text($(this).text().replace(/显示/,'隐藏'));
+        $(this).parents(".summary").find(".inherited").show();
+    });
+});
+</script>
+
+
+   <!-- 左侧栏 -->
+	<div class="container">
+	<div class="row">
+    <div id="subpage_sidebar" class="left apidoc-classes-index span3">
+
+      
+
+<h3>包 core</h3>
+
+<ul>
+    <li>
+    <a href="./class-q.html" title="Q">Q</a>
+  </li>
+    <li>
+    <a href="./class-qexception.html" title="QException">QException</a>
+  </li>
+    <li>
+    <a href="./class-qcoll.html" title="QColl">QColl</a>
+  </li>
+    <li>
+    <a href="./class-qcontext.html" title="QContext">QContext</a>
+  </li>
+    <li>
+    <a href="./class-qlog.html" title="QLog">QLog</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 mvc</h3>
+
+<ul>
+    <li>
+    <a href="./class-qacl.html" title="QACL">QACL</a>
+  </li>
+    <li>
+    <a href="./class-qcontroller-abstract.html" title="QController_Abstract">QController_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qcontroller-forward.html" title="QController_Forward">QController_Forward</a>
+  </li>
+    <li>
+    <a href="./class-qrouter.html" title="QRouter">QRouter</a>
+  </li>
+    <li>
+    <a href="./class-qview-output.html" title="QView_Output">QView_Output</a>
+  </li>
+    <li>
+    <a href="./class-qview-redirect.html" title="QView_Redirect">QView_Redirect</a>
+  </li>
+    <li>
+    <a href="./class-qview-render-php.html" title="QView_Render_PHP">QView_Render_PHP</a>
+  </li>
+    <li>
+    <a href="./class-qview-render-php-parser.html" title="QView_Render_PHP_Parser">QView_Render_PHP_Parser</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 orm</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdb-activerecord-behavior-abstract.html" title="QDB_ActiveRecord_Behavior_Abstract">QDB_ActiveRecord_Behavior_Abst...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-abstract.html" title="QDB_ActiveRecord_Abstract">QDB_ActiveRecord_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-abstract.html" title="QDB_ActiveRecord_Association_Abstract">QDB_ActiveRecord_Association_A...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-belongsto.html" title="QDB_ActiveRecord_Association_BelongsTo">QDB_ActiveRecord_Association_B...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-coll.html" title="QDB_ActiveRecord_Association_Coll">QDB_ActiveRecord_Association_C...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-hasmany.html" title="QDB_ActiveRecord_Association_HasMany">QDB_ActiveRecord_Association_H...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-hasone.html" title="QDB_ActiveRecord_Association_HasOne">QDB_ActiveRecord_Association_H...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-manytomany.html" title="QDB_ActiveRecord_Association_ManyToMany">QDB_ActiveRecord_Association_M...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-meta.html" title="QDB_ActiveRecord_Meta">QDB_ActiveRecord_Meta</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-view.html" title="QDB_ActiveRecord_View">QDB_ActiveRecord_View</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-viewmeta.html" title="QDB_ActiveRecord_ViewMeta">QDB_ActiveRecord_ViewMeta</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-callbacks.html" title="QDB_ActiveRecord_Callbacks">QDB_ActiveRecord_Callbacks</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-interface.html" title="QDB_ActiveRecord_Interface">QDB_ActiveRecord_Interface</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 form</h3>
+
+<ul>
+    <li>
+    <a href="./class-qform-element.html" title="QForm_Element">QForm_Element</a>
+  </li>
+    <li>
+    <a href="./class-qform-group.html" title="QForm_Group">QForm_Group</a>
+  </li>
+    <li>
+    <a href="./class-qform.html" title="QForm">QForm</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 database</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdb-adapter-abstract.html" title="QDB_Adapter_Abstract">QDB_Adapter_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-mysql.html" title="QDB_Adapter_Mysql">QDB_Adapter_Mysql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-abstract.html" title="QDB_Adapter_Pdo_Abstract">QDB_Adapter_Pdo_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-exception.html" title="QDB_Adapter_Pdo_Exception">QDB_Adapter_Pdo_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-pgsql.html" title="QDB_Adapter_Pdo_Pgsql">QDB_Adapter_Pdo_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pgsql.html" title="QDB_Adapter_Pgsql">QDB_Adapter_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-cond.html" title="QDB_Cond">QDB_Cond</a>
+  </li>
+    <li>
+    <a href="./class-qdb.html" title="QDB">QDB</a>
+  </li>
+    <li>
+    <a href="./class-qdb-expr.html" title="QDB_Expr">QDB_Expr</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-abstract.html" title="QDB_Result_Abstract">QDB_Result_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-mysql.html" title="QDB_Result_Mysql">QDB_Result_Mysql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-pdo.html" title="QDB_Result_Pdo">QDB_Result_Pdo</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-pgsql.html" title="QDB_Result_Pgsql">QDB_Result_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-select.html" title="QDB_Select">QDB_Select</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table.html" title="QDB_Table">QDB_Table</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table-lite.html" title="QDB_Table_Lite">QDB_Table_Lite</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 helper</h3>
+
+<ul>
+    <li>
+    <a href="./class-helper-filesys.html" title="Helper_Filesys">Helper_Filesys</a>
+  </li>
+    <li>
+    <a href="./class-helper-array.html" title="Helper_Array">Helper_Array</a>
+  </li>
+    <li>
+    <a href="./class-qdom-document.html" title="QDom_Document">QDom_Document</a>
+  </li>
+    <li>
+    <a href="./class-qdom-element.html" title="QDom_Element">QDom_Element</a>
+  </li>
+    <li>
+    <a href="./class-qfilter.html" title="QFilter">QFilter</a>
+  </li>
+    <li>
+    <a href="./class-helper-image.html" title="Helper_Image">Helper_Image</a>
+  </li>
+    <li>
+    <a href="./class-helper-imagegd.html" title="Helper_ImageGD">Helper_ImageGD</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcode.html" title="Helper_ImgCode">Helper_ImgCode</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcodesimple.html" title="Helper_ImgCodeSimple">Helper_ImgCodeSimple</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcodettf.html" title="Helper_ImgCodeTTF">Helper_ImgCodeTTF</a>
+  </li>
+    <li>
+    <a href="./class-helper-uploader.html" title="Helper_Uploader">Helper_Uploader</a>
+  </li>
+    <li>
+    <a href="./class-helper-uploader-file.html" title="Helper_Uploader_File">Helper_Uploader_File</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator.html" title="QValidator">QValidator</a>
+  </li>
+    <li>
+    <a href="./class-helper-yaml.html" title="Helper_YAML">Helper_YAML</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 cache</h3>
+
+<ul>
+    <li>
+    <a href="./class-qcache-apc.html" title="QCache_APC">QCache_APC</a>
+  </li>
+    <li>
+    <a href="./class-qcache-file.html" title="QCache_File">QCache_File</a>
+  </li>
+    <li>
+    <a href="./class-qcache-memcached.html" title="QCache_Memcached">QCache_Memcached</a>
+  </li>
+    <li>
+    <a href="./class-qcache-memory.html" title="QCache_Memory">QCache_Memory</a>
+  </li>
+    <li>
+    <a href="./class-qcache-phpdatafile.html" title="QCache_PHPDataFile">QCache_PHPDataFile</a>
+  </li>
+    <li>
+    <a href="./class-qcache-xcache.html" title="QCache_XCache">QCache_XCache</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 webcontrols</h3>
+
+<ul>
+    <li>
+    <a href="./class-qui-control-abstract.html" title="QUI_Control_Abstract">QUI_Control_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-input-abstract.html" title="Control_Input_Abstract">Control_Input_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-button.html" title="Control_Button">Control_Button</a>
+  </li>
+    <li>
+    <a href="./class-control-checkbox-abstract.html" title="Control_Checkbox_Abstract">Control_Checkbox_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-checkbox.html" title="Control_Checkbox">Control_Checkbox</a>
+  </li>
+    <li>
+    <a href="./class-control-checkboxgroup-abstract.html" title="Control_CheckboxGroup_Abstract">Control_CheckboxGroup_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-checkboxgroup.html" title="Control_CheckboxGroup">Control_CheckboxGroup</a>
+  </li>
+    <li>
+    <a href="./class-control-dropdownlist.html" title="Control_DropdownList">Control_DropdownList</a>
+  </li>
+    <li>
+    <a href="./class-control-hidden.html" title="Control_Hidden">Control_Hidden</a>
+  </li>
+    <li>
+    <a href="./class-control-label.html" title="Control_Label">Control_Label</a>
+  </li>
+    <li>
+    <a href="./class-control-listbox.html" title="Control_Listbox">Control_Listbox</a>
+  </li>
+    <li>
+    <a href="./class-control-memo.html" title="Control_Memo">Control_Memo</a>
+  </li>
+    <li>
+    <a href="./class-control-password.html" title="Control_Password">Control_Password</a>
+  </li>
+    <li>
+    <a href="./class-control-radio.html" title="Control_Radio">Control_Radio</a>
+  </li>
+    <li>
+    <a href="./class-control-radiogroup.html" title="Control_RadioGroup">Control_RadioGroup</a>
+  </li>
+    <li>
+    <a href="./class-control-reset.html" title="Control_Reset">Control_Reset</a>
+  </li>
+    <li>
+    <a href="./class-control-static.html" title="Control_Static">Control_Static</a>
+  </li>
+    <li>
+    <a href="./class-control-submit.html" title="Control_Submit">Control_Submit</a>
+  </li>
+    <li>
+    <a href="./class-control-textbox.html" title="Control_Textbox">Control_Textbox</a>
+  </li>
+    <li>
+    <a href="./class-control-upload.html" title="Control_Upload">Control_Upload</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 behavior</h3>
+
+<ul>
+    <li>
+    <a href="./class-model-behavior-acluser.html" title="Model_Behavior_AclUser">Model_Behavior_AclUser</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-fastuuid.html" title="Model_Behavior_Fastuuid">Model_Behavior_Fastuuid</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-relation.html" title="Model_Behavior_Relation">Model_Behavior_Relation</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-uniqueness.html" title="Model_Behavior_Uniqueness">Model_Behavior_Uniqueness</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 exception</h3>
+
+<ul>
+    <li>
+    <a href="./class-qcache-exception.html" title="QCache_Exception">QCache_Exception</a>
+  </li>
+    <li>
+    <a href="./class-q-classfileexistsexception.html" title="Q_ClassFileExistsException">Q_ClassFileExistsException</a>
+  </li>
+    <li>
+    <a href="./class-q-classnotdefinedexception.html" title="Q_ClassNotDefinedException">Q_ClassNotDefinedException</a>
+  </li>
+    <li>
+    <a href="./class-q-createdirfailedexception.html" title="Q_CreateDirFailedException">Q_CreateDirFailedException</a>
+  </li>
+    <li>
+    <a href="./class-q-createfilefailedexception.html" title="Q_CreateFileFailedException">Q_CreateFileFailedException</a>
+  </li>
+    <li>
+    <a href="./class-q-filenotfoundexception.html" title="Q_FileNotFoundException">Q_FileNotFoundException</a>
+  </li>
+    <li>
+    <a href="./class-q-filenotreadableexception.html" title="Q_FileNotReadableException">Q_FileNotReadableException</a>
+  </li>
+    <li>
+    <a href="./class-q-illegalclassnameexception.html" title="Q_IllegalClassNameException">Q_IllegalClassNameException</a>
+  </li>
+    <li>
+    <a href="./class-q-illegalfilenameexception.html" title="Q_IllegalFilenameException">Q_IllegalFilenameException</a>
+  </li>
+    <li>
+    <a href="./class-qlog-exception.html" title="QLog_Exception">QLog_Exception</a>
+  </li>
+    <li>
+    <a href="./class-q-notimplementedexception.html" title="Q_NotImplementedException">Q_NotImplementedException</a>
+  </li>
+    <li>
+    <a href="./class-q-removedirfailedexception.html" title="Q_RemoveDirFailedException">Q_RemoveDirFailedException</a>
+  </li>
+    <li>
+    <a href="./class-qdb-exception.html" title="QDB_Exception">QDB_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-exception-duplicatekey.html" title="QDB_Exception_DuplicateKey">QDB_Exception_DuplicateKey</a>
+  </li>
+    <li>
+    <a href="./class-qdb-select-exception.html" title="QDB_Select_Exception">QDB_Select_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table-exception.html" title="QDB_Table_Exception">QDB_Table_Exception</a>
+  </li>
+    <li>
+    <a href="./class-acluser-exception.html" title="AclUser_Exception">AclUser_Exception</a>
+  </li>
+    <li>
+    <a href="./class-acluser-duplicateusernameexception.html" title="AclUser_DuplicateUsernameException">AclUser_DuplicateUsernameExcep...</a>
+  </li>
+    <li>
+    <a href="./class-acluser-usernamenotfoundexception.html" title="AclUser_UsernameNotFoundException">AclUser_UsernameNotFoundExcept...</a>
+  </li>
+    <li>
+    <a href="./class-acluser-wrongpasswordexception.html" title="AclUser_WrongPasswordException">AclUser_WrongPasswordException</a>
+  </li>
+    <li>
+    <a href="./class-qform-exception.html" title="QForm_Exception">QForm_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdom-exception.html" title="QDom_Exception">QDom_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator-exception.html" title="QValidator_Exception">QValidator_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator-validatefailedexception.html" title="QValidator_ValidateFailedException">QValidator_ValidateFailedExcep...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-exception.html" title="QDB_ActiveRecord_Association_Exception">QDB_ActiveRecord_Association_E...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-notdefinedexception.html" title="QDB_ActiveRecord_Association_NotDefinedException">QDB_ActiveRecord_Association_N...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-rejectexception.html" title="QDB_ActiveRecord_Association_RejectException">QDB_ActiveRecord_Association_R...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-behavior-exception.html" title="QDB_ActiveRecord_Behavior_Exception">QDB_ActiveRecord_Behavior_Exce...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-exception.html" title="QDB_ActiveRecord_Exception">QDB_ActiveRecord_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-calltoundefinedmethodexception.html" title="QDB_ActiveRecord_CallToUndefinedMethodException">QDB_ActiveRecord_CallToUndefin...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-changingreadonlypropexception.html" title="QDB_ActiveRecord_ChangingReadonlyPropException">QDB_ActiveRecord_ChangingReado...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-compositepkincompatibleexception.html" title="QDB_ActiveRecord_CompositePKIncompatibleException">QDB_ActiveRecord_CompositePKIn...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-destroywithoutidexception.html" title="QDB_ActiveRecord_DestroyWithoutIdException">QDB_ActiveRecord_DestroyWithou...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-expectsassocpropexception.html" title="QDB_ActiveRecord_ExpectsAssocPropException">QDB_ActiveRecord_ExpectsAssocP...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-meta-exception.html" title="QDB_ActiveRecord_Meta_Exception">QDB_ActiveRecord_Meta_Exceptio...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-settingproptypemismatchexception.html" title="QDB_ActiveRecord_SettingPropTypeMismatchException">QDB_ActiveRecord_SettingPropTy...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-undefinedpropexception.html" title="QDB_ActiveRecord_UndefinedPropException">QDB_ActiveRecord_UndefinedProp...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-validatefailedexception.html" title="QDB_ActiveRecord_ValidateFailedException">QDB_ActiveRecord_ValidateFaile...</a>
+  </li>
+    <li>
+    <a href="./class-qacl-exception.html" title="QACL_Exception">QACL_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-exception.html" title="QRouter_Exception">QRouter_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-invalidrouteexception.html" title="QRouter_InvalidRouteException">QRouter_InvalidRouteException</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-routenotfoundexception.html" title="QRouter_RouteNotFoundException">QRouter_RouteNotFoundException</a>
+  </li>
+    <li>
+    <a href="./class-qview-exception.html" title="QView_Exception">QView_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qui-exception.html" title="QUI_Exception">QUI_Exception</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 debug</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdebug.html" title="QDebug">QDebug</a>
+  </li>
+    <li>
+    <a href="./class-qdebug-firephp.html" title="QDebug_FirePHP">QDebug_FirePHP</a>
+  </li>
+  
+</ul>
+
+
+
+    </div>
+
+    <!-- /左侧栏 -->
+
+    <!-- 右侧栏 -->
+
+    <div id="col3" class="right contents span9">
+
+      
+<div class="apidoc-class">
+
+  <h1>类 - QDB_Select</h1>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="./index.html">所有包</a></li>
+
+        <li><a href="#properties">类属性</a></li>
+    
+        <li><a href="#methods">类方法</a></li>
+    
+
+  </ul>
+
+  
+<table class="summary-table table table-bordered" cellpadding="0" cellspacing="0" >
+  <tr>
+    <th nowrap="nowrap">包</th>
+    <td>database</td>
+  </tr>
+  <tr>
+    <th nowrap="nowrap">类层次</th>
+    <td>
+    class QDB_Select
+    </td>
+  </tr>
+
+  
+  
+  
+</table>
+
+<div class="formatted">
+  
+<p>QDB_Select
+类实现了一个数据库查询接口，提供了进行复杂查询的能力</p>
+
+<p>开发者可以通过下述几个途径构造一个 QDB_Select
+对象（查询对象）：</p>
+
+<p>1、从数据库连接的 select() 获得一个查询对象；
+2、通过某个表数据入口对象的 find()
+方法发起一个查询来获得查询对象； 3、从 ActiveRecord
+继承类的 find() 方法发起查询来获得一个查询对象。</p>
+
+<p>QDB_Select 可以使用连贯方法操作，例如：</p>
+
+<pre class="php code"><span class="re0">$select</span><span
+class="sy0">-&gt;</span><span class="me1">from</span><span
+class="br0">&#40;</span><span class="st_h">'posts'</span><span
+class="sy0">,</span> <span class="st_h">'title, body'</span><span
+class="br0">&#41;</span>
+       <span class="sy0">-&gt;</span><span
+class="me1">order</span><span class="br0">&#40;</span><span
+class="st_h">'created DESC'</span><span class="br0">&#41;</span>
+       <span
+class="sy0">-&gt;</span><span class="me1">limitPage</span><span
+class="br0">&#40;</span><span class="re0">$page</span><span
+class="sy0">,</span> <span class="re0">$page_size</span><span
+class="br0">&#41;</span>
+       <span class="sy0">-&gt;</span><span
+class="me1">query</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>查询对象最后通过 query()
+方法来进行实际查询并返回查询结果（数组或对象）。</p>
+</div>
+
+
+  <a name="properties"></a>
+
+  
+<div class="summary">
+
+  <h2>保护的属性</h2>
+  <p>
+    <a href="#" class="toggle">隐藏继承的属性</a>
+  </p>
+
+  <table class="list-table table table-bordered">
+    <tr>
+      <th>属性</th><th>类型</th><th>描述</th><th>定义于</th>
+    </tr>
+
+    
+    <tr>
+      <td>$_parts_init</td>
+      <td>array</td>
+      <td>用于初始化一个查询的内容</td>
+      <td>
+      	<small>
+                QDB_Select        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$_aggregate_types</td>
+      <td>array</td>
+      <td>可用的集合类型</td>
+      <td>
+      	<small>
+                QDB_Select        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$_join_types</td>
+      <td>array</td>
+      <td>可用的 JOIN 操作类型</td>
+      <td>
+      	<small>
+                QDB_Select        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$_union_types</td>
+      <td>array</td>
+      <td>可用的 UNICODE 类型</td>
+      <td>
+      	<small>
+                QDB_Select        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$_query_params_init</td>
+      <td>array</td>
+      <td>查询参数初始化</td>
+      <td>
+      	<small>
+                QDB_Select        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$_sql</td>
+      <td>string</td>
+      <td>手工指定的 SQL 语句</td>
+      <td>
+      	<small>
+                QDB_Select        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$_parts</td>
+      <td>array</td>
+      <td>构造查询的各个部分</td>
+      <td>
+      	<small>
+                QDB_Select        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$_links</td>
+      <td>array</td>
+      <td>查询可以使用的关联</td>
+      <td>
+      	<small>
+                QDB_Select        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$_query_params</td>
+      <td>array</td>
+      <td>查询参数（仅用于一次查询）</td>
+      <td>
+      	<small>
+                QDB_Select        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$_current_table</td>
+      <td>string</td>
+      <td>指示查询上下文中当前的表名称或其别名</td>
+      <td>
+      	<small>
+                QDB_Select        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$_joined_tables</td>
+      <td>array</td>
+      <td>当前查询已经连接的数据表</td>
+      <td>
+      	<small>
+                QDB_Select        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$_columns_mapping</td>
+      <td>array</td>
+      <td>字段名映射</td>
+      <td>
+      	<small>
+                QDB_Select        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$_meta</td>
+      <td>QDB_ActiveRecord_Meta</td>
+      <td>当前查询所服务的 ActiveRecord 继承类的元信息对象</td>
+      <td>
+      	<small>
+                QDB_Select        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$_conn</td>
+      <td>QDB_Adapter_Abstract</td>
+      <td>执行数据库查询的适配器</td>
+      <td>
+      	<small>
+                QDB_Select        		</small>
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+
+
+  <a name="methods"></a>
+  
+<div class="summary">
+  <h2>公共方法</h2>
+  <p>
+    <a href="#" class="toggle">隐藏继承的方法</a>
+  </p>
+
+  <table class="list-table table table-bordered">
+    <tr>
+      <th>方法</th><th>描述</th><th>定义于</th>
+    </tr>
+
+        <tr>
+      <td>
+        <a href="#QDB_Select___construct">__construct()</a>
+      </td>
+
+      <td>构造函数</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_setConn">setConn()</a>
+      </td>
+
+      <td>设置要使用的数据库访问对象</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_getConn">getConn()</a>
+      </td>
+
+      <td>返回当前使用的数据库访问对象</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_setSQL">setSQL()</a>
+      </td>
+
+      <td>手动设置查询 SQL</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_distinct">distinct()</a>
+      </td>
+
+      <td>创建一个 SELECT DISTINCT 查询</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_from">from()</a>
+      </td>
+
+      <td>添加一个要查询的表及其要查询的字段</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_columns">columns()</a>
+      </td>
+
+      <td>添加要查询的字段</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_setColumns">setColumns()</a>
+      </td>
+
+      <td>指定要查询的字段</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_where">where()</a>
+      </td>
+
+      <td>添加一个 WHERE 查询条件，与其他 WHERE 条件之间以 AND 布尔运算符连接</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_orWhere">orWhere()</a>
+      </td>
+
+      <td>添加一个 WHERE 查询条件，与其他 WHERE 条件之间以 OR 布尔运算符连接</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_link">link()</a>
+      </td>
+
+      <td>添加关联</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_join">join()</a>
+      </td>
+
+      <td>添加一个 JOIN 数据表和字段到查询中</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_joinInner">joinInner()</a>
+      </td>
+
+      <td>添加一个 INNER JOIN 数据表和字段到查询中</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_joinLeft">joinLeft()</a>
+      </td>
+
+      <td>添加一个 LEFT JOIN 数据表和字段到查询中</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_joinRight">joinRight()</a>
+      </td>
+
+      <td>添加一个 RIGHT JOIN 数据表和字段到查询中</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_joinFull">joinFull()</a>
+      </td>
+
+      <td>添加一个 FULL OUTER JOIN 数据表和字段到查询中</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_joinCross">joinCross()</a>
+      </td>
+
+      <td>添加一个 CROSS JOIN 数据表和字段到查询中</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_joinNatural">joinNatural()</a>
+      </td>
+
+      <td>添加一个 NATURAL JOIN 数据表和字段到查询中</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_union">union()</a>
+      </td>
+
+      <td>添加一个 UNION 查询</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_group">group()</a>
+      </td>
+
+      <td>指定 GROUP BY 子句</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_having">having()</a>
+      </td>
+
+      <td>添加一个 HAVING 条件，与其他 HAVING 条件之间以 AND 布尔运算符连接</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_orHaving">orHaving()</a>
+      </td>
+
+      <td>添加一个 HAVING 条件，与其他 HAVING 条件之间以 OR 布尔运算符连接</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_order">order()</a>
+      </td>
+
+      <td>添加排序</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_one">one()</a>
+      </td>
+
+      <td>指示仅查询第一个符合条件的记录</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_all">all()</a>
+      </td>
+
+      <td>指示查询所有符合条件的记录</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_limit">limit()</a>
+      </td>
+
+      <td>限制查询结果总数</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_top">top()</a>
+      </td>
+
+      <td>限定查询结果总数</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_limitPage">limitPage()</a>
+      </td>
+
+      <td>设置分页查询</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_getPagination">getPagination()</a>
+      </td>
+
+      <td>获得分页信息</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_fetchPagination">fetchPagination()</a>
+      </td>
+
+      <td>在查询时，将分页信息存入 $return 参数</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_forUpdate">forUpdate()</a>
+      </td>
+
+      <td>是否构造一个 FOR UPDATE 查询</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_count">count()</a>
+      </td>
+
+      <td>统计符合条件的记录数</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_getCount">getCount()</a>
+      </td>
+
+      <td>统计符合条件的记录数，并立即返回结果</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_avg">avg()</a>
+      </td>
+
+      <td>统计平均值</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_getAvg">getAvg()</a>
+      </td>
+
+      <td>统计平均值，并立即返回结果</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_max">max()</a>
+      </td>
+
+      <td>统计最大值</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_getMax">getMax()</a>
+      </td>
+
+      <td>统计最大值，并立即返回结果</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_min">min()</a>
+      </td>
+
+      <td>统计最小值</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_getMin">getMin()</a>
+      </td>
+
+      <td>统计最小值，并立即返回结果</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_sum">sum()</a>
+      </td>
+
+      <td>统计合计</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_getSum">getSum()</a>
+      </td>
+
+      <td>统计合计，并立即返回结果</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_asObject">asObject()</a>
+      </td>
+
+      <td>指示将查询结果封装为特定的 ActiveRecord 对象</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_asArray">asArray()</a>
+      </td>
+
+      <td>指示将查询结果返回为数组</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_asColl">asColl()</a>
+      </td>
+
+      <td>指示将查询结果作为 QDB_ActiveRecord_Association_Coll 集合返回</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_columnMapping">columnMapping()</a>
+      </td>
+
+      <td>设置一个或多个字段的映射名，如果 $mapping_to 为 NULL，则取消对指定字段的映射</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_recursion">recursion()</a>
+      </td>
+
+      <td>设置递归关联查询的层数（默认为1层）</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_linkForRecursion">linkForRecursion()</a>
+      </td>
+
+      <td>指定使用递归查询时，需要查询哪个关联的 target_key 字段</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_getPart">getPart()</a>
+      </td>
+
+      <td>获得用于构造查询的指定部分内容</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_reset">reset()</a>
+      </td>
+
+      <td>重置整个查询对象或指定部分</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_get">get()</a>
+      </td>
+
+      <td>执行查询并返回指定数量的结果</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_getById">getById()</a>
+      </td>
+
+      <td>返回符合主键的一个结果</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_getOne">getOne()</a>
+      </td>
+
+      <td>仅返回一个结果</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_getAll">getAll()</a>
+      </td>
+
+      <td>执行查询并返回所有结果，等同于 -&gt;all()-&gt;query()</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_query">query()</a>
+      </td>
+
+      <td>执行查询</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select_getQueryHandle">getQueryHandle()</a>
+      </td>
+
+      <td>执行查询，返回结果句柄</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select___toString">__toString()</a>
+      </td>
+
+      <td>获得查询字符串</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select___call">__call()</a>
+      </td>
+
+      <td>魔法方法</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select__parseTableName">_parseTableName()</a>
+      </td>
+
+      <td>回调函数，用于分析查询中包含的关联表名称</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+
+
+<div class="summary">
+  <h2>保护的方法</h2>
+  <p>
+    <a href="#" class="toggle">隐藏继承的方法</a>
+  </p>
+
+  <table class="list-table table table-bordered">
+    <tr>
+      <th>方法</th><th>描述</th><th>定义于</th>
+    </tr>
+
+        <tr>
+      <td>
+        <a href="#QDB_Select__queryArray">_queryArray()</a>
+      </td>
+
+      <td>查询，并返回数组结果</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select__queryObjects">_queryObjects()</a>
+      </td>
+
+      <td>查询，并返回对象或对象集合</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select__renderDistinct">_renderDistinct()</a>
+      </td>
+
+      <td>构造 DISTINCT 子句</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select__renderColumns">_renderColumns()</a>
+      </td>
+
+      <td>构造查询字段子句</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select__renderAggregate">_renderAggregate()</a>
+      </td>
+
+      <td>构造集合查询字段</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select__renderFrom">_renderFrom()</a>
+      </td>
+
+      <td>构造 FROM 子句</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select__renderUnion">_renderUnion()</a>
+      </td>
+
+      <td>构造 UNION 查询</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select__renderWhere">_renderWhere()</a>
+      </td>
+
+      <td>构造 WHERE 子句</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select__renderGroup">_renderGroup()</a>
+      </td>
+
+      <td>构造 GROUP 子句</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select__renderHaving">_renderHaving()</a>
+      </td>
+
+      <td>构造 HAVING 子句</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select__renderOrder">_renderOrder()</a>
+      </td>
+
+      <td>构造 ORDER 子句</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select__renderForUpdate">_renderForUpdate()</a>
+      </td>
+
+      <td>构造 FOR UPDATE 子句</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select__join">_join()</a>
+      </td>
+
+      <td>添加一个 JOIN</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select__addCols">_addCols()</a>
+      </td>
+
+      <td>添加到内部的数据表-&gt;字段名映射数组</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select__addConditions">_addConditions()</a>
+      </td>
+
+      <td>添加查询条件的内容方法</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select__addAggregate">_addAggregate()</a>
+      </td>
+
+      <td>添加一个集合查询</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_Select__getCurrentTableName">_getCurrentTableName()</a>
+      </td>
+
+      <td>获得当前表的名称</td>
+      <td>
+                QDB_Select        
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+
+
+<div class="details">
+
+  <h2>属性详细说明</h2>
+
+    
+  <a name="_parts_init"></a>
+
+  <div class="name property">
+    <strong>$_parts_init</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>用于初始化一个查询的内容</p>
+  </div>
+
+    
+  <a name="_aggregate_types"></a>
+
+  <div class="name property">
+    <strong>$_aggregate_types</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>可用的集合类型</p>
+  </div>
+
+    
+  <a name="_join_types"></a>
+
+  <div class="name property">
+    <strong>$_join_types</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>可用的 JOIN 操作类型</p>
+  </div>
+
+    
+  <a name="_union_types"></a>
+
+  <div class="name property">
+    <strong>$_union_types</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>可用的 UNICODE 类型</p>
+  </div>
+
+    
+  <a name="_query_params_init"></a>
+
+  <div class="name property">
+    <strong>$_query_params_init</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>查询参数初始化</p>
+  </div>
+
+    
+  <a name="_sql"></a>
+
+  <div class="name property">
+    <strong>$_sql</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>手工指定的 SQL 语句</p>
+  </div>
+
+    
+  <a name="_parts"></a>
+
+  <div class="name property">
+    <strong>$_parts</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>构造查询的各个部分</p>
+  </div>
+
+    
+  <a name="_links"></a>
+
+  <div class="name property">
+    <strong>$_links</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>查询可以使用的关联</p>
+  </div>
+
+    
+  <a name="_query_params"></a>
+
+  <div class="name property">
+    <strong>$_query_params</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>查询参数（仅用于一次查询）</p>
+  </div>
+
+    
+  <a name="_current_table"></a>
+
+  <div class="name property">
+    <strong>$_current_table</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>指示查询上下文中当前的表名称或其别名</p>
+  </div>
+
+    
+  <a name="_joined_tables"></a>
+
+  <div class="name property">
+    <strong>$_joined_tables</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>当前查询已经连接的数据表</p>
+  </div>
+
+    
+  <a name="_columns_mapping"></a>
+
+  <div class="name property">
+    <strong>$_columns_mapping</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>字段名映射</p>
+  </div>
+
+    
+  <a name="_meta"></a>
+
+  <div class="name property">
+    <strong>$_meta</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>当前查询所服务的 ActiveRecord 继承类的元信息对象</p>
+  </div>
+
+    
+  <a name="_conn"></a>
+
+  <div class="name property">
+    <strong>$_conn</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>执行数据库查询的适配器</p>
+  </div>
+
+    
+  <a name="_query_id"></a>
+
+  <div class="name property">
+    <strong>$_query_id</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>查询ID</p>
+  </div>
+
+  
+</div>
+
+
+<div class="details">
+
+  <h2>方法详细说明</h2>
+
+    
+  <a name="QDB_Select___construct"></a>
+
+  <h4 class="name method">
+    __construct()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public void <strong>__construct</strong>($conn)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$conn</td>
+      <td class="param_type">QDB_Adapter_Abstract</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>构造函数</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_setConn"></a>
+
+  <h4 class="name method">
+    setConn()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>setConn</strong>($conn)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$conn</td>
+      <td class="param_type">QDB_Adapter_Abstract</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>设置要使用的数据库访问对象</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_getConn"></a>
+
+  <h4 class="name method">
+    getConn()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Adapter_Abstract <strong>getConn</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>返回当前使用的数据库访问对象</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_setSQL"></a>
+
+  <h4 class="name method">
+    setSQL()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>setSQL</strong>($sql)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$sql</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>手动设置查询 SQL</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_distinct"></a>
+
+  <h4 class="name method">
+    distinct()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>distinct</strong>($flag, $cols)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$flag</td>
+      <td class="param_type">bool</td>
+      <td class="param_desc">指示是否是一个 SELECT DISTINCT 查询（默认 true）</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cols</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>创建一个 SELECT DISTINCT 查询</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_from"></a>
+
+  <h4 class="name method">
+    from()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>from</strong>($table, $cols)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$table</td>
+      <td class="param_type">array|string|QDB_Table</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cols</td>
+      <td class="param_type">array|string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个要查询的表及其要查询的字段</p>
+
+<p>$table
+参数指定要从哪个数据表查询数据。该参数可以是字符串、名值对或者一个表数据入口对象。</p>
+
+<p>如果 $table
+是一个字符串，则假定为一个表名称，或者是“表名称 AS
+别名”； 如果 $table
+是一个表数据入口对象，则表名称由表数据入口对象确定；
+如果 $table
+是一个名值对，则键名假定为要在查询中使用的表别名，键值可以是字符串或表数据入口对象。</p>
+
+<p>如果要指定数据表所属 schema，可以采用如下形式：</p>
+
+<pre class="php code"><span class="re0">$select</span><span
+class="sy0">-&gt;</span><span class="me1">from</span><span
+class="br0">&#40;</span><span class="st_h">'schema名.表名称'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="co1">// 或者</span>
+<span class="re0">$select</span><span
+class="sy0">-&gt;</span><span class="me1">from</span><span
+class="br0">&#40;</span><span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'表别名'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'schema名.表名称'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>如果 $table 是一个表数据入口对象，则 schmea
+由表数据入口对象确定。</p>
+
+<p>$cols
+参数指定了要查询该表的哪些字段，如果不指定则默认为
+'*'（既查询所有字段）。 $cols
+可以是一个以“,”分割的字段名字符串，也可以是一个数组，以及一个
+QDB_Expr 对象。</p>
+
+<p>例如：</p>
+
+<pre class="php code"><span
+class="co1">// SELECT `posts`.`title`, `posts`.`body` FROM `posts`</span>
+<span
+class="re0">$select</span><span class="sy0">-&gt;</span><span
+class="me1">from</span><span class="br0">&#40;</span><span
+class="st_h">'posts'</span><span class="sy0">,</span> <span
+class="st_h">'title, body'</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>还可以为字段名指定查询时使用的别名，例如：</p>
+
+<pre class="php code"><span class="co1">// 指定字段别名</span>
+<span
+class="co1">// SELECT `posts`.`title` AS `t` FROM `posts`</span>
+<span
+class="re0">$select</span><span class="sy0">-&gt;</span><span
+class="me1">from</span><span class="br0">&#40;</span><span
+class="st_h">'posts'</span><span class="sy0">,</span> <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'t'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'title'</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>$cols 是字符串或数组时，字段名会被自动转义。 如果 $cols
+是一个 QDB_Expr
+对象，则表达式中的字段名需要使用“[]”来指定转义。</p>
+
+<pre class="php code"><span
+class="co1">// SELECT LEFT(`posts`.`title`, 5) FROM `posts`</span>
+<span
+class="re0">$expr</span> <span class="sy0">=</span> <span
+class="kw2">new</span> QDB_Expr<span class="br0">&#40;</span><span
+class="st_h">'LEFT([title], 5)'</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+<span class="re0">$select</span><span
+class="sy0">-&gt;</span><span class="me1">form</span><span
+class="br0">&#40;</span><span class="st_h">'posts'</span><span
+class="sy0">,</span> <span class="re0">$expr</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// SELECT LEFT(`p`.`title`, 5) FROM `posts` `p`</span>
+<span
+class="re0">$expr</span> <span class="sy0">=</span> <span
+class="kw2">new</span> QDB_Expr<span class="br0">&#40;</span><span
+class="st_h">'LEFT([title], 5)'</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+<span class="re0">$select</span><span
+class="sy0">-&gt;</span><span class="me1">form</span><span
+class="br0">&#40;</span><span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'p'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'posts'</span><span
+class="br0">&#41;</span><span class="sy0">,</span> <span
+class="re0">$expr</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>from() 的更多用法：</p>
+
+<pre class="php code"><span
+class="co1">// 指定要查询的数据表及字段</span>
+<span
+class="re0">$select</span><span class="sy0">-&gt;</span><span
+class="me1">from</span><span class="br0">&#40;</span><span
+class="st_h">'posts'</span><span class="sy0">,</span> <span
+class="st_h">'title, body'</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 为数据表指定别名</span>
+<span
+class="re0">$select</span><span class="sy0">-&gt;</span><span
+class="me1">from</span><span class="br0">&#40;</span><span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'别名'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'表名称'</span><span class="br0">&#41;</span><span
+class="sy0">,</span> <span class="st_h">'字段名, 字段名'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 通过表数据入口指定表</span>
+<span
+class="re0">$select</span><span class="sy0">-&gt;</span><span
+class="me1">form</span><span class="br0">&#40;</span><span
+class="re0">$table_posts</span><span class="sy0">,</span> <span
+class="st_h">'字段名, 字段名'</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 通过表数据入口指定表和别名</span>
+<span
+class="re0">$select</span><span class="sy0">-&gt;</span><span
+class="me1">form</span><span class="br0">&#40;</span><span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'别名'</span> <span class="sy0">=&gt;</span> <span
+class="re0">$table_posts</span><span class="br0">&#41;</span><span
+class="sy0">,</span> <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'别名'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'字段名'</span><span
+class="sy0">,</span> <span class="st_h">'字段名'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>如果 $table 参数为空，则通过 $cols
+参数指定的字段名前面不会添加数据表名称。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_columns"></a>
+
+  <h4 class="name method">
+    columns()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>columns</strong>($cols, $table)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$cols</td>
+      <td class="param_type">array|string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$table</td>
+      <td class="param_type">array|string|QDB_Table</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加要查询的字段</p>
+
+<p>$cols 和 $table 参数的规则同 from() 方法。</p>
+
+<p>如果没有指定 $table 参数，则假定这些字段属于第一个 FROM
+操作添加的表。
+但是也可以用“表名称.字段名”的方式来指定字段所属表。</p>
+
+<p>除此以外，还可以通过 $table
+参数批量指定这些字段所属表。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_setColumns"></a>
+
+  <h4 class="name method">
+    setColumns()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>setColumns</strong>($cols, $table)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$cols</td>
+      <td class="param_type">array|string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$table</td>
+      <td class="param_type">array|string|QDB_Table</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>指定要查询的字段</p>
+
+<p>$cols 和 $table 参数的规则同 from() 方法。</p>
+
+<p>如果没有指定 $table 参数，则假定这些字段属于第一个 FROM
+操作添加的表。
+但是也可以用“表名称.字段名”的方式来指定字段所属表。</p>
+
+<p>除此以外，还可以通过 $table
+参数批量指定这些字段所属表。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_where"></a>
+
+  <h4 class="name method">
+    where()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>where</strong>($cond)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$cond</td>
+      <td class="param_type">string|array|QDB_Expr|QDB_Cond</td>
+      <td class="param_desc">查询条件</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个 WHERE 查询条件，与其他 WHERE 条件之间以 AND
+布尔运算符连接</p>
+
+<p>where() 方法的参数格式是可变的，具有下列几种形式：</p>
+
+<pre class="php code"><span
+class="co1">// 使用字符串做查询条件</span>
+<span
+class="re0">$select</span><span class="sy0">-&gt;</span><span
+class="me1">where</span><span class="br0">&#40;</span><span
+class="st_h">'id = 1'</span><span class="br0">&#41;</span>
+&nbsp;
+<span
+class="co1">// 使用 ? 作为参数占位符</span>
+<span
+class="re0">$select</span><span class="sy0">-&gt;</span><span
+class="me1">where</span><span class="br0">&#40;</span><span
+class="st_h">'id = ?'</span><span class="sy0">,</span> <span
+class="re0">$id</span><span class="br0">&#41;</span>
+&nbsp;
+<span
+class="co1">// 使用多个参数占位符</span>
+<span
+class="re0">$select</span><span class="sy0">-&gt;</span><span
+class="me1">where</span><span class="br0">&#40;</span><span
+class="st_h">'id = ? AND level_ix &gt; ?'</span><span class="sy0">,</span> <span
+class="re0">$id</span><span class="sy0">,</span> <span
+class="re0">$level_ix</span><span class="br0">&#41;</span>
+&nbsp;
+<span
+class="co1">// 使用数组提供多个参数占位符的值</span>
+<span
+class="re0">$select</span><span class="sy0">-&gt;</span><span
+class="me1">where</span><span class="br0">&#40;</span><span
+class="st_h">'id = ? AND level_ix &gt; ?'</span><span class="sy0">,</span> <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="re0">$id</span><span class="sy0">,</span> <span
+class="re0">$level_ix</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span>
+&nbsp;
+<span
+class="co1">// 使用命名参数</span>
+<span class="re0">$select</span><span
+class="sy0">-&gt;</span><span class="me1">where</span><span
+class="br0">&#40;</span><span
+class="st_h">'id = :id AND level_ix &gt; :level_ix'</span><span
+class="sy0">,</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="st_h">'id'</span> <span
+class="sy0">=&gt;</span> <span class="re0">$id</span><span
+class="sy0">,</span> <span class="st_h">'level_ix'</span> <span
+class="sy0">=&gt;</span> <span class="re0">$level_ix</span>
+<span
+class="br0">&#41;</span><span class="br0">&#41;</span>
+&nbsp;
+<span
+class="co1">// 使用名值对</span>
+<span class="re0">$select</span><span
+class="sy0">-&gt;</span><span class="me1">where</span><span
+class="br0">&#40;</span><span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'id'</span> <span
+class="sy0">=&gt;</span> <span class="re0">$id</span><span
+class="sy0">,</span> <span class="st_h">'level_ix'</span> <span
+class="sy0">=&gt;</span> <span class="re0">$level_ix</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>注意：在使用命名参数时，where()
+的第二个参数必须是一个名值对数组。其中键名是参数名。</p>
+
+<p>在查询条件中，还可以使用“[]”来指定需要转义的字段名，例如：</p>
+
+<pre class="php code"><span class="re0">$select</span><span
+class="sy0">-&gt;</span><span class="me1">where</span><span
+class="br0">&#40;</span><span class="st_h">'[id] = 1'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="re0">$select</span><span class="sy0">-&gt;</span><span
+class="me1">where</span><span class="br0">&#40;</span><span
+class="st_h">'[posts.id'</span><span class="br0">&#93;</span> <span
+class="sy0">=</span> <span class="nu0">1</span><span
+class="st_h">');</span></pre>
+
+<p>除了字符串和数组，$cond 参数还可以是 QDB_Expr
+对象，例如：</p>
+
+<pre class="php code"><span class="re0">$expr</span> <span
+class="sy0">=</span> <span class="kw2">new</span> QDB_Expr<span
+class="br0">&#40;</span><span class="st_h">'[hits] &lt; AVG([hits])'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="re0">$select</span><span class="sy0">-&gt;</span><span
+class="me1">where</span><span class="br0">&#40;</span><span
+class="re0">$expr</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>如果没有在字段名中指定表名称或者别名，则假定所有字段都是第一个通过
+from() 指定的表。</p>
+
+<p>更复杂的查询条件，可以使用 QDB_Cond 对象来构造。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_orWhere"></a>
+
+  <h4 class="name method">
+    orWhere()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>orWhere</strong>($cond)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$cond</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个 WHERE 查询条件，与其他 WHERE 条件之间以 OR
+布尔运算符连接</p>
+
+<p>参数规范参考 where() 方法。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_link"></a>
+
+  <h4 class="name method">
+    link()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>link</strong>($link)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$link</td>
+      <td class="param_type">QDB_ActiveRecord_Association_Abstract|array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加关联</p>
+
+<p>关联会在指定查询条件和进行递归查询时起作用。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_join"></a>
+
+  <h4 class="name method">
+    join()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>join</strong>($table, $cols, $cond)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$table</td>
+      <td class="param_type">array|string|QDB_Table</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cols</td>
+      <td class="param_type">array|string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cond</td>
+      <td class="param_type">array|string|QDB_Expr|QDB_Cond</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个 JOIN 数据表和字段到查询中</p>
+
+<p>$table 和 $cols 参数的规则同 from()，$cond 参数的规则同
+where()。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_joinInner"></a>
+
+  <h4 class="name method">
+    joinInner()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>joinInner</strong>($table, $cols, $cond)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$table</td>
+      <td class="param_type">array|string|QDB_Table</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cols</td>
+      <td class="param_type">array|string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cond</td>
+      <td class="param_type">array|string|QDB_Expr|QDB_Cond</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个 INNER JOIN 数据表和字段到查询中</p>
+
+<p>$table 和 $cols 参数的规则同 from()，$cond 参数的规则同
+where()。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_joinLeft"></a>
+
+  <h4 class="name method">
+    joinLeft()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>joinLeft</strong>($table, $cols, $cond)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$table</td>
+      <td class="param_type">array|string|QDB_Table</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cols</td>
+      <td class="param_type">array|string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cond</td>
+      <td class="param_type">array|string|QDB_Expr|QDB_Cond</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个 LEFT JOIN 数据表和字段到查询中</p>
+
+<p>$table 和 $cols 参数的规则同 from()，$cond 参数的规则同
+where()。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_joinRight"></a>
+
+  <h4 class="name method">
+    joinRight()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>joinRight</strong>($table, $cols, $cond)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$table</td>
+      <td class="param_type">array|string|QDB_Table</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cols</td>
+      <td class="param_type">array|string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cond</td>
+      <td class="param_type">array|string|QDB_Expr|QDB_Cond</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个 RIGHT JOIN 数据表和字段到查询中</p>
+
+<p>$table 和 $cols 参数的规则同 from()，$cond 参数的规则同
+where()。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_joinFull"></a>
+
+  <h4 class="name method">
+    joinFull()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>joinFull</strong>($table, $cols, $cond)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$table</td>
+      <td class="param_type">array|string|QDB_Table</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cols</td>
+      <td class="param_type">array|string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cond</td>
+      <td class="param_type">array|string|QDB_Expr|QDB_Cond</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个 FULL OUTER JOIN 数据表和字段到查询中</p>
+
+<p>$table 和 $cols 参数的规则同 from()，$cond 参数的规则同
+where()。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_joinCross"></a>
+
+  <h4 class="name method">
+    joinCross()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>joinCross</strong>($table, $cols)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$table</td>
+      <td class="param_type">array|string|QDB_Table</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cols</td>
+      <td class="param_type">array|string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个 CROSS JOIN 数据表和字段到查询中</p>
+
+<p>$table 和 $cols 参数的规则同 from()。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_joinNatural"></a>
+
+  <h4 class="name method">
+    joinNatural()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>joinNatural</strong>($table, $cols)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$table</td>
+      <td class="param_type">array|string|QDB_Table</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cols</td>
+      <td class="param_type">array|string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个 NATURAL JOIN 数据表和字段到查询中</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_union"></a>
+
+  <h4 class="name method">
+    union()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>union</strong>($select, $type)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$select</td>
+      <td class="param_type">array|string|QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$type</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个 UNION 查询</p>
+
+<p>$select 可以是一个字符串或一个 QDB_Select
+对象，或者包含上述两者的数组。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_group"></a>
+
+  <h4 class="name method">
+    group()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>group</strong>($expr)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$expr</td>
+      <td class="param_type">string|QDB_Expr|array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>指定 GROUP BY 子句</p>
+
+<p>$expr 可以是一个字符串或一个 QDB_Expr
+对象，或者包含上述两者的数组。</p>
+
+<p>如果需要在表达式中使用转义后的字段名，可以采用如下模式：</p>
+
+<pre class="php code"><span class="re0">$select</span><span
+class="sy0">-&gt;</span><span class="me1">group</span><span
+class="br0">&#40;</span><span class="st_h">'SUM([hits])'</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>所有被 [ 和 ]
+包括的字段名将自动进行转义。如果有需要，还可以进一步指定字段所属的表或表别名。</p>
+
+<pre class="php code"><span class="re0">$select</span><span
+class="sy0">-&gt;</span><span class="me1">group</span><span
+class="br0">&#40;</span><span class="st_h">'SUM([mytable.hits])'</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_having"></a>
+
+  <h4 class="name method">
+    having()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>having</strong>($cond)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$cond</td>
+      <td class="param_type">string|array|QDB_Expr|QDB_Cond</td>
+      <td class="param_desc">查询条件</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个 HAVING 条件，与其他 HAVING 条件之间以 AND
+布尔运算符连接</p>
+
+<p>参数规范参考 where() 方法。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_orHaving"></a>
+
+  <h4 class="name method">
+    orHaving()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>orHaving</strong>($cond)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$cond</td>
+      <td class="param_type">string|array|QDB_Expr|QDB_Cond</td>
+      <td class="param_desc">查询条件</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个 HAVING 条件，与其他 HAVING 条件之间以 OR
+布尔运算符连接</p>
+
+<p>参数规范参考 where() 方法。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_order"></a>
+
+  <h4 class="name method">
+    order()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>order</strong>($expr)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$expr</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加排序</p>
+
+<p>$expr 可以是字符串或者 QDB_Expr 对象，例如：</p>
+
+<pre class="php code"><span class="re0">$select</span><span
+class="sy0">-&gt;</span><span class="me1">order</span><span
+class="br0">&#40;</span><span class="st_h">'title'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="re0">$select</span><span class="sy0">-&gt;</span><span
+class="me1">order</span><span class="br0">&#40;</span><span
+class="st_h">'users.username DESC'</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+<span class="re0">$select</span><span
+class="sy0">-&gt;</span><span class="me1">order</span><span
+class="br0">&#40;</span><span class="kw2">new</span> QDB_Expr<span
+class="br0">&#40;</span><span class="st_h">'SUM(hits) ASC'</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_one"></a>
+
+  <h4 class="name method">
+    one()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>one</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>指示仅查询第一个符合条件的记录</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_all"></a>
+
+  <h4 class="name method">
+    all()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>all</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>指示查询所有符合条件的记录</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_limit"></a>
+
+  <h4 class="name method">
+    limit()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>limit</strong>($offset, $count)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$offset</td>
+      <td class="param_type">int</td>
+      <td class="param_desc">从结果集的哪个位置开始查询（0 为第一条）</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$count</td>
+      <td class="param_type">int</td>
+      <td class="param_desc">只查询多少条数据</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>限制查询结果总数</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_top"></a>
+
+  <h4 class="name method">
+    top()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>top</strong>($count)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$count</td>
+      <td class="param_type">int</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>限定查询结果总数</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_limitPage"></a>
+
+  <h4 class="name method">
+    limitPage()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>limitPage</strong>($page, $page_size, $base)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$page</td>
+      <td class="param_type">int</td>
+      <td class="param_desc">要查询的页码</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$page_size</td>
+      <td class="param_type">int</td>
+      <td class="param_desc">页的大小</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$base</td>
+      <td class="param_type">int</td>
+      <td class="param_desc">页码基数</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>设置分页查询</p>
+
+<p>limitPage() 是用于分页查询的主要方法。
+使用时通常只需要指定 $page 和 $page_size 参数。</p>
+
+<p>$page 参数指定要查询哪一页的数据，$page_size
+指定了页大小。 默认情况下，$page 为 1 时表示要查询第 1
+页。</p>
+
+<p>如果希望用 $page = 0 来表示查询第一页，应该指定 $base
+参数为 0。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_getPagination"></a>
+
+  <h4 class="name method">
+    getPagination()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public array <strong>getPagination</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>获得分页信息</p>
+
+<p>要使用该方法，必须先用 limitPage()
+指定有效的分页参数。</p>
+
+<p>该方法返回一个数组，包含下列信息：</p>
+
+<p>record_count: 符合查询条件的记录数 page_count:
+按照页大小计算出来的总页数 first: 第一页的索引，等同于
+limitPage() 的 $base 参数，默认为 1 last: 最后一页的索引 current:
+当前页的索引 next: 下一页的索引 prev: 上一页的索引 page_size:
+页大小 page_base: 页码基数（也就是第一页的索引值，默认为
+1）</p>
+
+<p>获得这个数组后，就可以通过 WebControls
+或者其他途径构造分页导航条等用户界面内容。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_fetchPagination"></a>
+
+  <h4 class="name method">
+    fetchPagination()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>fetchPagination</strong>($return)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$return</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>在查询时，将分页信息存入 $return 参数</p>
+
+<p>fetchPagination() 方法可以让开发者更连贯的操作 QDB_Select
+对象。</p>
+
+<p>例如：</p>
+
+<p><code> $pagination = null; $posts = Post::find('is_published = ?', true)<br
+/>
+-&gt;all()<br />
+-&gt;limitPage($page, $page_size)<br />
+-&gt;fetchPagination($pagination)<br />
+-&gt;query(); </code></p>
+
+<p>上述代码执行后，$pagination 将包含查询的分页信息。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_forUpdate"></a>
+
+  <h4 class="name method">
+    forUpdate()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>forUpdate</strong>($flag)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$flag</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>是否构造一个 FOR UPDATE 查询</p>
+
+<p>如果查询出记录后马上就要更新并写回数据库，则可以调用
+forUpdate() 方法来指示这种情况。
+此时数据库会尝试对查询出来的记录加锁，避免在数据更新回数据库之前被其他查询改变。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_count"></a>
+
+  <h4 class="name method">
+    count()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>count</strong>($field, $alias)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$field</td>
+      <td class="param_type">string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$alias</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>统计符合条件的记录数</p>
+
+<p>$field 参数指定用于统计的字段或表达式。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_getCount"></a>
+
+  <h4 class="name method">
+    getCount()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public int <strong>getCount</strong>($field, $alias)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$field</td>
+      <td class="param_type">string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$alias</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">int</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>统计符合条件的记录数，并立即返回结果</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_avg"></a>
+
+  <h4 class="name method">
+    avg()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>avg</strong>($field, $alias)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$field</td>
+      <td class="param_type">string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$alias</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>统计平均值</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_getAvg"></a>
+
+  <h4 class="name method">
+    getAvg()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public int|float <strong>getAvg</strong>($field, $alias)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$field</td>
+      <td class="param_type">string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$alias</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">int|float</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>统计平均值，并立即返回结果</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_max"></a>
+
+  <h4 class="name method">
+    max()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>max</strong>($field, $alias)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$field</td>
+      <td class="param_type">string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$alias</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>统计最大值</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_getMax"></a>
+
+  <h4 class="name method">
+    getMax()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public int|float <strong>getMax</strong>($field, $alias)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$field</td>
+      <td class="param_type">string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$alias</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">int|float</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>统计最大值，并立即返回结果</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_min"></a>
+
+  <h4 class="name method">
+    min()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>min</strong>($field, $alias)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$field</td>
+      <td class="param_type">string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$alias</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>统计最小值</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_getMin"></a>
+
+  <h4 class="name method">
+    getMin()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public int|float <strong>getMin</strong>($field, $alias)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$field</td>
+      <td class="param_type">string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$alias</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">int|float</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>统计最小值，并立即返回结果</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_sum"></a>
+
+  <h4 class="name method">
+    sum()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>sum</strong>($field, $alias)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$field</td>
+      <td class="param_type">string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$alias</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>统计合计</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_getSum"></a>
+
+  <h4 class="name method">
+    getSum()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public int|float <strong>getSum</strong>($field, $alias)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$field</td>
+      <td class="param_type">string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$alias</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">int|float</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>统计合计，并立即返回结果</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_asObject"></a>
+
+  <h4 class="name method">
+    asObject()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>asObject</strong>($class_name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$class_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>指示将查询结果封装为特定的 ActiveRecord 对象</p>
+
+<p>通常对于从 ActiveRecord
+发起的查询不需要再调用该方法，QeePHP
+会确保此类查询都返回对象。
+但如果是从表数据入口发起的查询，并且希望返回对象，就应该调用这个方法指定一个类名称。</p>
+
+<p>类名称所指定的 ActiveRecord
+继承类应该是一个适合返回结果数据结构的对象，否则会导致构造对象失败。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_asArray"></a>
+
+  <h4 class="name method">
+    asArray()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>asArray</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>指示将查询结果返回为数组</p>
+
+<p>指示不管查询是由什么来源发起的，都将查询结果以数组方式返回。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_asColl"></a>
+
+  <h4 class="name method">
+    asColl()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>asColl</strong>($as_coll)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$as_coll</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>指示将查询结果作为 QDB_ActiveRecord_Association_Coll
+集合返回</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_columnMapping"></a>
+
+  <h4 class="name method">
+    columnMapping()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>columnMapping</strong>($name, $mapping_to)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$name</td>
+      <td class="param_type">array|string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$mapping_to</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>设置一个或多个字段的映射名，如果 $mapping_to 为
+NULL，则取消对指定字段的映射</p>
+
+<p>映射名是指可以在查询参数中使用映射名作为字段名。
+QDB_Select
+会负责在生成查询时将映射名转换为实际的字段名。</p>
+
+<p>例如：</p>
+
+<pre class="php code"><span class="re0">$select</span><span
+class="sy0">-&gt;</span><span class="me1">columnMapping</span><span
+class="br0">&#40;</span><span class="st_h">'title'</span><span
+class="sy0">,</span> <span class="st_h">'post_title'</span><span
+class="br0">&#41;</span>
+       <span class="sy0">-&gt;</span><span
+class="me1">where</span><span class="br0">&#40;</span><span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'post_title'</span> <span class="sy0">=&gt;</span> <span
+class="re0">$title</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="co1">// 生成的查询条件是 `title` = {$title} 而不是 `post_title` = {$title}</span></pre>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_recursion"></a>
+
+  <h4 class="name method">
+    recursion()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>recursion</strong>($recursion)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$recursion</td>
+      <td class="param_type">int</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>设置递归关联查询的层数（默认为1层）</p>
+
+<p>假设 A 关联到 B，B 关联到 C，而 C 关联到 D。则通过
+recursion 参数， 我们可以指定从 A
+出发的查询要到达哪一个关联层次才停止。</p>
+
+<p>默认的 $recursion = 1，表示从 A 出发的查询只查询到 B
+的数据就停止。</p>
+
+<p>注意：对于来自 ActiveRecord 的查询，无需指定该参数。
+因为可以利用 ActiveRecord
+的延迟加载能力自动查询更深层次的数据。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_linkForRecursion"></a>
+
+  <h4 class="name method">
+    linkForRecursion()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>linkForRecursion</strong>($link)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$link</td>
+      <td class="param_type">QDB_ActiveRecord_Association_Abstract</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>指定使用递归查询时，需要查询哪个关联的 target_key
+字段</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_getPart"></a>
+
+  <h4 class="name method">
+    getPart()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public mixed <strong>getPart</strong>($part)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$part</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>获得用于构造查询的指定部分内容</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_reset"></a>
+
+  <h4 class="name method">
+    reset()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>reset</strong>($part)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$part</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>重置整个查询对象或指定部分</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_get"></a>
+
+  <h4 class="name method">
+    get()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public mixed <strong>get</strong>($num, $included_links)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$num</td>
+      <td class="param_type">int</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$included_links</td>
+      <td class="param_type">array|string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>执行查询并返回指定数量的结果</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_getById"></a>
+
+  <h4 class="name method">
+    getById()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public mixed <strong>getById</strong>($id, $included_links)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$id</td>
+      <td class="param_type">string|int</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$included_links</td>
+      <td class="param_type">array|string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>返回符合主键的一个结果</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_getOne"></a>
+
+  <h4 class="name method">
+    getOne()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public mixed <strong>getOne</strong>($included_links)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$included_links</td>
+      <td class="param_type">array|string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>仅返回一个结果</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_getAll"></a>
+
+  <h4 class="name method">
+    getAll()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public mixed <strong>getAll</strong>($included_links)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$included_links</td>
+      <td class="param_type">array|string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>执行查询并返回所有结果，等同于 -&gt;all()-&gt;query()</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_query"></a>
+
+  <h4 class="name method">
+    query()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public mixed <strong>query</strong>($included_links)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$included_links</td>
+      <td class="param_type">array|string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>执行查询</p>
+
+<p>$included_links 用于指定查询时要包含的关联。</p>
+
+<p>默认情况下，QDB_Select 对象会以数组形式返回查询结果。
+在这种模式下，关联的数据会被立即查询出来，并嵌入查询结果中。</p>
+
+<p>如果指定 QDB_Select 以 ActiveRecord 对象返回查询结果，则只有
+$included_links 指定的关联会被立即查询。
+否则在第一次访问返回的 ActiveRecord
+对象的聚合属性时，才会进行关联对象的查询。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select_getQueryHandle"></a>
+
+  <h4 class="name method">
+    getQueryHandle()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Result_Abstract <strong>getQueryHandle</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>执行查询，返回结果句柄</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select___toString"></a>
+
+  <h4 class="name method">
+    __toString()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public string <strong>__toString</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>获得查询字符串</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select___call"></a>
+
+  <h4 class="name method">
+    __call()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public mixed <strong>__call</strong>($method, $args)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$method</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$args</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>魔法方法</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select__queryArray"></a>
+
+  <h4 class="name method">
+    _queryArray()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected array <strong>_queryArray</strong>($clean_up)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$clean_up</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>查询，并返回数组结果</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select__queryObjects"></a>
+
+  <h4 class="name method">
+    _queryObjects()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected QDB_ActiveRecord_Association_Coll|QDB_ActiveRecord_Abstract <strong>_queryObjects</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>查询，并返回对象或对象集合</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select__renderDistinct"></a>
+
+  <h4 class="name method">
+    _renderDistinct()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected string <strong>_renderDistinct</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>构造 DISTINCT 子句</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select__renderColumns"></a>
+
+  <h4 class="name method">
+    _renderColumns()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected string <strong>_renderColumns</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>构造查询字段子句</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select__renderAggregate"></a>
+
+  <h4 class="name method">
+    _renderAggregate()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected string <strong>_renderAggregate</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>构造集合查询字段</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select__renderFrom"></a>
+
+  <h4 class="name method">
+    _renderFrom()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected string <strong>_renderFrom</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>构造 FROM 子句</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select__renderUnion"></a>
+
+  <h4 class="name method">
+    _renderUnion()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected string <strong>_renderUnion</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>构造 UNION 查询</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select__renderWhere"></a>
+
+  <h4 class="name method">
+    _renderWhere()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected string <strong>_renderWhere</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>构造 WHERE 子句</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select__renderGroup"></a>
+
+  <h4 class="name method">
+    _renderGroup()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected string <strong>_renderGroup</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>构造 GROUP 子句</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select__renderHaving"></a>
+
+  <h4 class="name method">
+    _renderHaving()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected string <strong>_renderHaving</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>构造 HAVING 子句</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select__renderOrder"></a>
+
+  <h4 class="name method">
+    _renderOrder()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected string <strong>_renderOrder</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>构造 ORDER 子句</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select__renderForUpdate"></a>
+
+  <h4 class="name method">
+    _renderForUpdate()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected string <strong>_renderForUpdate</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>构造 FOR UPDATE 子句</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select__join"></a>
+
+  <h4 class="name method">
+    _join()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected QDB_Select <strong>_join</strong>($join_type, $name, $cols, $cond, $cond_args)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$join_type</td>
+      <td class="param_type">int</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$name</td>
+      <td class="param_type">array|string|QDB_Table</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cols</td>
+      <td class="param_type">array|string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cond</td>
+      <td class="param_type">array|string|QDB_Expr|QDB_Cond</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cond_args</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个 JOIN</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select__addCols"></a>
+
+  <h4 class="name method">
+    _addCols()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected void <strong>_addCols</strong>($table_name, $cols)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$table_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$cols</td>
+      <td class="param_type">array|string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加到内部的数据表-&gt;字段名映射数组</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select__addConditions"></a>
+
+  <h4 class="name method">
+    _addConditions()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected QDB_Select <strong>_addConditions</strong>($cond, $args, $part_type, $bool)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$cond</td>
+      <td class="param_type">string|array|QDB_Expr|QDB_Cond</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$args</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$part_type</td>
+      <td class="param_type">int</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$bool</td>
+      <td class="param_type">bool</td>
+      <td class="param_desc">true = AND, false = OR</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加查询条件的内容方法</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select__addAggregate"></a>
+
+  <h4 class="name method">
+    _addAggregate()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected QDB_Select <strong>_addAggregate</strong>($type, $field, $alias)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$type</td>
+      <td class="param_type">int</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$field</td>
+      <td class="param_type">string|QDB_Expr</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$alias</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个集合查询</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select__getCurrentTableName"></a>
+
+  <h4 class="name method">
+    _getCurrentTableName()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected string <strong>_getCurrentTableName</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>获得当前表的名称</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_Select__parseTableName"></a>
+
+  <h4 class="name method">
+    _parseTableName()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public string <strong>_parseTableName</strong>($table_name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$table_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>回调函数，用于分析查询中包含的关联表名称</p>
+  </div>
+	<hr>
+    
+</div>
+
+
+</div>
+
+
+    </div>
+
+    <!-- /右侧栏 -->
+    </div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+
+name: "qeephp-manual"
+subject: "QeePHP 应用开发权威指南"
+columns: 3
+
+chapters:
+  intro:
+    subject: "QeePHP 介绍"
+    sections:
+      "基本":
+        "why":          "为什么选择 QeePHP"
+        "features":     "主要特征"
+        "history":      "QeePHP 的历史"
+        "thanks":       "致谢"
+  #
+  mvc:
+    subject: "MVC 模式"
+    sections:
+      "基本":
+        "flowchart":    "MVC 工作流程"
+        "entry":        "入口脚本"
+      "配置":
+        "bootstrap":    "启动文件"
+        "appini":       "应用程序设置"
+      "执行":
+        "appobj":       "应用程序对象"
+        "controllers":  "控制器"
+        "context":      "上下文对象"
+        "helpers":      "助手"
+      "视图":
+        "view-data":    "传递数据到视图"
+        "inherited-views": "视图的继承"
+        "view-elements": "视图片段"
+        "webcontrols":  "用户界面控件"
+      "其他":
+        "router":       "URL 路由"
+        "access-control": "访问控制"
+  #
+  model:
+    subject: "模型与 ORM"
+    sections:
+      "基本":
+        "basic":        "基础"
+        "define":       "定义模型"
+        "dbtable":      "存储模型的数据表"
+        "props":        "管理模型的属性"
+      "安全":
+        "validations":  "自动验证"
+        "protection":   "保护模型"
+      "CRUD 操作":
+        "query":        "查询 Read"
+        "create":       "创建 Create"
+        "update":       "更新 Update"
+        "destroy":      "删除 Delete"
+      "关联":
+        "whats-assoc":  "对象关联是什么"
+        "define-assoc": "定义关联"
+        "hasone-assoc": "HAS ONE 关联"
+        "hasmany-assoc": "HAS MANY 关联"
+        "belongsto-assoc": "BELONGS TO 关联"
+        "manytomany-assoc": "MANY TO MANY 关联"
+        "query-assoc":  "关联查询"
+      "高级":
+        "behaviors":    "使用行为插件"
+        "meta":         "元对象"
+      "扩展":
+        "events":       "事件回调"
+        "creating-behavior": "创建行为插件"
+  #
+  form:
+    subject: "表单控件"
+    sections:
+      "基本":
+        "overview":     "概述"
+    #    "creating":     "创建表单"
+    #    "elements":     "操作表单元素"
+    #  "使用":
+    #    "render":       "显示表单"
+    #    "data":         "处理数据"
+    #    "states":       "不同状态的表单"
+      "高级":
+    #    "dynamic":      "动态元素"
+    #    "grouping":     "群组"
+        "cusmize":		"自定义控件"
+  cache:
+    subject: "缓存"
+    sections:
+      "基本":
+        "services":     "缓存服务"
+      "页面缓存":
+        "front":        "前端缓存"
+        "view":         "视图缓存"
+        "webcontrols":  "控件缓存"
+      "数据缓存":
+        "model":        "模型缓存"
+        "query":        "查询缓存"
+        "custom":       "自定义缓存"
+  db:
+    subject: "数据库"
+    sections:
+      "基本":
+        "connections":  "管理数据库连接"
+        "schema":       "使用 schema"
+      "查询":
+        "query":        "查询方法参考"
+        "query-obj":    "查询条件对象"
+        "advanced-query": "高级查询"
+      "操作":
+        "insert":       "插入"
+        "update":       "更新"
+        "delete":       "删除"
+        "expression":   "数据库表达式"
+        "transactions": "数据库事务"
+        "statement":    "命令和存储过程"
+      "高级":
+        "multi-servers": "多数据库连接"
+        "separated-read-write": "读写分离"
+        "separated-databases": "分表分库"
+        "using-view":    "使用数据库视图"
+

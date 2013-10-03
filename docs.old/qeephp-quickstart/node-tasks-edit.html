@@ -1,0 +1,421 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 快速入门</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qeephp.com/docs/">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 快速入门</a>
+      &raquo;
+      <a href="node-tasks.html">实现任务管理</a>
+      &raquo;
+      修改和删除任务    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+
+    
+<h1>修改和删除任务</h1>
+
+<p>修改工作非常简单，在 tasks
+控制器中添加如下代码即可：</p>
+
+<pre class="php code"><span class="kw2">function</span> actionEdit<span
+class="br0">&#40;</span><span class="br0">&#41;</span>
+<span
+class="br0">&#123;</span>
+    <span
+class="co1">// 查询指定 ID，并且其所有者是当前用户的任务（禁止修改他人的任务）</span>
+    <span
+class="re0">$task</span> <span class="sy0">=</span> Task<span
+class="sy0">::</span><span class="me2">find</span><span
+class="br0">&#40;</span><span
+class="st_h">'task_id = ? AND [owner.user_id] = ?'</span><span
+class="sy0">,</span>
+        <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_context<span class="sy0">-&gt;</span><span
+class="me1">task_id</span><span class="sy0">,</span>
+        <span
+class="re0">$this</span><span class="sy0">-&gt;</span>_app<span
+class="sy0">-&gt;</span><span class="me1">currentUserObject</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">-&gt;</span><span class="me1">id</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">-&gt;</span><span
+class="me1">query</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span
+class="kw1">if</span> <span class="br0">&#40;</span><span
+class="sy0">!</span><span class="re0">$task</span><span
+class="sy0">-&gt;</span><span class="me1">id</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="co1">// 如果任务的 ID 无效，视图修改的任务不存在或者不是当前用户创建的</span>
+        <span
+class="kw1">return</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_redirect<span class="br0">&#40;</span>url<span
+class="br0">&#40;</span><span class="st_h">'tasks/index'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span
+class="co1">// 构造表单对象</span>
+    <span
+class="re0">$form</span> <span class="sy0">=</span> <span
+class="kw2">new</span> Form_Task<span class="br0">&#40;</span>url<span
+class="br0">&#40;</span><span class="st_h">'tasks/edit'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+    <span
+class="co1">// 修改表单标题</span>
+    <span class="re0">$form</span><span
+class="sy0">-&gt;</span>_subject <span class="sy0">=</span> <span
+class="st_h">'编辑任务'</span><span class="sy0">;</span>
+    <span
+class="co1">// 添加一个 checkbox 到表单</span>
+    <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">add</span><span class="br0">&#40;</span>QForm<span
+class="sy0">::</span><span class="me2">ELEMENT</span><span
+class="sy0">,</span> <span class="st_h">'is_completed'</span><span
+class="sy0">,</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+        <span
+class="st_h">'_ui'</span>              <span class="sy0">=&gt;</span> <span
+class="st_h">'checkbox'</span><span class="sy0">,</span>
+        <span
+class="st_h">'checked_by_value'</span> <span class="sy0">=&gt;</span> <span
+class="kw2">true</span><span class="sy0">,</span>
+        <span
+class="st_h">'caption'</span>          <span class="sy0">=&gt;</span> <span
+class="st_h">'该任务已完成'</span><span class="sy0">,</span>
+    <span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+    <span
+class="co1">// 添加一个隐藏字段到表单</span>
+    <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">add</span><span class="br0">&#40;</span>QForm<span
+class="sy0">::</span><span class="me2">ELEMENT</span><span
+class="sy0">,</span> <span class="st_h">'task_id'</span><span
+class="sy0">,</span> <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'_ui'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'hidden'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+    <span class="kw1">if</span> <span
+class="br0">&#40;</span><span class="re0">$this</span><span
+class="sy0">-&gt;</span>_context<span class="sy0">-&gt;</span><span
+class="me1">isPOST</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span> <span class="sy0">&amp;&amp;</span> <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">validate</span><span class="br0">&#40;</span><span
+class="re0">$_POST</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="co1">// changeProps() 方法可以批量修改 task 对象的属性，但不会修改只读属性的值</span>
+        <span
+class="re0">$task</span><span class="sy0">-&gt;</span><span
+class="me1">changeProps</span><span class="br0">&#40;</span><span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">values</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+        <span
+class="co1">// 根据是否选中“已完成”检查框来设置任务的状态</span>
+        <span
+class="re0">$task</span><span class="sy0">-&gt;</span><span
+class="me1">completed</span><span class="br0">&#40;</span><span
+class="re0">$form</span><span class="br0">&#91;</span><span
+class="st_h">'is_completed'</span><span class="br0">&#93;</span><span
+class="sy0">-&gt;</span><span class="me1">value</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span
+class="co1">// 保存并重定向浏览器</span>
+        <span
+class="re0">$task</span><span class="sy0">-&gt;</span><span
+class="me1">save</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+       <span
+class="kw1">return</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_redirect<span class="br0">&#40;</span>url<span
+class="br0">&#40;</span><span class="st_h">'tasks/index'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span
+class="kw1">elseif</span> <span class="br0">&#40;</span><span
+class="sy0">!</span><span class="re0">$this</span><span
+class="sy0">-&gt;</span>_context<span class="sy0">-&gt;</span><span
+class="me1">isPOST</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span>
+    <span
+class="br0">&#123;</span>
+        <span
+class="co1">// 如果不是 POST 提交，则把对象值导入表单</span>
+        <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">import</span><span class="br0">&#40;</span><span
+class="re0">$task</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span
+class="re0">$this</span><span class="sy0">-&gt;</span>_view<span
+class="br0">&#91;</span><span class="st_h">'form'</span><span
+class="br0">&#93;</span> <span class="sy0">=</span> <span
+class="re0">$form</span><span class="sy0">;</span>
+    <span
+class="co1">// 重用 create 动作的视图</span>
+    <span
+class="re0">$this</span><span class="sy0">-&gt;</span>_viewname <span
+class="sy0">=</span> <span class="st_h">'create'</span><span
+class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>这个方法完成下列工作：</p>
+
+<ol>
+	<li>首先根据指定的 task_id
+	和当前用户ID查询任务对象，如果失败则重定向浏览器。这可以有效阻止用户尝试编辑不属于自己的任务。</li>
+
+	<li>如果是 POST
+	提交，并且表单通过了验证，则更新任务信息，并且根据是否选中了“已完成”检查框来修改任务状态。最后保存修改并重定向浏览器。</li>
+
+	<li>不是 POST
+	提交，则将任务对象数据导入表单，以便在表单中显示要编辑的内容。</li>
+</ol>
+
+<p>上述代码中，之所以修改任务状态必须调用 completed()
+方法，是为了因为 task 模型的 is_completed
+属性非常重要，不应该“无意”中被修改。明确的 completed()
+方法调用就可以避免此问题。而且当任务状态改变为“已完成”时，还需要设置任务的
+completed_at 属性，以记录任务完成的时刻，completed()
+方法可以同时完成这项修改。</p>
+
+<p>所以我们还要在 task 模型中添加 completed() 方法：</p>
+
+<pre class="php code"><span
+class="co4">/**
+ * 明确修改任务的状态
+ *
+ * @param boolean $completed
+ *
+ * @return Task
+ */</span>
+<span
+class="kw2">function</span> completed<span class="br0">&#40;</span><span
+class="re0">$completed</span><span class="br0">&#41;</span>
+<span
+class="br0">&#123;</span>
+    <span class="re0">$completed</span> <span
+class="sy0">=</span> <span class="br0">&#40;</span>bool<span
+class="br0">&#41;</span><span class="re0">$completed</span><span
+class="sy0">;</span>
+    <span class="kw1">if</span> <span
+class="br0">&#40;</span><span class="re0">$completed</span> <span
+class="sy0">&amp;&amp;</span> <span class="sy0">!</span><span
+class="re0">$this</span><span class="sy0">-&gt;</span><span
+class="me1">is_completed</span><span class="br0">&#41;</span>
+    <span
+class="br0">&#123;</span>
+        <span
+class="co1">// 如果任务状态从“未完成”变成“已完成”，则保存完成任务的时刻</span>
+        <span
+class="co1">// changePropForce() 可以强制改变一个只读属性的值</span>
+        <span
+class="re0">$this</span><span class="sy0">-&gt;</span><span
+class="me1">changePropForce</span><span class="br0">&#40;</span><span
+class="st_h">'completed_at'</span><span class="sy0">,</span> <span
+class="kw3">time</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span
+class="kw1">elseif</span> <span class="br0">&#40;</span><span
+class="sy0">!</span><span class="re0">$completed</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="co1">// 如果任务状态设置为“未完成”，则清理掉 completed_at 记录的时间</span>
+        <span
+class="re0">$this</span><span class="sy0">-&gt;</span><span
+class="me1">changePropForce</span><span class="br0">&#40;</span><span
+class="st_h">'completed_at'</span><span class="sy0">,</span> <span
+class="kw2">null</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span
+class="re0">$this</span><span class="sy0">-&gt;</span><span
+class="me1">changePropForce</span><span class="br0">&#40;</span><span
+class="st_h">'is_completed'</span><span class="sy0">,</span> <span
+class="re0">$completed</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+    <span class="kw1">return</span> <span
+class="re0">$this</span><span class="sy0">;</span>
+<span
+class="br0">&#125;</span></pre>
+
+<p>相比传统的做法，面向对象的方式在初期会需要更多的代码。但是这些代码保证了逻辑的严密性和数据的有效性，应用软件规模越大，这种做法带来的好处就越多。而且随着应用规模的逐渐增长，面向对象充分重用逻辑与代码的优势就会体现出来，最终可以获得一个更健壮、内部更整洁的系统。</p>
+
+<p>实际运行效果：</p>
+
+<div class="figure"><img src="images/tasks-edit-01.png" alt="" />
+	<p>修改状态后的任务</p>
+</div>
+
+<h2>删除任务</h2>
+
+<p>删除任务功能非常简单：</p>
+
+<pre class="php code"><span class="kw2">function</span> actionDelete<span
+class="br0">&#40;</span><span class="br0">&#41;</span>
+<span
+class="br0">&#123;</span>
+    <span
+class="co1">// destroyWhere() 方法的参数和 find() 方法完全一致</span>
+    Task<span
+class="sy0">::</span><span class="me2">meta</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">-&gt;</span><span class="me1">destroyWhere</span><span
+class="br0">&#40;</span><span
+class="st_h">'task_id = ? AND [owner.user_id] = ?'</span><span
+class="sy0">,</span>
+        <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_context<span class="sy0">-&gt;</span><span
+class="me1">task_id</span><span class="sy0">,</span>
+        <span
+class="re0">$this</span><span class="sy0">-&gt;</span>_app<span
+class="sy0">-&gt;</span><span class="me1">currentUserObject</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">-&gt;</span><span class="me1">id</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span
+class="kw1">return</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_redirectMessage<span
+class="br0">&#40;</span>
+        <span class="st_h">'删除成功'</span><span
+class="sy0">,</span>
+        <span
+class="st_h">'您已经成功删除了一个任务'</span><span
+class="sy0">,</span>
+        url<span class="br0">&#40;</span><span
+class="st_h">'tasks/index'</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+<span
+class="br0">&#125;</span></pre>
+
+<p>修改一下 app/tasks/index.php
+视图，将删除任务的连接加进去：</p>
+
+<pre class="php code">&lt;p class=&quot;meta&quot;&gt;
+  <span
+class="kw2">&lt;?php</span> <span class="kw1">if</span> <span
+class="br0">&#40;</span><span class="re0">$task</span><span
+class="sy0">-&gt;</span><span class="me1">is_completed</span><span
+class="br0">&#41;</span><span class="sy0">:</span> <span
+class="kw2">?&gt;</span>
+  &lt;em&gt;已经在 <span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> <span
+class="kw3">date</span><span class="br0">&#40;</span><span
+class="st_h">'m-d H:i'</span><span class="sy0">,</span> <span
+class="re0">$task</span><span class="sy0">-&gt;</span><span
+class="me1">completed_at</span><span class="br0">&#41;</span><span
+class="sy0">;</span> <span
+class="kw2">?&gt;</span> 完成该任务&lt;/em&gt;
+  <span
+class="kw2">&lt;?php</span> <span class="kw1">else</span><span
+class="sy0">:</span> <span
+class="kw2">?&gt;</span>
+  &lt;strong&gt;添加日期：<span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> <span
+class="kw3">date</span><span class="br0">&#40;</span><span
+class="st_h">'m-d H:i'</span><span class="sy0">,</span> <span
+class="re0">$task</span><span class="sy0">-&gt;</span><span
+class="me1">created</span><span class="br0">&#41;</span><span
+class="sy0">;</span> <span class="kw2">?&gt;</span>&lt;/strong&gt;
+  <span
+class="kw2">&lt;?php</span> <span class="kw1">endif</span><span
+class="sy0">;</span> <span class="kw2">?&gt;</span>
+  , &lt;a href=&quot;<span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> url<span
+class="br0">&#40;</span><span class="st_h">'tasks/delete'</span><span
+class="sy0">,</span> <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'task_id'</span> <span
+class="sy0">=&gt;</span> <span class="re0">$task</span><span
+class="sy0">-&gt;</span><span class="me1">id</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span> <span
+class="kw2">?&gt;</span>&quot; onclick=&quot;return confirm('您确定要删除该任务吗?');&quot;&gt;删除&lt;/a&gt;
+&lt;/p&gt;</pre>
+
+<p>运行效果：</p>
+
+<div class="figure"><img src="images/tasks-edit-02.png" alt="" />
+	<p>删除提示</p>
+</div>
+
+<div class="figure"><img src="images/tasks-edit-03.png" alt="" />
+	<p>成功删除</p>
+</div>
+
+<p>$Id: tasks-edit.texy 2295 2009-03-10 07:48:18Z dualface $</p>
+
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-tasks-add.html">添加任务</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-tasks.html">实现任务管理</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-tasks-pagination.html">分页与最后的完善</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

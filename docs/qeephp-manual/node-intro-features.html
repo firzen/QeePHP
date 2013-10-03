@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 应用开发权威指南</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 应用开发权威指南</a>
+      &raquo;
+      <a href="node-intro.html">QeePHP 介绍</a>
+      &raquo;
+      主要特征    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+    
+<h1>QeePHP 的架构模式</h1>
+
+<p>QeePHP 是一个与众不同的框架。</p>
+
+<p>QeePHP
+遵循“内核最小化，功能插件化”的原则，利用内核实现了一个快速、可扩展的架构。然后在核心之外，通过各种插件提供不同类型的基础服务。</p>
+
+<div class="figure"><img src="images/intro-features-01.png" alt="" />
+	<p>QeePHP 的架构概貌</p>
+</div>
+
+<p>这种架构模式的优势：</p>
+
+<ul>
+	<li>小巧的内核保证了性能，不会因为将各种功能添加到内核中导致框架出现性能问题</li>
+
+	<li>具有优秀的可扩展能力和灵活性，而且外围功能的发展不会影响到框架核心</li>
+
+	<li>由于各种功能都是插件，开发者可以按照应用程序的需求来选择不同的功能组合</li>
+
+	<li>由于核心和外围功能是分离的，框架和应用程序的稳定性和可靠性都能得到保证，不会因为某个功能的问题影响到整个框架和应用</li>
+</ul>
+
+<p>这种架构唯一的劣势可以说是传统保守思想的阻力，就像还有不少
+PHP 开发者认为框架不值得使用一样。</p>
+
+<p>采用“内核+扩展”架构的 PHP 框架虽然目前只有 QeePHP
+一个。但在 PHP
+之外的世界中，这种架构模式早已成为发展方向。</p>
+
+<p>Linux
+就是最典型的案例，其“内核+扩展功能”的架构为无数的
+Linux 发行版奠定了基础。并且让 Linux
+可以顺畅运行在各种硬件环境中，这在传统架构软件中是不可想象的。因此即便是
+Windows 7 也顺应发展趋势，采用了类似的架构。</p>
+
+<p>而在 Web 应用开发框架中，Java
+世界早就普及了多层分离的架构模式。以快速开发引领 Web
+世界革命的 Ruby on Rails 框架也将在第三版和 Merb
+进行合并，合并后也是“内核+扩展”的架构模式。这不但证明了这种架构模式的可行性，也是说明这种架构模式是未来的发展方向。我们相信
+QeePHP
+的架构模式会经受住时间和用户的考验，证明其具备出色的性能、可靠性和扩展能力。</p>
+
+<h2>主要特征</h2>
+
+<p>QeePHP 具备下列特征：</p>
+
+<ul>
+	<li><strong>内核+扩展架构设计</strong>：性能、灵活性和扩展能力的完美解决方案。</li>
+
+	<li><strong>高级
+	ORM（对象关系映射）</strong>：为创建真正的面向对象应用提供了支持。
+		<p>在面向对象应用中，如何处理对象及对象关系的持久化，对
+		PHP 来说是一项艰巨的任务。QeePHP
+		采用了“模型元对象”设计来实现全功能的 ORM
+		系统。每一个业务对象不但可以轻松完成持久化操作，对象间的关系也可以由
+		QeePHP ORM 系统来自动维护。更出色的是 QeePHP 的 ORM
+		允许开发者全方位的定制对象的属性、方法、事件，以及行为来满足各种业务需求。</p>
+	</li>
+
+	<li><strong>灵活的表单模型设计思想</strong>：实现了数据、行为与表现的分离与协作。
+		<p>表单是应用程序获得用户输入的主要手段之一。过去有过各种各样的表单解决方案，但不管采用何种方式，这些解决方案都没有实现表单数据、行为与表现的彻底分离和协作。QeePHP
+		的表单模式让开发者可以很轻松的创建大量表单，并将这些表单和业务对象关联起来，再配合表单视图来实现同一个表单多种表现形式、多个表单保持一致外观的目标。应用程序中的表单越多，QeePHP
+		的表单模型能够创造的价值就越高。</p>
+	</li>
+
+	<li><strong>URL 路由双向解析</strong>：赋予应用程序构造 URL
+	的无穷灵活性。
+		<p>不管是从提高用户体验，还是增强 SEO
+		的角度考虑，为应用程序提供定制 URL
+		的能力都是必需的。QeePHP 独有的 URL
+		路由双向解析让开发者仅仅修改配置文件就能实现对应用程序
+		URL 的调整。而且出色的适应性让 QeePHP
+		应用可以根据运行环境采用不同的 URL
+		风格，最大程度的提高应用的环境适应性。</p>
+	</li>
+
+	<li><strong>用户界面组件化</strong>：让开发者可以构造模块化的用户界面，极大的减小工作量。
+		<p>将面向对象的思想引入用户界面后，构造现代 Web
+		应用的用户界面就变得易如反掌了。页面上任何独立或重复出现的区域都可以封装为一个单独的组件，并且做到和其他部分的完全解耦。再结合视图继承、区块、片段等手段，构建任何复杂度的用户界面都不是问题。</p>
+	</li>
+
+	<li><strong>Web
+	界面开发工具</strong>：将重复劳动削减至最低程度。</li>
+</ul>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+$Id: intro-features.texy 2009-03-10 07:48:18Z Tim13 $
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-intro-why.html">为什么选择 QeePHP</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-intro.html">QeePHP 介绍</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-intro-history.html">QeePHP 的历史</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

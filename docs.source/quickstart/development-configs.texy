@@ -1,0 +1,36 @@
+=== 修改配置文件 ===
+
+使用QeePHP的ORM等数据库操作相关功能的前提是正确修改配置文件。
+
+
+## 修改 database.config.php ##
+
+_config/database.config.php 是保存数据库连接信息的配置文件，默认内容如下：
+
+/---code php
+<?php
+return array(
+	'driver' => 'mysql' , 
+	'host' => 'localhost' , 
+	'login' => 'test' , 
+	'password' => 'test' , 
+	'database' => 'todo_db' , 
+	'charset' => 'utf8' , 
+	'prefix' => ''
+);
+\---
+
+==参数解析==
+|driver | 数据库类型
+|host | 数据库地址 
+|login | 连接用户名 
+|password | 登录密码 
+|database | 数据库 
+|charset | 编码  
+
+
+如果你的数据库设置和上面的信息不同，请对照进行修改配置文件。
+
+
+
+

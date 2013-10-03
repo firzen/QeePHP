@@ -1,0 +1,3260 @@
+<html>
+<head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("a.toggle").toggle(function(){
+        $(this).text($(this).text().replace(/隐藏/,'显示'));
+        var a=$(this).parents(".summary");
+        a.find(".inherited").hide();
+    },function(){
+        $(this).text($(this).text().replace(/显示/,'隐藏'));
+        $(this).parents(".summary").find(".inherited").show();
+    });
+});
+</script>
+
+
+   <!-- 左侧栏 -->
+	<div class="container">
+	<div class="row">
+    <div id="subpage_sidebar" class="left apidoc-classes-index span3">
+
+      
+
+<h3>包 core</h3>
+
+<ul>
+    <li>
+    <a href="./class-q.html" title="Q">Q</a>
+  </li>
+    <li>
+    <a href="./class-qexception.html" title="QException">QException</a>
+  </li>
+    <li>
+    <a href="./class-qcoll.html" title="QColl">QColl</a>
+  </li>
+    <li>
+    <a href="./class-qcontext.html" title="QContext">QContext</a>
+  </li>
+    <li>
+    <a href="./class-qlog.html" title="QLog">QLog</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 mvc</h3>
+
+<ul>
+    <li>
+    <a href="./class-qacl.html" title="QACL">QACL</a>
+  </li>
+    <li>
+    <a href="./class-qcontroller-abstract.html" title="QController_Abstract">QController_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qcontroller-forward.html" title="QController_Forward">QController_Forward</a>
+  </li>
+    <li>
+    <a href="./class-qrouter.html" title="QRouter">QRouter</a>
+  </li>
+    <li>
+    <a href="./class-qview-output.html" title="QView_Output">QView_Output</a>
+  </li>
+    <li>
+    <a href="./class-qview-redirect.html" title="QView_Redirect">QView_Redirect</a>
+  </li>
+    <li>
+    <a href="./class-qview-render-php.html" title="QView_Render_PHP">QView_Render_PHP</a>
+  </li>
+    <li>
+    <a href="./class-qview-render-php-parser.html" title="QView_Render_PHP_Parser">QView_Render_PHP_Parser</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 orm</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdb-activerecord-behavior-abstract.html" title="QDB_ActiveRecord_Behavior_Abstract">QDB_ActiveRecord_Behavior_Abst...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-abstract.html" title="QDB_ActiveRecord_Abstract">QDB_ActiveRecord_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-abstract.html" title="QDB_ActiveRecord_Association_Abstract">QDB_ActiveRecord_Association_A...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-belongsto.html" title="QDB_ActiveRecord_Association_BelongsTo">QDB_ActiveRecord_Association_B...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-coll.html" title="QDB_ActiveRecord_Association_Coll">QDB_ActiveRecord_Association_C...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-hasmany.html" title="QDB_ActiveRecord_Association_HasMany">QDB_ActiveRecord_Association_H...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-hasone.html" title="QDB_ActiveRecord_Association_HasOne">QDB_ActiveRecord_Association_H...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-manytomany.html" title="QDB_ActiveRecord_Association_ManyToMany">QDB_ActiveRecord_Association_M...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-meta.html" title="QDB_ActiveRecord_Meta">QDB_ActiveRecord_Meta</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-view.html" title="QDB_ActiveRecord_View">QDB_ActiveRecord_View</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-viewmeta.html" title="QDB_ActiveRecord_ViewMeta">QDB_ActiveRecord_ViewMeta</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-callbacks.html" title="QDB_ActiveRecord_Callbacks">QDB_ActiveRecord_Callbacks</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-interface.html" title="QDB_ActiveRecord_Interface">QDB_ActiveRecord_Interface</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 form</h3>
+
+<ul>
+    <li>
+    <a href="./class-qform-element.html" title="QForm_Element">QForm_Element</a>
+  </li>
+    <li>
+    <a href="./class-qform-group.html" title="QForm_Group">QForm_Group</a>
+  </li>
+    <li>
+    <a href="./class-qform.html" title="QForm">QForm</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 database</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdb-adapter-abstract.html" title="QDB_Adapter_Abstract">QDB_Adapter_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-mysql.html" title="QDB_Adapter_Mysql">QDB_Adapter_Mysql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-abstract.html" title="QDB_Adapter_Pdo_Abstract">QDB_Adapter_Pdo_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-exception.html" title="QDB_Adapter_Pdo_Exception">QDB_Adapter_Pdo_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pdo-pgsql.html" title="QDB_Adapter_Pdo_Pgsql">QDB_Adapter_Pdo_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-adapter-pgsql.html" title="QDB_Adapter_Pgsql">QDB_Adapter_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-cond.html" title="QDB_Cond">QDB_Cond</a>
+  </li>
+    <li>
+    <a href="./class-qdb.html" title="QDB">QDB</a>
+  </li>
+    <li>
+    <a href="./class-qdb-expr.html" title="QDB_Expr">QDB_Expr</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-abstract.html" title="QDB_Result_Abstract">QDB_Result_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-mysql.html" title="QDB_Result_Mysql">QDB_Result_Mysql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-pdo.html" title="QDB_Result_Pdo">QDB_Result_Pdo</a>
+  </li>
+    <li>
+    <a href="./class-qdb-result-pgsql.html" title="QDB_Result_Pgsql">QDB_Result_Pgsql</a>
+  </li>
+    <li>
+    <a href="./class-qdb-select.html" title="QDB_Select">QDB_Select</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table.html" title="QDB_Table">QDB_Table</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table-lite.html" title="QDB_Table_Lite">QDB_Table_Lite</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 helper</h3>
+
+<ul>
+    <li>
+    <a href="./class-helper-filesys.html" title="Helper_Filesys">Helper_Filesys</a>
+  </li>
+    <li>
+    <a href="./class-helper-array.html" title="Helper_Array">Helper_Array</a>
+  </li>
+    <li>
+    <a href="./class-qdom-document.html" title="QDom_Document">QDom_Document</a>
+  </li>
+    <li>
+    <a href="./class-qdom-element.html" title="QDom_Element">QDom_Element</a>
+  </li>
+    <li>
+    <a href="./class-qfilter.html" title="QFilter">QFilter</a>
+  </li>
+    <li>
+    <a href="./class-helper-image.html" title="Helper_Image">Helper_Image</a>
+  </li>
+    <li>
+    <a href="./class-helper-imagegd.html" title="Helper_ImageGD">Helper_ImageGD</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcode.html" title="Helper_ImgCode">Helper_ImgCode</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcodesimple.html" title="Helper_ImgCodeSimple">Helper_ImgCodeSimple</a>
+  </li>
+    <li>
+    <a href="./class-helper-imgcodettf.html" title="Helper_ImgCodeTTF">Helper_ImgCodeTTF</a>
+  </li>
+    <li>
+    <a href="./class-helper-uploader.html" title="Helper_Uploader">Helper_Uploader</a>
+  </li>
+    <li>
+    <a href="./class-helper-uploader-file.html" title="Helper_Uploader_File">Helper_Uploader_File</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator.html" title="QValidator">QValidator</a>
+  </li>
+    <li>
+    <a href="./class-helper-yaml.html" title="Helper_YAML">Helper_YAML</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 cache</h3>
+
+<ul>
+    <li>
+    <a href="./class-qcache-apc.html" title="QCache_APC">QCache_APC</a>
+  </li>
+    <li>
+    <a href="./class-qcache-file.html" title="QCache_File">QCache_File</a>
+  </li>
+    <li>
+    <a href="./class-qcache-memcached.html" title="QCache_Memcached">QCache_Memcached</a>
+  </li>
+    <li>
+    <a href="./class-qcache-memory.html" title="QCache_Memory">QCache_Memory</a>
+  </li>
+    <li>
+    <a href="./class-qcache-phpdatafile.html" title="QCache_PHPDataFile">QCache_PHPDataFile</a>
+  </li>
+    <li>
+    <a href="./class-qcache-xcache.html" title="QCache_XCache">QCache_XCache</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 webcontrols</h3>
+
+<ul>
+    <li>
+    <a href="./class-qui-control-abstract.html" title="QUI_Control_Abstract">QUI_Control_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-input-abstract.html" title="Control_Input_Abstract">Control_Input_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-button.html" title="Control_Button">Control_Button</a>
+  </li>
+    <li>
+    <a href="./class-control-checkbox-abstract.html" title="Control_Checkbox_Abstract">Control_Checkbox_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-checkbox.html" title="Control_Checkbox">Control_Checkbox</a>
+  </li>
+    <li>
+    <a href="./class-control-checkboxgroup-abstract.html" title="Control_CheckboxGroup_Abstract">Control_CheckboxGroup_Abstract</a>
+  </li>
+    <li>
+    <a href="./class-control-checkboxgroup.html" title="Control_CheckboxGroup">Control_CheckboxGroup</a>
+  </li>
+    <li>
+    <a href="./class-control-dropdownlist.html" title="Control_DropdownList">Control_DropdownList</a>
+  </li>
+    <li>
+    <a href="./class-control-hidden.html" title="Control_Hidden">Control_Hidden</a>
+  </li>
+    <li>
+    <a href="./class-control-label.html" title="Control_Label">Control_Label</a>
+  </li>
+    <li>
+    <a href="./class-control-listbox.html" title="Control_Listbox">Control_Listbox</a>
+  </li>
+    <li>
+    <a href="./class-control-memo.html" title="Control_Memo">Control_Memo</a>
+  </li>
+    <li>
+    <a href="./class-control-password.html" title="Control_Password">Control_Password</a>
+  </li>
+    <li>
+    <a href="./class-control-radio.html" title="Control_Radio">Control_Radio</a>
+  </li>
+    <li>
+    <a href="./class-control-radiogroup.html" title="Control_RadioGroup">Control_RadioGroup</a>
+  </li>
+    <li>
+    <a href="./class-control-reset.html" title="Control_Reset">Control_Reset</a>
+  </li>
+    <li>
+    <a href="./class-control-static.html" title="Control_Static">Control_Static</a>
+  </li>
+    <li>
+    <a href="./class-control-submit.html" title="Control_Submit">Control_Submit</a>
+  </li>
+    <li>
+    <a href="./class-control-textbox.html" title="Control_Textbox">Control_Textbox</a>
+  </li>
+    <li>
+    <a href="./class-control-upload.html" title="Control_Upload">Control_Upload</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 behavior</h3>
+
+<ul>
+    <li>
+    <a href="./class-model-behavior-acluser.html" title="Model_Behavior_AclUser">Model_Behavior_AclUser</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-fastuuid.html" title="Model_Behavior_Fastuuid">Model_Behavior_Fastuuid</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-relation.html" title="Model_Behavior_Relation">Model_Behavior_Relation</a>
+  </li>
+    <li>
+    <a href="./class-model-behavior-uniqueness.html" title="Model_Behavior_Uniqueness">Model_Behavior_Uniqueness</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 exception</h3>
+
+<ul>
+    <li>
+    <a href="./class-qcache-exception.html" title="QCache_Exception">QCache_Exception</a>
+  </li>
+    <li>
+    <a href="./class-q-classfileexistsexception.html" title="Q_ClassFileExistsException">Q_ClassFileExistsException</a>
+  </li>
+    <li>
+    <a href="./class-q-classnotdefinedexception.html" title="Q_ClassNotDefinedException">Q_ClassNotDefinedException</a>
+  </li>
+    <li>
+    <a href="./class-q-createdirfailedexception.html" title="Q_CreateDirFailedException">Q_CreateDirFailedException</a>
+  </li>
+    <li>
+    <a href="./class-q-createfilefailedexception.html" title="Q_CreateFileFailedException">Q_CreateFileFailedException</a>
+  </li>
+    <li>
+    <a href="./class-q-filenotfoundexception.html" title="Q_FileNotFoundException">Q_FileNotFoundException</a>
+  </li>
+    <li>
+    <a href="./class-q-filenotreadableexception.html" title="Q_FileNotReadableException">Q_FileNotReadableException</a>
+  </li>
+    <li>
+    <a href="./class-q-illegalclassnameexception.html" title="Q_IllegalClassNameException">Q_IllegalClassNameException</a>
+  </li>
+    <li>
+    <a href="./class-q-illegalfilenameexception.html" title="Q_IllegalFilenameException">Q_IllegalFilenameException</a>
+  </li>
+    <li>
+    <a href="./class-qlog-exception.html" title="QLog_Exception">QLog_Exception</a>
+  </li>
+    <li>
+    <a href="./class-q-notimplementedexception.html" title="Q_NotImplementedException">Q_NotImplementedException</a>
+  </li>
+    <li>
+    <a href="./class-q-removedirfailedexception.html" title="Q_RemoveDirFailedException">Q_RemoveDirFailedException</a>
+  </li>
+    <li>
+    <a href="./class-qdb-exception.html" title="QDB_Exception">QDB_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-exception-duplicatekey.html" title="QDB_Exception_DuplicateKey">QDB_Exception_DuplicateKey</a>
+  </li>
+    <li>
+    <a href="./class-qdb-select-exception.html" title="QDB_Select_Exception">QDB_Select_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-table-exception.html" title="QDB_Table_Exception">QDB_Table_Exception</a>
+  </li>
+    <li>
+    <a href="./class-acluser-exception.html" title="AclUser_Exception">AclUser_Exception</a>
+  </li>
+    <li>
+    <a href="./class-acluser-duplicateusernameexception.html" title="AclUser_DuplicateUsernameException">AclUser_DuplicateUsernameExcep...</a>
+  </li>
+    <li>
+    <a href="./class-acluser-usernamenotfoundexception.html" title="AclUser_UsernameNotFoundException">AclUser_UsernameNotFoundExcept...</a>
+  </li>
+    <li>
+    <a href="./class-acluser-wrongpasswordexception.html" title="AclUser_WrongPasswordException">AclUser_WrongPasswordException</a>
+  </li>
+    <li>
+    <a href="./class-qform-exception.html" title="QForm_Exception">QForm_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdom-exception.html" title="QDom_Exception">QDom_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator-exception.html" title="QValidator_Exception">QValidator_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qvalidator-validatefailedexception.html" title="QValidator_ValidateFailedException">QValidator_ValidateFailedExcep...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-exception.html" title="QDB_ActiveRecord_Association_Exception">QDB_ActiveRecord_Association_E...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-notdefinedexception.html" title="QDB_ActiveRecord_Association_NotDefinedException">QDB_ActiveRecord_Association_N...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-association-rejectexception.html" title="QDB_ActiveRecord_Association_RejectException">QDB_ActiveRecord_Association_R...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-behavior-exception.html" title="QDB_ActiveRecord_Behavior_Exception">QDB_ActiveRecord_Behavior_Exce...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-exception.html" title="QDB_ActiveRecord_Exception">QDB_ActiveRecord_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-calltoundefinedmethodexception.html" title="QDB_ActiveRecord_CallToUndefinedMethodException">QDB_ActiveRecord_CallToUndefin...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-changingreadonlypropexception.html" title="QDB_ActiveRecord_ChangingReadonlyPropException">QDB_ActiveRecord_ChangingReado...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-compositepkincompatibleexception.html" title="QDB_ActiveRecord_CompositePKIncompatibleException">QDB_ActiveRecord_CompositePKIn...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-destroywithoutidexception.html" title="QDB_ActiveRecord_DestroyWithoutIdException">QDB_ActiveRecord_DestroyWithou...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-expectsassocpropexception.html" title="QDB_ActiveRecord_ExpectsAssocPropException">QDB_ActiveRecord_ExpectsAssocP...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-meta-exception.html" title="QDB_ActiveRecord_Meta_Exception">QDB_ActiveRecord_Meta_Exceptio...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-settingproptypemismatchexception.html" title="QDB_ActiveRecord_SettingPropTypeMismatchException">QDB_ActiveRecord_SettingPropTy...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-undefinedpropexception.html" title="QDB_ActiveRecord_UndefinedPropException">QDB_ActiveRecord_UndefinedProp...</a>
+  </li>
+    <li>
+    <a href="./class-qdb-activerecord-validatefailedexception.html" title="QDB_ActiveRecord_ValidateFailedException">QDB_ActiveRecord_ValidateFaile...</a>
+  </li>
+    <li>
+    <a href="./class-qacl-exception.html" title="QACL_Exception">QACL_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-exception.html" title="QRouter_Exception">QRouter_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-invalidrouteexception.html" title="QRouter_InvalidRouteException">QRouter_InvalidRouteException</a>
+  </li>
+    <li>
+    <a href="./class-qrouter-routenotfoundexception.html" title="QRouter_RouteNotFoundException">QRouter_RouteNotFoundException</a>
+  </li>
+    <li>
+    <a href="./class-qview-exception.html" title="QView_Exception">QView_Exception</a>
+  </li>
+    <li>
+    <a href="./class-qui-exception.html" title="QUI_Exception">QUI_Exception</a>
+  </li>
+  
+</ul>
+
+
+<h3>包 debug</h3>
+
+<ul>
+    <li>
+    <a href="./class-qdebug.html" title="QDebug">QDebug</a>
+  </li>
+    <li>
+    <a href="./class-qdebug-firephp.html" title="QDebug_FirePHP">QDebug_FirePHP</a>
+  </li>
+  
+</ul>
+
+
+
+    </div>
+
+    <!-- /左侧栏 -->
+
+    <!-- 右侧栏 -->
+
+    <div id="col3" class="right contents span9">
+
+      
+<div class="apidoc-class">
+
+  <h1>类 - QDB_ActiveRecord_Meta</h1>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="./index.html">所有包</a></li>
+
+        <li><a href="#properties">类属性</a></li>
+    
+        <li><a href="#methods">类方法</a></li>
+    
+
+  </ul>
+
+  
+<table class="summary-table table table-bordered" cellpadding="0" cellspacing="0" >
+  <tr>
+    <th nowrap="nowrap">包</th>
+    <td>orm</td>
+  </tr>
+  <tr>
+    <th nowrap="nowrap">类层次</th>
+    <td>
+    class QDB_ActiveRecord_Meta
+    </td>
+  </tr>
+
+    <tr>
+    <th nowrap="nowrap">实现的接口</th>
+    <td></td>
+  </tr>
+  
+  
+  
+</table>
+
+<div class="formatted">
+  
+<p>QDB_ActiveRecord_Meta 类封装了 QDB_ActiveRecord_Abstract
+继承类的元信息</p>
+</div>
+
+
+  <a name="properties"></a>
+
+  
+<div class="summary">
+
+  <h2>公开的属性</h2>
+  <p>
+    <a href="#" class="toggle">隐藏继承的属性</a>
+  </p>
+
+  <table class="list-table table table-bordered">
+    <tr>
+      <th>属性</th><th>类型</th><th>描述</th><th>定义于</th>
+    </tr>
+
+    
+    <tr>
+      <td>$idname</td>
+      <td>array</td>
+      <td>ID 属性名</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$idname_count</td>
+      <td>int</td>
+      <td>ID 属性包含多少个属性</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$table_meta</td>
+      <td>array</td>
+      <td>数据表的元信息</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$validations</td>
+      <td>array</td>
+      <td>验证规则</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$attr_accessible</td>
+      <td>array</td>
+      <td>允许使用 mass-assignment 方式赋值的属性</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$attr_protected</td>
+      <td>array</td>
+      <td>拒绝使用 mass-assignment 方式赋值的属性</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$create_reject</td>
+      <td>array</td>
+      <td>创建时要过滤的属性</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$update_reject</td>
+      <td>array</td>
+      <td>更新时要过滤的属性</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$create_autofill</td>
+      <td>array</td>
+      <td>创建时要自动填充的属性</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$update_autofill</td>
+      <td>array</td>
+      <td>更新时要自动填充的属性</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$props2fields</td>
+      <td>array</td>
+      <td>属性到字段名的映射</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$fields2props</td>
+      <td>array</td>
+      <td>字段名到属性的映射</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$props</td>
+      <td>array of properties meta</td>
+      <td>所有属性的元信息</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$default_props</td>
+      <td>array</td>
+      <td>所有属性的默认值，用于初始化一个新的 ActiveRecord 实例</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$associations</td>
+      <td>array of QDB_ActiveRecord_Association_Abstract</td>
+      <td>ActiveRecord 之间的关联</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$callbacks</td>
+      <td>array of callbacks</td>
+      <td>事件钩子</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$methods</td>
+      <td>array of callbacks</td>
+      <td>扩展的方法</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$static_methods</td>
+      <td>array of callbacks</td>
+      <td>扩展的静态方法</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$table</td>
+      <td>QDB_Table</td>
+      <td>表数据入口</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$class_name</td>
+      <td>string</td>
+      <td>Meta 对应的 ActiveRecord 继承类</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$inherit_base_class</td>
+      <td>string</td>
+      <td>ActiveRecord 的基础类</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$inherit_type_field</td>
+      <td>string</td>
+      <td>用于指定继承类名称的字段名</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$belongsto_props</td>
+      <td>array</td>
+      <td>BELONGS_TO 关联的 source_key</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+
+
+<div class="summary">
+
+  <h2>保护的属性</h2>
+  <p>
+    <a href="#" class="toggle">隐藏继承的属性</a>
+  </p>
+
+  <table class="list-table table table-bordered">
+    <tr>
+      <th>属性</th><th>类型</th><th>描述</th><th>定义于</th>
+    </tr>
+
+    
+    <tr>
+      <td>$_behaviors</td>
+      <td>array of QDB_ActiveRecord_Behavior_Abstract objects</td>
+      <td>行为插件对象</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$_associations_inited</td>
+      <td>boolean</td>
+      <td>指示是否已经初始化了对象的关联</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$_assoc_types</td>
+      <td>array</td>
+      <td>可用的对象聚合类型</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$_validation_policy_options</td>
+      <td>array</td>
+      <td>验证策略可用的选项</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>$_metas</td>
+      <td>array of QDB_ActiveRecord_Meta</td>
+      <td>所有 ActiveRecord 继承类的 Meta 对象</td>
+      <td>
+      	<small>
+                QDB_ActiveRecord_Meta        		</small>
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+
+
+  <a name="methods"></a>
+  
+<div class="summary">
+  <h2>公共方法</h2>
+  <p>
+    <a href="#" class="toggle">隐藏继承的方法</a>
+  </p>
+
+  <table class="list-table table table-bordered">
+    <tr>
+      <th>方法</th><th>描述</th><th>定义于</th>
+    </tr>
+
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_instance">instance()</a>
+      </td>
+
+      <td>获得指定指定 ActiveRecord 继承类的元对象唯一实例</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_newObject">newObject()</a>
+      </td>
+
+      <td>返回一个根据 $data 数组构造的 ActiveRecord 继承类实例</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_createFromTable">createFromTable()</a>
+      </td>
+
+      <td>根据表名构造一个元对象</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_find">find()</a>
+      </td>
+
+      <td>开启一个查询</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_findByArgs">findByArgs()</a>
+      </td>
+
+      <td>开启一个查询，并根据提供的参数设置查询对象</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_updateWhere">updateWhere()</a>
+      </td>
+
+      <td>更新符合条件的对象</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_updateDbWhere">updateDbWhere()</a>
+      </td>
+
+      <td>更新符合条件的记录</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_destroyWhere">destroyWhere()</a>
+      </td>
+
+      <td>实例化符合条件的对象，并调用这些对象的 destroy() 方法，返回被删除的对象数</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_deleteWhere">deleteWhere()</a>
+      </td>
+
+      <td>从数据库中直接删除符合条件的对象</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_validate">validate()</a>
+      </td>
+
+      <td>对数据进行验证，返回所有未通过验证数据的错误信息</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_relatedObjects">relatedObjects()</a>
+      </td>
+
+      <td>获得对象的关联对象</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_hasBindBehavior">hasBindBehavior()</a>
+      </td>
+
+      <td>检查是否绑定了指定的行为插件</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_bindBehaviors">bindBehaviors()</a>
+      </td>
+
+      <td>绑定行为插件</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_unbindBehaviors">unbindBehaviors()</a>
+      </td>
+
+      <td>撤销与指定行为插件的绑定</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_addDynamicMethod">addDynamicMethod()</a>
+      </td>
+
+      <td>添加一个动态方法</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_removeDynamicMethod">removeDynamicMethod()</a>
+      </td>
+
+      <td>删除指定的动态方法</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_addStaticMethod">addStaticMethod()</a>
+      </td>
+
+      <td>添加一个静态方法</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_removeStaticMethod">removeStaticMethod()</a>
+      </td>
+
+      <td>删除指定的静态方法</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_setPropSetter">setPropSetter()</a>
+      </td>
+
+      <td>设置属性的 setter 方法</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_unsetPropSetter">unsetPropSetter()</a>
+      </td>
+
+      <td>取消属性的 setter 方法</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_setPropGetter">setPropGetter()</a>
+      </td>
+
+      <td>设置属性的 getter 方法</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_unsetPropGetter">unsetPropGetter()</a>
+      </td>
+
+      <td>取消属性的 getter 方法</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_addEventHandler">addEventHandler()</a>
+      </td>
+
+      <td>为指定事件添加处理方法</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_addExceptionTrap">addExceptionTrap()</a>
+      </td>
+
+      <td>为指定对象添加异常捕捉器</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_removeEventHandler">removeEventHandler()</a>
+      </td>
+
+      <td>删除指定事件的一个处理方法</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_addProp">addProp()</a>
+      </td>
+
+      <td>添加一个属性</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_addAssoc">addAssoc()</a>
+      </td>
+
+      <td>添加一个对象关联</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_hasAssoc">hasAssoc()</a>
+      </td>
+
+      <td>判断是否有指定关联</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_assoc">assoc()</a>
+      </td>
+
+      <td>访问指定属性对应的关联</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_removeAssoc">removeAssoc()</a>
+      </td>
+
+      <td>移除一个关联</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_addValidation">addValidation()</a>
+      </td>
+
+      <td>为指定属性添加一个验证规则</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_propValidations">propValidations()</a>
+      </td>
+
+      <td>取得指定属性的所有验证规则</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_allValidations">allValidations()</a>
+      </td>
+
+      <td>取得所有属性的所有验证规则</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_removePropValidations">removePropValidations()</a>
+      </td>
+
+      <td>清除指定属性的所有验证规则</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta_removeAllValidations">removeAllValidations()</a>
+      </td>
+
+      <td>清除所有属性的所有验证规则</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta___call">__call()</a>
+      </td>
+
+      <td>调用 ActiveRecord 继承类定义的自定义静态方法</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+
+
+<div class="summary">
+  <h2>保护的方法</h2>
+  <p>
+    <a href="#" class="toggle">隐藏继承的方法</a>
+  </p>
+
+  <table class="list-table table table-bordered">
+    <tr>
+      <th>方法</th><th>描述</th><th>定义于</th>
+    </tr>
+
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta___construct">__construct()</a>
+      </td>
+
+      <td>构造函数</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta__prepareValidationRules">_prepareValidationRules()</a>
+      </td>
+
+      <td>准备验证策略</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta__tableByName">_tableByName()</a>
+      </td>
+
+      <td>根据数据表名称获得表数据入口对象</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta__tableByClass">_tableByClass()</a>
+      </td>
+
+      <td>根据类名称获得表数据入口对象</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta__init1">_init1()</a>
+      </td>
+
+      <td>第一步初始化</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <a href="#QDB_ActiveRecord_Meta__init2">_init2()</a>
+      </td>
+
+      <td>第二步初始化</td>
+      <td>
+                QDB_ActiveRecord_Meta        
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+
+
+<div class="details">
+
+  <h2>属性详细说明</h2>
+
+    
+  <a name="idname"></a>
+
+  <div class="name property">
+    <strong>$idname</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>ID 属性名</p>
+  </div>
+
+    
+  <a name="idname_count"></a>
+
+  <div class="name property">
+    <strong>$idname_count</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>ID 属性包含多少个属性</p>
+  </div>
+
+    
+  <a name="table_meta"></a>
+
+  <div class="name property">
+    <strong>$table_meta</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>数据表的元信息</p>
+  </div>
+
+    
+  <a name="validations"></a>
+
+  <div class="name property">
+    <strong>$validations</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>验证规则</p>
+  </div>
+
+    
+  <a name="attr_accessible"></a>
+
+  <div class="name property">
+    <strong>$attr_accessible</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>允许使用 mass-assignment 方式赋值的属性</p>
+
+<p>如果指定了 attr_accessible，则忽略 attr_protected 的设置。</p>
+  </div>
+
+    
+  <a name="attr_protected"></a>
+
+  <div class="name property">
+    <strong>$attr_protected</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>拒绝使用 mass-assignment 方式赋值的属性</p>
+  </div>
+
+    
+  <a name="create_reject"></a>
+
+  <div class="name property">
+    <strong>$create_reject</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>创建时要过滤的属性</p>
+  </div>
+
+    
+  <a name="update_reject"></a>
+
+  <div class="name property">
+    <strong>$update_reject</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>更新时要过滤的属性</p>
+  </div>
+
+    
+  <a name="create_autofill"></a>
+
+  <div class="name property">
+    <strong>$create_autofill</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>创建时要自动填充的属性</p>
+  </div>
+
+    
+  <a name="update_autofill"></a>
+
+  <div class="name property">
+    <strong>$update_autofill</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>更新时要自动填充的属性</p>
+  </div>
+
+    
+  <a name="props2fields"></a>
+
+  <div class="name property">
+    <strong>$props2fields</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>属性到字段名的映射</p>
+  </div>
+
+    
+  <a name="fields2props"></a>
+
+  <div class="name property">
+    <strong>$fields2props</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>字段名到属性的映射</p>
+  </div>
+
+    
+  <a name="props"></a>
+
+  <div class="name property">
+    <strong>$props</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>所有属性的元信息</p>
+  </div>
+
+    
+  <a name="default_props"></a>
+
+  <div class="name property">
+    <strong>$default_props</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>所有属性的默认值，用于初始化一个新的 ActiveRecord
+实例</p>
+  </div>
+
+    
+  <a name="associations"></a>
+
+  <div class="name property">
+    <strong>$associations</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>ActiveRecord 之间的关联</p>
+
+<pre class="php code"><span class="kw3">array</span> <span
+class="br0">&#40;</span>
+    <span class="st_h">'prop_name'</span> <span
+class="sy0">=&gt;</span> <span class="re0">$assoc</span>
+<span
+class="br0">&#41;</span></pre>
+
+<p>如果关联已经初始化，则 $assoc 是一个
+QDB_ActiveRecord_Association_Abstract 继承类实例。 否则 $assoc 为
+false。</p>
+  </div>
+
+    
+  <a name="callbacks"></a>
+
+  <div class="name property">
+    <strong>$callbacks</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>事件钩子</p>
+  </div>
+
+    
+  <a name="methods"></a>
+
+  <div class="name property">
+    <strong>$methods</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>扩展的方法</p>
+  </div>
+
+    
+  <a name="static_methods"></a>
+
+  <div class="name property">
+    <strong>$static_methods</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>扩展的静态方法</p>
+  </div>
+
+    
+  <a name="table"></a>
+
+  <div class="name property">
+    <strong>$table</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>表数据入口</p>
+  </div>
+
+    
+  <a name="class_name"></a>
+
+  <div class="name property">
+    <strong>$class_name</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>Meta 对应的 ActiveRecord 继承类</p>
+  </div>
+
+    
+  <a name="inherit_base_class"></a>
+
+  <div class="name property">
+    <strong>$inherit_base_class</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>ActiveRecord 的基础类</p>
+  </div>
+
+    
+  <a name="inherit_type_field"></a>
+
+  <div class="name property">
+    <strong>$inherit_type_field</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>用于指定继承类名称的字段名</p>
+  </div>
+
+    
+  <a name="belongsto_props"></a>
+
+  <div class="name property">
+    <strong>$belongsto_props</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>BELONGS_TO 关联的 source_key</p>
+  </div>
+
+    
+  <a name="_behaviors"></a>
+
+  <div class="name property">
+    <strong>$_behaviors</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>行为插件对象</p>
+  </div>
+
+    
+  <a name="_associations_inited"></a>
+
+  <div class="name property">
+    <strong>$_associations_inited</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>指示是否已经初始化了对象的关联</p>
+  </div>
+
+    
+  <a name="_assoc_types"></a>
+
+  <div class="name property">
+    <strong>$_assoc_types</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>可用的对象聚合类型</p>
+  </div>
+
+    
+  <a name="_validation_policy_options"></a>
+
+  <div class="name property">
+    <strong>$_validation_policy_options</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>验证策略可用的选项</p>
+  </div>
+
+    
+  <a name="_metas"></a>
+
+  <div class="name property">
+    <strong>$_metas</strong>
+
+    <span class="tags">属性</span>
+  </div>
+
+  <div class="signature">
+      </div>
+
+  <div class="formatted">
+    
+<p>所有 ActiveRecord 继承类的 Meta 对象</p>
+  </div>
+
+  
+</div>
+
+
+<div class="details">
+
+  <h2>方法详细说明</h2>
+
+    
+  <a name="QDB_ActiveRecord_Meta___construct"></a>
+
+  <h4 class="name method">
+    __construct()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected void <strong>__construct</strong>($class)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$class</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>构造函数</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_instance"></a>
+
+  <h4 class="name method">
+    instance()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public static QDB_ActiveRecord_Meta <strong>instance</strong>($class)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$class</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>获得指定指定 ActiveRecord 继承类的元对象唯一实例</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_newObject"></a>
+
+  <h4 class="name method">
+    newObject()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Abstract <strong>newObject</strong>($data)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$data</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Abstract</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>返回一个根据 $data 数组构造的 ActiveRecord 继承类实例</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_createFromTable"></a>
+
+  <h4 class="name method">
+    createFromTable()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public void <strong>createFromTable</strong>($table_name, $class_name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$table_name</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$class_name</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>根据表名构造一个元对象</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_find"></a>
+
+  <h4 class="name method">
+    find()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>find</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>开启一个查询</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_findByArgs"></a>
+
+  <h4 class="name method">
+    findByArgs()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_Select <strong>findByArgs</strong>($args)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$args</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Select</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>开启一个查询，并根据提供的参数设置查询对象</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_updateWhere"></a>
+
+  <h4 class="name method">
+    updateWhere()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public void <strong>updateWhere</strong>($attribs)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$attribs</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>更新符合条件的对象</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_updateDbWhere"></a>
+
+  <h4 class="name method">
+    updateDbWhere()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public void <strong>updateDbWhere</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>更新符合条件的记录</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_destroyWhere"></a>
+
+  <h4 class="name method">
+    destroyWhere()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public int <strong>destroyWhere</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>实例化符合条件的对象，并调用这些对象的 destroy()
+方法，返回被删除的对象数</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_deleteWhere"></a>
+
+  <h4 class="name method">
+    deleteWhere()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public void <strong>deleteWhere</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>从数据库中直接删除符合条件的对象</p>
+
+<p>与 destroyWhere() 不同，deleteWhere()
+会直接从数据库中删除符合条件的记录。
+而不是先把符合条件的对象查询出来再调用对象的 destroy()
+方法进行删除。</p>
+
+<p>因此，deleteWhere()
+速度更快，但无法处理对象间的关联关系。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_validate"></a>
+
+  <h4 class="name method">
+    validate()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public array <strong>validate</strong>($data, $props, $mode)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$data</td>
+      <td class="param_type">array</td>
+      <td class="param_desc">要验证的数据</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$props</td>
+      <td class="param_type">array|string</td>
+      <td class="param_desc">指定仅仅验证哪些属性</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$mode</td>
+      <td class="param_type">string</td>
+      <td class="param_desc">验证模式</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">array</td>
+      <td class="param_desc">所有没有通过验证的属性名称及验证规则</td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>对数据进行验证，返回所有未通过验证数据的错误信息</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_relatedObjects"></a>
+
+  <h4 class="name method">
+    relatedObjects()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Abstract|QDB_ActiveRecord_Association_Coll <strong>relatedObjects</strong>($obj, $prop_name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$obj</td>
+      <td class="param_type">QDB_ActiveRecord_Abstract</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$prop_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Abstract|QDB_ActiveRecord_Association_Coll</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>获得对象的关联对象</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_hasBindBehavior"></a>
+
+  <h4 class="name method">
+    hasBindBehavior()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public void <strong>hasBindBehavior</strong>($name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$name</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>检查是否绑定了指定的行为插件</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_bindBehaviors"></a>
+
+  <h4 class="name method">
+    bindBehaviors()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>bindBehaviors</strong>($behaviors, $config)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$behaviors</td>
+      <td class="param_type">string|array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$config</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>绑定行为插件</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_unbindBehaviors"></a>
+
+  <h4 class="name method">
+    unbindBehaviors()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>unbindBehaviors</strong>($behaviors)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$behaviors</td>
+      <td class="param_type">string|array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>撤销与指定行为插件的绑定</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_addDynamicMethod"></a>
+
+  <h4 class="name method">
+    addDynamicMethod()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>addDynamicMethod</strong>($method_name, $callback, $custom_parameters)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$method_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$callback</td>
+      <td class="param_type">callback</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$custom_parameters</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个动态方法</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_removeDynamicMethod"></a>
+
+  <h4 class="name method">
+    removeDynamicMethod()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>removeDynamicMethod</strong>($method_name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$method_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>删除指定的动态方法</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_addStaticMethod"></a>
+
+  <h4 class="name method">
+    addStaticMethod()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>addStaticMethod</strong>($method_name, $callback, $custom_parameters)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$method_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$callback</td>
+      <td class="param_type">callback</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$custom_parameters</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个静态方法</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_removeStaticMethod"></a>
+
+  <h4 class="name method">
+    removeStaticMethod()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>removeStaticMethod</strong>($method_name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$method_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>删除指定的静态方法</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_setPropSetter"></a>
+
+  <h4 class="name method">
+    setPropSetter()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>setPropSetter</strong>($prop_name, $callback, $custom_parameters)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$prop_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$callback</td>
+      <td class="param_type">callback</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$custom_parameters</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>设置属性的 setter 方法</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_unsetPropSetter"></a>
+
+  <h4 class="name method">
+    unsetPropSetter()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>unsetPropSetter</strong>($prop_name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$prop_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>取消属性的 setter 方法</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_setPropGetter"></a>
+
+  <h4 class="name method">
+    setPropGetter()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>setPropGetter</strong>($name, $callback, $custom_parameters)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$callback</td>
+      <td class="param_type">callback</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$custom_parameters</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>设置属性的 getter 方法</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_unsetPropGetter"></a>
+
+  <h4 class="name method">
+    unsetPropGetter()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>unsetPropGetter</strong>($prop_name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$prop_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>取消属性的 getter 方法</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_addEventHandler"></a>
+
+  <h4 class="name method">
+    addEventHandler()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>addEventHandler</strong>($event_type, $callback, $custom_parameters)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$event_type</td>
+      <td class="param_type">int</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$callback</td>
+      <td class="param_type">callback</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$custom_parameters</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>为指定事件添加处理方法</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_addExceptionTrap"></a>
+
+  <h4 class="name method">
+    addExceptionTrap()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>addExceptionTrap</strong>($obj, $exception_type, $callback, $custom_parameters)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$obj</td>
+      <td class="param_type">QDB_ActiveRecord_Abstract</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$exception_type</td>
+      <td class="param_type">int</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$callback</td>
+      <td class="param_type">callback</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$custom_parameters</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>为指定对象添加异常捕捉器</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_removeEventHandler"></a>
+
+  <h4 class="name method">
+    removeEventHandler()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>removeEventHandler</strong>($event_type, $callback)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$event_type</td>
+      <td class="param_type">int</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$callback</td>
+      <td class="param_type">callback</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>删除指定事件的一个处理方法</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_addProp"></a>
+
+  <h4 class="name method">
+    addProp()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>addProp</strong>($prop_name, $config)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$prop_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$config</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个属性</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_addAssoc"></a>
+
+  <h4 class="name method">
+    addAssoc()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>addAssoc</strong>($prop_name, $assoc_type, $config)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$prop_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$assoc_type</td>
+      <td class="param_type">int</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$config</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>添加一个对象关联</p>
+
+<p>$prop_name 参数指定使用 ActiveRecord
+对象的什么属性来引用关联的对象。 例如“文章”对象的
+comments 属性引用了多个关联的“评论”对象。</p>
+
+<p>$assoc_type 指定了关联的类型，可以是
+QDB::BELONGS_TO、QDB::HAS_MANY、QDB::HAS_ONE 或 QDB::MANY_TO_MANY。</p>
+
+<p>$config 指定了关联的属性，可用的属性有多项。</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_hasAssoc"></a>
+
+  <h4 class="name method">
+    hasAssoc()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public boolean <strong>hasAssoc</strong>($prop_name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$prop_name</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>判断是否有指定关联</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_assoc"></a>
+
+  <h4 class="name method">
+    assoc()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Association_Abstract <strong>assoc</strong>($prop_name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$prop_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Association_Abstract</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>访问指定属性对应的关联</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_removeAssoc"></a>
+
+  <h4 class="name method">
+    removeAssoc()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>removeAssoc</strong>($prop_name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$prop_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>移除一个关联</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_addValidation"></a>
+
+  <h4 class="name method">
+    addValidation()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>addValidation</strong>($prop_name, $validation)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$prop_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$validation</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>为指定属性添加一个验证规则</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_propValidations"></a>
+
+  <h4 class="name method">
+    propValidations()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public array <strong>propValidations</strong>($prop_name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$prop_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>取得指定属性的所有验证规则</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_allValidations"></a>
+
+  <h4 class="name method">
+    allValidations()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public array <strong>allValidations</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>取得所有属性的所有验证规则</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_removePropValidations"></a>
+
+  <h4 class="name method">
+    removePropValidations()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>removePropValidations</strong>($prop_name)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$prop_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_ActiveRecord_Meta</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>清除指定属性的所有验证规则</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta_removeAllValidations"></a>
+
+  <h4 class="name method">
+    removeAllValidations()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public QDB_ActiveRecord_Meta <strong>removeAllValidations</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>清除所有属性的所有验证规则</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta___call"></a>
+
+  <h4 class="name method">
+    __call()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	public mixed <strong>__call</strong>($method_name, $args)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$method_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$args</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">mixed</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>调用 ActiveRecord 继承类定义的自定义静态方法</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta__prepareValidationRules"></a>
+
+  <h4 class="name method">
+    _prepareValidationRules()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected void <strong>_prepareValidationRules</strong>($policies, $ref, $set_policy)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$policies</td>
+      <td class="param_type">array</td>
+      <td class="param_desc">要解析的策略</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$ref</td>
+      <td class="param_type">array</td>
+      <td class="param_desc">用于 include 参考的策略</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$set_policy</td>
+      <td class="param_type">boolean</td>
+      <td class="param_desc">是否指定验证策略</td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>准备验证策略</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta__tableByName"></a>
+
+  <h4 class="name method">
+    _tableByName()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected QDB_Table <strong>_tableByName</strong>($table_name, $table_config)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$table_name</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$table_config</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Table</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>根据数据表名称获得表数据入口对象</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta__tableByClass"></a>
+
+  <h4 class="name method">
+    _tableByClass()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected QDB_Table <strong>_tableByClass</strong>($table_class, $table_config)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$table_class</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">$table_config</td>
+      <td class="param_type">array</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type">QDB_Table</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>根据类名称获得表数据入口对象</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta__init1"></a>
+
+  <h4 class="name method">
+    _init1()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected void <strong>_init1</strong>($class)	</p>
+  <table class="list-table table table-bordered">
+
+        
+    <tr>
+      <td class="param_name">$class</td>
+      <td class="param_type">string</td>
+      <td class="param_desc"></td>
+    </tr>
+    
+    <tr>
+      <td class="param_name">{return}</td>
+      <td class="param_type"></td>
+      <td class="param_desc"></td>
+    </tr>
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>第一步初始化</p>
+  </div>
+	<hr>
+    
+  <a name="QDB_ActiveRecord_Meta__init2"></a>
+
+  <h4 class="name method">
+    _init2()
+    <span class="tags">方法</span>
+  </h4>
+	<p>
+	protected void <strong>_init2</strong>()	</p>
+  <table class="list-table table table-bordered">
+
+    
+  </table>
+
+  <div class="formatted">
+    
+<p>第二步初始化</p>
+
+<p>避免因为关联到自身造成循环引用。</p>
+  </div>
+	<hr>
+  
+</div>
+
+
+</div>
+
+
+    </div>
+
+    <!-- /右侧栏 -->
+    </div>
+	</div>
+</body>
+</html>

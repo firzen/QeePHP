@@ -1,0 +1,85 @@
+=== 创建模型 ===
+
+每个模型对应数据库里面的一张数据表。
+
+
+## 创建数据表 ##
+
+在 phpMyAdmin 中选中先前创建的 todo_db 数据，然后执行下列 SQL 命令：
+
+/---code sql
+CREATE TABLE `todo_db`.`tests` (
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  `title` VARCHAR( 80 ) NOT NULL ,
+  `body` TEXT NOT NULL ,
+  `created` INT NOT NULL ,
+  `updated` INT NOT NULL
+);
+\---
+
+执行成功后，数据库将多出一个 tests 表。
+
+
+## 从数据表创建模型 ##
+
+新建文件 _code/model/tests.php
+
+加入如下内容：
+
+/---code php
+/**
+ * Tests 封装来自 tests 数据表的记录及领域逻辑
+ */
+class Tests extends QDB_ActiveRecord_Abstract
+{
+
+    /**
+     * 返回对象的定义
+     *
+     * @static
+     *
+     * @return array
+     */
+    static function __define()
+    {
+        return array
+        (
+     
+            // 用什么数据表保存对象
+            'table_name' => 'tests',
+	);
+     }
+     /**
+     * 开启一个查询，查找符合条件的对象或对象集合
+     *
+     * @static
+     *
+     * @return QDB_Select
+     */
+    static function find()
+    {
+        $args = func_get_args();
+        return QDB_ActiveRecord_Meta::instance(__CLASS__)->findByArgs($args);
+    }
+
+    /**
+     * 返回当前 ActiveRecord 类的元数据对象
+     *
+     * @static
+     *
+     * @return QDB_ActiveRecord_Meta
+     */
+    static function meta()
+    {
+        return QDB_ActiveRecord_Meta::instance(__CLASS__);
+    }
+}
+\---
+
+此外，这个文件中已经定义好了三个重要的静态方法（static function）。其中，**__define()** 返回的内容指出了保存模型使用的数据表、属性设置以及模型的其他方面。以后我们对模型的许多修改都集中在 __define() 方法中。
+
+
+> 这个模型是用于测试的，不需要时删除掉即可。对应的 tests 数据表也可以删除。
+
+
+

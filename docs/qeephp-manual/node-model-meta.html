@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 应用开发权威指南</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 应用开发权威指南</a>
+      &raquo;
+      <a href="node-model.html">模型与 ORM</a>
+      &raquo;
+      元对象    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+    
+<h1>元对象</h1>
+
+<p>如果你仔细阅读了前面的文档，你会发现 QeePHP 的
+ActiveRecord 具有一些与众不同的特性。本章将会为大家阐述
+QeePHP 的 ActiveRecord 背后的故事。</p>
+
+<h2>为什么要使用元对象</h2>
+
+<p>按照各种设计模式的书中所述，ActiveRecord
+模式适合模型属性与数据表字段一一对应的情况。而且
+ActiveRecord
+模式的典型特征还包括由模型的基础类自行完成数据库操作，也就是模型对象的持久化。</p>
+
+<p>但是现实世界中的业务逻辑总是很复杂，总有那么一些模型与数据库字段无法一一对应。而且将数据库操作也交给
+ActiveRecord 来完成，并不是一个好主意。</p>
+
+<p>最后，模型不但具有各种属性，还存在复杂的行为和对象关系。简单的
+ActiveRecord 模式已经无法满足这种需求。因此，QeePHP 中改进了
+ActiveRecord 模式，利用“元对象”来“描述”一个模型。</p>
+
+<h2>什么是元对象</h2>
+
+<p>每一个“类型”的模型，都有一个对应的元对象。但是，同一类型的模型对象，都共享同一个元对象。举例来说，User
+模型有一个元对象，但不管我们创建多少个 User
+模型对象的实例，所有这些 User
+对象都共享同一个元对象。而 Goods 模型的所有实例则共享
+Goods 模型的元对象。</p>
+
+<p>上面的内容初看上去这有点让人迷惑。但我们可以将元对象看作一个数据表的结构。不管这个数据表有多少条记录，这些记录的结构都是一样的。而另一个数据表的记录则使用该表的结构。</p>
+
+<p>因此，我们可以将元对象看作模型的结构定义。一个元对象定义了一种类型的模型。</p>
+
+<h2>元对象的功能</h2>
+
+<p>事实上，元对象的主要作用并不是用来“定义”模型应该具有什么属性或行为，而是用来<strong>管理</strong>模型的属性和行为。</p>
+
+<p>元对象管理模型的下列方面：</p>
+
+<ul>
+	<li>所有属性的定义、验证规则、getter 和 setter 方法；</li>
+
+	<li>与其他类型模型之间的关联信息；</li>
+
+	<li>所有事件的处理方法</li>
+
+	<li>所有行为插件</li>
+
+	<li>所有动态方法</li>
+</ul>
+
+<h2>使用元对象</h2>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+$Id: model-meta.texy 2009-03-10 07:48:18Z Tim13 $
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-model-behaviors.html">使用行为插件</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-model.html">模型与 ORM</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-model-events.html">事件回调</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

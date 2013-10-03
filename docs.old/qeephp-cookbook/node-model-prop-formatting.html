@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 食谱</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qeephp.com/docs/">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 食谱</a>
+      &raquo;
+      <a href="node-model.html">模型</a>
+      &raquo;
+      格式化属性    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+
+    
+<h1>格式化属性</h1>
+
+<p>有时候我们需要将模型的属性以不同的格式显示。例如合计金额为负数时显示为“-(123.30)”的形式，正数则显示为“456.50”。</p>
+
+<p>对于这种需求，使用 getter 方法是非常方便的：</p>
+
+<pre class="php code"><span
+class="co1">// 给模型增加一个 sum_formatted 虚拟属性</span>
+<span
+class="st_h">'props'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span><span class="br0">&#40;</span>
+    <span
+class="sy0">....</span>
+    <span class="st_h">'sum_formatted'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'getter'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'getSumFormatted'</span><span
+class="br0">&#41;</span><span class="sy0">,</span>
+    <span
+class="sy0">....</span>
+<span class="br0">&#41;</span>
+&nbsp;
+<span
+class="co1">// 增加 getSumFormatted 方法</span>
+<span
+class="kw2">function</span> getSumFormatted<span class="br0">&#40;</span><span
+class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span
+class="kw1">if</span> <span class="br0">&#40;</span><span
+class="re0">$this</span><span class="sy0">-&gt;</span><span
+class="me1">sum</span> <span class="sy0">&lt;</span> <span
+class="nu0">0</span><span class="br0">&#41;</span>
+    <span
+class="br0">&#123;</span>
+        <span class="kw1">return</span> <span
+class="st_h">'-('</span> <span class="sy0">.</span> <span
+class="kw3">sprintf</span><span class="br0">&#40;</span><span
+class="st_h">'%0.2f'</span><span class="sy0">,</span> <span
+class="kw3">abs</span><span class="br0">&#40;</span><span
+class="re0">$this</span><span class="sy0">-&gt;</span><span
+class="me1">sum</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span> <span class="sy0">.</span> <span
+class="st_h">')'</span><span class="sy0">;</span>
+    <span
+class="br0">&#125;</span>
+    <span class="kw1">else</span>
+    <span
+class="br0">&#123;</span>
+        <span class="kw1">return</span> <span
+class="kw3">sprintf</span><span class="br0">&#40;</span><span
+class="st_h">'%0.2f'</span><span class="sy0">,</span> <span
+class="re0">$this</span><span class="sy0">-&gt;</span><span
+class="me1">sum</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span
+class="br0">&#125;</span></pre>
+
+<p>使用效果：</p>
+
+<pre class="php code"><span class="re0">$obj</span><span
+class="sy0">-&gt;</span><span class="me1">sum</span> <span
+class="sy0">=</span> <span class="nu19">5544.933</span><span
+class="sy0">;</span>
+<span class="co1">// 输出 5544.93</span>
+<span
+class="kw3">echo</span> <span class="re0">$obj</span><span
+class="sy0">-&gt;</span><span class="me1">sum_formatted</span><span
+class="sy0">;</span>
+&nbsp;
+<span class="re0">$obj</span><span
+class="sy0">-&gt;</span><span class="me1">sum</span> <span
+class="sy0">=</span> <span class="sy0">-</span><span
+class="nu19">4236.1</span><span class="sy0">;</span>
+<span
+class="co1">// 输出 -(4236.10)</span>
+<span class="kw3">echo</span> <span
+class="re0">$obj</span><span class="sy0">-&gt;</span><span
+class="me1">sum_formatted</span><span class="sy0">;</span></pre>
+
+<p> </p>
+
+<p>更复杂一些的例子：</p>
+
+<pre class="php code"><span class="st_h">'props'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="sy0">....</span>
+    <span
+class="st_h">'status_string'</span> <span class="sy0">=&gt;</span> <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'getter'</span> <span class="sy0">=&gt;</span> <span
+class="st_h">'getStatusString'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+    <span class="sy0">....</span>
+<span
+class="br0">&#41;</span>
+&nbsp;
+<span
+class="co1">// getStatusString() 方法返回状态码的文字表示形式</span>
+<span
+class="kw2">function</span> getStatusString<span class="br0">&#40;</span><span
+class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span
+class="kw1">switch</span> <span class="br0">&#40;</span><span
+class="re0">$this</span><span class="sy0">-&gt;</span><span
+class="me1">status</span><span class="br0">&#41;</span>
+    <span
+class="br0">&#123;</span>
+        <span class="kw1">case</span> <span
+class="kw2">self</span><span class="sy0">::</span><span
+class="me2">STATUS_NEW</span><span class="sy0">:</span>
+            <span
+class="kw1">return</span> <span class="st_h">'新订单'</span><span
+class="sy0">;</span>
+        <span class="kw1">case</span> <span
+class="kw2">self</span><span class="sy0">::</span><span
+class="me2">STATUS_PENDDING_DELETE</span><span
+class="sy0">:</span>
+            <span class="kw1">return</span> <span
+class="st_h">'等待删除的订单'</span><span
+class="sy0">;</span>
+        <span class="kw1">case</span> <span
+class="kw2">self</span><span class="sy0">::</span><span
+class="me2">STATUS_PAID</span><span class="sy0">:</span>
+            <span
+class="kw1">return</span> <span class="st_h">'已付款的订单'</span><span
+class="sy0">;</span>
+        <span class="sy0">....</span>
+    <span
+class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>上述代码使得我们在需要显示对象状态的文字表述时，直接使用
+status_string 属性就行了。</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p>$Id: model-prop-formatting.texy 2295 2009-03-10 07:48:18Z dualface $</p>
+
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-model.html">模型</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-model.html">模型</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

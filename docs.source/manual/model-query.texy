@@ -1,0 +1,269 @@
+=== 查询 Read ===
+
+QeePHP 的 ORM 提供了丰富的查询方法，可以满足各种需求。
+
+
+## 简单的查询 ##
+
+每一个模型都提供了 find() 静态方法。这个方法本质上并不查询数据，而是返回一个 QDB_Select 对象。利用这个设计，我们可以采用连贯接口写出漂亮的查询代码：
+
+/---code php
+// 查询指定 ID 的 Post 对象
+$post = Post::find('id = ?', $id)->getOne();
+
+// 查询所有符合条件的 Post 对象
+$posts = Post::find('level_ix > ?', $level_ix)->getAll();
+\---
+
+
+## 指定查询条件 ##
+
+从上面的代码可以看出，我们在 find() 方法中直接指定查询条件，然后用 getOne() 或 getAll() 来返回结果。
+
+find() 方法的参数和 QDB_Select::where() 方法相同，支持下列参数格式：
+
+/---code php
+find(查询条件, 查询参数1, 查询参数2, ...)
+\---
+
+查询条件通常使用字符串形式。字符串中的问号（?）将被视为**参数占位符**。按照占位符出现的顺序，提供给 find() 方法的后续参数将被填入查询条件中。例如：
+
+/---code php
+$id = 1
+find('id = ?', $id)
+// 等同于
+find('id = 1')
+
+
+$level_ix = 3
+$confirmed = true
+find('level_ix > ? AND confirmed = ?', $level_ix, $confirmed)
+// 等同于
+find('level_ix > 3 AND confirmed = true')
+\---
+
+由于 QeePHP 会对替换占位符的参数值进行转义，因此使用参数占位符可以避免出现 SQL 注入漏洞。
+
+<p>&nbsp;</p>
+
+除了使用字符串做查询条件，QeePHP 还支持使用数组做查询条件。例如：
+
+/---code php
+$cond = array('id' => 3, 'level_ix' => 1)
+find($cond)
+// 等同于
+find('id = 3 AND level_ix = 1')
+\---
+
+使用数组时，数组的键名将被视为查询条件中的字段名，而键值则是查询参数。多个字段和参数会用 AND 操作进行连接。同样，参数值也会进行自动转义，确保安全。比起使用字符串，数组做为查询条件缺乏灵活性。但是个别情况下会更方便一点，开发者可以酌情选择。
+
+
+<h3>使用命名参数</h3>
+
+前面提到了用问号（?）来做参数占位符，但这要求后续的查询参数必须按照顺序提供。如果使用命名参数，则没有这个限制：
+
+/---code php
+find('id = :id OR level_ix > :leve_ix', array('id' => $id, 'level_ix' => 3))
+\---
+
+查询条件仍然是字符串，并使用以冒号（:）开头的单词来标识一个参数占位符。find() 方法的后续参数则以数组形式提供，数组键名与参数占位符同名即可。
+
+
+<h3>使用 QDB_Select 组合多个查询条件</h3>
+
+如果查询条件非常复杂，而我们又不方便使用字符串做查询条件，那么可以通过 find() 方法返回的 QDB_Select 对象来组装复杂查询，或者使用 QDB_Cond 对象来封装复杂的查询条件。
+
+QDB_Select 对象提供了 where()、orWhere() 方法，可以让我们通过连贯接口添加多个查询条件：
+
+/---code php
+Post::find('level_ix > ?', $level_ix)
+    ->where('confirm = ?', true)
+    ->where('author_id = ?', $author_id)
+    ->getAll();
+\---
+
+或者将 find() 方法返回的 QDB_Select 对象保存起来：
+
+/---code php
+$select = Post::find();
+$select->where(...);
+$select->where(...);
+
+$posts = $select->getAll();
+\---
+
+
+<h3>使用 QDB_Cond 构造复杂查询条件</h3>
+
+如果需要动态构造查询条件，使用 QDB_Cond 有时是个更好的选择。
+
+每一个 QDB_Cond 对象封装一组查询条件。由于 QDB_Cond 是可以无限嵌套的，所以理论上可以构造任意复杂度的查询条件。
+
+/---code sql
+user_id > 1000 AND is_valid = 1
+\---
+
+使用 QDB_Cond 构造上述查询条件很简单：
+
+/---code php
+$cond = new QDB_Cond('user_id > ?', $user_id);
+$cond->andCond('is_valid = ?', true);
+\---
+
+当然也可以使用连贯接口形式：
+
+/---code php
+$cond = QDB_Cond::create('user_id > ?', $user_id)
+    ->andCond('is_valid = ?', true);
+\---
+
+还可以构造嵌套的查询条件：
+
+/---code php
+$cond = QDB_Cond::create('user_id > 200')
+    ->orCond(QDB_Cond::create('level_ix = 3 AND is_valid = 1'));
+// 等同于 user_id > 200 OR (level_ix = 3 AND is_valid = 1)
+\---
+
+最后将 QDB_Cond 对象传递给 find() 或 where() 等方法就行了：
+
+/---code php
+Post::find($cond)->getAll();
+\---
+
+
+## 限定查询结果 ##
+
+要限定查询结果的数量，可以有几种方法：
+
+/---code php
+// 执行查询，并限定最多返回 10 个结果
+$posts = Post::find(...)->get(10);
+// 同等效果的其他方式
+$posts = Post::find(...)->top(10)->getAll();
+$posts = Post::find(...)->limit(0, 10)->getAll();
+$posts = Post::find(...)->limitPage(1, 10)->getAll();
+
+// 执行查询，从第 21 个符合条件的结果开始，返回最多 10 个结果
+$posts = Post::find(...)->limit(20, 10)->getAll();
+$posts = Post::find(...)->limitPage(3, 10)->getAll();
+\---
+
+如果希望通过变量指定查询结果数，那么应该使用 top() 等方法。不过一定要注意 limit() 的第一个参数是以 0 为基数的，也就是说假如要从第 21 个结果开始返回，那么 limit() 方法的第一个参数应该是 20。
+
+limitPage() 是专门为分页查询提供的方法，第一个参数是页码，以 1 为基数。第二个参数则是每页的大小。如果有必要，还可以通过第三个参数指定页码的基数（默认为 1）。
+
+如果我们明确只需要返回一个结果，那么使用 getOne() 方法即可：
+
+/---code php
+$post = Post::find(...)->getOne();
+// 或者，不建议使用
+$post = Post::find(...)->one()->get();
+\---
+
+
+## 分页查询 ##
+
+分页查询是常见的操作，QeePHP 提供了一系列的方法来简化这项工作。
+
+首先，limitPage() 方法可以按照页码、每页大小的方式来限定查询结果数量和起始位置。而 getPagination() 和 fetchPagination() 方法则用于获得计算好的分页信息，以便在用户界面中显示出合适的分页导航连接。
+
+要实现分页，需要控制器和视图配合完成。控制器中确定分页的参数，而视图则显示分页导航连接：
+
+/---code php
+// 控制器
+class Controller_Posts extends Controller_Abstract
+{
+    /**
+     * 分页显示
+     */
+    function actionIndex()
+    {
+        // 确定页码
+        $page = intval(request('page',1));
+
+        // 每页 30 个结果
+        $page_size = 30;
+
+        // 进行分页查询，并取得分页信息
+        $pagination = null;
+        $posts = Post::find(...)->limitPage($page, $page_size)
+                                ->fetchPagination($pagination)
+                                ->get();
+
+        // 将查询结果和分页数据传递到视图
+        $this->_view['posts'] = $posts;
+        $this->_view['pagination'] = $pagination;
+    }
+}
+\---
+
+> 请参考 _code/control/pagination.php 控件
+
+/---code php
+// 视图文件
+$this->_control('pagination', 'my-pagination', array(
+    'pagination' => $pagination,
+));
+\---
+
+上面控制器的代码使用了 fetchPagination() 方法。该方法会把分页信息存入传入的参数中（$pagination），而 getPagination() 方法则是通过返回值来获得分页信息。可以根据需要选择使用，例如：
+
+/---code php
+// 进行分页查询，并取得分页信息
+$select = Post::find(...)->limitPage($page, $page_size);
+
+// 将查询结果和分页数据传递到视图
+$this->_view['pagination'] = $select->getPagination();
+$this->_view['posts']      = $select->getAll();
+\---
+
+
+## 聚合查询 ##
+
+聚合查询是指取的符合条件的记录总数、某个字段的统计值（合计、最大、最小、平均）等操作。
+
+/---code php
+// 取得符合条件的记录总数
+$count = Post::find(...)->getCount();
+
+// 取得符合条件的订单的金额合计
+$sum = Order::find(...)->getSum('order_price');
+\---
+
+与 getCount()、getSum() 类似，还可以使用 getAvg()、getMax()、getMin() 等方法。
+
+如果希望在一次查询中获得多个聚合查询结果，应该使用略微不同的代码：
+
+/---code php
+$arr = Order::find(...)->count('*', 'orders_count')
+                       ->sum('order_price', 'orders_price_sum')
+                       ->max('order_price', 'max_order_price')
+                       ->min('order_pirce', 'min_order_price');
+		       ->asArray()
+                       ->get();
+
+dump($arr);
+// 输出结果为：
+// array(
+//   'orders_count'     => 记录总数
+//   'orders_price_sum' => 金额合计
+//   'max_order_price'  => 最大订单金额
+//   'min_order_price'  => 最小订单金额
+// )
+\---
+
+
+## 更多查询选项 ##
+
+因为模型的 find() 方法实际返回一个 QDB_Select 对象，所以 QDB_Select 对象的所有方法都可以使用。详情请参考 QDB_Select 的文档（开发指南 &gt; 数据库 &gt; 查询对象）。
+
+此外，QeePHP 还支持许多与模型关联有关的查询选项，详情请参考（开发指南 &gt; 模型 &gt; 关联）。
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+$Id: model-query.texy 2295 2009-03-10 07:48:18Z dualface $
+

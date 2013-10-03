@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 快速入门</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 快速入门</a>
+      &raquo;
+      <a href="node-routes.html">美化 URL（可忽略）</a>
+      &raquo;
+      启用 URL 路由    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+    
+<h1>启用 URL 路由</h1>
+
+<p>要启用 URL 路由，要求服务器必须支持 URL 重写或 PATHINFO
+路径变量。前者在 apache、lighttpd、nginx、IIS 等 Web
+服务器环境中都可以支持，后者则支持更多的服务器环境。</p>
+
+<h2>配置服务器环境</h2>
+
+<p>在本教程中，我们假定读者使用 APM
+Express，所以我们现在的修改都针对 APM Express。</p>
+
+<p>找到 APM Express 的安装目录，打开 etc/httpd.conf.template
+文件（注意，不是 httpd.conf），找到下列代码：</p>
+
+<pre class="ini code">&lt;VirtualHost *&gt;
+    DocumentRoot <span
+class="st0">&quot;d:/www&quot;</span>
+    ServerName 127.0.0.1
+&nbsp;
+    &lt;Directory <span
+class="st0">&quot;d:/www&quot;</span>&gt;
+        Options Indexes FollowSymLinks
+        IndexOptions FancyIndexing FoldersFirst NameWidth<span
+class="sy0">=</span><span
+class="re2">* VersionSort XHTML</span>
+&nbsp;
+        AllowOverride All
+&nbsp;
+        Order allow,deny
+        Allow from all
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</pre>
+
+<p>改为：</p>
+
+<pre class="ini code">&lt;VirtualHost *&gt;
+    DocumentRoot <span
+class="st0">&quot;d:/www/todo/public&quot;</span>
+    ServerName 127.0.0.1
+&nbsp;
+    &lt;Directory <span
+class="st0">&quot;d:/www/toto/public&quot;</span>&gt;
+        Options Indexes FollowSymLinks
+        IndexOptions FancyIndexing FoldersFirst NameWidth<span
+class="sy0">=</span><span
+class="re2">* VersionSort XHTML</span>
+&nbsp;
+        AllowOverride All
+&nbsp;
+        Order allow,deny
+        Allow from all
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</pre>
+
+<blockquote>
+	<p>这里的修改假定 todo 应用位于 d:/www/todo
+	目录中，请根据实际情况修改</p>
+</blockquote>
+
+<p>再查找：</p>
+
+<pre class="ini code">#LoadModule rewrite_module modules/mod_rewrite.so</pre>
+
+<p>改为：</p>
+
+<pre class="ini code">LoadModule rewrite_module modules/mod_rewrite.so</pre>
+
+<p>最后一步，将 d:/www/todo 目录中的 _htaccess 改名或复制为
+.htaccess。这个操作必须在命令行窗口中进行：</p>
+
+<div class="figure"><img src="images/routes-configs-01.png" alt="" />
+	<p>在命令行窗口中创建 .htaccess</p>
+</div>
+
+<p>QeePHP 虽然也需要 .htaccess，但改变 URL
+样式却不需要修改这个文件。而且 QeePHP 附带的 .htaccess
+也只有区区数行代码：</p>
+
+<pre class="ini code">RewriteEngine on
+&nbsp;
+RewriteCond %<span
+class="br0">&#123;</span>SCRIPT_FILENAME<span
+class="br0">&#125;</span> !-f
+RewriteCond %<span
+class="br0">&#123;</span>SCRIPT_FILENAME<span
+class="br0">&#125;</span> !-d
+RewriteRule ^<span class="br0">&#40;</span>.*<span
+class="br0">&#41;</span>$ index.php/$<span class="nu0">1</span></pre>
+
+<h2>修改应用程序设置</h2>
+
+<p>修改 configs/environments.yaml 文件，找到：</p>
+
+<pre class="python code"><span
+class="co1"># url 参数的传递模式，可以是标准、PATHINFO、URL 重写等模式，</span>
+<span
+class="co1"># 分别对应 standard、pathinfo、rewrite 设置值</span>
+dispatcher_url_mode: standard</pre>
+
+<p>改为：</p>
+
+<pre class="python code">dispatcher_url_mode: rewrite</pre>
+
+<p>现在重新启动 APM Express，再通过浏览器访问 <a
+href="http://localhost/">http://localhost/</a> 应该看到 todo
+应用的页面。如果出错，请仔细核对上述步骤。</p>
+
+<div class="figure"><img src="images/routes-configs-02.png" alt="" />
+	<p>重启 APM Express 后访问 todo 应用</p>
+</div>
+
+<p>仔细观察上图中地址栏的中地址，就会发现 URL 已经变成了
+<a
+href="http://localhost/users/login">http://localhost/users/login</a>。而这种改变没有修改一行代码！</p>
+
+<p>试用一下 todo 的各项功能，会发现这些功能完全正常，而
+URL 地址已经变短变美观了。</p>
+$Id: routes-configs.texy 2013-08-14 02:24:25Z Tim13 $
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-routes-router.html">URL 路由是什么</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-routes.html">美化 URL（可忽略）</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-routes-rules.html">添加路由规则</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

@@ -1,0 +1,91 @@
+=== 基础 ===
+
+QeePHP 的 ORM 以 ActiveRecord 为基础，提供了完善的对象和对象关系的持久化能力。QeePHP 的 ORM 是为大规模应用进行过充分优化的，并且可以透明的工作在分布式数据库架构上。
+
+
+## 使用模型 ##
+
+创建模型最简单的办法就是使用 WebSetup 或者命令行脚本从数据表自动创建模型的代码文件，然后再根据需求进行定制。
+
+只要准备好模型的代码文件，就可以利用 QeePHP 强大的 ORM 完成各种操作。下面的代码创建一个新用户，并且设置用户的个人信息，并且与好友建立关系，最后将新建的对象和对象关系保存到数据库：
+
+/---code php
+// 新建一个 User 对象
+$theone = new User();
+$theone->name = 'theone';
+
+// 为用户添加个人信息
+$theone->profile = new Profile();
+$theone->profile->address = 'Beijing';
+$theone->profile->phone   = '010-23234553';
+
+// 为用户添加好友
+$theone->friends()->add(User::find('name = ?', 'alex')->getOne());
+$theone->friends()->add(User::find('name = ?', 'dick')->getOne());
+
+// 保存
+$theone->save();
+\---
+
+保存后，我们可以任意的访问已有的对象：
+
+/---code php
+// 查询 name 为 theone 的用户
+$theone = User::find('name = ?', 'theone')->get();
+
+// 显示他的个人信息
+echo 'address: ' . $theone->profile->address;
+echo 'phone  : ' . $theone->profile->phone;
+
+// 显示他所有好友的名字
+echo 'friends: ';
+foreach ($theone->friends as $friend)
+{
+    echo $friend->name;
+}
+
+// 更进一步，还可以访问好友的好友
+echo 'friends networks:'
+foreach ($theone->friends as $friend)
+{
+    echo $friend->name . ' friends: ';
+    foreach ($friend->friends as $other_friend)
+    {
+        echo $other_friend->name;
+    }
+}
+
+// 好吧，现在把 theone 的好友的好友变成 theone 的好友
+foreach ($theone->friends as $friend)
+{
+    foreach ($friend->friends as $other_friend)
+    {
+        $theone->friends()->add($other_friend);
+    }
+}
+$theone->save();
+\---
+
+事实上，对于开发者来说，只要两个对象之间存在关联，不管是直接的还是间接的，都可以通过 ORM 从一个对象导航到另一个对象。
+
+例如：作者 -> 撰写的书籍 -> 读者 -> 阅读的书籍 -> 这些书籍的作者。
+
+
+## 性能问题 ##
+
+许多开发者担心这样的 ORM 会存在性能问题，所以这里先解释一下。
+
+诸如“作者 -> 撰写的书籍 -> 读者 -> 阅读的书籍 -> 这些书籍的作者”这样的对象导航当然会导致多次数据库查询，但是以此来认为 QeePHP 的 ORM 性能不佳，其实是不正确的。
+
+因为即便不使用任何 ORM，依赖于手工编写和优化的 SQL 查询，也不可能在一次查询中就从一个“作者”得到跨越了几层关系的“其他作者”的信息。所以，QeePHP 的 ORM 提供的这种对象导航能力并不等同于性能损失。
+
+另一个更常见的误解就是：查询 10 篇文章及每篇文章的前 5 个评论。这种需求即便是手工编写的 SQL，也需要 10 次查询。所以开发者发现使用“一对多”关联导致多次查询就不应该意外了 :-)
+
+除了一些无法避免的 SQL，QeePHP 的 ORM 已经做了大量的优化工作。并且利用延迟查询、in-memory 缓存、集合对象等技术来进一步减少和消除不必要的查询操作。
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+$Id: model-basic.texy 2295 2009-03-10 07:48:18Z dualface $
+

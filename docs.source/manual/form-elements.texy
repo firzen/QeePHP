@@ -1,0 +1,71 @@
+=== 操作表单的元素 ===
+
+构造好的表单对象，可以通过 QForm::element() 方法来访问表单的元素：
+
+/---code php
+// 访问表单中的 username 元素，并设置该元素的属性
+$form->element('username')
+     ->set('_ui', 'textbox')
+     ->set('maxlength', 15);
+\---
+
+QForm::element() 方法返回一个 QForm_Element 对象，因此使用 QForm_Element 对象的方法即可操作表单元素。
+
+此外，还可以通过数组方式访问表单的元素：
+
+/---code php
+$form['username']->set('_ui', 'textbox')
+                 ->set('maxlength', 15);
+\---
+
+
+## 删除表单元素 ##
+
+要删除一个表单元素，调用 QForm::remove() 方法即可：
+
+/---code php
+// 删除 ID 为 username 的元素
+$form->remove('username');
+\---
+
+另一种删除表单元素的方法是使用 unset() 函数：
+
+/---code php
+// 删除 ID 为 username 的元素
+unset($form['username']);
+\---
+
+
+## 元素的属性 ##
+
+元素可以设置任意多个属性。这些属性分为两种类型：附加属性和元素属性。所有以下划线“_”开头的属性称为附加属性，而其他属性称为元素属性。
+
+调用元素的 attrs() 方法时，会返回包含所有元素属性的数组。而 allAttrs() 方法则会返回包括附加属性在内的所有属性。
+
+虽然 QeePHP 没有做任何硬性要求，但作为一种惯例，下列附加属性有着特定的意思：
+
+-   _ui：用于指定使用什么类型的用户界面控件来构造表单元素的 HTML 代码
+-   _filters: 指定元素的过滤器
+-   _validations: 指定元素的验证规则
+
+其他的元素属性则通常对应于 HTML 表单字段的属性，例如：
+
+/---code php
+$element->maxlength = 10;
+$element->size = 10;
+$element->class = 'txt';
+\---
+
+构造出的 HTML 代码类似于：
+
+/---code html
+<input type="text" size="10" maxlength="10" class="txt" />
+\---
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+$Id: form-elements.texy 2295 2009-03-10 07:48:18Z dualface $
+

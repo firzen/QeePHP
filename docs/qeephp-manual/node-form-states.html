@@ -1,0 +1,437 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 应用开发权威指南</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 应用开发权威指南</a>
+      &raquo;
+      <a href="node-form.html">表单控件</a>
+      &raquo;
+      不同状态的表单    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+    
+<h1>不同状态的表单</h1>
+
+<p>几乎所有应用程序都存在“创建”和“编辑”两种基本操作，例如创建一篇新文章、修改一篇现有的文章。这两种模式的流程存在很大不同，下面我们来探讨与之相关的各种问题。</p>
+
+<h2>准备</h2>
+
+<p>首先准备表单配置文件：</p>
+
+<pre class="python
+code">article_id:
+  _ui: hidden
+&nbsp;
+title:
+  _ui: textbox
+  _label: 文章标题
+&nbsp;
+body:
+  _ui: memo
+  _label: 文章正文</pre>
+
+<p>以及表单代码：</p>
+
+<pre class="php code"><span class="kw2">class</span> Form_Article <span
+class="kw2">extends</span> QForm
+<span class="br0">&#123;</span>
+    <span
+class="kw2">function</span> __construct<span class="br0">&#40;</span><span
+class="re0">$action</span><span class="br0">&#41;</span>
+    <span
+class="br0">&#123;</span>
+        <span class="re0">$config</span> <span
+class="sy0">=</span> Helper_YAML<span class="sy0">::</span><span
+class="me2">loadCached</span><span class="br0">&#40;</span><span
+class="kw3">dirname</span><span class="br0">&#40;</span><span
+class="kw2">__FILE__</span><span class="br0">&#41;</span> <span
+class="sy0">.</span> <span class="st_h">'/article_form.yaml'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+        <span
+class="re0">$this</span><span class="sy0">-&gt;</span><span
+class="me1">loadFromConfig</span><span class="br0">&#40;</span><span
+class="re0">$config</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span
+class="br0">&#125;</span></pre>
+
+<h2>创建</h2>
+
+<div class="figure"><img src="images/form-states-01.png" alt="" />
+	<p>创建的流程</p>
+</div>
+
+<p>上述流程对应的代码：</p>
+
+<pre class="php code"><span class="kw2">function</span> actionCreate<span
+class="br0">&#40;</span><span class="br0">&#41;</span>
+<span
+class="br0">&#123;</span>
+    <span
+class="co1">// 构造表单对象</span>
+    <span
+class="re0">$form</span> <span class="sy0">=</span> <span
+class="kw2">new</span> Form_Article<span class="br0">&#40;</span>url<span
+class="br0">&#40;</span><span class="st_h">'articles/create'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+    <span class="kw1">if</span> <span
+class="br0">&#40;</span><span class="re0">$this</span><span
+class="sy0">-&gt;</span>_context<span class="sy0">-&gt;</span><span
+class="me1">isPOST</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span> <span class="sy0">&amp;&amp;</span> <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">validate</span><span class="br0">&#40;</span><span
+class="re0">$_POST</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="co1">// 判断是否是 POST 提交操作，并且 POST 数据导入表单后通过了表单的验证</span>
+        try
+        <span
+class="br0">&#123;</span>
+            <span
+class="co1">// 构造 Article 对象，并导入表单数据</span>
+            <span
+class="re0">$article</span> <span class="sy0">=</span> <span
+class="kw2">new</span> Article<span class="br0">&#40;</span><span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">values</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+            <span
+class="co1">// 保存 Article 对象</span>
+            <span
+class="re0">$article</span><span class="sy0">-&gt;</span><span
+class="me1">save</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+            <span
+class="co1">// 重定向浏览器到显示新建对象的页面</span>
+            <span
+class="kw1">return</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_redirect<span class="br0">&#40;</span>url<span
+class="br0">&#40;</span><span class="st_h">'articles/show'</span><span
+class="sy0">,</span>
+                  <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'article_id'</span> <span
+class="sy0">=&gt;</span> <span class="re0">$article</span><span
+class="sy0">-&gt;</span><span class="me1">id</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span>
+            <span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+        <span
+class="br0">&#125;</span>
+        catch <span
+class="br0">&#40;</span>QValidator_ValidateFailedException <span
+class="re0">$ex</span><span class="br0">&#41;</span>
+        <span
+class="br0">&#123;</span>
+            <span
+class="co1">// 如果保存时模型自动验证失败，会抛出 QValidator_ValidateFailedException 异常，</span>
+            <span
+class="co1">// 根据异常将表单置为无效状态</span>
+            <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">invalidate</span><span class="br0">&#40;</span><span
+class="re0">$ex</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span
+class="br0">&#125;</span>
+    <span class="kw1">elseif</span> <span
+class="br0">&#40;</span><span class="sy0">!</span><span
+class="re0">$this</span><span class="sy0">-&gt;</span>_context<span
+class="sy0">-&gt;</span><span class="me1">isPOST</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="co1">// 如果不是 POST 提交，则构造一个新的 Article 对象，并将对象属性值导入表单</span>
+        <span
+class="co1">// 以便表单中能够保存模型各个属性设置的默认值</span>
+        <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">import</span><span class="br0">&#40;</span><span
+class="kw2">new</span> Article<span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span
+class="co1">// 将表单传递给视图</span>
+    <span
+class="re0">$this</span><span class="sy0">-&gt;</span>_view<span
+class="br0">&#91;</span><span class="st_h">'form'</span><span
+class="br0">&#93;</span> <span class="sy0">=</span> <span
+class="re0">$form</span><span class="sy0">;</span>
+<span
+class="br0">&#125;</span></pre>
+
+<p>仔细阅读代码及注释，然后对照流程图即可明确整个流程。这里需要注意的是一个潜在的安全问题。</p>
+
+<h2>安全问题</h2>
+
+<p>在执行 $article-&gt;save() 时，QeePHP 会根据 $article
+对象的主键值是否为空来决定是在数据库“新建”一个对象，还是“更新”已有的对象。</p>
+
+<p>Article 模型的主键是
+article_id，因此判断标准就是提交数据中是否包含有效的
+article_id 值。</p>
+
+<p>在正常情况下，由于 actionCreate() 中的代码并没有为
+article_id 提供值，因此提交的表单中 article_id
+值肯定是为空。此时 $artcile-&gt;save()
+也一定是在数据库中“新建”一个对象。</p>
+
+<p>但是，恶意用户可以通过工具（例如
+FireBug）或其他手段，提交一个包含有效 article_id
+值的表单给服务端。从而将原本的新建操作变成了更新操作，这样一来甚至可以修改他人创建的
+Article 对象。</p>
+
+<p>要解决这个问题，有两种常见的做法：</p>
+
+<ul>
+	<li><strong>修改模型的 attr_protected 设置</strong>
+		<p>attr_protected
+		设置指定通过构造新对象方式传递的值中，哪些会被过滤掉。例如指定
+		attr_protected 为“article_id”，那么 new Article($form-&gt;values())
+		执行时，不管表单中是否包含 article_id 值，新建 Article
+		对象的 article_id 都是空（因为来自 $form-&gt;values() 中的
+		article_id 值被过滤掉了）。</p>
+
+		<p>与 attr_protected 相对的是 attr_accessible
+		设置，两者都可以实现同等的效果。两者的区别和使用请参考
+		ActiveRecord 的相关文档。</p>
+	</li>
+
+	<li><strong>移除表单对象中的 article_id 元素</strong>
+		<p>$form-&gt;values()
+		返回的值是进行过滤和验证后的值，如果表单对象中没有
+		article_id 元素，自然后续的 new Article($form-&gt;values())
+		就没有安全问题了。</p>
+	</li>
+</ul>
+
+<p>前一种方法是推荐使用的，可以获得最大程度的安全性。因为可能程序中可能会通过其他方式创建模型，从模型的安全设置入手可以彻底解决这个问题。不过就需要开发人员记得这一点，否则可能原本希望的更新操作变成了创建操作。</p>
+
+<h2>编辑</h2>
+
+<p>与创建操作比起来，编辑操作要复杂一些：</p>
+
+<div class="figure"><img src="images/form-states-02.png" alt="" />
+	<p>编辑并保存的流程</p>
+</div>
+
+<p>对应的代码：</p>
+
+<pre class="php code"><span class="kw2">function</span> actionEdit<span
+class="br0">&#40;</span><span class="br0">&#41;</span>
+<span
+class="br0">&#123;</span>
+    <span
+class="co1">// 取得要编辑的 Article 对象的ID</span>
+    <span
+class="re0">$article_id</span> <span class="sy0">=</span> <span
+class="kw3">intval</span><span class="br0">&#40;</span><span
+class="re0">$this</span><span class="sy0">-&gt;</span>_context<span
+class="sy0">-&gt;</span><span class="me1">article_id</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span
+class="co1">// 查询 Article 对象</span>
+    <span
+class="re0">$article</span> <span class="sy0">=</span> Article<span
+class="sy0">::</span><span class="me2">find</span><span
+class="br0">&#40;</span><span class="st_h">'article_id = ?'</span><span
+class="sy0">,</span> <span class="re0">$article_id</span><span
+class="br0">&#41;</span><span class="sy0">-&gt;</span><span
+class="me1">query</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+    <span
+class="co1">// 检查对象是否有效</span>
+    <span
+class="kw1">if</span> <span class="br0">&#40;</span><span
+class="sy0">!</span><span class="re0">$article</span><span
+class="sy0">-&gt;</span><span class="me1">id</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="co1">// 重定向浏览器</span>
+        <span
+class="kw1">return</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_redirectMessage<span class="br0">&#40;</span><span
+class="st_h">'错误信息'</span><span class="sy0">,</span>
+            <span
+class="st_h">'尝试编辑一个不存在的 Article 对象'</span><span
+class="sy0">,</span>
+            url<span class="br0">&#40;</span><span
+class="st_h">'articles/index'</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+    <span
+class="br0">&#125;</span>
+&nbsp;
+    <span
+class="co1">// 构造表单对象</span>
+    <span
+class="re0">$form</span> <span class="sy0">=</span> <span
+class="kw2">new</span> Form_Article<span class="br0">&#40;</span>url<span
+class="br0">&#40;</span><span class="st_h">'articles/edit'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+    <span class="kw1">if</span> <span
+class="br0">&#40;</span><span class="re0">$this</span><span
+class="sy0">-&gt;</span>_context<span class="sy0">-&gt;</span><span
+class="me1">isPOST</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span> <span class="sy0">&amp;&amp;</span> <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">validate</span><span class="br0">&#40;</span><span
+class="re0">$_POST</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="co1">// 是 POST 提交操作，并且通过验证</span>
+        try
+        <span
+class="br0">&#123;</span>
+            <span
+class="co1">// 根据表单的值，修改 Article 对象的属性值</span>
+            <span
+class="re0">$article</span><span class="sy0">-&gt;</span><span
+class="me1">changeProps</span><span class="br0">&#40;</span><span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">values</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+            <span
+class="co1">// 保存修改后的对象</span>
+            <span
+class="re0">$article</span><span class="sy0">-&gt;</span><span
+class="me1">save</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+            <span
+class="co1">// 重定向浏览器</span>
+            <span
+class="kw1">return</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_redirect<span class="br0">&#40;</span>url<span
+class="br0">&#40;</span><span class="st_h">'articles/shwo'</span><span
+class="sy0">,</span>
+                  <span class="kw3">array</span><span
+class="br0">&#40;</span><span class="st_h">'article_id'</span> <span
+class="sy0">=&gt;</span> <span class="re0">$article</span><span
+class="sy0">-&gt;</span><span class="me1">id</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span>
+            <span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+        <span
+class="br0">&#125;</span>
+        catch <span
+class="br0">&#40;</span>QValidator_ValidateFailedException <span
+class="re0">$ex</span><span class="br0">&#41;</span>
+        <span
+class="br0">&#123;</span>
+            <span
+class="co1">// 如果保存时模型自动验证失败，会抛出 QValidator_ValidateFailedException 异常，</span>
+            <span
+class="co1">// 根据异常将表单置为无效状态</span>
+            <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">invalidate</span><span class="br0">&#40;</span><span
+class="re0">$ex</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span
+class="br0">&#125;</span>
+    <span class="kw1">elseif</span> <span
+class="br0">&#40;</span><span class="sy0">!</span><span
+class="re0">$this</span><span class="sy0">-&gt;</span>_context<span
+class="sy0">-&gt;</span><span class="me1">isPOST</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="co1">// 如果不是 POST 提交，则将模型导入表单，以便让用户看到要编辑的内容</span>
+        <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">import</span><span class="br0">&#40;</span><span
+class="re0">$article</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span
+class="co1">// 将表单传递给视图</span>
+    <span
+class="re0">$this</span><span class="sy0">-&gt;</span>_view<span
+class="br0">&#91;</span><span class="st_h">'form'</span><span
+class="br0">&#93;</span> <span class="sy0">=</span> <span
+class="re0">$form</span><span class="sy0">;</span>
+<span
+class="br0">&#125;</span></pre>
+
+<p>与许多开发者平常做的不同，在上面的编辑过程中，不管用户是否提交了表单，我们都将对象从数据库中查询出来。这样做的主要目的是避免恶意用户通过提交非法数据来尝试更新不存在的对象。此外，这里采用
+changeProps() 来批量修改模型的属性值。由于 changeProps()
+默认不修改模型的只读属性，因此进一步保护了模型。</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+$Id: form-states.texy 2009-03-10 07:48:18Z Tim13 $
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-form-data.html">处理数据</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-form.html">表单控件</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-form-dynamic.html">动态元素</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

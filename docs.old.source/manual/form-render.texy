@@ -1,0 +1,191 @@
+=== 在浏览器中显示表单 ===
+
+要在浏览器中显示表单，可以采用多种方式。
+
+
+## 在视图中直接构造表单 HTML ##
+
+对于简单的表单，可以在视图中直接构造表单的 HTML 代码：
+
+/---code php
+<form name="<?php echo $form->id; ?>" 
+    id="<?php echo $form->id; ?>" 
+    action="<?php echo $form->action; ?>"
+    method="<?php echo $form->method; ?>">
+
+<?php foreach ($form->elements() as $element): ?>
+  <p>
+    <?php echo Q::control($element->_ui, $element->id, $element->attrs()); ?>
+  </p>
+<?php endforeach; ?>
+
+</form>
+\---
+
+假设表单有 username 和 password 两个元素，上面的代码将会产生如下的 HTML：
+
+/---code html
+<form name="form1" id="form1" action="/userlogin" method="post">
+  <p>
+    <input type="text" name="username" id="username" value="" maxlength="15" />
+  </p>
+  <p>
+    <input type="password" name="password" id="password" value="" maxlength="30" />
+  </p>
+</form>
+\---
+
+很显然这个表单对用户很不友好，只有两个光秃秃的输入框，任何提示文字都看不到，所以我们还要对表单元素做一些装饰。
+
+许多开发框架将装饰也作为表单对象的一部分，但这样做的缺点在于表单对象本身会变得很复杂，而且在修改表单表现样式时就需要修改大量代码。
+
+QeePHP 的设计思想是将表单的数据、行为和表现进行分离。表单的数据由表单元素来存储，而行为则由表单对象实现。最后通过视图文件或者视图片段来完成表单 HTML 代码的构造。这样分离后，各个部分的职责非常清晰，修改表单的结构不会影响到表单的表现。而修改表单的显示样式也不影响表单对象。
+
+对于上面的视图，我们可以进行简单的修改，让其显示更友好的表单：
+
+/---code php
+<form name="<?php echo $form->id; ?>"
+    id="<?php echo $form->id; ?>"
+    action="<?php echo $form->action; ?>"
+    method="<?php echo $form->method; ?>">
+
+<?php foreach ($form->elements() as $element): ?>
+  <p>
+    <label for="<?php echo $element->id; ?>"><?php echo h($element->_label); ?></label>
+    <?php echo Q::control($element->_ui, $element->id, $element->attrs()); ?>
+  </p>
+<?php endforeach; ?>
+
+</form>
+\---
+
+与前面的视图代码相比，仅仅是增加了一行：
+
+/---code php
+<label for="<?php echo $element->id; ?>"><?php echo h($element->_label); ?></label>
+\---
+
+这行代码在每一个输入框之前添加了一个 label 标签，并通过表单元素的“_label”属性设置标签的显示文字。因此，我们需要在构造表单对象时通过 set() 方法或修改配置文件来为表单元素添加“_label”属性。
+
+/---code yaml
+username:
+  _ui: "textbox"
+  _label: "用户名:"
+  maxlength: 15
+
+password:
+  _ui: "password"
+  _label: "密码:"
+  maxlength: 30
+\---
+
+最终，表单显示时可以获得如下的 HTML 代码：
+
+/---code html
+<form name="form1" id="form1" action="/userlogin" method="post">
+  <p>
+    <label for="username">用户名:</label>
+    <input type="text" name="username" id="username" value="" maxlength="15" />
+  </p>
+  <p>
+    <label for="password">密码:</label>
+    <input type="password" name="password" id="password" value="" maxlength="30" />
+  </p>
+</form>
+\---
+
+采用这样的方式，我们可以在不修改表单对象代码的情况下构造出任意样式的表单。
+
+
+## 使用视图片段构造表单 HTML ##
+
+在同一个应用程序中，大部分表单都会采用同样的显示样式。视图片段让开发者可以用很简短的代码构造任意多个表单的 HTML 代码。
+
+使用视图片段时，可以很简单的完成表单 HTML 代码的创建：
+
+/---code php
+<!-- 演示如何使用视图片段 -->
+<?php $this->_element('general_form', array('form' => $form)); ?>
+\---
+
+“general_form”视图片段对应应用程序中的“view/_elements/general_form_element.php”文件。
+
+QeePHP 社区网站已经提供了一些现成的表单视图下载，下载地址为： http://qeephp.com/projects/search/cat/formview ，充分利用已有的资源可以显著减少重复劳动。
+
+有些表单视图要求表单对象具有特定的属性值。例如 http://qeephp.com/projects/formview_simple 这个视图片段使用表单对象的“_cancel_url”属性来传递点击“取消”按钮时要跳转的网址。因此需要表单中出现“取消”按钮时，必须在现实表单前设置必要的属性。
+
+/---code php
+// 在控制器动作方法中指定使用表单视图片段时需要的属性
+
+classs Controller_Posts extends Controller_Abstract
+{
+    function actionCreate()
+    {
+        $form = PostForm();
+        $form->_cancel_url = url('posts/index');
+
+        ...
+
+        $this->_view['form'] = $form;
+    }
+
+    ...
+}
+\---
+
+采用表单视图的最大优势就是更换视图片段即可让同一个表单对象获得完全不同的外观。这种方式极大的扩展了灵活性，并且避免了在表单对象中添加大量与数据存储无关的内容。
+
+
+## 用 CSS 样式表指定表单外观 ##
+
+不管用视图还是视图片段，我们都应该通过 CSS 样式表来指定表单外观。所以我们需要在表单 HTML 代码中添加一些必要的属性。
+
+/---code yaml
+
+~form:
+  id: userlogin_form
+  method: post
+  class: "admin-form"
+
+username:
+  _ui: "textbox"
+  _label: "用户名:"
+  maxlength: 15
+  class: "txt medium"
+
+password:
+  _ui: "password"
+  _label: "密码:"
+  maxlength: 30
+  class: "txt medium"
+\---
+
+这里为表单指定了 CSS 类“admin-form”，并为 username 和 password 两个元素指定了 CSS 类“txt”和“medium”。该属性的值使得我们可以通过相应的 CSS 样式来控制表单元素的外观。
+
+/---code css
+
+form.admin-form {
+  font-size: 14px;
+  line-height: 20px;
+  margin: 1em;
+  padding: 1.5em;
+}
+
+input.txt, textarea.txt {
+  margin-bottom: 0.5em;
+}
+
+input.medium {
+  width: 420px;
+}
+\---
+
+更多的表单视图示例请参考： http://qeephp.com/projects/search/cat/formview 。
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+$Id: form-render.texy 2295 2009-03-10 07:48:18Z dualface $
+

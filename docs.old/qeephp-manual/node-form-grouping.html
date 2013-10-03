@@ -1,0 +1,506 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 应用开发权威指南</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 应用开发权威指南</a>
+      &raquo;
+      <a href="node-form.html">表单</a>
+      &raquo;
+      群组    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+
+    
+<h1>群组</h1>
+
+<p>对于复杂的表单，我们需要将表单元素进行分组。例如一个用户注册表单中，帐户和密码放置在一个组，而用户个人信息放置在一个组。对于这种需求，我们可以使用
+QForm 提供的群组来实现。</p>
+
+<h2>添加群组</h2>
+
+<p>添加群组的方法和添加值元素类似：</p>
+
+<pre class="php code"><span
+class="co1">// 添加一个 ID 为 userinfo 的群组，该群组包含两个值元素</span>
+<span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">add</span><span class="br0">&#40;</span>QForm<span
+class="sy0">::</span><span class="me2">GROUP</span><span
+class="sy0">,</span> <span class="st_h">'userinfo'</span><span
+class="sy0">,</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="kw3">array</span><span
+class="br0">&#40;</span>QForm<span class="sy0">::</span><span
+class="me2">ELEMENT</span><span class="sy0">,</span> <span
+class="st_h">'username'</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+    <span class="kw3">array</span><span
+class="br0">&#40;</span>QForm<span class="sy0">::</span><span
+class="me2">ELEMENT</span><span class="sy0">,</span> <span
+class="st_h">'password'</span><span class="br0">&#41;</span>
+<span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>添加群组及元素的连贯接口用法：</p>
+
+<pre class="php code"><span class="re0">$form</span><span
+class="sy0">-&gt;</span><span class="me1">add</span><span
+class="br0">&#40;</span>QForm<span class="sy0">::</span><span
+class="me2">GROUP</span><span class="sy0">,</span> <span
+class="st_h">'userinfo'</span><span class="br0">&#41;</span>
+         <span
+class="sy0">-&gt;</span><span class="me1">add</span><span
+class="br0">&#40;</span>QForm<span class="sy0">::</span><span
+class="me2">ELEMENT</span><span class="sy0">,</span> <span
+class="st_h">'username'</span><span class="br0">&#41;</span>
+         <span
+class="sy0">-&gt;</span><span class="me1">add</span><span
+class="br0">&#40;</span>QForm<span class="sy0">::</span><span
+class="me2">ELEMENT</span><span class="sy0">,</span> <span
+class="st_h">'password'</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<blockquote>
+	<p>在添加群组后连贯使用 add()
+	方法添加的元素，将属于该群组。</p>
+</blockquote>
+
+<p>群组除了可以容纳多个元素，还可以容纳群组。也就是说群组是可以嵌套的。不过大多数情况下，超过一层的群组意义不大。</p>
+
+<h2>在配置文件中添加群组</h2>
+
+<p>在配置文件中，默认所有元素都是值元素，如果要添加群组，则通过
+"_elements" 属性中指定该群组的元素，例如：</p>
+
+<pre class="python code">userinfo:
+  _elements:
+    username:
+      _ui: <span
+class="st0">&quot;textbox&quot;</span>
+      maxlength: <span
+class="nu0">15</span>
+    <span
+class="co1">#</span>
+    password:
+      _ui: <span
+class="st0">&quot;password&quot;</span>
+      maxlength: <span
+class="nu0">30</span>
+&nbsp;
+<span
+class="kw3">profile</span>:
+  _elements:
+    address:
+      _ui: <span
+class="st0">&quot;textbox&quot;</span>
+      maxlength: <span
+class="nu0">80</span>
+    <span
+class="co1">#</span>
+    postcode:
+      _ui: <span
+class="st0">&quot;textbox&quot;</span>
+      maxlength: <span
+class="nu0">6</span></pre>
+
+<h2>访问群组和群组中的元素</h2>
+
+<p>要访问一个群组中的表单元素，仍然使用 element()
+方法：</p>
+
+<pre class="php code"><span
+class="co1">// 访问表单 userinfo 群组中的 username 元素</span>
+<span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">element</span><span class="br0">&#40;</span><span
+class="st_h">'userinfo'</span><span class="br0">&#41;</span>
+         <span
+class="sy0">-&gt;</span><span class="me1">element</span><span
+class="br0">&#40;</span><span class="st_h">'username'</span><span
+class="br0">&#41;</span>
+         <span class="sy0">-&gt;</span><span
+class="me1">set</span><span class="br0">&#40;</span><span
+class="st_h">'_ui'</span><span class="sy0">,</span> <span
+class="st_h">'textbox'</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>或者使用简写形式：</p>
+
+<pre class="php code"><span class="re0">$form</span><span
+class="sy0">-&gt;</span><span class="me1">element</span><span
+class="br0">&#40;</span><span class="st_h">'userinfo/username'</span><span
+class="br0">&#41;</span>
+     <span class="sy0">-&gt;</span><span
+class="me1">set</span><span class="br0">&#40;</span><span
+class="st_h">'_ui'</span><span class="sy0">,</span> <span
+class="st_h">'textbox'</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<blockquote>
+	<p>技巧：element()
+	方法使用“/”符号来表示群组与元素之间的父子关系。由于群组是可以嵌套的，所以可以使用“group1/group1_1/element”的形式直接访问深层元素。</p>
+</blockquote>
+
+<p>同样，也可以用数组形式来访问群组的元素：</p>
+
+<pre class="php code"><span class="kw3">echo</span> <span
+class="re0">$form</span><span class="br0">&#91;</span><span
+class="st_h">'userinfo'</span><span class="br0">&#93;</span><span
+class="br0">&#91;</span><span class="st_h">'username'</span><span
+class="br0">&#93;</span><span class="sy0">-&gt;</span><span
+class="me1">value</span><span class="sy0">;</span></pre>
+
+<p>以及更深层次群组的元素：</p>
+
+<pre class="php code"><span class="kw3">echo</span> <span
+class="re0">$form</span><span class="br0">&#91;</span><span
+class="st_h">'group1'</span><span class="br0">&#93;</span><span
+class="br0">&#91;</span><span class="st_h">'group1_1'</span><span
+class="br0">&#93;</span><span class="br0">&#91;</span><span
+class="st_h">'element'</span><span class="br0">&#93;</span><span
+class="sy0">-&gt;</span><span class="me1">value</span><span
+class="sy0">;</span></pre>
+
+<h2>删除表单元素</h2>
+
+<p>表单对象的 remove()
+方法也支持用“/”表示父子关系的方式：</p>
+
+<pre class="php code"><span
+class="co1">// 删除 userinfo 群组中的 username 元素</span>
+<span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">remove</span><span class="br0">&#40;</span><span
+class="st_h">'userinfo/username'</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 删除整个 profile 群组</span>
+<span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">remove</span><span class="br0">&#40;</span><span
+class="st_h">'profile'</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>使用 unset() 函数删除元素或群组：</p>
+
+<pre class="php code"><span
+class="co1">// 删除 profile 群组中的 address 元素</span>
+<span
+class="kw3">unset</span><span class="br0">&#40;</span><span
+class="re0">$form</span><span class="br0">&#91;</span><span
+class="st_h">'profile'</span><span class="br0">&#93;</span><span
+class="br0">&#91;</span><span class="st_h">'address'</span><span
+class="br0">&#93;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 删除整个 profile 群组</span>
+<span
+class="kw3">unset</span><span class="br0">&#40;</span><span
+class="re0">$form</span><span class="br0">&#91;</span><span
+class="st_h">'profile'</span><span class="br0">&#93;</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>在删除一个群组时，该群组的所有元素和子群组都会被删除。</p>
+
+<h2>提交结果</h2>
+
+<p>假设一个表单具有 userinfo 和 profile
+两个群组，两个群组中分别有下列元素：</p>
+
+<pre class="ini
+code">userinfo:
+  username
+  password
+&nbsp;
+profile:
+  address
+  postcode</pre>
+
+<p>那么默认情况下通过该表单提交的 POST 数据会是：</p>
+
+<pre class="php code"><span class="re0">$_POST</span> <span
+class="sy0">=</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="st_h">'userinfo'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+        <span class="st_h">'username'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'....'</span><span
+class="sy0">,</span>
+        <span class="st_h">'password'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'....'</span><span
+class="sy0">,</span>
+    <span class="br0">&#41;</span><span
+class="sy0">,</span>
+    <span class="st_h">'profile'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+        <span class="st_h">'address'</span>  <span
+class="sy0">=&gt;</span> <span class="st_h">'....'</span><span
+class="sy0">,</span>
+        <span class="st_h">'postcode'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'....'</span><span
+class="sy0">,</span>
+    <span class="br0">&#41;</span><span
+class="sy0">,</span>
+<span class="br0">&#41;</span></pre>
+
+<p>可以看出，群组名自动变成了数组的键名，而该组中每个元素的值都在一个子数组中。</p>
+
+<h2>群组与值</h2>
+
+<p>根据前面的规则，既然提交后的结果是一个嵌套数组，那么将数据导入表单时，提供的数据也应该是一个嵌套数组：</p>
+
+<pre class="php code"><span class="re0">$arr</span> <span
+class="sy0">=</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="st_h">'userinfo'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+        <span class="st_h">'username'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'dualface'</span><span
+class="sy0">,</span>
+        <span class="st_h">'password'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'123456'</span><span
+class="sy0">,</span>
+    <span class="br0">&#41;</span><span
+class="sy0">,</span>
+    <span class="st_h">'profile'</span>  <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+        <span class="st_h">'address'</span>  <span
+class="sy0">=&gt;</span> <span class="st_h">'ZiGong SiChuan'</span><span
+class="sy0">,</span>
+        <span class="st_h">'postcode'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'643000'</span><span
+class="sy0">,</span>
+    <span class="br0">&#41;</span><span
+class="sy0">,</span>
+<span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+<span class="re0">$form</span><span
+class="sy0">-&gt;</span><span class="me1">import</span><span
+class="br0">&#40;</span><span class="re0">$arr</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 将输出 dualface</span>
+<span class="kw3">echo</span> <span
+class="re0">$form</span><span class="br0">&#91;</span><span
+class="st_h">'userinfo'</span><span class="br0">&#93;</span><span
+class="br0">&#91;</span><span class="st_h">'username'</span><span
+class="br0">&#93;</span><span class="sy0">-&gt;</span><span
+class="me1">value</span><span class="sy0">;</span>
+&nbsp;
+<span
+class="co1">// 将输出 643000</span>
+<span class="kw3">echo</span> <span
+class="re0">$form</span><span class="br0">&#91;</span><span
+class="st_h">'profile'</span><span class="br0">&#93;</span><span
+class="br0">&#91;</span><span class="st_h">'postcode'</span><span
+class="br0">&#93;</span><span class="sy0">-&gt;</span><span
+class="me1">value</span><span class="sy0">;</span></pre>
+
+<p>但是有时我们希望能够控制部分元素的值不使用嵌套数组。例如用户注册时，用户名和密码不存入嵌套数组，而用户的地址、邮编等则存入
+profile 子数组。</p>
+
+<p>为了实现这种效果，我们可以将群组的 _nested_name
+属性指定为空字符串（该属性默认值为群组的名字）：</p>
+
+<pre class="php code"><span class="re0">$form</span><span
+class="br0">&#91;</span><span class="st_h">'userinfo'</span><span
+class="br0">&#93;</span><span class="sy0">-&gt;</span>_nested_name <span
+class="sy0">=</span> <span class="st_h">''</span><span
+class="sy0">;</span></pre>
+
+<p>通过配置文件指定：</p>
+
+<pre class="python code">userinfo:
+  _nested_name: <span
+class="st0">&quot;&quot;</span>
+  ....</pre>
+
+<p>经过上面的修改，提交后的数据将变成：</p>
+
+<pre class="php code"><span class="re0">$_POST</span> <span
+class="sy0">=</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="st_h">'username'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'....'</span><span
+class="sy0">,</span>
+    <span class="st_h">'password'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'....'</span><span
+class="sy0">,</span>
+&nbsp;
+    <span class="st_h">'profile'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+        <span class="st_h">'address'</span>  <span
+class="sy0">=&gt;</span> <span class="st_h">'....'</span><span
+class="sy0">,</span>
+        <span class="st_h">'postcode'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'....'</span><span
+class="sy0">,</span>
+    <span class="br0">&#41;</span><span
+class="sy0">,</span>
+<span class="br0">&#41;</span></pre>
+
+<p>这样一来，我们可以利用 ActiveRecord
+的“嵌套赋值”特征，一次性为模型及关联模型赋值：</p>
+
+<pre class="php code"><span class="kw2">function</span> actionSave<span
+class="br0">&#40;</span><span class="br0">&#41;</span>
+<span
+class="br0">&#123;</span>
+    <span class="re0">$form</span> <span
+class="sy0">=</span> <span class="kw2">new</span> Form_UserRegister<span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+    <span class="kw1">if</span> <span
+class="br0">&#40;</span><span class="re0">$this</span><span
+class="sy0">-&gt;</span>_context<span class="sy0">-&gt;</span><span
+class="me1">isPOST</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span> <span class="sy0">&amp;&amp;</span> <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">validate</span><span class="br0">&#40;</span><span
+class="re0">$_POST</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="co1">// 一次性填充 User 对象及关联的 Profile 对象的属性值</span>
+        <span
+class="re0">$user</span> <span class="sy0">=</span> <span
+class="kw2">new</span> User<span class="br0">&#40;</span><span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">values</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+        <span class="sy0">....</span>
+    <span
+class="br0">&#125;</span>
+&nbsp;
+    <span class="sy0">....</span>
+<span
+class="br0">&#125;</span></pre>
+
+<p>上述代码执行 new User($form-&gt;values()) 后，$user
+对象的属性值会根据表单值自动填充，而 $user-&gt;profile
+关联对象的属性值也会自动填充。</p>
+
+<h2>指定元素或群组的嵌套存</h2>
+
+<p>除了控制群组中元素的值是否存入嵌套数组，我们还可以控制嵌套数组的名字：</p>
+
+<pre class="php code"><span class="re0">$form</span><span
+class="br0">&#91;</span><span class="st_h">'profile'</span><span
+class="br0">&#93;</span><span class="sy0">-&gt;</span><span
+class="me1">changeNestedName</span><span class="br0">&#40;</span><span
+class="st_h">'group_profile'</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>设置后提交数据将变成：</p>
+
+<pre class="php code"><span class="re0">$_POST</span> <span
+class="sy0">=</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+    <span class="st_h">'username'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'....'</span><span
+class="sy0">,</span>
+    <span class="st_h">'password'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'....'</span><span
+class="sy0">,</span>
+&nbsp;
+    <span class="st_h">'group_profile'</span> <span
+class="sy0">=&gt;</span> <span class="kw3">array</span><span
+class="br0">&#40;</span>
+        <span class="st_h">'address'</span>  <span
+class="sy0">=&gt;</span> <span class="st_h">'....'</span><span
+class="sy0">,</span>
+        <span class="st_h">'postcode'</span> <span
+class="sy0">=&gt;</span> <span class="st_h">'....'</span><span
+class="sy0">,</span>
+    <span class="br0">&#41;</span><span
+class="sy0">,</span>
+<span class="br0">&#41;</span></pre>
+
+<p> </p>
+
+<p>如果只是希望群组中个别元素的值不保存到嵌套数组中，或保存到其他嵌套数组，只需要简单的指定
+_nested_name 为空或其他群组名即可。</p>
+
+<pre class="php code"><span
+class="co1">// 将 userinfo 群组中 email 元素的值保存到 profile 群组</span>
+<span
+class="re0">$form</span><span class="br0">&#91;</span><span
+class="st_h">'userinfo'</span><span class="br0">&#93;</span><span
+class="br0">&#91;</span><span class="st_h">'email'</span><span
+class="br0">&#93;</span><span class="sy0">-&gt;</span>_nested_name <span
+class="sy0">=</span> <span class="st_h">'profile'</span><span
+class="sy0">;</span></pre>
+
+<p>利用这些特性，我们可以充分的控制表单，以及表单值。</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p>$Id: form-grouping.texy 2295 2009-03-10 07:48:18Z dualface $</p>
+
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-form-dynamic.html">动态元素</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-form.html">表单</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-cache.html">缓存</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

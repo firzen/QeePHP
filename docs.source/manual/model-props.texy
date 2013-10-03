@@ -1,0 +1,150 @@
+=== 管理模型的属性 ===
+
+在 QeePHP 的模型中，属性本身具有多种特性：
+
+-  是否是只读属性
+-  是否是虚拟属性
+-  是否有 getter 或 setter 方法
+-  属性的默认值
+-  属性的类型
+
+
+## 只读属性 ##
+
+有些情况下，模型一旦创建，其属性就不再允许修改，例如“用户”模型的用户名。
+
+对于这种业务需求，虽然可以通过在控制器中判断请求数据来检查，但是如果某个地方疏漏了检查，就会造成漏洞。所以最可靠的办法还是在模型中直接将这些属性指定为只读。这样一来，可以避免因为疏忽或无意中的错误造成不应该改动的数据被修改了。
+
+要将某个属性指定为只读，只需要在 props 中指定该属性的 readonly 设置即可：
+
+/---code php
+'props' => array(
+    'username' => array('readonly' => true),
+    ....
+)
+\---
+
+指定属性的 readonly 设置后，一旦在应用程序中尝试修改属性值，QeePHP 就会抛出一个 QDB_ActiveRecord_ChangingReadonlyPropException 异常。
+
+/---code php
+// 下面一行代码将导致 QDB_ActiveRecord_ChangingReadonlyPropException 异常
+$user->username = 'testname';
+\---
+
+
+## 虚拟属性与 getter、setter ##
+
+所谓虚拟属性，就是指该属性并不对应到数据表中的一个字段。例如 User 模型有一个虚拟属性 full_name，但该属性并没有存储在 users 数据表中，而是通过 last_name 和 first_name 属性来构造的。
+
+要实现这样的功能，我们需要添加 full_name 属性到 User 模型中，并且为该属性指定 getter 方法。
+
+> 在软件开发中，“getter 方法”这个术语是指获取某个值的方法，而对应的“setter 方法”就是修改某个值的方法。
+
+/---code php
+'props' => array(
+    ....
+    'full_name' => array('getter' => 'getFullName'),
+    ....
+)
+\---
+
+以及 getFullName() 方法：
+
+/---code php
+function getFullName()
+{
+    return $this->last_name . ', ' . $this->first_name;
+}
+\---
+
+设置完成后，下面的代码即可正确执行：
+
+/---code php
+// 假设 $user 对象的 first_name 是 Charles，last_name 是 Dickens
+// 输出结果为 Dickens, Charles
+echo $user->full_name;
+\---
+
+<p>&nbsp;</p>
+
+接下来我们再为 full_name 属性添加一个 setter 方法：
+
+/---code php
+'props' => array(
+    ....
+    'full_name' => array('getter' => 'getFullName', 'setter' => 'setFullName'),
+    ....
+)
+
+function setFullName($full_name)
+{
+    $arr = explode(',', $full_name);
+    $this->last_name  = trim($arr[0]);
+    $this->first_name = trim($arr[1]);
+}
+\---
+
+有了 full_name 的 setter 方法，我们就可以很方便的同时修改 first_name 和 last_name 了：
+
+/---code php
+$user->full_name = 'Copperfield, David';
+// 输出 David
+echo $user->first_name;
+// 输出 Copperfield
+echo $user->last_name;
+\---
+
+一个属性的 getter 和 setter 方法不需要同时提供，许多需求中只有 getter，没有 setter 方法。
+
+
+## 属性的默认值 ##
+
+很多时候我们希望模型对象在构造时能够具有特定的默认值。要达到这个效果可以从两方面入手：
+
+-  在 __define() 方法中为属性指定 default 选项；
+-  在数据表中为该属性的存储字段设置默认值。
+
+通过 __define() 来指定属性默认值：
+
+/---code php
+'props' => array(
+    ....
+    'prop_name' => array('default' => 'value'),
+    ....
+)
+\---
+
+当构造一个新对象时，对象的属性值将按照设置的值填充。
+
+但是为属性指定默认值，不等同于对象写入数据库时该属性值不会变化。如果要确保写入数据库的属性值是特定数据，我们可以通过 create_autofill 设置来实现。create_autofill 的有关内容在本章节的“自动填充属性值”小节阐述。
+
+
+## 属性的类型 ##
+
+与通常的 PHP 开发不同，领域模型的某些属性值是具有类型要求的。例如“商品”的价格只能是一个浮点数，而不能是一个字符串。
+
+虽然可以通过自动验证规则来检查出类型不匹配问题，但是如果模型能够对属性值进行强制类型转换，毫无疑问可以获得一些便利，并且让后续的自动验证变得更简单。
+
+目前，模型的属性支持下列几种类型：
+
+-  整数
+-  浮点数
+-  布尔值
+
+当视图为上述类型的属性赋值时，QeePHP 将会对属性值做强制类型转换。例如：
+
+/---code php
+$goods->price = 'ABC';
+// 由于 price 属性是 float 类型，
+// 并且 'ABC' 强制转换为 float 后的结果是 0。
+// 因此输出 $goods->price 的结果也是 0。
+echo $goods->price;
+\---
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+$Id: model-props.texy 2295 2009-03-10 07:48:18Z dualface $
+

@@ -1,0 +1,468 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 应用开发权威指南</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 应用开发权威指南</a>
+      &raquo;
+      <a href="node-form.html">表单控件</a>
+      &raquo;
+      显示表单    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+    
+<h1>在浏览器中显示表单</h1>
+
+<p>要在浏览器中显示表单，可以采用多种方式。</p>
+
+<h2>在视图中直接构造表单 HTML</h2>
+
+<p>对于简单的表单，可以在视图中直接构造表单的 HTML
+代码：</p>
+
+<pre class="php code">&lt;form name=&quot;<span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">id</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span>&quot;
+    id=&quot;<span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">id</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span>&quot;
+    action=&quot;<span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">action</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span>&quot;
+    method=&quot;<span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">method</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span>&quot;&gt;
+&nbsp;
+<span
+class="kw2">&lt;?php</span> <span class="kw1">foreach</span> <span
+class="br0">&#40;</span><span class="re0">$form</span><span
+class="sy0">-&gt;</span><span class="me1">elements</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span> <span
+class="kw1">as</span> <span class="re0">$element</span><span
+class="br0">&#41;</span><span class="sy0">:</span> <span
+class="kw2">?&gt;</span>
+  &lt;p&gt;
+    <span class="kw2">&lt;?php</span> <span
+class="kw3">echo</span> Q<span class="sy0">::</span><span
+class="me2">control</span><span class="br0">&#40;</span><span
+class="re0">$element</span><span class="sy0">-&gt;</span>_ui<span
+class="sy0">,</span> <span class="re0">$element</span><span
+class="sy0">-&gt;</span><span class="me1">id</span><span
+class="sy0">,</span> <span class="re0">$element</span><span
+class="sy0">-&gt;</span><span class="me1">attrs</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span>
+  &lt;/p&gt;
+<span class="kw2">&lt;?php</span> <span
+class="kw1">endforeach</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span>
+&nbsp;
+&lt;/form&gt;</pre>
+
+<p>假设表单有 username 和 password
+两个元素，上面的代码将会产生如下的 HTML：</p>
+
+<pre class="html4strict code"><span class="sc2">&lt;<span
+class="kw2">form</span> <span class="kw3">name</span><span
+class="sy0">=</span><span class="st0">&quot;form1&quot;</span> <span
+class="kw3">id</span><span class="sy0">=</span><span
+class="st0">&quot;form1&quot;</span> <span class="kw3">action</span><span
+class="sy0">=</span><span class="st0">&quot;/userlogin&quot;</span> <span
+class="kw3">method</span><span class="sy0">=</span><span
+class="st0">&quot;post&quot;</span>&gt;</span>
+  <span class="sc2">&lt;<span
+class="kw2">p</span>&gt;</span>
+    <span class="sc2">&lt;<span
+class="kw2">input</span> <span class="kw3">type</span><span
+class="sy0">=</span><span class="st0">&quot;text&quot;</span> <span
+class="kw3">name</span><span class="sy0">=</span><span
+class="st0">&quot;username&quot;</span> <span class="kw3">id</span><span
+class="sy0">=</span><span class="st0">&quot;username&quot;</span> <span
+class="kw3">value</span><span class="sy0">=</span><span
+class="st0">&quot;&quot;</span> <span class="kw3">maxlength</span><span
+class="sy0">=</span><span class="st0">&quot;15&quot;</span> <span
+class="sy0">/</span>&gt;</span>
+  <span class="sc2">&lt;<span
+class="sy0">/</span><span class="kw2">p</span>&gt;</span>
+  <span
+class="sc2">&lt;<span class="kw2">p</span>&gt;</span>
+    <span
+class="sc2">&lt;<span class="kw2">input</span> <span
+class="kw3">type</span><span class="sy0">=</span><span
+class="st0">&quot;password&quot;</span> <span class="kw3">name</span><span
+class="sy0">=</span><span class="st0">&quot;password&quot;</span> <span
+class="kw3">id</span><span class="sy0">=</span><span
+class="st0">&quot;password&quot;</span> <span class="kw3">value</span><span
+class="sy0">=</span><span class="st0">&quot;&quot;</span> <span
+class="kw3">maxlength</span><span class="sy0">=</span><span
+class="st0">&quot;30&quot;</span> <span class="sy0">/</span>&gt;</span>
+  <span
+class="sc2">&lt;<span class="sy0">/</span><span
+class="kw2">p</span>&gt;</span>
+<span class="sc2">&lt;<span
+class="sy0">/</span><span class="kw2">form</span>&gt;</span></pre>
+
+<p>很显然这个表单对用户很不友好，只有两个光秃秃的输入框，任何提示文字都看不到，所以我们还要对表单元素做一些装饰。</p>
+
+<p>许多开发框架将装饰也作为表单对象的一部分，但这样做的缺点在于表单对象本身会变得很复杂，而且在修改表单表现样式时就需要修改大量代码。</p>
+
+<p>QeePHP
+的设计思想是将表单的数据、行为和表现进行分离。表单的数据由表单元素来存储，而行为则由表单对象实现。最后通过视图文件或者视图片段来完成表单
+HTML
+代码的构造。这样分离后，各个部分的职责非常清晰，修改表单的结构不会影响到表单的表现。而修改表单的显示样式也不影响表单对象。</p>
+
+<p>对于上面的视图，我们可以进行简单的修改，让其显示更友好的表单：</p>
+
+<pre class="php code">&lt;form name=&quot;<span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">id</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span>&quot;
+    id=&quot;<span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">id</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span>&quot;
+    action=&quot;<span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">action</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span>&quot;
+    method=&quot;<span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> <span
+class="re0">$form</span><span class="sy0">-&gt;</span><span
+class="me1">method</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span>&quot;&gt;
+&nbsp;
+<span
+class="kw2">&lt;?php</span> <span class="kw1">foreach</span> <span
+class="br0">&#40;</span><span class="re0">$form</span><span
+class="sy0">-&gt;</span><span class="me1">elements</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span> <span
+class="kw1">as</span> <span class="re0">$element</span><span
+class="br0">&#41;</span><span class="sy0">:</span> <span
+class="kw2">?&gt;</span>
+  &lt;p&gt;
+    &lt;label for=&quot;<span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> <span
+class="re0">$element</span><span class="sy0">-&gt;</span><span
+class="me1">id</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span>&quot;&gt;<span class="kw2">&lt;?php</span> <span
+class="kw3">echo</span> h<span class="br0">&#40;</span><span
+class="re0">$element</span><span class="sy0">-&gt;</span>_label<span
+class="br0">&#41;</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span>&lt;/label&gt;
+    <span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> Q<span
+class="sy0">::</span><span class="me2">control</span><span
+class="br0">&#40;</span><span class="re0">$element</span><span
+class="sy0">-&gt;</span>_ui<span class="sy0">,</span> <span
+class="re0">$element</span><span class="sy0">-&gt;</span><span
+class="me1">id</span><span class="sy0">,</span> <span
+class="re0">$element</span><span class="sy0">-&gt;</span><span
+class="me1">attrs</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span> <span class="kw2">?&gt;</span>
+  &lt;/p&gt;
+<span
+class="kw2">&lt;?php</span> <span class="kw1">endforeach</span><span
+class="sy0">;</span> <span class="kw2">?&gt;</span>
+&nbsp;
+&lt;/form&gt;</pre>
+
+<p>与前面的视图代码相比，仅仅是增加了一行：</p>
+
+<pre class="php code">&lt;label for=&quot;<span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> <span
+class="re0">$element</span><span class="sy0">-&gt;</span><span
+class="me1">id</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span>&quot;&gt;<span class="kw2">&lt;?php</span> <span
+class="kw3">echo</span> h<span class="br0">&#40;</span><span
+class="re0">$element</span><span class="sy0">-&gt;</span>_label<span
+class="br0">&#41;</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span>&lt;/label&gt;</pre>
+
+<p>这行代码在每一个输入框之前添加了一个 label
+标签，并通过表单元素的“_label”属性设置标签的显示文字。因此，我们需要在构造表单对象时通过
+set()
+方法或修改配置文件来为表单元素添加“_label”属性。</p>
+
+<pre class="python code">username:
+  _ui: <span
+class="st0">&quot;textbox&quot;</span>
+  _label: <span
+class="st0">&quot;用户名:&quot;</span>
+  maxlength: <span
+class="nu0">15</span>
+&nbsp;
+password:
+  _ui: <span
+class="st0">&quot;password&quot;</span>
+  _label: <span
+class="st0">&quot;密码:&quot;</span>
+  maxlength: <span
+class="nu0">30</span></pre>
+
+<p>最终，表单显示时可以获得如下的 HTML 代码：</p>
+
+<pre class="html4strict code"><span class="sc2">&lt;<span
+class="kw2">form</span> <span class="kw3">name</span><span
+class="sy0">=</span><span class="st0">&quot;form1&quot;</span> <span
+class="kw3">id</span><span class="sy0">=</span><span
+class="st0">&quot;form1&quot;</span> <span class="kw3">action</span><span
+class="sy0">=</span><span class="st0">&quot;/userlogin&quot;</span> <span
+class="kw3">method</span><span class="sy0">=</span><span
+class="st0">&quot;post&quot;</span>&gt;</span>
+  <span class="sc2">&lt;<span
+class="kw2">p</span>&gt;</span>
+    <span class="sc2">&lt;<span
+class="kw2">label</span> <span class="kw3">for</span><span
+class="sy0">=</span><span
+class="st0">&quot;username&quot;</span>&gt;</span>用户名:<span
+class="sc2">&lt;<span class="sy0">/</span><span
+class="kw2">label</span>&gt;</span>
+    <span class="sc2">&lt;<span
+class="kw2">input</span> <span class="kw3">type</span><span
+class="sy0">=</span><span class="st0">&quot;text&quot;</span> <span
+class="kw3">name</span><span class="sy0">=</span><span
+class="st0">&quot;username&quot;</span> <span class="kw3">id</span><span
+class="sy0">=</span><span class="st0">&quot;username&quot;</span> <span
+class="kw3">value</span><span class="sy0">=</span><span
+class="st0">&quot;&quot;</span> <span class="kw3">maxlength</span><span
+class="sy0">=</span><span class="st0">&quot;15&quot;</span> <span
+class="sy0">/</span>&gt;</span>
+  <span class="sc2">&lt;<span
+class="sy0">/</span><span class="kw2">p</span>&gt;</span>
+  <span
+class="sc2">&lt;<span class="kw2">p</span>&gt;</span>
+    <span
+class="sc2">&lt;<span class="kw2">label</span> <span class="kw3">for</span><span
+class="sy0">=</span><span
+class="st0">&quot;password&quot;</span>&gt;</span>密码:<span
+class="sc2">&lt;<span class="sy0">/</span><span
+class="kw2">label</span>&gt;</span>
+    <span class="sc2">&lt;<span
+class="kw2">input</span> <span class="kw3">type</span><span
+class="sy0">=</span><span class="st0">&quot;password&quot;</span> <span
+class="kw3">name</span><span class="sy0">=</span><span
+class="st0">&quot;password&quot;</span> <span class="kw3">id</span><span
+class="sy0">=</span><span class="st0">&quot;password&quot;</span> <span
+class="kw3">value</span><span class="sy0">=</span><span
+class="st0">&quot;&quot;</span> <span class="kw3">maxlength</span><span
+class="sy0">=</span><span class="st0">&quot;30&quot;</span> <span
+class="sy0">/</span>&gt;</span>
+  <span class="sc2">&lt;<span
+class="sy0">/</span><span class="kw2">p</span>&gt;</span>
+<span
+class="sc2">&lt;<span class="sy0">/</span><span
+class="kw2">form</span>&gt;</span></pre>
+
+<p>采用这样的方式，我们可以在不修改表单对象代码的情况下构造出任意样式的表单。</p>
+
+<h2>使用视图片段构造表单 HTML</h2>
+
+<p>在同一个应用程序中，大部分表单都会采用同样的显示样式。视图片段让开发者可以用很简短的代码构造任意多个表单的
+HTML 代码。</p>
+
+<p>使用视图片段时，可以很简单的完成表单 HTML
+代码的创建：</p>
+
+<pre class="php code">&lt;!-- 演示如何使用视图片段 --&gt;
+<span
+class="kw2">&lt;?php</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_element<span class="br0">&#40;</span><span
+class="st_h">'general_form'</span><span class="sy0">,</span> <span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="st_h">'form'</span> <span class="sy0">=&gt;</span> <span
+class="re0">$form</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span></pre>
+
+<p>“general_form”视图片段对应应用程序中的“view/_elements/general_form_element.php”文件。</p>
+
+<p>QeePHP
+社区网站已经提供了一些现成的表单视图下载，下载地址为：
+<a
+href="http://qeephp.com/projects/search/cat/formview">http://qeephp.com/projects/search/cat/formview</a>
+，充分利用已有的资源可以显著减少重复劳动。</p>
+
+<p>有些表单视图要求表单对象具有特定的属性值。例如 <a
+href="http://qeephp.com/projects/formview_simple">http://qeephp.com/projects/formview_simple</a>
+这个视图片段使用表单对象的“_cancel_url”属性来传递点击“取消”按钮时要跳转的网址。因此需要表单中出现“取消”按钮时，必须在现实表单前设置必要的属性。</p>
+
+<pre class="php code"><span
+class="co1">// 在控制器动作方法中指定使用表单视图片段时需要的属性</span>
+&nbsp;
+classs Controller_Posts <span
+class="kw2">extends</span> Controller_Abstract
+<span
+class="br0">&#123;</span>
+    <span
+class="kw2">function</span> actionCreate<span class="br0">&#40;</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="re0">$form</span> <span class="sy0">=</span> PostForm<span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+        <span class="re0">$form</span><span
+class="sy0">-&gt;</span>_cancel_url <span class="sy0">=</span> url<span
+class="br0">&#40;</span><span class="st_h">'posts/index'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span
+class="sy0">...</span>
+&nbsp;
+        <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_view<span class="br0">&#91;</span><span
+class="st_h">'form'</span><span class="br0">&#93;</span> <span
+class="sy0">=</span> <span class="re0">$form</span><span
+class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span
+class="sy0">...</span>
+<span class="br0">&#125;</span></pre>
+
+<p>采用表单视图的最大优势就是更换视图片段即可让同一个表单对象获得完全不同的外观。这种方式极大的扩展了灵活性，并且避免了在表单对象中添加大量与数据存储无关的内容。</p>
+
+<h2>用 CSS 样式表指定表单外观</h2>
+
+<p>不管用视图还是视图片段，我们都应该通过 CSS
+样式表来指定表单外观。所以我们需要在表单 HTML
+代码中添加一些必要的属性。</p>
+
+<pre class="python code">~form:
+  <span
+class="kw2">id</span>: userlogin_form
+  method: post
+  <span
+class="kw1">class</span>: <span
+class="st0">&quot;admin-form&quot;</span>
+&nbsp;
+username:
+  _ui: <span
+class="st0">&quot;textbox&quot;</span>
+  _label: <span
+class="st0">&quot;用户名:&quot;</span>
+  maxlength: <span
+class="nu0">15</span>
+  <span class="kw1">class</span>: <span
+class="st0">&quot;txt medium&quot;</span>
+&nbsp;
+password:
+  _ui: <span
+class="st0">&quot;password&quot;</span>
+  _label: <span
+class="st0">&quot;密码:&quot;</span>
+  maxlength: <span
+class="nu0">30</span>
+  <span class="kw1">class</span>: <span
+class="st0">&quot;txt medium&quot;</span></pre>
+
+<p>这里为表单指定了 CSS 类“admin-form”，并为 username 和
+password 两个元素指定了 CSS
+类“txt”和“medium”。该属性的值使得我们可以通过相应的
+CSS 样式来控制表单元素的外观。</p>
+
+<pre class="css code">form<span class="re1">.admin-form</span> <span
+class="br0">&#123;</span>
+  <span class="kw1">font-size</span><span
+class="sy0">:</span> <span class="re3">14px</span><span
+class="sy0">;</span>
+  <span class="kw1">line-height</span><span
+class="sy0">:</span> <span class="re3">20px</span><span
+class="sy0">;</span>
+  <span class="kw1">margin</span><span
+class="sy0">:</span> <span class="re3">1em</span><span
+class="sy0">;</span>
+  <span class="kw1">padding</span><span
+class="sy0">:</span> <span class="re3">1.5em</span><span
+class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+input<span
+class="re1">.txt</span><span class="sy0">,</span> textarea<span
+class="re1">.txt</span> <span class="br0">&#123;</span>
+  <span
+class="kw1">margin-bottom</span><span class="sy0">:</span> <span
+class="re3">0.5em</span><span class="sy0">;</span>
+<span
+class="br0">&#125;</span>
+&nbsp;
+input<span class="re1">.medium</span> <span
+class="br0">&#123;</span>
+  <span class="kw1">width</span><span
+class="sy0">:</span> <span class="re3">420px</span><span
+class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>更多的表单视图示例请参考： <a
+href="http://qeephp.com/projects/search/cat/formview">http://qeephp.com/projects/search/cat/formview</a>
+。</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+$Id: form-render.texy 2009-03-10 07:48:18Z Tim13 $
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-form-elements.html">操作表单元素</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-form.html">表单控件</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-form-data.html">处理数据</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

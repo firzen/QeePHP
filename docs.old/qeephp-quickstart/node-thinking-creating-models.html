@@ -1,0 +1,376 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 快速入门</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qeephp.com/docs/">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 快速入门</a>
+      &raquo;
+      <a href="node-thinking.html">编写代码之前的思考</a>
+      &raquo;
+      创建需要的模型    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+
+    
+<h1>创建需要的模型</h1>
+
+<p>确定了模型的属性和行为，就可以创建模型了。</p>
+
+<h2>创建存储模型的数据表</h2>
+
+<p>模型在程序中都是用一个类来表现的，然后通过添加方法和属性来定义出完整的模型。但如果模型需要保存到数据库，那么数据库中就必须有保存该模型需要的数据表。</p>
+
+<p>虽然没有强制要求，但大多数情况下，模型的属性和数据表的字段是一一对应的：</p>
+
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">user 模型属性对应的数据表字段</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<th>user_id</th>
+
+			<td>user_id INT</td>
+		</tr>
+
+		<tr>
+			<th>username</th>
+
+			<td>username VARCHAR</td>
+		</tr>
+
+		<tr>
+			<th>password</th>
+
+			<td>password VARCHAR</td>
+		</tr>
+	</tbody>
+</table>
+
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">task 模型属性对应的数据表字段</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<th>task_id</th>
+
+			<td>task_id INT</td>
+		</tr>
+
+		<tr>
+			<th>subject</th>
+
+			<td>subject VARCHAR</td>
+		</tr>
+
+		<tr>
+			<th>description</th>
+
+			<td>description TEXT</td>
+		</tr>
+
+		<tr>
+			<th>created</th>
+
+			<td>created INT</td>
+		</tr>
+
+		<tr>
+			<th>is_completed</th>
+
+			<td>is_completed BOOL</td>
+		</tr>
+	</tbody>
+</table>
+
+<blockquote>
+	<p>这种一一对应可以减少许多麻烦，提高开发效率，这也是“契约式编程”概念的一部分。</p>
+</blockquote>
+
+<p>注意上表中，我们为 task 和 user 模型分别添加了 task_id 和
+user_id
+两个属性。这两个属性会被设置为数据表的主键。主键让数据库和应用程序可以更容易更快速的查找保存的对象，因此对于绝大多数模型，我们都需要添加一个单独的主键。</p>
+
+<h2>ORM 的作用</h2>
+
+<p>不过上表列出的字段是不完整的。因为 user 模型和 task
+模型之间的关系并没有体现出来。这就是“对象与关系式数据库之间的阻抗不匹配”问题。</p>
+
+<blockquote>
+	<p>对象与关系式数据库之间的阻抗不匹配问题，根源在于关系式数据库没有办法直接保存对象与对象之间的关系。例如一个用户有多个任务，在面向对象体系中就是“用户”对象聚合了多个“任务”对象，而关系式数据库不支持这样的表述方式。</p>
+
+	<p>所以在关系式数据库中存储对象间的关系需要特别的方法，并且需要
+	ORM 系统来提供帮助。看到这里，就应该明白
+	ORM（Object-relational mapping ——
+	对象关系映射）的真正含义了。</p>
+</blockquote>
+
+<p>例如“用户”和“任务”关联，而“任务”和“任务评论”关联，“任务评论”和“评论人”关联。在这些关联对象间导航应该是很自然和简单的事情：</p>
+
+<pre class="php code"><span
+class="co1">// 开始遍历用户的所有任务</span>
+<span
+class="co1">// $users-&gt;tasks 是包含多个 Task 对象的集合</span>
+<span
+class="kw1">foreach</span> <span class="br0">&#40;</span><span
+class="re0">$user</span><span class="sy0">-&gt;</span><span
+class="me1">tasks</span> <span class="kw1">as</span> <span
+class="re0">$task</span><span class="br0">&#41;</span>
+<span
+class="br0">&#123;</span>
+    <span class="kw3">echo</span> <span
+class="st0">&quot;任务主题：<span
+class="es4">{$task-&gt;subject}</span><span
+class="es1">\n</span>&quot;</span><span class="sy0">;</span>
+&nbsp;
+    <span
+class="co1">// 遍历任务的所有评论</span>
+    <span
+class="co1">// $task-&gt;comments 是包含多个 Comment 对象的集合</span>
+    <span
+class="kw1">foreach</span> <span class="br0">&#40;</span><span
+class="re0">$task</span><span class="sy0">-&gt;</span><span
+class="me1">comments</span> <span class="kw1">as</span> <span
+class="re0">$comment</span><span class="br0">&#41;</span>
+    <span
+class="br0">&#123;</span>
+        <span class="kw3">echo</span> <span
+class="st0">&quot;评论人：<span
+class="es4">{$comment-&gt;author-&gt;username}</span><span
+class="es1">\n</span>&quot;</span><span class="sy0">;</span>
+    <span
+class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>上述代码中，从 user 对象的 tasks 属性可以访问到聚合的
+task 对象。而从 task 对象的 comments
+属性又可以访问到任务的所有评论，再通过
+$comment-&gt;author-&gt;username 访问评论人的用户名。</p>
+
+<p>作为一个出色的
+ORM，不但要能够支持多种关联关系，以及对象间的泛化和依赖，还应该让开发者可以在对象关系网间自由的导航。正是这种顺畅的对象导航，让领域驱动开发变得更加简单。开发者不需要操心如何维护对象间的关系，要做的仅仅是将对象间的关系定义出来。只要定义好关系，我们就可以通过直观的代码在对象间进行游历。</p>
+
+<p>QeePHP
+支持四种关联关系，分别是“一对一”、“一对多”、“多对多”和“从属”关联关系。为了便于描述，每一个关联关系的两端分别称为“来源对象”和“目标对象”，如下图：</p>
+
+<div class="figure"><img src="images/thinking-creating-models-01.png" alt="" />
+	<p>线段的起点是来源对象，箭头所指是目标对象</p>
+</div>
+
+<p>这四种关系在关系式数据库中的表示方式分别是：</p>
+
+<table>
+	<thead>
+		<tr>
+			<th>关联关系</th>
+
+			<th>来源对象的外键字段</th>
+
+			<th>目标对象的外键字段</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>一对一</td>
+
+			<td>无</td>
+
+			<td>来源对象的主键</td>
+		</tr>
+
+		<tr>
+			<td>一对多</td>
+
+			<td>无</td>
+
+			<td>来源对象的主键</td>
+		</tr>
+
+		<tr>
+			<td>多对多</td>
+
+			<td>无</td>
+
+			<td>无</td>
+		</tr>
+
+		<tr>
+			<td>从属</td>
+
+			<td>目标对象的主键</td>
+
+			<td>无</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>在上述四种关联关系中，“一对一”、“一对多”和“从属”实际上是相反的关系。而“多对多”关联关系必须依赖一个单独的数据表来存储，这个表称为“中间表”。关于“多对多”的问题，我们稍后再来阐述。</p>
+
+<h2>创建数据表和模型</h2>
+
+<p>根据“用户”和“任务”间的关联关系，我们需要为 task
+模型的数据表添加一个 owner_id
+字段，用于保存“用户”模型的主键值。最终两个数据表如下图：</p>
+
+<div class="figure"><img src="images/thinking-creating-models-02.png" alt="" />
+	<p>保存 task 和 user 模型的数据表</p>
+</div>
+
+<p>上述数据表转换为 MySQL 数据库的 DDL 就是：</p>
+
+<pre class="sql code"><span class="kw1">CREATE</span> <span
+class="kw1">TABLE</span> <span class="st0">`tasks`</span> <span
+class="br0">&#40;</span>
+  <span class="st0">`task_id`</span> int<span
+class="br0">&#40;</span><span class="nu0">11</span><span
+class="br0">&#41;</span> <span class="kw1">NOT</span> <span
+class="kw1">NULL</span> <span class="kw1">AUTO_INCREMENT</span><span
+class="sy0">,</span>
+  <span class="st0">`subject`</span> varchar<span
+class="br0">&#40;</span><span class="nu0">200</span><span
+class="br0">&#41;</span> <span class="kw1">NOT</span> <span
+class="kw1">NULL</span><span class="sy0">,</span>
+  <span
+class="st0">`description`</span> text<span class="sy0">,</span>
+  <span
+class="st0">`created`</span> int<span class="br0">&#40;</span><span
+class="nu0">11</span><span class="br0">&#41;</span> <span
+class="kw1">NOT</span> <span class="kw1">NULL</span><span
+class="sy0">,</span>
+  <span class="st0">`updated`</span> int<span
+class="br0">&#40;</span><span class="nu0">11</span><span
+class="br0">&#41;</span> <span class="kw1">NOT</span> <span
+class="kw1">NULL</span><span class="sy0">,</span>
+  <span
+class="st0">`is_completed`</span> tinyint<span class="br0">&#40;</span><span
+class="nu0">1</span><span class="br0">&#41;</span> <span
+class="kw1">NOT</span> <span class="kw1">NULL</span><span
+class="sy0">,</span>
+  <span class="st0">`completed_at`</span> int<span
+class="br0">&#40;</span><span class="nu0">11</span><span
+class="br0">&#41;</span> <span class="kw1">DEFAULT</span> <span
+class="kw1">NULL</span><span class="sy0">,</span>
+  <span
+class="st0">`owner_id`</span> int<span class="br0">&#40;</span><span
+class="nu0">11</span><span class="br0">&#41;</span> <span
+class="kw1">NOT</span> <span class="kw1">NULL</span><span
+class="sy0">,</span>
+  <span class="kw1">PRIMARY</span> <span
+class="kw1">KEY</span>  <span class="br0">&#40;</span><span
+class="st0">`task_id`</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+  <span class="kw1">KEY</span> <span
+class="st0">`owner_id`</span> <span class="br0">&#40;</span><span
+class="st0">`owner_id`</span><span class="br0">&#41;</span>
+<span
+class="br0">&#41;</span>;
+&nbsp;
+&nbsp;
+<span class="kw1">CREATE</span> <span
+class="kw1">TABLE</span> <span class="st0">`users`</span> <span
+class="br0">&#40;</span>
+  <span class="st0">`user_id`</span> int<span
+class="br0">&#40;</span><span class="nu0">11</span><span
+class="br0">&#41;</span> <span class="kw1">NOT</span> <span
+class="kw1">NULL</span> <span class="kw1">AUTO_INCREMENT</span><span
+class="sy0">,</span>
+  <span class="st0">`username`</span> varchar<span
+class="br0">&#40;</span><span class="nu0">20</span><span
+class="br0">&#41;</span> <span class="kw1">NOT</span> <span
+class="kw1">NULL</span><span class="sy0">,</span>
+  <span
+class="st0">`password`</span> varchar<span class="br0">&#40;</span><span
+class="nu0">80</span><span class="br0">&#41;</span> <span
+class="kw1">NOT</span> <span class="kw1">NULL</span><span
+class="sy0">,</span>
+  <span class="kw1">PRIMARY</span> <span
+class="kw1">KEY</span>  <span class="br0">&#40;</span><span
+class="st0">`user_id`</span><span class="br0">&#41;</span><span
+class="sy0">,</span>
+  <span class="kw1">UNIQUE</span> <span
+class="kw1">KEY</span> <span class="st0">`username`</span> <span
+class="br0">&#40;</span><span class="st0">`username`</span><span
+class="br0">&#41;</span>
+<span class="br0">&#41;</span>;
+&nbsp;
+&nbsp;
+<span
+class="kw1">ALTER</span> <span class="kw1">TABLE</span> <span
+class="st0">`tasks`</span> <span class="kw1">ADD</span> <span
+class="kw1">FOREIGN</span> <span class="kw1">KEY</span> <span
+class="br0">&#40;</span><span class="st0">`owner_id`</span><span
+class="br0">&#41;</span> <span class="kw1">REFERENCES</span> <span
+class="st0">`users`</span> <span class="br0">&#40;</span>
+    <span
+class="st0">`user_id`</span>
+<span class="br0">&#41;</span> <span
+class="kw1">ON</span> <span class="kw1">DELETE</span> CASCADE;</pre>
+
+<p>在 phpMyAdmin 或者其他工具在数据库中执行上述 DDL
+语句创建出需要的数据表后，我们就可以通过 WebSetup
+来创建模型了。</p>
+
+<p>分别创建好 Task 和 User 模型后，todo\app\model
+目录中就可以看到 task.php 和 user.php
+两个文件。虽然自动生成的模型只能算半成品，但基本功能已经可以使用了，我们将在后续开发中不断完善这些模型。</p>
+
+<p>$Id: thinking-creating-models.texy 2295 2009-03-10 07:48:18Z dualface $</p>
+
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-thinking-analysis.html">需求分析</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-thinking.html">编写代码之前的思考</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-users.html">实现用户功能</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

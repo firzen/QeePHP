@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 应用开发权威指南</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 应用开发权威指南</a>
+      &raquo;
+      <a href="node-form.html">表单控件</a>
+      &raquo;
+      动态元素    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+    
+<h1>动态元素</h1>
+
+<p>很多时候，表单中我们需要提供一些动态的值，这些值无法在配置文件指定。例如发表文章表单中需要提供一个下拉列表框来选择文章所属的分类。</p>
+
+<p>要完成类似的需求，可以在表单对象的构造函数中完成：</p>
+
+<pre class="php code"><span class="kw2">class</span> Form_Article <span
+class="kw2">extends</span> QForm
+<span class="br0">&#123;</span>
+    <span
+class="co4">/**
+     * 构造函数
+     */</span>
+    <span
+class="kw2">function</span> __construct<span class="br0">&#40;</span><span
+class="re0">$action</span><span class="br0">&#41;</span>
+    <span
+class="br0">&#123;</span>
+        <span
+class="co1">// 调用父类的构造函数</span>
+        parent<span
+class="sy0">::</span>__construct<span class="br0">&#40;</span><span
+class="st_h">'form_article'</span><span class="sy0">,</span> <span
+class="re0">$action</span><span class="sy0">,</span> <span
+class="kw2">self</span><span class="sy0">::</span><span
+class="me2">POST</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+        <span
+class="co1">// 从配置文件载入表单</span>
+        <span
+class="re0">$config</span> <span class="sy0">=</span> Helper_YAML<span
+class="sy0">::</span><span class="me2">loadCached</span><span
+class="br0">&#40;</span><span class="kw3">dirname</span><span
+class="br0">&#40;</span><span class="kw2">__FILE__</span><span
+class="br0">&#41;</span> <span class="sy0">.</span> <span
+class="st_h">'/article_form.yaml'</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+        <span class="re0">$this</span><span
+class="sy0">-&gt;</span><span class="me1">loadFromConfig</span><span
+class="br0">&#40;</span><span class="re0">$config</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span
+class="co1">// 为 category_id 元素设置可用的值，该元素的 _ui 是 dropdownlist</span>
+        <span
+class="re0">$this</span><span class="br0">&#91;</span><span
+class="st_h">'category_id'</span><span class="br0">&#93;</span><span
+class="sy0">-&gt;</span><span class="me1">items</span> <span
+class="sy0">=</span> ArticleCategory<span class="sy0">::</span><span
+class="me2">find</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span>
+            <span class="sy0">-&gt;</span><span
+class="me1">order</span><span class="br0">&#40;</span><span
+class="st_h">'name ASC'</span><span class="br0">&#41;</span>
+            <span
+class="sy0">-&gt;</span><span class="me1">getAll</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span>
+            <span
+class="sy0">-&gt;</span><span class="me1">toHashMap</span><span
+class="br0">&#40;</span><span class="st_h">'category_id'</span><span
+class="sy0">,</span> <span class="st_h">'name'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+    <span
+class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>构造函数中查询了所有的文章分类，然后转换为以分类ID为键名，分类名称为键值的名值对（也就是
+HashMap），并赋值给 category_id 元素的 items
+属性。这样一来，在页面中显示时，category_id
+代表的下拉列表框将能够显示出所有的文章分类供用户选择。</p>
+
+<p>利用类似的方法，我们可以为各种表单元素动态指定属性值，而不用在配置文件中提供。</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+$Id: form-dynamic.texy 2009-03-10 07:48:18Z Tim13 $
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-form-states.html">不同状态的表单</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-form.html">表单控件</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-form-grouping.html">群组</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

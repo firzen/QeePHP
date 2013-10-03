@@ -1,0 +1,396 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 快速入门</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 快速入门</a>
+      &raquo;
+      <a href="node-users.html">实现用户功能</a>
+      &raquo;
+      用户登录和注销    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+    
+<h1>用户登录和注销</h1>
+
+<p>通过前面实现用户注册功能，我们了解了如何完善模型及创建表单。这一个小节我们来实现用户的登录和注销功能。</p>
+
+<h2>模型行为方法</h2>
+
+<table>
+	<thead>
+		<tr>
+			<th>方法名</th>
+
+			<th>用途</th>
+
+			<th>类型</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<th>validateLogin()</th>
+
+			<td>验证用户登录并返回用户对象</td>
+
+			<td>类方法</td>
+		</tr>
+
+		<tr>
+			<th>checkPassword()</th>
+
+			<td>检查指定的密码是否与当前用户的密码相符</td>
+
+			<td>实例方法</td>
+		</tr>
+
+		<tr>
+			<th>changePassword()</th>
+
+			<td>修改当前用户的密码</td>
+
+			<td>实例方法</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><strong>类方法</strong>是指调用该方法不需要构造模型对象实例，而<strong>实例方法</strong>则只能通过模型对象实例来调用。</p>
+
+<p>在User模型加入下面代码：</p>
+
+<pre class="php code"><span
+class="co4">/**
+  * 验证用户名密码是否正确
+  * @param string $username
+  * @param string $password
+  * @return User
+  */</span>
+ <span
+class="kw3">static</span> <span class="kw2">function</span> validateLogin<span
+class="br0">&#40;</span><span class="re0">$username</span><span
+class="sy0">,</span><span class="re0">$password</span><span
+class="br0">&#41;</span><span class="br0">&#123;</span>
+     <span
+class="re0">$user</span><span class="sy0">=</span><span
+class="kw2">self</span><span class="sy0">::</span><span
+class="me2">find</span><span class="br0">&#40;</span><span
+class="st_h">'username =?'</span><span class="sy0">,</span><span
+class="re0">$username</span> <span class="br0">&#41;</span><span
+class="sy0">-&gt;</span><span class="me1">getOne</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+     <span class="kw1">if</span> <span
+class="br0">&#40;</span><span class="re0">$user</span><span
+class="sy0">-&gt;</span><span class="me1">isNewRecord</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span> <span class="br0">&#123;</span>
+             <span
+class="kw1">return</span> <span class="kw2">false</span><span
+class="sy0">;</span>
+     <span class="br0">&#125;</span>
+     <span
+class="kw1">if</span> <span class="br0">&#40;</span><span
+class="sy0">!</span><span class="re0">$user</span><span
+class="sy0">-&gt;</span><span class="me1">checkPassword</span><span
+class="br0">&#40;</span><span class="re0">$password</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="br0">&#123;</span>
+             <span class="kw1">return</span> <span
+class="kw2">false</span><span class="sy0">;</span>
+     <span
+class="br0">&#125;</span>
+     <span class="kw1">return</span> <span
+class="re0">$user</span><span class="sy0">;</span>
+ <span
+class="br0">&#125;</span>
+ <span
+class="co4">/**
+  * 检查指定的密码是否与当前用户的密码相符
+  * @param string $password
+  * @return boolean
+  */</span>
+ <span
+class="kw2">function</span> checkPassword<span class="br0">&#40;</span><span
+class="re0">$password</span><span class="br0">&#41;</span><span
+class="br0">&#123;</span>
+     <span class="kw1">return</span> <span
+class="kw2">self</span><span class="sy0">::</span><span
+class="me2">passwordEncode</span><span class="br0">&#40;</span><span
+class="re0">$password</span><span class="br0">&#41;</span> <span
+class="sy0">==</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span><span class="me1">password</span><span
+class="sy0">;</span>
+ <span class="br0">&#125;</span>
+ <span
+class="co4">/**
+  * 修改当前用户的密码
+  * @param string $password
+  */</span>
+ <span
+class="kw2">function</span> changePassword<span class="br0">&#40;</span><span
+class="re0">$password</span><span class="br0">&#41;</span><span
+class="br0">&#123;</span>
+     <span class="re0">$this</span><span
+class="sy0">-&gt;</span><span class="me1">password</span><span
+class="sy0">=</span><span class="re0">$password</span><span
+class="sy0">;</span>
+     <span class="re0">$this</span><span
+class="sy0">-&gt;</span><span class="me1">save</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+ <span class="br0">&#125;</span></pre>
+
+<p>调用一个实例方法则是：</p>
+
+<pre class="php code"><span class="re0">$user</span><span
+class="sy0">-&gt;</span><span class="me1">changePassword</span><span
+class="br0">&#40;</span><span class="re0">$newPass</span><span
+class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>调用一个类方法。</p>
+
+<pre class="php code"><span class="re0">$user</span> <span
+class="sy0">=</span> User<span class="sy0">::</span><span
+class="me2">validateLogin</span><span class="br0">&#40;</span><span
+class="re0">$username</span><span class="sy0">,</span> <span
+class="re0">$password</span><span class="br0">&#41;</span><span
+class="sy0">;</span></pre>
+
+<p>validateLogin()
+方法检查用户名和密码的正确性，如果检查通过就返回有效的用户对象，否则返回false。</p>
+
+<h2>实现登录</h2>
+
+<p>修改 users 控制器，加入下列代码：</p>
+
+<pre class="php code"><span class="kw2">function</span> actionLogin<span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="br0">&#123;</span>
+        <span class="kw1">if</span> <span
+class="br0">&#40;</span>request_is_post<span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="br0">&#123;</span>
+                <span class="re0">$user</span><span
+class="sy0">=</span>User<span class="sy0">::</span><span
+class="me2">validateLogin</span><span class="br0">&#40;</span>request<span
+class="br0">&#40;</span><span class="st_h">'username'</span><span
+class="br0">&#41;</span><span class="sy0">,</span> request<span
+class="br0">&#40;</span><span class="st_h">'password'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+                <span class="kw1">if</span> <span
+class="br0">&#40;</span><span class="re0">$user</span> <span
+class="sy0">===</span><span class="kw2">false</span><span
+class="br0">&#41;</span><span
+class="br0">&#123;</span>
+                        <span
+class="kw3">exit</span><span class="br0">&#40;</span><span
+class="st_h">'用户名或密码错误'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+                <span
+class="br0">&#125;</span>
+                <span
+class="co1">// 将登录用户的信息存入 SESSION，以便应用程序记住用户的登录状态</span>
+                <span
+class="re0">$this</span><span class="sy0">-&gt;</span>_app<span
+class="sy0">-&gt;</span><span class="me1">changeCurrentUser</span><span
+class="br0">&#40;</span><span class="re0">$user</span><span
+class="sy0">-&gt;</span><span class="me1">toArray</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">,</span> <span class="st_h">'MEMBER'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+                <span
+class="co1">// 登录成功后，重定向浏览器</span>
+                <span
+class="kw1">return</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_redirect<span class="br0">&#40;</span>url<span
+class="br0">&#40;</span><span class="st_h">'default/index'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+        <span class="br0">&#125;</span>
+<span
+class="br0">&#125;</span></pre>
+
+<p>这段代码中需要说明一下。</p>
+
+<h4>记住用户的登录状态</h4>
+
+<p>登录成功，我们必须让应用程序记住用户的登录状态，不然用户一刷新页面，又变成未登录了。在
+QeePHP
+自动生成的应用程序对象MyAPP中，已经提供了一系列方法来完成这项工作：</p>
+
+<table>
+	<thead>
+		<tr>
+			<th>方法名</th>
+
+			<th>用途</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<th>changeCurrentUser</th>
+
+			<td>将用户数据保存到 session 中</td>
+		</tr>
+
+		<tr>
+			<th>currentUser()</th>
+
+			<td>获取保存在 session 中的用户数据</td>
+		</tr>
+
+		<tr>
+			<th>currentUserRoles()</th>
+
+			<td>获取 session 中用户信息包含的角色</td>
+		</tr>
+
+		<tr>
+			<th>cleanCurrentUser()</th>
+
+			<td>从 session 中清除用户数据</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>所以要让应用程序记住用户的登录状态，调用
+changeCurrentUser() 方法就可以了。</p>
+
+<h4>添加登录需要的视图</h4>
+
+<p>我们还没有添加登录页面需要的视图，不过由于登录和注册的页面内容完全一样，所以我们修改
+_code/view/users/login.php：</p>
+
+<pre class="php code"><span class="kw2">&lt;?php</span> <span
+class="co1">//布局设定 ，参考 view/_layouts下面的文件 ?&gt;</span>
+<span
+class="kw2">&lt;?PHP</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_extends<span class="br0">&#40;</span><span
+class="st_h">'_layouts/default_layout'</span><span class="br0">&#41;</span><span
+class="sy0">;</span> <span class="kw2">?&gt;</span>
+&nbsp;
+<span
+class="kw2">&lt;?PHP</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_block<span class="br0">&#40;</span><span
+class="st_h">'contents'</span><span class="br0">&#41;</span><span
+class="sy0">;</span>?<span
+class="sy0">&gt;</span>
+&lt;form name=&quot;form_user&quot; id=&quot;form_user&quot;
+    action=&quot;<span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> url<span
+class="br0">&#40;</span><span class="st_h">'users/login'</span><span
+class="br0">&#41;</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span>&quot; method=&quot;post&quot;&gt;
+&nbsp;
+  &lt;fieldset&gt;
+    &lt;p&gt;
+      &lt;label for=&quot;username&quot;&gt;用户名&lt;/label&gt;
+      &lt;input type=&quot;text&quot; name=&quot;username&quot; id=&quot;username&quot; /&gt;
+    &lt;/p&gt;
+&nbsp;
+    &lt;p&gt;
+      &lt;label for=&quot;password&quot;&gt;密码&lt;/label&gt;
+      &lt;input type=&quot;password&quot; name=&quot;password&quot; id=&quot;password&quot; /&gt;
+    &lt;/p&gt;
+&nbsp;
+    &lt;p&gt;
+      &lt;input type=&quot;submit&quot; name=&quot;Submit&quot; value=&quot;提交&quot; /&gt;
+    &lt;/p&gt;
+&nbsp;
+  &lt;/fieldset&gt;
+&nbsp;
+&lt;/form&gt;
+<span
+class="kw2">&lt;?PHP</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_endblock<span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>?<span
+class="sy0">&gt;</span></pre>
+
+<p>这行代码告诉 QeePHP 使用 register
+动作的视图。修改好后，访问 <a
+href="http://localhost/todo/public/index.php?controller=users&amp;action=login">http://localhost/todo/public/index.php?controller=users&action=login</a>
+测试一下登录功能吧。</p>
+
+<div class="figure"><img src="images/users-login-01.png" alt="" />
+	<p>登录验证</p>
+</div>
+
+<h2>实现注销</h2>
+
+<p>既然有登录，就有注销，在 users 控制器新增方法
+actionLogout()：</p>
+
+<pre class="php code"><span class="kw2">function</span> actionLogout<span
+class="br0">&#40;</span><span class="br0">&#41;</span>
+<span
+class="br0">&#123;</span>
+    <span
+class="co1">// 清除当前用户的登录信息</span>
+    <span
+class="re0">$this</span><span class="sy0">-&gt;</span>_app<span
+class="sy0">-&gt;</span><span class="me1">cleanCurrentUser</span><span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+    <span
+class="co1">// 重定向浏览器</span>
+    <span
+class="kw1">return</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_redirect<span class="br0">&#40;</span>url<span
+class="br0">&#40;</span><span class="st_h">'default/index'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+$Id: users-login.texy 2013-08-14 02:24:25Z Tim13 $
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-users-register-code.html">用户注册（功能实现）</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-users.html">实现用户功能</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-users-change-passwd.html">修改密码</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

@@ -1,0 +1,118 @@
+=== 修改密码 ===
+
+通常，用户登录后修改自己的密码时都要求输入正在使用的密码。因此这次我们不能重用刚刚的 Form_UserLogin 表单了，需要单独建立一个。
+
+## 建立表单 ##
+
+创建文件 app/form/changepasswd.php，内容为：
+
+/---code php
+class Form_ChangePasswd extends QForm
+{
+    function __construct($action)
+    {
+        // 调用父类的构造函数
+        parent::__construct('form_changepasswd', $action);
+
+        // 从配置文件载入表单
+        $filename = rtrim(dirname(__FILE__), '/\\') . DS . 'changepasswd_form.yaml';
+        $this->loadFromConfig(Helper_YAML::loadCached($filename));
+
+        // 三个密码字段按照 User 模型的 password 属性来验证
+        $this['old_password']->addValidations(User::meta(), 'password');
+        $this['new_password']->addValidations(User::meta(), 'password');
+        // 但 new_password2 字段还有一个额外的验证规则，
+        // 通过 Form_ChangePasswd 对象的 checkNewPassword() 方法进行验证
+        $this['new_password2']->addValidations(User::meta(), 'password')
+                              ->addValidations(array($this, 'checkNewPassword'), '两次输入的密码必须一致');
+    }
+
+    /**
+     * 检查两次输入的新密码是否一致
+     */
+    function checkNewPassword($new_password)
+    {
+        return ($this['new_password2']->value == $this['new_password']->value);
+    }
+
+}
+\---
+
+这次的表单对象复杂了许多。除了要为三个密码输入字段指定验证规则外，还特别增加一个额外的验证规则。checkNewPassword() 这个方法被用于对 new_password2 字段的验证。这样可以检查两次输入的新密码是否一致。
+
+对于复杂表单的自定义验证规则，都可以采用上述方式实现。
+
+创建修改密码表单的配置文件 app/form/changepasswd_form.yaml：
+
+/---code yaml
+# ~form 开头的内容用于指定表单属性
+~form:
+  "_subject": "修改密码"
+
+old_password:
+  _ui: password
+  _label: "现在使用的密码"
+
+new_password:
+  _ui: password
+  _label: "新密码"
+
+new_password2:
+  _ui: password
+  _label: "再次输入新密码"
+\---
+
+
+## 添加控制器动作 ##
+
+修改 users 控制器，加入下列代码：
+
+/---code php
+function actionChangePasswd()
+{
+    $form = new Form_ChangePasswd(url('users/changepasswd'));
+
+    if ($this->_context->isPOST() && $form->validate($_POST))
+    {
+        try
+        {
+            // 取得当前用户的信息
+            $current_user = $this->_app->currentUser();
+            // 修改密码
+            User::meta()->changePassword(
+                $current_user['username'], 
+                $form['new_password']->value, 
+                $form['old_password']->value
+            );
+            // 重定向浏览器
+            return $this->_redirectMessage(
+                '修改密码成功', 
+                '您的登录密码已经成功修改，下次登录请使用新密码。',
+                url('default/index'));
+        }
+        catch (AclUser_WrongPasswordException $ex)
+        {
+            $form['old_password']->invalidate('您输入的现用密码不正确');
+        }
+    }
+
+    $this->_view['form'] = $form;
+    $this->_viewname = 'register';
+}
+\---
+
+这里我们继续沿用了 register 动作的视图 :)
+
+actionChangePasswd() 中，我们使用 acluser 的 changePassword() 方法来修改密码。如果现有密码出错，将抛出异常。只要捕获异常就可以在界面提示用户输入出错了。
+
+[* users-changepasswd-01.png *] *** 输入了错误的密码
+
+注意这次在重定向浏览器时调用的是 _redirectMessage() 方法。这个方法会通过 redirect_message 视图来显示提示信息，能够让用户注意到操作的结果。如果有必要，可以将注册、登录等方法的重定向操作也改为使用带提示信息的重定向。
+
+[* users-changepasswd-02.png *] *** 成功修改密码后的提示信息
+
+现在用户方面的功能就基本上实现完了。下一节开始，我们将实现任务的管理功能。
+
+
+$Id: users-change-passwd.texy 2295 2009-03-10 07:48:18Z dualface $
+

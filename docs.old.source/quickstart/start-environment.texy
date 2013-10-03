@@ -1,0 +1,67 @@
+=== 准备开发环境 ===
+
+本教程假定读者使用 Windows 环境，并且具备 PHP5 和 MySQL 的基本知识。如果要运行本教程的代码，需要有能够正常运行的 Apache2、PHP5 和 MySQL5 环境。
+
+为了减少不同运行环境带来的干扰，强烈建议读者使用 QeePHP 官方推出的 APM Express 套件。该套件由 Apache2、PHP5 以及 MySQL5 组成，以及友好的用户管理界面。而且该套件是 100% 的绿色软件，不写入任何文件到系统文件夹中，也不修改注册表内容。
+
+
+## 使用 APM Express ##
+
+从 http://qeephp.com/projects/apmxe 下载最新的 APM Express 套件。然后修改配置文件 /etc/httpd.conf.template：
+
+/---code ini
+<VirtualHost *>
+    DocumentRoot "%APMXE%/htdocs"
+    ServerName 127.0.0.1
+
+    <Directory "d:/www">
+        Options Indexes FollowSymLinks
+        IndexOptions FancyIndexing FoldersFirst NameWidth=* VersionSort XHTML
+
+        AllowOverride All
+
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
+\---
+
+改为;
+
+/---code ini
+<VirtualHost *>
+    DocumentRoot "d:/www"
+    ServerName 127.0.0.1
+
+    <Directory "d:/www">
+        Options Indexes FollowSymLinks
+        IndexOptions FancyIndexing FoldersFirst NameWidth=* VersionSort XHTML
+
+        AllowOverride All
+
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
+\---
+
+> 此处假定您存放 PHP 项目的根目录是 d:\www。请根据自己的实际情况修改。
+
+修改完成后运行其中的 apmxe.exe 即可启动 APM Express。
+
+要注意的是如果计算机上已经启动了Apache 或 MySQL，必须先停止这些软件的运行后再启动 APM Express。此外，迅雷等 P2P 软件也会占用 Apache2 需要的 80 端口，因此在启动 APM Express 之前要关闭这些软件。
+
+APM Express 启动后，将在任务栏系统托盘区域增加一个小图标。通过该图标，可以控制 APM Express 内置的 Apache2、MySQL 的运行。
+
+[* start-environment-01.png *] *** APM Express 的任务栏菜单
+
+
+## 安装 QeePHP ##
+
+从 http://qeephp.com/framework 下载最新版本的 QeePHP 框架源代码，解压缩放置到可以通过浏览器访问的目录中即可。
+
+例如 http://localhost/ 对应 d:\www 目录，那么将 QeePHP 放置在 d:\www\qeephp-2.1 目录中就可以通过 http://localhost/qeephp-2.1/ 访问到 QeePHP 的文件。
+
+
+$Id: start-environment.texy 2295 2009-03-10 07:48:18Z dualface $
+

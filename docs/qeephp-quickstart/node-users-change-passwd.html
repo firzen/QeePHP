@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 快速入门</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 快速入门</a>
+      &raquo;
+      <a href="node-users.html">实现用户功能</a>
+      &raquo;
+      修改密码    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+    
+<h1>修改密码</h1>
+
+<p>通常，用户登录后修改自己的密码时都要求输入正在使用的密码。因此这次我们不能重用刚刚的
+Form_UserLogin 表单了，需要单独建立一个。</p>
+
+<h2>添加控制器动作</h2>
+
+<p>修改 users 控制器，加入下列代码：</p>
+
+<pre class="php code"><span
+class="kw2">function</span> actionChangePassword<span
+class="br0">&#40;</span><span class="br0">&#41;</span><span
+class="br0">&#123;</span>
+        <span class="kw1">if</span> <span
+class="br0">&#40;</span>request_is_post<span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="br0">&#123;</span>
+                <span class="re0">$oldpass</span><span
+class="sy0">=</span>request<span class="br0">&#40;</span><span
+class="st_h">'oldpass'</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+                <span class="re0">$newpass</span><span
+class="sy0">=</span>request<span class="br0">&#40;</span><span
+class="st_h">'newpass'</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+                <span
+class="re0">$newpass_repeat</span><span class="sy0">=</span>request<span
+class="br0">&#40;</span><span class="st_h">'newpass_repeat'</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+                <span
+class="co1">//验证</span>
+                <span class="kw1">do</span> <span
+class="br0">&#123;</span>
+                        <span
+class="re0">$errors</span><span class="sy0">=</span><span
+class="kw3">array</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+                        <span
+class="co1">//新密码</span>
+                        <span
+class="kw1">if</span> <span class="br0">&#40;</span><span
+class="kw3">strlen</span><span class="br0">&#40;</span><span
+class="re0">$newpass</span><span class="br0">&#41;</span><span
+class="sy0">&lt;</span><span class="nu0">6</span><span
+class="br0">&#41;</span><span
+class="br0">&#123;</span>
+                                <span
+class="re0">$errors</span><span class="br0">&#91;</span><span
+class="st_h">'newpass'</span><span class="br0">&#93;</span><span
+class="br0">&#91;</span><span class="br0">&#93;</span><span
+class="sy0">=</span><span
+class="st_h">'新密码长度不能小于6位'</span><span
+class="sy0">;</span>
+                        <span
+class="br0">&#125;</span>
+                        <span
+class="kw1">if</span> <span class="br0">&#40;</span><span
+class="re0">$newpass</span><span class="sy0">!=</span><span
+class="re0">$newpass_repeat</span><span class="br0">&#41;</span><span
+class="br0">&#123;</span>
+                                <span
+class="re0">$errors</span><span class="br0">&#91;</span><span
+class="st_h">'newpass'</span><span class="br0">&#93;</span><span
+class="br0">&#91;</span><span class="br0">&#93;</span><span
+class="sy0">=</span><span
+class="st_h">'新密码两次输入不一致'</span><span
+class="sy0">;</span>
+                        <span
+class="br0">&#125;</span>
+                        <span
+class="co1">//旧密码</span>
+                        <span
+class="co1">//1.获得登录用户</span>
+                        <span
+class="re0">$user</span><span class="sy0">=</span>User<span
+class="sy0">::</span><span class="me2">validateLogin</span><span
+class="br0">&#40;</span><span class="re0">$this</span><span
+class="sy0">-&gt;</span>_login_user<span class="br0">&#91;</span><span
+class="st_h">'username'</span><span class="br0">&#93;</span><span
+class="sy0">,</span> <span class="re0">$oldpass</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+                        <span
+class="kw1">if</span> <span class="br0">&#40;</span><span
+class="re0">$user</span><span class="sy0">===</span><span
+class="kw2">false</span><span class="br0">&#41;</span><span
+class="br0">&#123;</span>
+                                <span
+class="re0">$errors</span><span class="br0">&#91;</span><span
+class="st_h">'oldpass'</span><span class="br0">&#93;</span><span
+class="br0">&#91;</span><span class="br0">&#93;</span><span
+class="sy0">=</span><span class="st_h">'旧密码输入不正确'</span><span
+class="sy0">;</span>
+                        <span
+class="br0">&#125;</span>
+                        <span
+class="kw1">if</span> <span class="br0">&#40;</span><span
+class="kw3">count</span><span class="br0">&#40;</span><span
+class="re0">$errors</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span
+class="br0">&#123;</span>
+                                <span
+class="re0">$this</span><span class="sy0">-&gt;</span>_view<span
+class="br0">&#91;</span><span class="st_h">'errors'</span><span
+class="br0">&#93;</span><span class="sy0">=</span><span
+class="re0">$errors</span><span
+class="sy0">;</span>
+                                <span
+class="kw1">break</span><span class="sy0">;</span>
+                        <span
+class="br0">&#125;</span>
+                        <span
+class="co1">//保存新密码</span>
+                        <span
+class="re0">$user</span><span class="sy0">-&gt;</span><span
+class="me1">changePassword</span><span class="br0">&#40;</span><span
+class="re0">$newpass</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+&nbsp;
+                        <span
+class="co1">//跳转到首页</span>
+                        <span
+class="kw1">return</span> <span class="re0">$this</span><span
+class="sy0">-&gt;</span>_redirectMessage<span class="br0">&#40;</span><span
+class="st_h">'恭喜您'</span><span class="sy0">,</span> <span
+class="st_h">'修改密码成功'</span><span class="sy0">,</span> url<span
+class="br0">&#40;</span><span class="st_h">'default/index'</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+                <span class="br0">&#125;</span><span
+class="kw1">while</span> <span class="br0">&#40;</span><span
+class="nu0">0</span><span class="br0">&#41;</span><span
+class="sy0">;</span>
+        <span class="br0">&#125;</span>
+<span
+class="br0">&#125;</span></pre>
+
+<h2>建立表单</h2>
+
+<p>创建View文件 _code/view/changepasswd.php，内容为：</p>
+
+<pre class="php
+code">&lt;div&gt;
+&lt;form name=&quot;form_user&quot; id=&quot;form_user&quot; action=&quot;<span
+class="kw2">&lt;?php</span> <span class="kw3">echo</span> url<span
+class="br0">&#40;</span><span class="st_h">'users/changePassword'</span><span
+class="br0">&#41;</span><span class="sy0">;</span> <span
+class="kw2">?&gt;</span>&quot; method=&quot;post&quot;&gt;
+&nbsp;
+  &lt;fieldset&gt;
+    &lt;p&gt;
+      &lt;label for=&quot;oldpass&quot;&gt;旧密码&lt;/label&gt;
+      &lt;input type=&quot;password&quot; name=&quot;oldpass&quot; id=&quot;oldpass&quot; /&gt;
+      <span
+class="kw2">&lt;?php</span> <span class="kw1">if</span> <span
+class="br0">&#40;</span><span class="sy0">@</span><span
+class="kw3">count</span><span class="br0">&#40;</span><span
+class="re0">$errors</span><span class="br0">&#91;</span><span
+class="st_h">'oldpass'</span><span class="br0">&#93;</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="br0">&#123;</span><span class="kw3">echo</span> <span
+class="kw3">implode</span><span class="br0">&#40;</span><span
+class="st_h">','</span><span class="sy0">,</span> <span
+class="re0">$errors</span><span class="br0">&#91;</span><span
+class="st_h">'oldpass'</span><span class="br0">&#93;</span><span
+class="br0">&#41;</span><span class="sy0">;</span><span
+class="br0">&#125;</span><span
+class="kw2">?&gt;</span>
+    &lt;/p&gt;
+&nbsp;
+    &lt;p&gt;
+      &lt;label for=&quot;newpass&quot;&gt;新密码&lt;/label&gt;
+      &lt;input type=&quot;password&quot; name=&quot;newpass&quot; id=&quot;newpass&quot; /&gt;
+      <span
+class="kw2">&lt;?php</span> <span class="kw1">if</span> <span
+class="br0">&#40;</span><span class="sy0">@</span><span
+class="kw3">count</span><span class="br0">&#40;</span><span
+class="re0">$errors</span><span class="br0">&#91;</span><span
+class="st_h">'newpass'</span><span class="br0">&#93;</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="br0">&#123;</span><span class="kw3">echo</span> <span
+class="kw3">implode</span><span class="br0">&#40;</span><span
+class="st_h">','</span><span class="sy0">,</span> <span
+class="re0">$errors</span><span class="br0">&#91;</span><span
+class="st_h">'newpass'</span><span class="br0">&#93;</span><span
+class="br0">&#41;</span><span class="sy0">;</span><span
+class="br0">&#125;</span><span
+class="kw2">?&gt;</span>
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;label for=&quot;newpass_repeat&quot;&gt;再次输入新密码&lt;/label&gt;
+      &lt;input type=&quot;password&quot; name=&quot;newpass_repeat&quot; id=&quot;newpass_repeat&quot; /&gt;
+      <span
+class="kw2">&lt;?php</span> <span class="kw1">if</span> <span
+class="br0">&#40;</span><span class="sy0">@</span><span
+class="kw3">count</span><span class="br0">&#40;</span><span
+class="re0">$errors</span><span class="br0">&#91;</span><span
+class="st_h">'newpass_repeat'</span><span class="br0">&#93;</span><span
+class="br0">&#41;</span><span class="br0">&#41;</span><span
+class="br0">&#123;</span><span class="kw3">echo</span> <span
+class="kw3">implode</span><span class="br0">&#40;</span><span
+class="st_h">','</span><span class="sy0">,</span> <span
+class="re0">$errors</span><span class="br0">&#91;</span><span
+class="st_h">'newpass_repeat'</span><span class="br0">&#93;</span><span
+class="br0">&#41;</span><span class="sy0">;</span><span
+class="br0">&#125;</span><span
+class="kw2">?&gt;</span>
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;input type=&quot;submit&quot; name=&quot;Submit&quot; value=&quot;提交&quot; /&gt;
+    &lt;/p&gt;
+    &lt;/fieldset&gt;
+    &lt;/form&gt;
+&lt;/div&gt;</pre>
+
+<p>这次的表单对象复杂了许多。除了要为三个密码输入字段指定验</p>
+
+<p>actionChangePasswd() 中，我们使用 changePassword()
+方法来修改密码。</p>
+
+<div class="figure"><img src="images/users-changepasswd-01.png" alt="" />
+	<p>输入了错误的密码</p>
+</div>
+
+<p>注意这次在重定向浏览器时调用的是 _redirectMessage()
+方法。这个方法会通过 redirect_message
+视图来显示提示信息，能够让用户注意到操作的结果。如果有必要，可以将注册、登录等方法的重定向操作也改为使用带提示信息的重定向。</p>
+
+<div class="figure"><img src="images/users-changepasswd-02.png" alt="" />
+	<p>成功修改密码后的提示信息</p>
+</div>
+
+<p>现在用户方面的功能就基本上实现完了。下一节开始，我们将实现任务的管理功能。</p>
+$Id: users-change-passwd.texy 2013-08-14 02:24:25Z Tim13 $
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-users-login.html">用户登录和注销</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-users.html">实现用户功能</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-tasks.html">实现任务管理</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

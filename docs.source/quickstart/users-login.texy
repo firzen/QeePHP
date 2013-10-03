@@ -1,0 +1,161 @@
+=== 用户登录和注销 ===
+
+通过前面实现用户注册功能，我们了解了如何完善模型及创建表单。这一个小节我们来实现用户的登录和注销功能。
+
+##模型行为方法##
+
+
+|--------------------------------------------------------------------------------
+| 方法名                | 用途                                          | 类型
+|--------------------------------------------------------------------------------
+|* validateLogin()      | 验证用户登录并返回用户对象                    | 类方法
+|* checkPassword()      | 检查指定的密码是否与当前用户的密码相符        | 实例方法
+|* changePassword()     | 修改当前用户的密码                            | 实例方法
+
+**类方法**是指调用该方法不需要构造模型对象实例，而**实例方法**则只能通过模型对象实例来调用。
+
+在User模型加入下面代码：
+
+/---code php
+   /**
+     * 验证用户名密码是否正确
+     * @param string $username
+     * @param string $password
+     * @return User
+     */
+    static function validateLogin($username,$password){
+    	$user=self::find('username =?',$username )->getOne();
+    	if ($user->isNewRecord()) {
+    		return false;
+    	}
+    	if (!$user->checkPassword($password)){
+    		return false;
+    	}
+    	return $user;
+    }
+    /**
+     * 检查指定的密码是否与当前用户的密码相符
+     * @param string $password
+     * @return boolean
+     */
+    function checkPassword($password){
+    	return self::passwordEncode($password) == $this->password;
+    }
+    /**
+     * 修改当前用户的密码
+     * @param string $password
+     */
+    function changePassword($password){
+    	$this->password=$password;
+    	$this->save();
+    }
+\---
+
+调用一个实例方法则是：
+
+/---code php
+$user->changePassword($newPass);
+\---
+
+调用一个类方法。
+
+/---code php
+$user = User::validateLogin($username, $password);
+\---
+
+validateLogin() 方法检查用户名和密码的正确性，如果检查通过就返回有效的用户对象，否则返回false。
+
+## 实现登录 ##
+
+修改 users 控制器，加入下列代码：
+
+/---code php
+function actionLogin(){
+	if (request_is_post()){
+		$user=User::validateLogin(request('username'), request('password'));
+		if ($user ===false){
+			exit('用户名或密码错误');
+		}
+		// 将登录用户的信息存入 SESSION，以便应用程序记住用户的登录状态
+		$this->_app->changeCurrentUser($user->toArray(), 'MEMBER');
+		// 登录成功后，重定向浏览器
+		return $this->_redirect(url('default/index'));
+	}
+}
+\---
+
+这段代码中需要说明一下。
+
+
+
+<h4>记住用户的登录状态</h4>
+
+登录成功，我们必须让应用程序记住用户的登录状态，不然用户一刷新页面，又变成未登录了。在 QeePHP 自动生成的应用程序对象MyAPP中，已经提供了一系列方法来完成这项工作：
+
+|-------------------------------------------------------------
+| 方法名                | 用途
+|-------------------------------------------------------------
+|* changeCurrentUser    | 将用户数据保存到 session 中
+|* currentUser()        | 获取保存在 session 中的用户数据
+|* currentUserRoles()   | 获取 session 中用户信息包含的角色
+|* cleanCurrentUser()   | 从 session 中清除用户数据
+
+所以要让应用程序记住用户的登录状态，调用 changeCurrentUser() 方法就可以了。
+
+
+<h4>添加登录需要的视图</h4>
+
+我们还没有添加登录页面需要的视图，不过由于登录和注册的页面内容完全一样，所以我们修改 _code/view/users/login.php：
+
+/---code php
+<?php //布局设定 ，参考 view/_layouts下面的文件 ?>
+<?PHP $this->_extends('_layouts/default_layout'); ?>
+
+<?PHP $this->_block('contents');?>
+<form name="form_user" id="form_user" 
+    action="<?php echo url('users/login'); ?>" method="post">
+
+  <fieldset>
+    <p>
+      <label for="username">用户名</label>
+      <input type="text" name="username" id="username" />
+    </p>
+
+    <p>
+      <label for="password">密码</label>
+      <input type="password" name="password" id="password" />
+    </p>
+
+    <p>
+      <input type="submit" name="Submit" value="提交" />
+    </p>
+
+  </fieldset>
+
+</form>
+<?PHP $this->_endblock();?>
+
+
+\---
+
+这行代码告诉 QeePHP 使用 register 动作的视图。修改好后，访问 http://localhost/todo/public/index.php?controller=users&action=login 测试一下登录功能吧。
+
+[* users-login-01.png *] *** 登录验证
+
+
+## 实现注销 ##
+
+既然有登录，就有注销，在 users 控制器新增方法 actionLogout()：
+
+/---code php
+function actionLogout()
+{
+    // 清除当前用户的登录信息
+    $this->_app->cleanCurrentUser();
+    // 重定向浏览器
+    return $this->_redirect(url('default/index'));
+}
+\---
+
+
+

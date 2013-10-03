@@ -1,0 +1,16 @@
+
+name: "qeephp-tour01"
+subject: "QeePHP 实战教程 01：个人兴趣调查系统"
+columns: 4
+
+chapters:
+  start:
+    subject: "起步"
+    sections:
+      "intro":          "介绍"
+      "requirement":    "需求"
+      "thinking":       "需求分析"
+      "creating-app":   "创建应用程序"
+      "creating-model": "创建模型"
+  #
+

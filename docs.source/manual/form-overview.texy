@@ -1,0 +1,42 @@
+=== 自定义空间 ===
+
+在 Web 应用中，表单的使用非常多，QeePHP 自带了常用的控件，但是我们实际生产中会有不同的需求，如果这个需求是多次复用，那么我们很有必要
+
+为了提供更好的灵活性，并且简化表单的使用，使用QeePHP 的表单控件能大量的简化View层的设计。
+
+下面是我们常见的一个表单下拉代码编写方法：
+/---code php
+<?php 
+$user=array(
+	1=>'Admin',
+	13=>'Tim13',
+	);
+?>
+<select name='uid'>
+	<?php foreach ($users as $u):?>
+		<?php if ($user->uid == 13):?>
+			<option value="<?php echo $user['uid']?>" selected="selected"><?php echo $user['username']?></option>
+		<?php else:?>
+			<option value="<?php echo $user['uid']?>"><?php echo $user['username']?></option>
+		<?php endif;?>
+	<?php endforeach;?>
+</select>
+\---
+一个简单的下拉选项要写很多代码，而且看起来也很复杂。
+
+我们下面看看使用QeePHP 的 dropdownlist 控件实现上述的展示。
+/---code php
+<?php echo Q::control('dropdownlist','uid',array(
+	'items'=>array(
+		1=>'Admin',
+		13=>'Tim13',
+	),
+	'value'=>13
+))?>
+\---
+
+同样，如果将上面的 dropdownlist 改为 checkboxgroup 将会实现checkbox多选的效果，简洁又方便。
+
+> 更多QeePHP 自带的控件可以查看 library/webcontrols 目录下的相关文件
+
+$Id: form-overview.texy 2295 2009-03-10 07:48:18Z dualface $

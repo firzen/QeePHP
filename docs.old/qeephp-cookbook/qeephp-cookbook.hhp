@@ -1,0 +1,18 @@
+[OPTIONS]
+Auto Index=Yes
+Binary TOC=Yes
+Binary Index=Yes
+Compatibility=1.1 or later
+Compiled File=qeephp-cookbook.chm
+Contents File=qeephp-cookbook.hhc
+Default Window=main
+Default Topic=index.html
+Display compile progress=Yes
+Error log file=_errorlog.txt
+Full-text search=Yes
+language=0x804 chinese (prc)
+Title=QeePHP 食谱 for QeePHP 13.1
+
+[WINDOWS]
+main="QeePHP 食谱 for QeePHP 13.1 - 生成时间: 2013-08-08 04:39","qeephp-cookbook.hhc",,"index.html","index.html",,,,,0x63520,250,0x104e,[10,10,900,700],0xb0000,,,,,,0
+

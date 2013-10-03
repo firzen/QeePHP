@@ -1,0 +1,14 @@
+=== 创建应用程序 ===
+
+如果您使用的是APM Express，htdocs目录自带示例应用，直接打开 http://localhost 即可访问示例应用，并可以按照教程直接修改示例应用。
+
+如果您下载的是SVN源代码，请放置到htdocs目录并访问 app子目录。
+
+
+[* start-creating-app-03.png *] *** 新建应用的默认页面
+
+就这样，一个全新的 QeePHP 应用已经准备完成！
+
+
+
+

@@ -1,0 +1,1 @@
+php gen_book.php ../docs.source/manual ../docs chm

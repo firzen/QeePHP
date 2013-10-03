@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 应用开发权威指南</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qee13.com/app/?action=docs">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 应用开发权威指南</a>
+      &raquo;
+      <a href="node-model.html">模型与 ORM</a>
+      &raquo;
+      定义模型    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+    
+<h1>定义模型</h1>
+
+<p>模型的唯一用途就是封装业务逻辑，因此对于模型，QeePHP
+竭尽所能提供了各种支持。虽然自动生成的模型类已经包括了大部分设置，但我们还需要在这个基础上根据业务需求进行定制。</p>
+
+<p>一个模型由几个方面组成：</p>
+
+<ul>
+	<li>属性：定义模型有哪些属性、属性的类型以及属性的行为和验证规则等</li>
+
+	<li>行为：添加实现业务逻辑需要的方法，让模型逐步逼近实际的需求</li>
+
+	<li>数据：由属性和存储模型属性的数据表组成，但属性不一定要和数据表一一对应</li>
+
+	<li>关系：模型需要互相配合来实现业务需求，因此关系也是模型的一部分</li>
+</ul>
+
+<h2>__define() 方法</h2>
+
+<p>打开模型的定义文件，在 __define()
+方法中可以找到模型的详细定义。这些定义分为几个部分：</p>
+
+<ul>
+	<li>指定存储模型使用的数据表</li>
+
+	<li>属性和关联的定义，例如只读属性、虚拟属性、关联等</li>
+
+	<li>对属性的验证规则</li>
+
+	<li>安全性方面的定义</li>
+
+	<li>行为插件的定义</li>
+</ul>
+
+<p>模型的基本定制都在 __define() 方法中完成。</p>
+
+<p>__define()
+方法应该返回一个数组。这个数组描述了模型的方方面面：</p>
+
+<ul>
+	<li><strong>table_name</strong>
+		<p>指示使用什么数据表来存放这个模型的属性值。</p>
+	</li>
+
+	<li><strong>table_class</strong>
+		<p>指示使用哪一个表数据入口对象来负责对象属性值的存取工作，table_class
+		的值应该是一个类名称，例如
+		Table_Posts。如果指定了这个设置，则自动忽略 table_name
+		设置。</p>
+	</li>
+
+	<li><strong>table_config</strong>
+		<p>指示连接数据表时的设置，通常用于进行跨数据库访问或指定不同的数据表前缀。table_config
+		的值应该是一个数组，详细设置请参考表数据入口的相关文档。</p>
+	</li>
+
+	<li><strong>props</strong>
+		<p>指示模型中各个属性、关联的设置。没有在这里指定设置的数据表字段自动成为模型的普通属性。例如数据表中有
+		id、title 两个字段，而 props 中没有指定 title 属性的设置，则
+		title 字段成为该模型的 title
+		属性，并且可以读写。关于属性的设置，参考本章节后续的内容。</p>
+	</li>
+
+	<li><strong>behaviors</strong>
+		<p>指示该模型要使用的行为插件。behaviors
+		的值可以是一个包含多个插件名的数组或字符串，例如“fast_uuid,
+		serializefiled”表示使用 serializefiled和
+		fast_uuid两个行为插件。</p>
+	</li>
+
+	<li><strong>behaviors_settings</strong>
+		<p>指定每个行为插件的设置。behaviors_settings
+		的键名是插件名，键值则是一个包含该插件设置的数组。</p>
+	</li>
+
+	<li><strong>validations</strong>
+		<p>设置模型的自动验证规则，当模型保存时，这些自动验证规则将被用于检查模型的有效性。</p>
+	</li>
+
+	<li><strong>create_reject</strong>
+		<p>在数据库中新建对象时，要忽略掉的属性。有些时候，我们的数据库结构要求在创建新记录时不能指定某些字段的值，这时就可以通过
+		create_reject
+		设置来指定要排除的属性（属性名会自动对应到字段名）。</p>
+	</li>
+
+	<li><strong>update_reject</strong>
+		<p>效果与 create_reject
+		类似，但仅仅作用在更新数据库中的已有对象时。</p>
+	</li>
+
+	<li><strong>create_autofill</strong>
+		<p>指示在数据库中新建对象前，哪些属性的值会被自动替换为指定值。假设有一个业务逻辑“新订单的状态为待审核”，那么我们就可以在
+		create_autofill
+		中指定状态属性的值为特定值，从而保证不管从何种途径创建新的订单对象，其状态都是“待审核”。</p>
+	</li>
+
+	<li><strong>update_autofill</strong>
+		<p>效果与 create_autofill
+		类似，但仅仅作用在更新数据库中的已有对象时。</p>
+	</li>
+
+	<li><strong>attr_accessible</strong>
+		<p>指示在通过 new
+		方法构造对象时能够指定的属性值。这个设置是一个安全性设置，具体说明请参考本章节的后续内容。</p>
+	</li>
+
+	<li><strong>attr_protected</strong>
+		<p>指示在通过 new
+		方法构造对象时不允许指定的属性值。如果指定了
+		attr_accessible 设置，则忽略 attr_protected
+		设置。具体说明请参考本章节的后续内容。</p>
+	</li>
+</ul>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+$Id: model-define.texy 2009-03-10 07:48:18Z Tim13 $
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-model-basic.html">基础</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-model.html">模型与 ORM</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-model-dbtable.html">存储模型的数据表</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

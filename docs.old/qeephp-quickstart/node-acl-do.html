@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QeePHP 快速入门</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="page">
+
+
+<div class="guide-section">
+
+  <div class="guide-header">
+    <span class="nav">
+      <a href="http://qeephp.com/docs/">文档索引</a>
+      &raquo;
+      <a href="index.html">QeePHP 快速入门</a>
+      &raquo;
+      <a href="node-acl.html">访问控制</a>
+      &raquo;
+      实现访问控制    </span>
+  </div>
+
+  <div class="guide-section-details formatted">
+
+    
+<h1>实现访问控制</h1>
+
+<p>在了解 ACL 的原理和机制后，我们现在来为 todo
+应用加上访问控制功能。</p>
+
+<h2>为控制器指定访问规则</h2>
+
+<p>默认情况下，所有的访问控制规则都书写在 acl.yaml
+中，该文件的结构如下：</p>
+
+<pre class="python
+code">控制器名称:
+  allow: 允许使用该控制器的角色</pre>
+
+<p>例如：</p>
+
+<pre class="python code">tasks:
+  allow: <span class="st0">'MEMBER'</span></pre>
+
+<p>表示只有具有 MEMBER 角色的用户才可以使用 tasks
+控制器。依次类推，我们可以给每个要限制访问的控制器都指定规则。</p>
+
+<pre class="python code">posts:
+  <span
+class="co1"># 多个角色用逗号分割就可以了</span>
+  allow: <span
+class="st0">'MEMBER, ADMIN'</span>
+&nbsp;
+tasks:
+  allow: <span
+class="st0">'MEMBER'</span>
+&nbsp;
+comments:
+  allow: <span
+class="st0">'MEMBER'</span></pre>
+
+<p>但有时候系统中存在较多的角色，此时我们只希望禁止特定角色的用户，可以使用
+deny 来指定禁止访问的角色：</p>
+
+<pre class="python code">users:
+  deny: <span class="st0">'ADMIN'</span></pre>
+
+<p>表示具有 ADMIN 角色的用户不能够使用 users 控制器。</p>
+
+<h2>为动作指定访问规则</h2>
+
+<p>实际开发中，经常都会出现某个控制器的多个动作，有些允许这部分角色访问，某些又允许其他角色访问。例如
+users 控制器的 changePasswd、logout
+动作就只有登录后的用户访问，而 register 和 login
+只有未登录的用户才可以访问。</p>
+
+<p>我们可以这样指定 ACL：</p>
+
+<pre class="python code">users:
+  actions:
+    changePasswd:
+      allow: <span
+class="st0">'MEMBER'</span>
+    logout:
+      allow: <span
+class="st0">'MEMBER'</span>
+    register:
+      allow: ACL_NO_ROLE
+    login:
+      allow: ACL_NO_ROLE</pre>
+
+<p>ACL_NO_ROLE 是一个 QeePHP
+预定义的值，表示不具备任何角色的用户。而未登录的用户是肯定没有角色的，因此就实现了只有未登录用户才可以使用
+register 和 login 动作的目的。</p>
+
+<p>但是上面的书写方法在控制器中有很多动作时就显得啰嗦了，我们可以简化为：</p>
+
+<pre class="python
+code">users:
+  allow: ACL_NO_ROLE
+  actions:
+    changePasswd:
+      allow: <span
+class="st0">'MEMBER'</span>
+    logout:
+      allow: <span
+class="st0">'MEMBER'</span></pre>
+
+<p>直接为控制器指定访问规则。该规则也会应用到 users
+的所有动作上。但这个默认规则可以通过单独指定来覆盖，所以在访问
+changePasswd 和 logout 动作时还是以我们指定的为准。</p>
+
+<p>上面的规则也可以写成：</p>
+
+<pre class="python code">users:
+  allow: <span
+class="st0">'MEMBER'</span>
+  actions:
+    register:
+      allow: ACL_NO_ROLE
+    login:
+      allow: ACL_NO_ROLE</pre>
+
+<p>两者的区别在于后者为 users 的所有动作默认指定了必须有
+MEMBER 角色才能访问，而 register 和 login
+两个动作例外。这种写法相对于前一种更安全。因为你在
+users
+控制器中新添加的动作如果是需要授权的，那么可能因为忘了单独指定规则而造成安全漏洞。</p>
+
+<h2>为 todo 应用加上访问规则</h2>
+
+<p>现在为 todo 应用加上访问规则。编辑 configs/acl.yaml：</p>
+
+<pre class="python
+code">users:
+  allow: ACL_HAS_ROLE
+  actions:
+    register:
+      allow: ACL_NO_ROLE
+    login:
+      allow: ACL_NO_ROLE</pre>
+
+<p>这里又出现了一个新的 QeePHP
+预定义值“ACL_HAS_ROLE”，用来表示任何角色。因此上面规则的意思就是只要具有角色的用户都可以访问
+users 控制器的动作。而 register 和 login
+动作只能由没有角色的用户访问。</p>
+
+<p>现在我们来试验一下。在未登录状态下访问 <a
+href="http://localhost/todo/public/index.php?controller=users&amp;action=changepasswd">http://localhost/todo/public/index.php?controller=users&action=changepasswd</a>，可以看到如下画面：</p>
+
+<div class="figure"><img src="images/acl-do-01.png" alt="" />
+	<p>拒绝访问的错误信息</p>
+</div>
+
+<p>这说明我们的 ACL 已经起作用了。再访问 <a
+href="http://localhost/todo/public/index.php?controller=users&amp;action=register">http://localhost/todo/public/index.php?controller=users&action=register</a>
+则可以看到注册页面，说明对 register 和 login
+动作指定的规则成功覆盖了 users 控制器的默认规则。</p>
+
+<h2>改进访问控制的错误处理</h2>
+
+<p>上面的错误提示信息显然不够友好，我们需要定制这些错误信息，以便更好的引导用户正确使用我们的应用程序。</p>
+
+<p>打开 app/myapp.php 文件，找到 _on_access_denied()
+方法，修改内容为：</p>
+
+<pre class="php code">protected <span
+class="kw2">function</span> _on_access_denied<span class="br0">&#40;</span><span
+class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span
+class="re0">$roles</span> <span class="sy0">=</span> <span
+class="re0">$this</span><span class="sy0">-&gt;</span><span
+class="me1">currentUserRoles</span><span class="br0">&#40;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+    <span
+class="kw1">if</span> <span class="br0">&#40;</span><span
+class="kw3">empty</span><span class="br0">&#40;</span><span
+class="re0">$roles</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span
+class="co1">// 如果当前用户没有角色，则转到登录页面</span>
+        <span
+class="kw1">return</span> <span class="kw2">new</span> QView_Redirect<span
+class="br0">&#40;</span>url<span class="br0">&#40;</span><span
+class="st_h">'users/login'</span><span class="br0">&#41;</span><span
+class="br0">&#41;</span><span class="sy0">;</span>
+    <span
+class="br0">&#125;</span>
+&nbsp;
+    <span class="sy0">....</span>
+<span
+class="br0">&#125;</span></pre>
+
+<p>这样在未登录用户访问不具备权限的页面时，将自动重定向到登录页面。而已经登录的用户则仍然显示错误信息页面。我们可以进一步修改
+app/view/403.php 来定制更有意义的错误信息显示。</p>
+
+<h2>指定全局默认规则</h2>
+
+<p>随着开发的进行，我们会添加更多的控制器，为了避免因为忘了添加规则导致出现安全漏洞，我们可以将所有控制器的默认规则指定为不允许任何人访问。</p>
+
+<p>在 acl.yaml 中增加：</p>
+
+<pre class="python code">ALL_CONTROLLERS:
+  deny: ACL_EVERYONE</pre>
+
+<p>ALL_CONTROLLERS 表示所有的控制器，而 ACL_EVERYONE
+表示任何人（不管用户有没有角色）。修改以后，当新增了控制器，这个控制器默认是不允许访问，这样可以提醒我们记得为控制器指定必要的访问规则。</p>
+
+<h2>完善 todo 的访问控制规则</h2>
+
+<p>下面我们把 todo 应用的完整访问规则写出来：</p>
+
+<pre class="python
+code">users:
+  allow: ACL_HAS_ROLE
+  actions:
+    register:
+      allow: ACL_NO_ROLE
+    login:
+      allow: ACL_NO_ROLE
+&nbsp;
+tasks:
+  allow: ACL_HAS_ROLE
+&nbsp;
+default:
+  allow: ACL_EVERYONE
+&nbsp;
+ALL_CONTROLLERS:
+  deny: ACL_EVERYONE</pre>
+
+<p>$Id: acl-do.texy 2295 2009-03-10 07:48:18Z dualface $</p>
+
+  </div>
+
+  <div class="guide-footer">
+
+    <table border="0" width="100%">
+      <tr>
+        <td align="left" width="200">
+                    &laquo;
+          <a href="node-acl-why.html">为什么要使用访问控制</a>
+          
+        </td>
+
+        <td align="center">
+          本章：<a href="node-acl.html">访问控制</a>
+          <br />
+          <a href="index.html">返回索引页</a>
+        </td>
+
+        <td align="right" width="200">
+                    <a href="node-tasks.html">实现任务管理</a> 
+          &raquo;
+                  </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
+
+

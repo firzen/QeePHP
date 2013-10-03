@@ -1,0 +1,36 @@
+=== 删除 Delete ===
+
+对于已有的模型对象，删除操作：
+
+-  先取得要删除的对象，然后删除关联对象（HAS_ONE对象、HAS_MANY、MANY_TO_MANY多对多关系）；
+-  直接删除数据库中的对象；
+-  直接更新数据库，而不涉及对象操作。
+
+在QeePHP删除一个对象非常简单
+/---code php
+$user=User::find()->getOne();
+$user->destroy();
+\---
+
+如果User 的模型定义如下：
+
+/---code php
+'props' => array
+            (
+            	'contact' => array(QDB::HAS_ONE=>'Contact'),
+            	'company'=> array(QDB::BELONGS_TO=>'Company'),
+            	'articles'=>array(QDB::HAS_MANY=>'Article','on_delete'=>'skip'),
+            	'tasks'=>array(QDB::HAS_MANY=>'Task')
+            ),
+\---
+User对象如果destroy方法被促发后，与被删除对象相关联的对象将会同时被删除，如下：
+- contact
+- articles
+> 如果不希望关联对象被自动删除，可以在对象关系定义中加入： on_delete=> skip ，如上面的 articles
+
+##事件 ##
+|------------------------------------------------
+| 事件                          | 说明
+|------------------------------------------------
+|*_before_destroy| 删除记录之前 |
+|*_after_destroy|删除记录之后|
