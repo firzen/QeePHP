@@ -7,6 +7,10 @@
 <?PHP $this->_block('contents');?>
 <div>
 	<h3>新版下载地址</h3>
+	
+	<p>
+		<a target="_blank" href="https://github.com/firzen/QeePHP">https://github.com/firzen/QeePHP</a>
+	</p>
 	<p>
 		<a target="_blank" href="https://code.google.com/p/qee13/">https://code.google.com/p/qee13/</a>
 	</p>
