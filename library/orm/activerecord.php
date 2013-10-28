@@ -58,6 +58,18 @@ abstract class QDB_ActiveRecord_Abstract implements QDB_ActiveRecord_Callbacks,
      * @var array
      */
     private $_changed_props = array();
+    
+    /**
+     * 记录对象被改变的旧值
+     * @var array
+     * @access public
+     * @example
+     * 	array(
+     * 		prop_name => old_value,
+     * 		prop_name2 => old_value2
+     * )
+     */
+    public $_changed_prop_old_values =array();
 
     /**
      * 指示对象是否对应数据库中的一条记录
@@ -473,6 +485,8 @@ abstract class QDB_ActiveRecord_Abstract implements QDB_ActiveRecord_Callbacks,
                 {
                     $this->{$prop_name} = $value;
                     unset($this->_changed_props[$prop_name]);
+                    //add by @firzen
+                    unset($this->_changed_prop_old_values[$prop_name]);
                 }
                 else
                 {
@@ -793,6 +807,11 @@ abstract class QDB_ActiveRecord_Abstract implements QDB_ActiveRecord_Callbacks,
         }
         elseif ($this->_props[$prop_name] !== $value)
         {
+        	//@ added by firzen , 只记录初始值
+        	if (!isset($this->_changed_prop_old_values[$prop_name])){
+        		$this->_changed_prop_old_values[$prop_name]=$this->_props[$prop_name];
+        	}
+        	
             $this->_props[$prop_name] = self::_typed($value, $config['ptype']);
             $this->_changed_props[$prop_name] = $prop_name;
         }
@@ -818,7 +837,7 @@ abstract class QDB_ActiveRecord_Abstract implements QDB_ActiveRecord_Callbacks,
      *
      * @return mixed
      */
-    function __call($method, array $args)
+    function __call($method,  $args)
     {
         if (isset(self::$_meta[$this->_class_name]->methods[$method]))
         {
@@ -910,7 +929,7 @@ abstract class QDB_ActiveRecord_Abstract implements QDB_ActiveRecord_Callbacks,
      *
      * @return string
      */
-    static function multiToJSON(array $objects, $recursion = 99, $names_style = QDB::PROP)
+    static function multiToJSON($objects, $recursion = 99, $names_style = QDB::PROP)
     {
         $arr = array();
         while (list(, $obj) = each($objects))
@@ -1058,6 +1077,7 @@ abstract class QDB_ActiveRecord_Abstract implements QDB_ActiveRecord_Callbacks,
 
         // 清除所有属性的“脏”状态
         $this->_changed_props = array();
+        $this->_changed_prop_old_values=array();
     }
 
     /**
@@ -1147,6 +1167,7 @@ abstract class QDB_ActiveRecord_Abstract implements QDB_ActiveRecord_Callbacks,
 
         // 清除所有属性的“脏”状态
         $this->_changed_props = array();
+        $this->_changed_prop_old_values=array();
     }
 
     /**
