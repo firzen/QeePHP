@@ -2438,6 +2438,11 @@ class QDB_Select
         }
         return $c;
     }
-
+    function __clone(){
+        //解决浅复制引用问题, clone select 再也不用担心
+        if (isset($this->_parts['where']) && is_object($this->_parts['where'])){
+            $this->_parts['where']=clone $this->_parts['where']; 
+        }
+    }
 }
 
