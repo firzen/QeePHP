@@ -133,7 +133,6 @@ class QDB_Table
         {
             $this->_pk = $config['pk'];
         }
-
         if (!empty($config['conn']))
         {
             $this->setConn($config['conn']);
@@ -151,6 +150,8 @@ class QDB_Table
      */
     function select()
     {
+        $this->swtichRW(self::RW_READ);
+        
         if (!$this->_inited)
         {
             $this->init();
@@ -178,6 +179,8 @@ class QDB_Table
      */
     function insert(array $row, $return_pk_values = false)
     {
+        $this->swtichRW(self::RW_WRITE);
+        
         if (!$this->_inited)
         {
             $this->init();
@@ -260,6 +263,8 @@ class QDB_Table
      */
     function update($row, $where = null)
     {
+        $this->swtichRW(self::RW_WRITE);
+        
         if (!$this->_inited)
         {
             $this->init();
@@ -301,6 +306,8 @@ class QDB_Table
      */
     function delete($where)
     {
+        $this->swtichRW(self::RW_WRITE);
+        
         if (!$this->_inited)
         {
             $this->init();
@@ -570,6 +577,33 @@ class QDB_Table
         }
 
         $this->setPK($this->_pk);
+    }
+    const RW_WRITE='w';
+    const RW_READ='r';
+    protected $write_conn;
+    /**
+     * 切换读写分离 DNS
+     * @param string $method
+     */
+    function swtichRW($method='w'){
+        //初始化记录 wrtie conn
+        if (is_null($this->write_conn)){
+            $this->write_conn=$this->getConn();
+        }
+        $main_dsn=$this->write_conn->getDSN();
+        if (!empty($main_dsn['read_dsn'])){
+            $this->schema = '';
+            $this->prefix = '';
+            if ($method==self::RW_WRITE){
+                QLog::log('SWITCH WRITE');
+                return $this->setConn($this->write_conn);
+            }
+            $dsns=Q::normalize($main_dsn['read_dsn']);
+            //随机
+            $key=rand(0,count($dsns)-1);
+            QLog::log('SWITCH READ '.$dsns[$key]);
+            return $this->setConn(QDB::getConn($dsns[$key]));
+        }
     }
 }
 
