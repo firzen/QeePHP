@@ -298,6 +298,9 @@ class QDB_ActiveRecord_Meta implements QDB_ActiveRecord_Callbacks
      */
     function findByArgs(array $args = array())
     {
+	//读写分离切换
+        $this->table->swtichRW(QDB_Table::RW_READ);
+	    
         $select = new QDB_Select($this->table->getConn());
         $select->asColl()->from($this->table)->asObject($this->class_name);
         $c = count($args);
