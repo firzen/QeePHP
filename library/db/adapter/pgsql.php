@@ -514,6 +514,48 @@ class QDB_Adapter_Pgsql extends QDB_Adapter_Abstract
         if (strncmp($s,"'",1) === 0 && substr($s,$len-1) == "'") return $s; // already quoted
         return "'".addslashes($s)."'";
     }
+    /**
+     * 获得完全限定名
+     *
+     * @param string $name
+     * @param string $alias
+     * @param string $as
+     *
+     * @return string
+     */
+    function qid($name, $alias = null, $as = null)
+    {
+	    	$name = str_replace('"', '', $name);
+	    	if (strpos($name, '.') === false)
+	    	{
+	    		$name = $this->identifier($name);
+	    	}
+	    	else
+	    	{
+	    		$arr = explode('.', $name);
+	    		foreach ($arr as $offset => $name)
+	    		{
+	    			if (empty($name))
+	    			{
+	    				unset($arr[$offset]);
+	    			}
+	    			else
+	    			{
+	    				$arr[$offset] = $this->identifier($name);
+	    			}
+	    		}
+	    		$name = implode('.', $arr);
+	    	}
+	    	
+	    	if ($alias)
+	    	{
+	    		return "{$name} {$as} " . $this->identifier($alias);
+	    	}
+	    	else
+	    	{
+	    		return $name;
+	    	}
+    }
 
 }
 
